@@ -1,0 +1,189 @@
+{
+  "code": "SANK",
+  "months": {
+    "2025-12": {
+      "availability": {
+        "contractual": 0.9898554964893781,
+        "pba": 0.9701496614202016,
+        "technical": 0.9278176074233636
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 35859.48121799999,
+        "capacityFactor": 0.3310317818925027,
+        "p50Target": 33802.99,
+        "p90Target": 30172.61
+      },
+      "wind": {
+        "deviation": -0.01601956495321394,
+        "forecastedWS": 8.44,
+        "measuredWS": 8.304794871794874,
+        "windIndex": 0.958
+      }
+    },
+    "2026-01": {
+      "availability": {
+        "contractual": 0.9983005554233083,
+        "pba": 0.9899417748235596,
+        "technical": 0.9632342781157018
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 49680.90206199997,
+        "capacityFactor": 0.45862229393758114,
+        "p50Target": 45587.33,
+        "p90Target": 40691.34
+      },
+      "wind": {
+        "deviation": -0.006923961266926876,
+        "forecastedWS": 8.05,
+        "measuredWS": 7.994262111801239,
+        "windIndex": 1.053
+      }
+    },
+    "2026-02": {
+      "availability": {
+        "contractual": 0.9839256205022281,
+        "pba": 0.9562695534808863,
+        "technical": 0.9040321207597062
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 36513.01832700003,
+        "capacityFactor": 0.37317890591272607,
+        "p50Target": 39426.88,
+        "p90Target": 35192.51
+      },
+      "wind": {
+        "deviation": -0.05864913596115429,
+        "forecastedWS": 7.78,
+        "measuredWS": 7.32370972222222,
+        "windIndex": 1.037
+      }
+    },
+    "2026-03": {
+      "availability": {
+        "contractual": 0.9955533133777359,
+        "pba": 0.9700892942910164,
+        "technical": 0.8971442048542294
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 36069.94814300002,
+        "capacityFactor": 0.3329746778532291,
+        "p50Target": 43739.2,
+        "p90Target": 39041.69
+      },
+      "wind": {
+        "deviation": -0.14138567343905445,
+        "forecastedWS": 7.88,
+        "measuredWS": 6.765880893300251,
+        "windIndex": 0.871
+      }
+    },
+    "2026-04": {
+      "availability": {
+        "contractual": 0.9723332851933446,
+        "pba": 0.9188549656757178,
+        "technical": 0.9211012282466762
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.004274948133632366,
+        "manufacturer": 0.0524773317332337,
+        "owner": 0.0017154701149353965,
+        "utility": 0.003829039379476833
+      },
+      "production": {
+        "actual": 47693.723076999995,
+        "capacityFactor": 0.4549538602430557,
+        "p50Target": 44355.24,
+        "p90Target": 39591.58
+      },
+      "wind": {
+        "deviation": 0.01984157288100528,
+        "forecastedWS": 8.09,
+        "measuredWS": 8.250518324607333,
+        "windIndex": 1.0390000000000001
+      }
+    },
+    "2026-05": {
+      "availability": {
+        "contractual": 0.9462871714696671,
+        "pba": 0.5969312737931174,
+        "technical": 0.8851227210705588
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 31449.79610900005,
+        "capacityFactor": 0.2903243909979475,
+        "p50Target": 53595.92,
+        "p90Target": 47839.82
+      },
+      "wind": {
+        "deviation": -0.04407694923516202,
+        "forecastedWS": 8.91,
+        "measuredWS": 8.517274382314707,
+        "windIndex": 1.051
+      }
+    },
+    "2026-06": {
+      "availability": {
+        "contractual": 0.9884809967439612,
+        "pba": 0.8019439978802491,
+        "technical": 0.9043823121587132
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 37433.145412000005,
+        "capacityFactor": 0.35707747073412716,
+        "p50Target": 59140.32,
+        "p90Target": 52788.77
+      },
+      "wind": {
+        "deviation": -0.20263536375613375,
+        "forecastedWS": 9.63,
+        "measuredWS": 7.678621447028433,
+        "windIndex": 0.8420000000000001
+      }
+    }
+  },
+  "mwInstalled": 145.6,
+  "name": "San Kraal"
+}

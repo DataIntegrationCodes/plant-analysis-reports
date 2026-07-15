@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fleet Report — Plant Analysis Reports</title>
+<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌬️</text></svg>" />
+</head>
+<body>
+<div class="app">
+
+  <a class="back-link" href="index.html">← All plants</a>
+
+  <header class="topbar">
+    <div class="topbar-title">
+      <div>
+        <h1>Fleet Report</h1>
+        <p class="subtitle">South Africa fleet rollup — all reporting plants combined</p>
+      </div>
+    </div>
+    <div class="topbar-meta">
+      <button id="themeToggle" class="icon-btn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <select id="monthSelect"></select>
+    <div class="spacer"></div>
+    <a id="downloadPdf" class="btn primary" style="text-decoration:none;" href="#" target="_blank" rel="noopener">Download PDF</a>
+  </div>
+
+  <div id="reportBody"></div>
+
+  <div class="section">
+    <div class="section-title">By Plant</div>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Plant</th>
+            <th>Status</th>
+            <th>Actual (MWh)</th>
+            <th>P50 Target</th>
+            <th>Capacity Factor</th>
+            <th>Technical Avail.</th>
+            <th>PBA</th>
+            <th>Wind Index</th>
+          </tr>
+        </thead>
+        <tbody id="plantTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>Source: P&amp;O_Custom_Semantic_Model (PowerBI) · updated monthly.</p>
+  </footer>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/fleet.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+/* Print-only layout: no nav, no theme toggle, fixed light theme for consistent PDFs. */
+:root { color-scheme: light; }
+
+body { margin: 0; background: #fff; color: #1a1f2b; font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif; }
+
+.print-page { max-width: 760px; margin: 0 auto; padding: 28px 32px; }
+
+.print-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px solid #1a1f2b;
+  padding-bottom: 10px;
+  margin-bottom: 14px;
+}
+
+.print-header h1 { margin: 0; font-size: 20px; }
+.print-header .meta { margin: 4px 0 0; font-size: 12px; color: #636b7a; }
+.print-header .month { font-size: 13px; font-weight: 700; text-align: right; }
+
+.section { border: 1px solid #e2e6ed; border-radius: 10px; padding: 12px 16px; margin-bottom: 10px; break-inside: avoid; }
+.section-title { font-size: 11.5px; font-weight: 700; margin: 0 0 9px; text-transform: uppercase; letter-spacing: 0.03em; color: #636b7a; }
+
+.metric-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.metric-label { font-size: 10.5px; color: #636b7a; }
+.metric-value { font-size: 16px; font-weight: 700; margin-top: 2px; }
+.metric-value.small { font-size: 13px; }
+
+.bar-row { display: flex; align-items: center; gap: 8px; margin: 4px 0; font-size: 11.5px; }
+.bar-row .bar-label { width: 120px; flex: 0 0 auto; color: #636b7a; }
+.bar-track { flex: 1; height: 8px; background: #e2e6ed; border-radius: 999px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 999px; background: #2563eb; }
+.bar-value { width: 60px; flex: 0 0 auto; text-align: right; }
+
+table { width: 100%; border-collapse: collapse; font-size: 10.5px; }
+th, td { text-align: left; padding: 4px 8px; border-bottom: 1px solid #e2e6ed; }
+th { color: #636b7a; font-weight: 600; font-size: 9.5px; text-transform: uppercase; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+
+.empty-note { color: #636b7a; font-style: italic; font-size: 13px; }
+
+.print-footer { margin-top: 10px; font-size: 10px; color: #9aa3b5; text-align: center; }
+
+@page { size: A4; margin: 12mm; }

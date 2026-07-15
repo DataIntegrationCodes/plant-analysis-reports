@@ -1,0 +1,1411 @@
+{
+  "code": "WESL",
+  "months": {
+    "2022-01": {
+      "availability": {
+        "contractual": null,
+        "pba": 1.0,
+        "technical": 1.0
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 93.74425,
+        "capacityFactor": 0.003652183652797257,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": 0.0631989475814614,
+        "forecastedWS": 8.1,
+        "measuredWS": 8.611911475409837,
+        "windIndex": 0.997
+      }
+    },
+    "2022-02": {
+      "availability": {
+        "contractual": null,
+        "pba": 1.0,
+        "technical": 1.0
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 136.55658200000002,
+        "capacityFactor": 0.005890121721877158,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": 0.1112074363992169,
+        "forecastedWS": 7.3,
+        "measuredWS": 8.111814285714283,
+        "windIndex": 0.9670000000000001
+      }
+    },
+    "2022-03": {
+      "availability": {
+        "contractual": null,
+        "pba": 1.0,
+        "technical": 1.0
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 159.06218300000006,
+        "capacityFactor": 0.0061969059918965275,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.15126523297491004,
+        "forecastedWS": 8.1,
+        "measuredWS": 6.8747516129032284,
+        "windIndex": 0.882
+      }
+    },
+    "2022-04": {
+      "availability": {
+        "contractual": null,
+        "pba": 1.0,
+        "technical": 1.0
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 229.98393099999996,
+        "capacityFactor": 0.009258612359098226,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": 0.02118771929824605,
+        "forecastedWS": 7.6,
+        "measuredWS": 7.76102666666667,
+        "windIndex": 1.0979999999999999
+      }
+    },
+    "2022-05": {
+      "availability": {
+        "contractual": null,
+        "pba": 1.0,
+        "technical": 1.0
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 340.72885,
+        "capacityFactor": 0.013274460417640643,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.12790036749693742,
+        "forecastedWS": 7.9,
+        "measuredWS": 6.889587096774195,
+        "windIndex": 0.845
+      }
+    },
+    "2022-06": {
+      "availability": {
+        "contractual": null,
+        "pba": 1.0,
+        "technical": 1.0
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 430.22302999999994,
+        "capacityFactor": 0.017319767713365537,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.03987723577235739,
+        "forecastedWS": 8.2,
+        "measuredWS": 7.873006666666669,
+        "windIndex": 0.935
+      }
+    },
+    "2022-07": {
+      "availability": {
+        "contractual": null,
+        "pba": 1.0,
+        "technical": 1.0
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 530.0376520000001,
+        "capacityFactor": 0.020649744896369022,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.0847509834775764,
+        "forecastedWS": 8.2,
+        "measuredWS": 7.505041935483873,
+        "windIndex": 0.893
+      }
+    },
+    "2022-08": {
+      "availability": {
+        "contractual": null,
+        "pba": 1.0,
+        "technical": 1.0
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 460.05431300000015,
+        "capacityFactor": 0.017923262934393024,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.14620546984572286,
+        "forecastedWS": 9.2,
+        "measuredWS": 7.854909677419349,
+        "windIndex": 0.9890000000000001
+      }
+    },
+    "2022-09": {
+      "availability": {
+        "contractual": null,
+        "pba": 1.0,
+        "technical": 1.0
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 641.89088,
+        "capacityFactor": 0.02584101771336554,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.1346670454545458,
+        "forecastedWS": 8.8,
+        "measuredWS": 7.6149299999999975,
+        "windIndex": 0.907
+      }
+    },
+    "2022-10": {
+      "availability": {
+        "contractual": null,
+        "pba": 1.0,
+        "technical": 1.0
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 773.1281470000001,
+        "capacityFactor": 0.030120311165653738,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.16577079796264924,
+        "forecastedWS": 9.5,
+        "measuredWS": 7.925177419354832,
+        "windIndex": 0.9420000000000001
+      }
+    },
+    "2022-11": {
+      "availability": {
+        "contractual": null,
+        "pba": 1.0,
+        "technical": 1.0
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 846.8516670000001,
+        "capacityFactor": 0.03409225712560387,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.04616117647058757,
+        "forecastedWS": 8.5,
+        "measuredWS": 8.107630000000006,
+        "windIndex": 0.9590000000000001
+      }
+    },
+    "2022-12": {
+      "availability": {
+        "contractual": null,
+        "pba": 1.0,
+        "technical": 1.0
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 841.5336529999997,
+        "capacityFactor": 0.03278532230793205,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.05606489563567214,
+        "forecastedWS": 8.5,
+        "measuredWS": 8.023448387096787,
+        "windIndex": 0.9940000000000001
+      }
+    },
+    "2023-01": {
+      "availability": {
+        "contractual": 0.9827186911696602,
+        "pba": 0.9809844620911081,
+        "technical": 0.9803618091138258
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0001850193359168718,
+        "manufacturer": 0.016473998716355097,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 8727.726275000003,
+        "capacityFactor": 0.3400236198768896,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.10061648745519683,
+        "forecastedWS": 8.1,
+        "measuredWS": 7.285006451612905,
+        "windIndex": 0.866
+      }
+    },
+    "2023-02": {
+      "availability": {
+        "contractual": 0.9010546793668669,
+        "pba": 0.9099893557138627,
+        "technical": 0.899910279452245
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 2.7553267553267554e-05,
+        "manufacturer": 0.029765612621550117,
+        "owner": 0.0,
+        "utility": 0.002757119485556986
+      },
+      "production": {
+        "actual": 5717.798181000005,
+        "capacityFactor": 0.24662690566770207,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.09821055301877295,
+        "forecastedWS": 7.3,
+        "measuredWS": 6.583062962962957,
+        "windIndex": 0.898
+      }
+    },
+    "2023-03": {
+      "availability": {
+        "contractual": 0.9803770466943398,
+        "pba": 0.976586190637932,
+        "technical": 0.979112299307736
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 1.4344275331202188e-06,
+        "manufacturer": 0.025108336355106006,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 10299.022878999996,
+        "capacityFactor": 0.4012397880239986,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": 0.011639585822381383,
+        "forecastedWS": 8.1,
+        "measuredWS": 8.194280645161289,
+        "windIndex": 1.159
+      }
+    },
+    "2023-04": {
+      "availability": {
+        "contractual": 0.9953152389723704,
+        "pba": 0.9917780948786381,
+        "technical": 0.9944691896328222
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 6.192842139279366e-07,
+        "manufacturer": 0.003946853611245758,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 9279.552699999998,
+        "capacityFactor": 0.3735729750402576,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": 0.019310087719298128,
+        "forecastedWS": 7.6,
+        "measuredWS": 7.746756666666665,
+        "windIndex": 1.038
+      }
+    },
+    "2023-05": {
+      "availability": {
+        "contractual": 0.9696384535685025,
+        "pba": 0.9599674790536242,
+        "technical": 0.9593128463599709
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 1.829960001927618e-05,
+        "manufacturer": 0.012029904623070376,
+        "owner": 0.0,
+        "utility": 0.0038402427192263827
+      },
+      "production": {
+        "actual": 7448.174808999998,
+        "capacityFactor": 0.29017355497117026,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.13052470396080046,
+        "forecastedWS": 7.9,
+        "measuredWS": 6.868854838709677,
+        "windIndex": 0.924
+      }
+    },
+    "2023-06": {
+      "availability": {
+        "contractual": 0.9866527252649475,
+        "pba": 0.9805569997278595,
+        "technical": 0.9821938011471759
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 4.161145272256383e-05,
+        "manufacturer": 0.014383764439042218,
+        "owner": 3.038474982919427e-06,
+        "utility": 0.001418716375105264
+      },
+      "production": {
+        "actual": 10379.095654000008,
+        "capacityFactor": 0.4178379892914657,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": 0.09727886178861819,
+        "forecastedWS": 8.2,
+        "measuredWS": 8.997686666666668,
+        "windIndex": 1.199
+      }
+    },
+    "2023-07": {
+      "availability": {
+        "contractual": 0.9836102000773781,
+        "pba": 0.9849387039045371,
+        "technical": 0.9814393105517718
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 4.188873360652502e-06,
+        "manufacturer": 0.011134491910841605,
+        "owner": 0.0,
+        "utility": 0.0001527100062376136
+      },
+      "production": {
+        "actual": 10240.256660000005,
+        "capacityFactor": 0.398950314009662,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": 0.015873721479149557,
+        "forecastedWS": 8.2,
+        "measuredWS": 8.330164516129026,
+        "windIndex": 1.0490000000000002
+      }
+    },
+    "2023-08": {
+      "availability": {
+        "contractual": 0.9733396093651392,
+        "pba": 0.9742538387978252,
+        "technical": 0.9722147602400835
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 9.158403540325635e-05,
+        "manufacturer": 0.015044908809794267,
+        "owner": 0.0,
+        "utility": 0.00015652719929319702
+      },
+      "production": {
+        "actual": 9020.090798,
+        "capacityFactor": 0.3514138537478572,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.14270015477698086,
+        "forecastedWS": 9.2,
+        "measuredWS": 7.8871585760517755,
+        "windIndex": 0.965
+      }
+    },
+    "2023-09": {
+      "availability": {
+        "contractual": 0.9623290297140905,
+        "pba": 0.9656361932385326,
+        "technical": 0.9555979466655574
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 9.752020411651244e-05,
+        "manufacturer": 0.03595975600426465,
+        "owner": 0.0,
+        "utility": 0.0005936798349488487
+      },
+      "production": {
+        "actual": 9512.70016500001,
+        "capacityFactor": 0.3829589438405801,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.025427651515151008,
+        "forecastedWS": 8.8,
+        "measuredWS": 8.576236666666672,
+        "windIndex": 1.131
+      }
+    },
+    "2023-10": {
+      "availability": {
+        "contractual": 0.9890592494611906,
+        "pba": 0.9888471978500752,
+        "technical": 0.9861740873392935
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.00012876612633943476,
+        "manufacturer": 0.03603703051482864,
+        "owner": 0.0,
+        "utility": 0.000467473552803327
+      },
+      "production": {
+        "actual": 10710.730542000012,
+        "capacityFactor": 0.41727951309022954,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.11238709677419335,
+        "forecastedWS": 9.5,
+        "measuredWS": 8.432322580645163,
+        "windIndex": 1.052
+      }
+    },
+    "2023-11": {
+      "availability": {
+        "contractual": 0.9704951103053049,
+        "pba": 0.9448033032934302,
+        "technical": 0.9377580145251522
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0006188151266186563,
+        "manufacturer": 0.018551407216756265,
+        "owner": 0.0,
+        "utility": 0.008896713704905839
+      },
+      "production": {
+        "actual": 8753.941244,
+        "capacityFactor": 0.35241309355877615,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.12043137254902009,
+        "forecastedWS": 8.5,
+        "measuredWS": 7.476333333333329,
+        "windIndex": 0.9359999999999999
+      }
+    },
+    "2023-12": {
+      "availability": {
+        "contractual": 0.9816367298091727,
+        "pba": 0.9700893845219457,
+        "technical": 0.9675003375731646
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0002865552341404998,
+        "manufacturer": 0.014393308799514769,
+        "owner": 0.0,
+        "utility": 0.003045394251854617
+      },
+      "production": {
+        "actual": 11309.034744,
+        "capacityFactor": 0.44058885553997196,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.049591650853889495,
+        "forecastedWS": 8.5,
+        "measuredWS": 8.07847096774194,
+        "windIndex": 1.035
+      }
+    },
+    "2024-01": {
+      "availability": {
+        "contractual": 0.9857856920537234,
+        "pba": 0.986497407548686,
+        "technical": 0.9848665058738303
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 7.375933583357376e-05,
+        "manufacturer": 0.006232109417572203,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 11401.741082999997,
+        "capacityFactor": 0.44420060320243093,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.037663480684985554,
+        "forecastedWS": 8.1,
+        "measuredWS": 7.794925806451617,
+        "windIndex": 0.948
+      }
+    },
+    "2024-02": {
+      "availability": {
+        "contractual": 0.9775310229137293,
+        "pba": 0.9803175770704574,
+        "technical": 0.9723412854881561
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0001274707497464566,
+        "manufacturer": 0.00933989788177868,
+        "owner": 0.0,
+        "utility": 0.0012891206784244854
+      },
+      "production": {
+        "actual": 13050.832909000008,
+        "capacityFactor": 0.5435129480676332,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": 0.23151582427964185,
+        "forecastedWS": 7.3,
+        "measuredWS": 8.990065517241385,
+        "windIndex": 1.09
+      }
+    },
+    "2024-03": {
+      "availability": {
+        "contractual": 0.9551654182786454,
+        "pba": 0.8972533676573005,
+        "technical": 0.9337664551527788
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0001939267803410231,
+        "manufacturer": 0.03571024780691279,
+        "owner": 0.0,
+        "utility": 0.014348200195825571
+      },
+      "production": {
+        "actual": 10998.151408999996,
+        "capacityFactor": 0.4284771469923639,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.00199328778616839,
+        "forecastedWS": 8.1,
+        "measuredWS": 8.083854368932036,
+        "windIndex": 1.055
+      }
+    },
+    "2024-04": {
+      "availability": {
+        "contractual": 0.9810158435643564,
+        "pba": 0.9814729529129919,
+        "technical": 0.9784562927083333
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 9.532046204620462e-05,
+        "manufacturer": 0.008738937582508252,
+        "owner": 0.0,
+        "utility": 0.00010539529702970296
+      },
+      "production": {
+        "actual": 11473.075862999985,
+        "capacityFactor": 0.4618790605072458,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": 0.04343596491228058,
+        "forecastedWS": 7.6,
+        "measuredWS": 7.930113333333332,
+        "windIndex": 1.061
+      }
+    },
+    "2024-05": {
+      "availability": {
+        "contractual": 0.9809443761057866,
+        "pba": 0.9657017769357378,
+        "technical": 0.972103429490052
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0001472125374185596,
+        "manufacturer": 0.008205693281010238,
+        "owner": 1.905520757343261e-05,
+        "utility": 0.005360315238262941
+      },
+      "production": {
+        "actual": 9195.138652999995,
+        "capacityFactor": 0.3582335457768425,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.14895222539812175,
+        "forecastedWS": 7.9,
+        "measuredWS": 6.723277419354838,
+        "windIndex": 0.883
+      }
+    },
+    "2024-06": {
+      "availability": {
+        "contractual": 0.9643254667400769,
+        "pba": 0.9306612425113512,
+        "technical": 0.9355947738301255
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 8.210646178487411e-05,
+        "manufacturer": 0.01544779568546974,
+        "owner": 0.0,
+        "utility": 0.014078464012212823
+      },
+      "production": {
+        "actual": 9432.611083,
+        "capacityFactor": 0.37973474569243154,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.10162642276422768,
+        "forecastedWS": 8.2,
+        "measuredWS": 7.3666633333333325,
+        "windIndex": 1.011
+      }
+    },
+    "2024-07": {
+      "availability": {
+        "contractual": 0.9647849539622582,
+        "pba": 0.9236698899059224,
+        "technical": 0.9566999404121864
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 6.047864574884712e-05,
+        "manufacturer": 0.03390835391900138,
+        "owner": 0.0,
+        "utility": 0.005820604090870468
+      },
+      "production": {
+        "actual": 12457.663811999992,
+        "capacityFactor": 0.485338312762973,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": 0.09747010228166839,
+        "forecastedWS": 8.2,
+        "measuredWS": 8.99925483870968,
+        "windIndex": 1.199
+      }
+    },
+    "2024-08": {
+      "availability": {
+        "contractual": 0.9610925165544534,
+        "pba": 0.9389620175987228,
+        "technical": 0.9504555791890681
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0001806466347869531,
+        "manufacturer": 0.022015553176472448,
+        "owner": 0.0,
+        "utility": 0.00787672384396387
+      },
+      "production": {
+        "actual": 11644.256834000009,
+        "capacityFactor": 0.4536487780115322,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.10838955119214647,
+        "forecastedWS": 9.2,
+        "measuredWS": 8.202816129032252,
+        "windIndex": 1.1179999999999999
+      }
+    },
+    "2024-09": {
+      "availability": {
+        "contractual": 0.984422879597842,
+        "pba": 0.9626021552781309,
+        "technical": 0.9787266146185338
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 2.8587624652607488e-05,
+        "manufacturer": 0.017309554274971387,
+        "owner": 1.2578715056400197e-05,
+        "utility": 0.003128643943109367
+      },
+      "production": {
+        "actual": 11463.667562999999,
+        "capacityFactor": 0.461500304468599,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.0901598484848488,
+        "forecastedWS": 8.8,
+        "measuredWS": 8.006593333333331,
+        "windIndex": 0.988
+      }
+    },
+    "2024-10": {
+      "availability": {
+        "contractual": 0.9799913438143364,
+        "pba": 0.9612765385582248,
+        "technical": 0.974693701475562
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0001567784172437457,
+        "manufacturer": 0.020651475840663798,
+        "owner": 0.0,
+        "utility": 0.0016244749360534033
+      },
+      "production": {
+        "actual": 13531.499286999991,
+        "capacityFactor": 0.5271738852657002,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.06466383701188523,
+        "forecastedWS": 9.5,
+        "measuredWS": 8.88569354838709,
+        "windIndex": 1.122
+      }
+    },
+    "2024-11": {
+      "availability": {
+        "contractual": 0.9117805900820725,
+        "pba": 0.9167065947570119,
+        "technical": 0.8986771258873457
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.00011412950327960711,
+        "manufacturer": 0.03312925199413296,
+        "owner": 0.0,
+        "utility": 0.004330659093905534
+      },
+      "production": {
+        "actual": 10019.909146999998,
+        "capacityFactor": 0.4033779849838969,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.11733686274509783,
+        "forecastedWS": 8.5,
+        "measuredWS": 7.502636666666668,
+        "windIndex": 0.8859999999999999
+      }
+    },
+    "2024-12": {
+      "availability": {
+        "contractual": 0.9299108146133073,
+        "pba": 0.9359427250599279,
+        "technical": 0.9280365898411975
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.00014390138233990246,
+        "manufacturer": 0.026994971668077215,
+        "owner": 0.0,
+        "utility": 0.00026036283399830736
+      },
+      "production": {
+        "actual": 9665.853906999997,
+        "capacityFactor": 0.3765721484728065,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.14285882352941162,
+        "forecastedWS": 8.5,
+        "measuredWS": 7.285700000000001,
+        "windIndex": 0.922
+      }
+    },
+    "2025-01": {
+      "availability": {
+        "contractual": 0.9737451996363805,
+        "pba": 0.9616217789697519,
+        "technical": 0.9688196746999679
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.00015197444433950384,
+        "manufacturer": 0.014670547947361794,
+        "owner": 0.0,
+        "utility": 0.0036810802716912227
+      },
+      "production": {
+        "actual": 11412.162830999981,
+        "capacityFactor": 0.4446066242402985,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.04218996415770632,
+        "forecastedWS": 8.1,
+        "measuredWS": 7.7582612903225785,
+        "windIndex": 0.953
+      }
+    },
+    "2025-02": {
+      "availability": {
+        "contractual": 0.9841910217268912,
+        "pba": 0.9756374982511726,
+        "technical": 0.9808436340984882
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.00017417805473095163,
+        "manufacturer": 0.006789986479339407,
+        "owner": 0.0,
+        "utility": 0.003924323796362643
+      },
+      "production": {
+        "actual": 10142.351155000008,
+        "capacityFactor": 0.4374720132418913,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": 0.06414187866927493,
+        "forecastedWS": 7.3,
+        "measuredWS": 7.768235714285707,
+        "windIndex": 1.0759999999999998
+      }
+    },
+    "2025-03": {
+      "availability": {
+        "contractual": 0.9660686084317545,
+        "pba": 0.9673091973911019,
+        "technical": 0.9562806986260455
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 4.39369302191326e-05,
+        "manufacturer": 0.008054010174873116,
+        "owner": 0.0,
+        "utility": 0.005807613595362375
+      },
+      "production": {
+        "actual": 10270.719071000003,
+        "capacityFactor": 0.40013709954028376,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.08636718438868934,
+        "forecastedWS": 8.1,
+        "measuredWS": 7.400425806451616,
+        "windIndex": 0.9159999999999999
+      }
+    },
+    "2025-04": {
+      "availability": {
+        "contractual": 0.9695166977841104,
+        "pba": 0.9372026313267979,
+        "technical": 0.9667869284722223
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.00016320517859774971,
+        "manufacturer": 0.007147360258111009,
+        "owner": 0.0,
+        "utility": 0.017056903200183434
+      },
+      "production": {
+        "actual": 8758.740882999993,
+        "capacityFactor": 0.3526063157407405,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.08426798245614063,
+        "forecastedWS": 7.6,
+        "measuredWS": 6.959563333333331,
+        "windIndex": 0.9309999999999999
+      }
+    },
+    "2025-05": {
+      "availability": {
+        "contractual": 0.9737771104425068,
+        "pba": 0.9001456125379962,
+        "technical": 0.9698958722371565
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.00025452985512060034,
+        "manufacturer": 0.009154435485385075,
+        "owner": 0.0,
+        "utility": 0.028577443652701536
+      },
+      "production": {
+        "actual": 7904.168020999998,
+        "capacityFactor": 0.30793860141031626,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.10212739893834243,
+        "forecastedWS": 7.9,
+        "measuredWS": 7.093193548387095,
+        "windIndex": 1.012
+      }
+    },
+    "2025-06": {
+      "availability": {
+        "contractual": 0.9826573373848109,
+        "pba": 0.9328183088227642,
+        "technical": 0.9614511294753086
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0002310622020972355,
+        "manufacturer": 0.013709790157292661,
+        "owner": 0.0,
+        "utility": 0.020528935295519548
+      },
+      "production": {
+        "actual": 12072.986257999994,
+        "capacityFactor": 0.48603004259259236,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": 0.06214999999999909,
+        "forecastedWS": 8.2,
+        "measuredWS": 8.709629999999992,
+        "windIndex": 0.983
+      }
+    },
+    "2025-07": {
+      "availability": {
+        "contractual": 0.9901119464511504,
+        "pba": 0.927851356069648,
+        "technical": 0.9810966991114098
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 7.080283005951662e-05,
+        "manufacturer": 0.008657860623192957,
+        "owner": 0.0,
+        "utility": 0.026812253738916134
+      },
+      "production": {
+        "actual": 11271.388910999993,
+        "capacityFactor": 0.4391222109630666,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.027565696302123948,
+        "forecastedWS": 8.2,
+        "measuredWS": 7.973961290322583,
+        "windIndex": 1.1340000000000001
+      }
+    },
+    "2025-08": {
+      "availability": {
+        "contractual": 0.9887096908658228,
+        "pba": 0.9245022046753427,
+        "technical": 0.9871606235065711
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.00013899753527112018,
+        "manufacturer": 0.00673994444701992,
+        "owner": 0.0,
+        "utility": 0.02586494645588985
+      },
+      "production": {
+        "actual": 10384.299609000002,
+        "capacityFactor": 0.4045620854371202,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.1568692145862554,
+        "forecastedWS": 9.2,
+        "measuredWS": 7.75680322580645,
+        "windIndex": 0.888
+      }
+    },
+    "2025-09": {
+      "availability": {
+        "contractual": 0.981601882049786,
+        "pba": 0.957387474706341,
+        "technical": 0.9793082188271606
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 1.6061965188642552e-05,
+        "manufacturer": 0.005738770014909892,
+        "owner": 0.0,
+        "utility": 0.013678012081874755
+      },
+      "production": {
+        "actual": 10780.381105999992,
+        "capacityFactor": 0.4339927981481478,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.1060306818181823,
+        "forecastedWS": 8.8,
+        "measuredWS": 7.866929999999996,
+        "windIndex": 0.971
+      }
+    },
+    "2025-10": {
+      "availability": {
+        "contractual": 0.9589152731567296,
+        "pba": 0.9064588521650868,
+        "technical": 0.9563409504928315
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.00030569988346355686,
+        "manufacturer": 0.022711537107862688,
+        "owner": 0.0,
+        "utility": 0.02478515411749063
+      },
+      "production": {
+        "actual": 11910.913356,
+        "capacityFactor": 0.4640374534829359,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.12790662139219017,
+        "forecastedWS": 9.5,
+        "measuredWS": 8.284887096774193,
+        "windIndex": 1.028
+      }
+    },
+    "2025-11": {
+      "availability": {
+        "contractual": 0.9871365311705295,
+        "pba": 0.9650288872368619,
+        "technical": 0.9854389281635803
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.00013906187576712955,
+        "manufacturer": 0.006736814115985979,
+        "owner": 0.0,
+        "utility": 0.010664684243459845
+      },
+      "production": {
+        "actual": 12067.214632999998,
+        "capacityFactor": 0.48579769053945243,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.04383568627450989,
+        "forecastedWS": 8.5,
+        "measuredWS": 8.127396666666666,
+        "windIndex": 0.99
+      }
+    },
+    "2025-12": {
+      "availability": {
+        "contractual": 0.9855831090641469,
+        "pba": 0.9799367796744938,
+        "technical": 0.9818417138761942
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0003968543753857841,
+        "manufacturer": 0.006654673725527436,
+        "owner": 6.6891608502287e-05,
+        "utility": 0.002061933906272256
+      },
+      "production": {
+        "actual": 11343.726814,
+        "capacityFactor": 0.44194042441951065,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.07221480075901386,
+        "forecastedWS": 8.5,
+        "measuredWS": 7.886174193548382,
+        "windIndex": 0.97
+      }
+    },
+    "2026-01": {
+      "availability": {
+        "contractual": 0.9914399262401774,
+        "pba": 0.9816923108794234,
+        "technical": 0.9897744608721625
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 4.5142015780423926e-05,
+        "manufacturer": 0.004091269785791191,
+        "owner": 0.0,
+        "utility": 0.0034827655916052002
+      },
+      "production": {
+        "actual": 10189.801142,
+        "capacityFactor": 0.39698461672120927,
+        "p50Target": 11444.832,
+        "p90Target": 10190.377
+      },
+      "wind": {
+        "deviation": -0.09449462365591407,
+        "forecastedWS": 8.1,
+        "measuredWS": 7.334593548387096,
+        "windIndex": 0.97
+      }
+    },
+    "2026-02": {
+      "availability": {
+        "contractual": 0.9736977868766267,
+        "pba": 0.9694054301334055,
+        "technical": 0.9734115725100956
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 1.890323691728211e-05,
+        "manufacturer": 0.01378120088562376,
+        "owner": 0.0,
+        "utility": 0.006935917147744652
+      },
+      "production": {
+        "actual": 10567.854704000005,
+        "capacityFactor": 0.4558253409247759,
+        "p50Target": 10315.872,
+        "p90Target": 9185.161
+      },
+      "wind": {
+        "deviation": 0.08831604696673197,
+        "forecastedWS": 7.3,
+        "measuredWS": 7.944707142857143,
+        "windIndex": 0.972
+      }
+    },
+    "2026-03": {
+      "availability": {
+        "contractual": 0.993168012691249,
+        "pba": 0.9240019141087449,
+        "technical": 0.9897962991338113
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 9.692733339734973e-05,
+        "manufacturer": 0.0017052517444465782,
+        "owner": 0.0,
+        "utility": 0.033986596728762565
+      },
+      "production": {
+        "actual": 10888.06651000001,
+        "capacityFactor": 0.4241883477481693,
+        "p50Target": 11444.832,
+        "p90Target": 10190.377
+      },
+      "wind": {
+        "deviation": -0.020178813221824063,
+        "forecastedWS": 8.1,
+        "measuredWS": 7.936551612903225,
+        "windIndex": 0.982
+      }
+    },
+    "2026-04": {
+      "availability": {
+        "contractual": 0.9865907950905407,
+        "pba": 0.8269635645858613,
+        "technical": 0.944655174691358
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.00011831279503849034,
+        "manufacturer": 0.04411443551600035,
+        "owner": 0.0,
+        "utility": 0.03409295860223504
+      },
+      "production": {
+        "actual": 9286.198653999998,
+        "capacityFactor": 0.37384052552334934,
+        "p50Target": 10739.232,
+        "p90Target": 9562.117
+      },
+      "wind": {
+        "deviation": 0.008779018252702553,
+        "forecastedWS": 7.6,
+        "measuredWS": 7.666720538720539,
+        "windIndex": 1.1340000000000001
+      }
+    },
+    "2026-05": {
+      "availability": {
+        "contractual": 0.981466125310053,
+        "pba": 0.8888439287304936,
+        "technical": 0.9786328578933544
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 5.422066878699531e-05,
+        "manufacturer": 0.00481857120770386,
+        "owner": 0.0,
+        "utility": 0.03529954120284477
+      },
+      "production": {
+        "actual": 8534.240068,
+        "capacityFactor": 0.33248558781362003,
+        "p50Target": 11162.592,
+        "p90Target": 9939.073
+      },
+      "wind": {
+        "deviation": -0.06399714169048645,
+        "forecastedWS": 7.9,
+        "measuredWS": 7.394422580645157,
+        "windIndex": 1.123
+      }
+    },
+    "2026-06": {
+      "availability": {
+        "contractual": 0.9794063590943005,
+        "pba": 0.8780716933668433,
+        "technical": 0.9709578772055759
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 7822.248918000002,
+        "capacityFactor": 0.31490535096618366,
+        "p50Target": 11585.952,
+        "p90Target": 10316.029
+      },
+      "wind": {
+        "deviation": -0.16990650406504018,
+        "forecastedWS": 8.2,
+        "measuredWS": 6.80676666666667,
+        "windIndex": 0.836
+      }
+    }
+  },
+  "mwInstalled": 34.5,
+  "name": "Wesley"
+}

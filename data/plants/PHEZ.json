@@ -1,0 +1,137 @@
+{
+  "code": "PHEZ",
+  "months": {
+    "2026-02": {
+      "availability": {
+        "contractual": 1.0,
+        "pba": 0.9428497902396934,
+        "technical": 0.972672528208405
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 32127.438903999962,
+        "capacityFactor": 0.32835637943158,
+        "p50Target": 39047.66,
+        "p90Target": 35261.1
+      },
+      "wind": {
+        "deviation": -0.08268337654854525,
+        "forecastedWS": 8.01,
+        "measuredWS": 7.347706153846152,
+        "windIndex": 1.0070000000000001
+      }
+    },
+    "2026-03": {
+      "availability": {
+        "contractual": 1.0,
+        "pba": 0.9596458811468093,
+        "technical": 0.9935695758791814
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 28643.599838000006,
+        "capacityFactor": 0.26441938288358163,
+        "p50Target": 48235.35,
+        "p90Target": 43557.83
+      },
+      "wind": {
+        "deviation": -0.14009392476062457,
+        "forecastedWS": 7.95,
+        "measuredWS": 6.836253298153035,
+        "windIndex": 0.902
+      }
+    },
+    "2026-04": {
+      "availability": {
+        "contractual": 1.0,
+        "pba": 0.9416163507586539,
+        "technical": 0.9947892758391161
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 20163.32859600002,
+        "capacityFactor": 0.19233944402472555,
+        "p50Target": 47592.21,
+        "p90Target": 42977.05
+      },
+      "wind": {
+        "deviation": 0.022498397435897433,
+        "forecastedWS": 8.0,
+        "measuredWS": 8.17998717948718,
+        "windIndex": 1.042
+      }
+    },
+    "2026-05": {
+      "availability": {
+        "contractual": 1.0,
+        "pba": 1.0,
+        "technical": 1.0000000000000002
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 0.0,
+        "capacityFactor": 0.0,
+        "p50Target": 54666.73,
+        "p90Target": 49365.54
+      },
+      "wind": {
+        "deviation": -1.0,
+        "forecastedWS": 8.66,
+        "measuredWS": null,
+        "windIndex": 1.07
+      }
+    },
+    "2026-06": {
+      "availability": {
+        "contractual": 0.9998692801155116,
+        "pba": 0.9716181910732553,
+        "technical": 0.985387766986419
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 2016.575209,
+        "capacityFactor": 0.019236256190857764,
+        "p50Target": 58525.56,
+        "p90Target": 52850.16
+      },
+      "wind": {
+        "deviation": -0.10503991370010808,
+        "forecastedWS": 9.27,
+        "measuredWS": 8.296279999999998,
+        "windIndex": 0.8740000000000001
+      }
+    }
+  },
+  "mwInstalled": 145.6,
+  "name": "Phezukomoya"
+}

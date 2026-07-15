@@ -1,0 +1,137 @@
+{
+  "code": "COLE",
+  "months": {
+    "2026-02": {
+      "availability": {
+        "contractual": 1.0,
+        "pba": null,
+        "technical": null
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 0.0,
+        "capacityFactor": 0.0,
+        "p50Target": 12127.14,
+        "p90Target": 10747.21
+      },
+      "wind": {
+        "deviation": -1.0,
+        "forecastedWS": 7.53,
+        "measuredWS": null,
+        "windIndex": 0.982
+      }
+    },
+    "2026-03": {
+      "availability": {
+        "contractual": 1.0,
+        "pba": 1.0,
+        "technical": 1.0000000000000002
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 0.0,
+        "capacityFactor": 0.0,
+        "p50Target": 47589.84,
+        "p90Target": 42174.67
+      },
+      "wind": {
+        "deviation": -1.0,
+        "forecastedWS": 7.47,
+        "measuredWS": null,
+        "windIndex": 0.924
+      }
+    },
+    "2026-04": {
+      "availability": {
+        "contractual": 1.0,
+        "pba": 1.0,
+        "technical": 1.0
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 0.0,
+        "capacityFactor": 0.0,
+        "p50Target": 47589.84,
+        "p90Target": 42174.67
+      },
+      "wind": {
+        "deviation": -1.0,
+        "forecastedWS": 7.52,
+        "measuredWS": null,
+        "windIndex": 1.037
+      }
+    },
+    "2026-05": {
+      "availability": {
+        "contractual": 1.0,
+        "pba": 1.0,
+        "technical": 1.0
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 0.0,
+        "capacityFactor": 0.0,
+        "p50Target": 55950.22,
+        "p90Target": 49583.74
+      },
+      "wind": {
+        "deviation": -1.0,
+        "forecastedWS": 8.05,
+        "measuredWS": null,
+        "windIndex": 1.085
+      }
+    },
+    "2026-06": {
+      "availability": {
+        "contractual": 0.9992062242839794,
+        "pba": 0.8189857658745613,
+        "technical": 0.9918364920910494
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0,
+        "manufacturer": 0.0,
+        "owner": 0.0,
+        "utility": 0.0
+      },
+      "production": {
+        "actual": 6663.2915729999995,
+        "capacityFactor": 0.06356161833218867,
+        "p50Target": 60451.96,
+        "p90Target": 53573.23
+      },
+      "wind": {
+        "deviation": 0.054141898086534565,
+        "forecastedWS": 8.67,
+        "measuredWS": 9.139410256410255,
+        "windIndex": 0.904
+      }
+    }
+  },
+  "mwInstalled": 145.6,
+  "name": "Coleskop"
+}

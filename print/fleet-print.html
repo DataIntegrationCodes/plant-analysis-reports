@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Fleet Report</title>
+<link rel="stylesheet" href="print.css" />
+</head>
+<body>
+<div class="print-page">
+  <div class="print-header">
+    <div>
+      <h1>Fleet Report</h1>
+      <p class="meta">South Africa fleet rollup — all reporting plants combined</p>
+    </div>
+    <div class="month" id="monthLabel"></div>
+  </div>
+  <div id="reportBody"></div>
+  <div class="section">
+    <div class="section-title">By Plant</div>
+    <table>
+      <thead>
+        <tr>
+          <th>Plant</th><th>Status</th><th>Actual (MWh)</th><th>P50 Target</th>
+          <th>Capacity Factor</th><th>Technical Avail.</th><th>PBA</th><th>Wind Index</th>
+        </tr>
+      </thead>
+      <tbody id="plantTableBody"></tbody>
+    </table>
+  </div>
+  <div class="print-footer" id="footerNote"></div>
+</div>
+
+<script src="../assets/js/app.js"></script>
+<script>
+(async function () {
+  const params = new URLSearchParams(window.location.search);
+  const month = params.get("month");
+
+  const manifest = await PAR.fetchJSON("../data/manifest.json");
+  const fleet = await PAR.fetchJSON("../data/fleet.json");
+  const plants = await Promise.all(
+    manifest.plants.map((p) => PAR.fetchJSON(`../data/plants/${p.code}.json`))
+  );
+
+  document.getElementById("monthLabel").textContent = PAR.monthLabel(month);
+  document.getElementById("reportBody").innerHTML = PAR.renderPlantSections(fleet.months[month]);
+
+  const rows = manifest.plants.map((meta, i) => {
+    const entry = plants[i].months[month];
+    const statusLabel = PAR.STATUS_LABEL[meta.status] || meta.status;
+    if (!entry) {
+      return `<tr><td>${meta.name}</td><td>${statusLabel}</td><td colspan="6">No data</td></tr>`;
+    }
+    return `
+      <tr>
+        <td>${meta.name}</td>
+        <td>${statusLabel}</td>
+        <td class="num">${PAR.fmtNumber(entry.production.actual, 0)}</td>
+        <td class="num">${PAR.fmtNumber(entry.production.p50Target, 0)}</td>
+        <td class="num">${PAR.fmtPercent(entry.production.capacityFactor)}</td>
+        <td class="num">${PAR.fmtPercent(entry.availability.technical)}</td>
+        <td class="num">${PAR.fmtPercent(entry.availability.pba)}</td>
+        <td class="num">${PAR.fmtNumber(entry.wind.windIndex, 2)}</td>
+      </tr>
+    `;
+  });
+  document.getElementById("plantTableBody").innerHTML = rows.join("");
+  document.getElementById("footerNote").textContent =
+    `Plant Analysis Reports · Fleet · ${PAR.monthLabel(month)} · Source: P&O_Custom_Semantic_Model (PowerBI)`;
+  document.title = `Fleet ${month}`;
+  document.body.setAttribute("data-render-complete", "true");
+})();
+</script>
+</body>
+</html>

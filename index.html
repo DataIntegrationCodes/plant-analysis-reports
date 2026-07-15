@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Plant Analysis Reports</title>
+<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌬️</text></svg>" />
+</head>
+<body>
+<div class="app">
+
+  <header class="topbar">
+    <div class="topbar-title">
+      <span class="logo-mark">🌬️</span>
+      <div>
+        <h1>Plant Analysis Reports</h1>
+        <p class="subtitle">South Africa fleet · monthly production, availability, downtime &amp; wind performance</p>
+      </div>
+    </div>
+    <div class="topbar-meta">
+      <span id="generatedAt" class="generated-pill"></span>
+      <button id="themeToggle" class="icon-btn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <section class="summary-grid" id="fleetSummary"></section>
+
+  <div class="toolbar">
+    <strong style="font-size:14px;">Plants</strong>
+    <div class="spacer"></div>
+    <a class="btn primary" style="text-decoration:none;" href="fleet.html">Open Fleet Report →</a>
+  </div>
+
+  <section id="cardsGrid" class="cards-grid"></section>
+
+  <footer class="footer">
+    <p>Source: P&amp;O_Custom_Semantic_Model (PowerBI) · updated monthly via DAX pull, not a live connection.</p>
+  </footer>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/index.js"></script>
+</body>
+</html>

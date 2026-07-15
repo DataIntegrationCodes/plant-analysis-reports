@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Plant Report</title>
+<link rel="stylesheet" href="print.css" />
+</head>
+<body>
+<div class="print-page">
+  <div class="print-header">
+    <div>
+      <h1 id="plantName">Loading…</h1>
+      <p class="meta" id="plantMeta"></p>
+    </div>
+    <div class="month" id="monthLabel"></div>
+  </div>
+  <div id="reportBody"></div>
+  <div class="print-footer" id="footerNote"></div>
+</div>
+
+<script src="../assets/js/app.js"></script>
+<script>
+(async function () {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get("code");
+  const month = params.get("month");
+  const plant = await PAR.fetchJSON(`../data/plants/${code}.json`);
+
+  document.getElementById("plantName").textContent = plant.name;
+  document.getElementById("plantMeta").textContent = `${plant.code} · ${plant.mwInstalled} MW installed`;
+  document.getElementById("monthLabel").textContent = PAR.monthLabel(month);
+  document.getElementById("reportBody").innerHTML = PAR.renderPlantSections(plant.months[month]);
+  document.getElementById("footerNote").textContent =
+    `Plant Analysis Reports · ${plant.name} · ${PAR.monthLabel(month)} · Source: P&O_Custom_Semantic_Model (PowerBI)`;
+  document.title = `${plant.name} ${month}`;
+  document.body.setAttribute("data-render-complete", "true");
+})();
+</script>
+</body>
+</html>
