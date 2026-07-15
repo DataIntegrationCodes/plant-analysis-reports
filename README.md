@@ -5,16 +5,39 @@ for the South Africa wind fleet (Grassridge, Chaba, Wesley, Waainek, Dassiesridg
 San Kraal, Phezukomoya, Coleskop), plus a fleet-wide rollup. Every month is browsable
 on the site and downloadable as a pre-generated PDF.
 
+A second, separate **Reporting** layer (`report.html`) mirrors the actual PowerBI
+report structure: a full `KPI_Dim`-driven matrix (Category → KPI rows, Year columns
+that drill down to months, a Total column) plus a 5-chart graphical dashboard
+(production vs P50/P90 target, turbine-level production & availability, availability
+trend, wind resource, downtime by cause) for a selected project. It has its own
+"Download PDF" producing a single rolling PDF per project with the full history to
+date — this layer is additive; the original month-by-month plant/fleet pages and
+PDFs are unaffected by it.
+
 ## Data
 
 `data/plants/<CODE>.json` holds one entry per month per plant. `data/fleet.json` is
-a derived rollup across all plants, and `data/manifest.json` lists the plants and
-the full set of months available on the site. All three are rebuilt automatically
-by `scripts/ingest_month.py`.
+a derived rollup across all plants, `data/manifest.json` lists the plants and the
+full set of months available on the site, and `data/turbines/<CODE>.json` holds
+per-turbine monthly production/availability (used by the Reporting layer's
+turbine-level chart). All are rebuilt automatically by `scripts/ingest_month.py`.
 
 Source: the `P&O_Custom_Semantic_Model` PowerBI semantic model, queried via the
 PowerBI modeling MCP (requires PowerBI Desktop open with that model loaded — this
 is not a live/scheduled connection).
+
+### The Reporting layer's KPI list
+
+`assets/js/app.js`'s `PAR.KPI_CATEGORIES` encodes the same KPI list, grouping, and
+order as the model's live `KPI_Dim` table and `Plant KPI Value_Upgrade` measure,
+with two exceptions made deliberately: "Warranted availability" is omitted (its
+measure returns `BLANK()` upstream — not implemented yet), and "Energy Content
+Index" / "WindSpeed Index" are dropped from the Wind section per request. The three
+Deviation KPIs (Historical/P50/P90) are **not** stored in `data/` — they're computed
+client-side in `aggregateKpi()` as a ratio-of-sums over whatever months are in view,
+which matches the model's own DAX (`DIVIDE(SUMX(months, actual - historical),
+SUMX(months, historical))`, etc.) exactly, so the Year and Total columns are correct
+without needing a separate DAX pull per aggregation level.
 
 ### Known data quirk
 
@@ -34,10 +57,14 @@ Once a month has ended and its data is final in PowerBI:
 2. Ask Claude to add that month — it runs one DAX query per plant (see the pattern
    used for the backfill: `SUMMARIZECOLUMNS` over `ref_calendar[year_month]` filtered
    to the target month, `TREATAS` to the plant's `project_code`, pulling `Actual
-   Production`, `P50 Target`, `P90 Target`, `Capacity_Factor`, `Contractual_Availability`,
-   `Technical_Availability`, `PBA`, the `DownTime` table's `Manufacturer` /
-   `Environmental` / `Utility` / `Owner` / `Bat` measures, and `MeasuredWS` /
-   `ForecastedWS` / `Deviation` / `Wind Index`).
+   Production`, `P50 Target`, `P90 Target`, `HistoricalProduction`, `Capacity_Factor`,
+   `Electrical Losses`, `Consumption (MWh)`, `Ratio to Production (%)`,
+   `Contractual_Availability`, `Technical_Availability`, `PBA`, the `DownTime`
+   table's `Manufacturer` / `Environmental` / `Utility` / `Owner` / `Bat` measures,
+   and `MeasuredWS` / `ForecastedWS` / `Deviation` / `Wind Index`), plus one
+   turbine-level query per plant (`SUMMARIZECOLUMNS` grouped by
+   `wdm_equipment[TurbineID]` + `ref_calendar[year_month]`, pulling
+   `Monthly ProductionB`, `Technical_Availability`, `Contractual_Availability`).
 3. For each plant, run:
    ```
    python scripts/ingest_month.py --plant GRAS --month 2026-07 --json '{"actualProduction": ..., "p50Target": ..., ...}'
@@ -45,11 +72,16 @@ Once a month has ended and its data is final in PowerBI:
    (field names: see `CSV_FIELD_MAP` values in `scripts/ingest_month.py`). This
    merges just that month into `data/plants/GRAS.json` and rebuilds
    `data/fleet.json` + `data/manifest.json`. Re-running for a month that already
-   exists overwrites it in place rather than duplicating.
+   exists overwrites it in place rather than duplicating. Turbine-level data uses
+   `--turbine-csv` (see `ingest_turbines` in the same script) since it's naturally
+   a CSV of (turbine, month) rows rather than a single month's numbers.
 4. Render the new PDFs:
    ```
    python scripts/render_reports.py --months 2026-07
    ```
+   This also regenerates all 7 `reports/kpi-report/<CODE>.pdf` files (the Reporting
+   layer's rolling full-history PDF), since a new month changes their Total column.
+   Pass `--skip-kpi-reports` to skip that pass.
 5. Commit. **Pushing to GitHub (which triggers the Vercel redeploy) should be a
    separate, explicit step** — don't push automatically as part of routine updates.
 

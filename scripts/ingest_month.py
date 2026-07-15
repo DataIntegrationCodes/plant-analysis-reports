@@ -41,7 +41,11 @@ CSV_FIELD_MAP = {
     "[Actual Production]": "actualProduction",
     "[P50 Target]": "p50Target",
     "[P90 Target]": "p90Target",
+    "[Historical Production]": "historicalProduction",
     "[Capacity Factor]": "capacityFactor",
+    "[Electrical Losses]": "electricalLosses",
+    "[Consumption]": "consumptionMWh",
+    "[Ratio to Production]": "ratioToProduction",
     "[Contractual Availability]": "contractualAvailability",
     "[Technical Availability]": "technicalAvailability",
     "[PBA]": "pba",
@@ -54,6 +58,12 @@ CSV_FIELD_MAP = {
     "[ForecastedWS]": "forecastedWS",
     "[WindDeviation]": "windDeviation",
     "[Wind Index]": "windIndex",
+}
+
+TURBINE_CSV_FIELD_MAP = {
+    "[Production]": "production",
+    "[Technical Availability]": "technicalAvailability",
+    "[Contractual Availability]": "contractualAvailability",
 }
 
 MONTH_NAME_TO_NUM = {
@@ -107,7 +117,13 @@ def build_month_entry(fields):
             "actual": actual,
             "p50Target": normalize_target_units(fields.get("p50Target"), actual),
             "p90Target": normalize_target_units(fields.get("p90Target"), actual),
+            "historical": fields.get("historicalProduction"),
             "capacityFactor": fields.get("capacityFactor"),
+            "electricalLosses": fields.get("electricalLosses"),
+        },
+        "consumption": {
+            "actual": fields.get("consumptionMWh"),
+            "ratioToProduction": fields.get("ratioToProduction"),
         },
         "availability": {
             "contractual": fields.get("contractualAvailability"),
@@ -172,6 +188,36 @@ def ingest_single_month(code, month_key, fields):
     print(f"{code}: ingested {month_key}")
 
 
+TURBINES_DIR = os.path.join(REPO_ROOT, "data", "turbines")
+
+
+def ingest_turbines(code, csv_path):
+    """
+    CSV columns: ref_calendar[year_month], wdm_equipment[TurbineID],
+    [Production], [Technical Availability], [Contractual Availability] - one
+    row per (turbine, month). Stored as {turbineId: {month: {...}}}.
+    """
+    turbines = {}
+    with open(csv_path, "r", encoding="utf-8-sig", newline="") as f:
+        reader = csv.DictReader(f)
+        count = 0
+        for row in reader:
+            turbine_id = row.get("wdm_equipment[TurbineID]")
+            if not turbine_id:
+                continue
+            month_key = year_month_to_key(row["ref_calendar[year_month]"])
+            entry = {field_name: parse_number(row.get(csv_col))
+                     for csv_col, field_name in TURBINE_CSV_FIELD_MAP.items()}
+            if entry.get("production") is None:
+                continue
+            turbines.setdefault(turbine_id, {})[month_key] = entry
+            count += 1
+    os.makedirs(TURBINES_DIR, exist_ok=True)
+    with open(os.path.join(TURBINES_DIR, f"{code}.json"), "w", encoding="utf-8") as f:
+        json.dump({"code": code, "turbines": turbines}, f, indent=2, ensure_ascii=False, sort_keys=True)
+    print(f"{code}: ingested {count} turbine-month rows across {len(turbines)} turbines from {csv_path}")
+
+
 def rebuild_fleet_and_manifest():
     plants = []
     all_months = set()
@@ -206,12 +252,22 @@ def rebuild_fleet_and_manifest():
                 return None
             return sum(vals) / len(vals)
 
+        def sum_or_none(section, field):
+            vals = [e[section][field] for e in entries if e[section][field] is not None]
+            return sum(vals) if vals else None
+
         fleet_months[month_key] = {
             "production": {
                 "actual": sum(e["production"]["actual"] for e in entries),
                 "p50Target": sum(e["production"]["p50Target"] for e in entries if e["production"]["p50Target"] is not None) or None,
                 "p90Target": sum(e["production"]["p90Target"] for e in entries if e["production"]["p90Target"] is not None) or None,
+                "historical": sum_or_none("production", "historical"),
                 "capacityFactor": avg("production", "capacityFactor"),
+                "electricalLosses": avg("production", "electricalLosses"),
+            },
+            "consumption": {
+                "actual": sum_or_none("consumption", "actual"),
+                "ratioToProduction": avg("consumption", "ratioToProduction"),
             },
             "availability": {
                 "contractual": avg("availability", "contractual"),
@@ -251,17 +307,21 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--plant", required=True, choices=list(PLANT_META))
     parser.add_argument("--csv", help="CSV file with one row per month (bulk backfill)")
+    parser.add_argument("--turbine-csv", help="CSV file with one row per (turbine, month) - see ingest_turbines")
     parser.add_argument("--month", help="YYYY-MM, required with --json")
     parser.add_argument("--json", help="JSON object of this month's metrics")
     parser.add_argument("--skip-rebuild", action="store_true", help="Skip regenerating fleet.json/manifest.json (use when ingesting multiple plants in a loop)")
     args = parser.parse_args()
 
-    if args.csv:
+    if args.turbine_csv:
+        ingest_turbines(args.plant, args.turbine_csv)
+        return
+    elif args.csv:
         ingest_csv(args.plant, args.csv)
     elif args.month and args.json:
         ingest_single_month(args.plant, args.month, json.loads(args.json))
     else:
-        parser.error("Provide either --csv, or both --month and --json")
+        parser.error("Provide either --csv, --turbine-csv, or both --month and --json")
 
     if not args.skip_rebuild:
         rebuild_fleet_and_manifest()

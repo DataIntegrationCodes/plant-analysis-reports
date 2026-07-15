@@ -18,9 +18,9 @@ const PAR = {
     return `${v.toLocaleString(undefined, { maximumFractionDigits: 0 })} MWh`;
   },
 
-  fmtPercent(v) {
+  fmtPercent(v, digits = 1) {
     if (v === null || v === undefined) return "–";
-    return `${(v * 100).toFixed(1)}%`;
+    return `${(v * 100).toFixed(digits)}%`;
   },
 
   fmtNumber(v, digits = 1) {
@@ -136,5 +136,271 @@ const PAR = {
         </div>
       </div>
     `;
+  },
+
+  // --- KPI_Dim-driven matrix (report.html + print/report-print.html) ---
+  //
+  // Mirrors the live KPI_Dim table + "Plant KPI Value_Upgrade" measure pulled
+  // from the model, minus "Warranted availability" (unimplemented upstream)
+  // and "Energy Content Index" / "WindSpeed Index" (dropped per instruction).
+  // Each KPI's `aggregate(entries)` takes an array of one or more month
+  // entries (production/consumption/availability/downtime/wind objects) and
+  // returns the correct value whether entries.length is 1 (a single month),
+  // 12 (a year), or the full history (Total) - sum/average KPIs are trivially
+  // the same formula at any grain, and the three Deviation KPIs use a
+  // ratio-of-sums (matching the model's own DAX: DIVIDE(SUMX(..), SUMX(..))),
+  // not an average of monthly percentages.
+
+  _sumBy(entries, getter) {
+    const vals = entries.map(getter).filter((v) => v !== null && v !== undefined);
+    if (!vals.length) return null;
+    return vals.reduce((a, b) => a + b, 0);
+  },
+
+  _avgBy(entries, getter) {
+    const vals = entries.map(getter).filter((v) => v !== null && v !== undefined);
+    if (!vals.length) return null;
+    return vals.reduce((a, b) => a + b, 0) / vals.length;
+  },
+
+  _ratioOfSums(entries, numGetter, denomGetter) {
+    const pairs = entries
+      .map((e) => [numGetter(e), denomGetter(e)])
+      .filter(([n, d]) => n !== null && n !== undefined && d !== null && d !== undefined && d !== 0);
+    if (!pairs.length) return null;
+    const sumNum = pairs.reduce((a, [n]) => a + n, 0);
+    const sumDenom = pairs.reduce((a, [, d]) => a + d, 0);
+    if (!sumDenom) return null;
+    return sumNum / sumDenom;
+  },
+
+  KPI_CATEGORIES: [
+    {
+      category: "A. Production",
+      kpis: [
+        { key: "measured", label: "Measured (MWh)", unit: "value",
+          aggregate: (es) => PAR._sumBy(es, (e) => e.production.actual) },
+        { key: "deviationHistorical", label: "Deviation Historical", unit: "percent",
+          aggregate: (es) => PAR._ratioOfSums(es,
+            (e) => (e.production.historical != null ? e.production.actual - e.production.historical : null),
+            (e) => e.production.historical) },
+        { key: "deviationP50", label: "Deviation P50", unit: "percent",
+          aggregate: (es) => {
+            const r = PAR._ratioOfSums(es, (e) => e.production.actual, (e) => e.production.p50Target);
+            return r === null ? null : r - 1;
+          } },
+        { key: "deviationP90", label: "Deviation P90", unit: "percent",
+          aggregate: (es) => {
+            const r = PAR._ratioOfSums(es, (e) => e.production.actual, (e) => e.production.p90Target);
+            return r === null ? null : r - 1;
+          } },
+        { key: "capacityFactor", label: "Capacity Factor", unit: "percent",
+          aggregate: (es) => PAR._avgBy(es, (e) => e.production.capacityFactor) },
+        { key: "electricalLosses", label: "Electrical Losses", unit: "percent",
+          aggregate: (es) => PAR._avgBy(es, (e) => e.production.electricalLosses) },
+      ],
+    },
+    {
+      category: "B. Consumption",
+      kpis: [
+        { key: "consumption", label: "Measured Consumption (MWh)", unit: "value",
+          aggregate: (es) => PAR._sumBy(es, (e) => e.consumption.actual) },
+        { key: "ratioToProduction", label: "Ratio to Production", unit: "percent",
+          aggregate: (es) => PAR._avgBy(es, (e) => e.consumption.ratioToProduction) },
+      ],
+    },
+    {
+      category: "C. Availability",
+      kpis: [
+        { key: "contractual", label: "Contractual availability", unit: "percent",
+          aggregate: (es) => PAR._avgBy(es, (e) => e.availability.contractual) },
+        { key: "technical", label: "Technical availability", unit: "percent",
+          aggregate: (es) => PAR._avgBy(es, (e) => e.availability.technical) },
+        { key: "pba", label: "Technical availability - Energy based", unit: "percent",
+          aggregate: (es) => PAR._avgBy(es, (e) => e.availability.pba) },
+      ],
+    },
+    {
+      category: "D. Downtime",
+      kpis: [
+        { key: "manufacturer", label: "Manufacturer", unit: "percent3",
+          aggregate: (es) => PAR._avgBy(es, (e) => e.downtime.manufacturer) },
+        { key: "owner", label: "Owner", unit: "percent3",
+          aggregate: (es) => PAR._avgBy(es, (e) => e.downtime.owner) },
+        { key: "environmental", label: "Environmental", unit: "percent3",
+          aggregate: (es) => PAR._avgBy(es, (e) => e.downtime.environmental) },
+        { key: "utility", label: "Utility", unit: "percent3",
+          aggregate: (es) => PAR._avgBy(es, (e) => e.downtime.utility) },
+        { key: "bat", label: "Bat Curtailment", unit: "percent3",
+          aggregate: (es) => PAR._avgBy(es, (e) => e.downtime.bat) },
+      ],
+    },
+    {
+      category: "E. Wind",
+      kpis: [
+        { key: "forecastedWS", label: "Forecasted WS (m/s)", unit: "speed",
+          aggregate: (es) => PAR._avgBy(es, (e) => e.wind.forecastedWS) },
+        { key: "measuredWS", label: "Measured WS (m/s)", unit: "speed",
+          aggregate: (es) => PAR._avgBy(es, (e) => e.wind.measuredWS) },
+        { key: "windSpeedDeviation", label: "WindSpeed Deviation", unit: "percent",
+          aggregate: (es) => PAR._avgBy(es, (e) => e.wind.deviation) },
+      ],
+    },
+  ],
+
+  fmtKpiValue(value, unit) {
+    if (unit === "value") return PAR.fmtNumber(value, 0);
+    if (unit === "percent") return PAR.fmtPercent(value, 1);
+    if (unit === "percent3") return PAR.fmtPercent(value, 3);
+    if (unit === "speed") return value === null || value === undefined ? "–" : `${PAR.fmtNumber(value, 1)} m/s`;
+    return PAR.fmtNumber(value);
+  },
+
+  // Renders the flat KPI matrix (Year columns + Total) for a single plant's
+  // or the fleet's full `months` map. `years` is a sorted array of year
+  // strings ("2022".."2026"); `monthsByYear[year]` is the list of that
+  // year's month entries in chronological order.
+  renderKpiMatrix(monthsMap, years) {
+    const monthsByYear = {};
+    for (const year of years) {
+      monthsByYear[year] = Object.keys(monthsMap)
+        .filter((k) => k.startsWith(year))
+        .sort()
+        .map((k) => monthsMap[k]);
+    }
+    const allEntries = Object.values(monthsMap);
+
+    const headerCells = years.map((y) => `<th>${y}</th>`).join("");
+    const rows = PAR.KPI_CATEGORIES.map((cat) => {
+      const catRow = `<tr><td colspan="${years.length + 2}"><strong>${cat.category}</strong></td></tr>`;
+      const kpiRows = cat.kpis.map((kpi) => {
+        const yearCells = years.map((y) => `<td class="num">${PAR.fmtKpiValue(kpi.aggregate(monthsByYear[y]), kpi.unit)}</td>`).join("");
+        const total = kpi.aggregate(allEntries);
+        return `<tr><td></td><td>${kpi.label}</td>${yearCells}<td class="num"><strong>${PAR.fmtKpiValue(total, kpi.unit)}</strong></td></tr>`;
+      }).join("");
+      return catRow + kpiRows;
+    }).join("");
+
+    return `
+      <table>
+        <thead><tr><th colspan="2">Category</th>${headerCells}<th>Total</th></tr></thead>
+        <tbody>${rows}</tbody>
+      </table>
+    `;
+  },
+
+  // Builds the 5-chart graphical dashboard onto fixed canvas IDs
+  // (chartProduction/chartTurbines/chartAvailability/chartWind/chartDowntime).
+  // Shared between report.html (interactive) and print/report-print.html
+  // (static, for PDF export). Returns the Chart.js instances so callers can
+  // destroy() them before rebuilding (e.g. on project switch).
+  buildReportCharts(plant, turbineData) {
+    const months = Object.keys(plant.months).sort();
+    const monthLabels = months.map((m) => PAR.monthLabel(m));
+    const charts = {};
+
+    charts.production = new Chart(document.getElementById("chartProduction"), {
+      data: {
+        labels: monthLabels,
+        datasets: [
+          { type: "bar", label: "Actual (MWh)", data: months.map((m) => plant.months[m].production.actual), backgroundColor: "#2563eb" },
+          { type: "line", label: "P50 Target", data: months.map((m) => plant.months[m].production.p50Target), borderColor: "#22c55e", pointRadius: 0 },
+          { type: "line", label: "P90 Target", data: months.map((m) => plant.months[m].production.p90Target), borderColor: "#f97316", pointRadius: 0 },
+        ],
+      },
+      options: { responsive: true, scales: { x: { ticks: { maxRotation: 90, minRotation: 90 } } } },
+    });
+
+    const turbineIds = turbineData ? Object.keys(turbineData.turbines).sort() : [];
+    const turbineTotals = turbineIds.map((id) => {
+      const entries = Object.values(turbineData.turbines[id]);
+      return {
+        production: PAR._sumBy(entries, (e) => e.production),
+        technical: PAR._avgBy(entries, (e) => e.technicalAvailability),
+        contractual: PAR._avgBy(entries, (e) => e.contractualAvailability),
+      };
+    });
+    charts.turbines = new Chart(document.getElementById("chartTurbines"), {
+      data: {
+        labels: turbineIds,
+        datasets: [
+          { type: "bar", label: "Production (MWh)", data: turbineTotals.map((t) => t.production / 1000), backgroundColor: "#2563eb", yAxisID: "y" },
+          { type: "line", label: "Technical Availability", data: turbineTotals.map((t) => t.technical * 100), borderColor: "#eab308", pointRadius: 3, yAxisID: "y1" },
+          { type: "line", label: "Contractual Availability", data: turbineTotals.map((t) => t.contractual * 100), borderColor: "#6b7280", pointRadius: 3, yAxisID: "y1" },
+        ],
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: { position: "left", title: { display: true, text: "MWh" } },
+          y1: { position: "right", title: { display: true, text: "%" }, grid: { drawOnChartArea: false } },
+        },
+      },
+    });
+
+    const ytdContractual = [];
+    const ytdTechnical = [];
+    const yearRunning = {};
+    for (const m of months) {
+      const y = m.slice(0, 4);
+      yearRunning[y] = yearRunning[y] || { c: [], t: [] };
+      const entry = plant.months[m];
+      if (entry.availability.contractual != null) yearRunning[y].c.push(entry.availability.contractual);
+      if (entry.availability.technical != null) yearRunning[y].t.push(entry.availability.technical);
+      const avg = (arr) => (arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : null);
+      ytdContractual.push(avg(yearRunning[y].c));
+      ytdTechnical.push(avg(yearRunning[y].t));
+    }
+    charts.availability = new Chart(document.getElementById("chartAvailability"), {
+      data: {
+        labels: monthLabels,
+        datasets: [
+          { type: "bar", label: "Contractual", data: months.map((m) => plant.months[m].availability.contractual * 100), backgroundColor: "#6b7280" },
+          { type: "bar", label: "Technical", data: months.map((m) => plant.months[m].availability.technical * 100), backgroundColor: "#eab308" },
+          { type: "line", label: "Contractual YTD", data: ytdContractual.map((v) => v * 100), borderColor: "#111827", pointRadius: 0 },
+          { type: "line", label: "Technical YTD", data: ytdTechnical.map((v) => v * 100), borderColor: "#b45309", pointRadius: 0 },
+        ],
+      },
+      options: { responsive: true, scales: { x: { ticks: { maxRotation: 90, minRotation: 90 } }, y: { title: { display: true, text: "%" } } } },
+    });
+
+    charts.wind = new Chart(document.getElementById("chartWind"), {
+      data: {
+        labels: monthLabels,
+        datasets: [
+          { type: "bar", label: "Measured WS", data: months.map((m) => plant.months[m].wind.measuredWS), backgroundColor: "#a3e635" },
+          { type: "line", label: "Forecasted WS", data: months.map((m) => plant.months[m].wind.forecastedWS), borderColor: "#16a34a", pointRadius: 0 },
+        ],
+      },
+      options: { responsive: true, scales: { x: { ticks: { maxRotation: 90, minRotation: 90 } }, y: { title: { display: true, text: "m/s" } } } },
+    });
+
+    const downtimeKeys = [
+      { key: "manufacturer", label: "Manufacturer", color: "#38bdf8" },
+      { key: "owner", label: "Owner", color: "#eab308" },
+      { key: "environmental", label: "Environmental", color: "#22c55e" },
+      { key: "utility", label: "Utility", color: "#f97316" },
+      { key: "bat", label: "Bat", color: "#16a34a" },
+    ];
+    charts.downtime = new Chart(document.getElementById("chartDowntime"), {
+      type: "bar",
+      data: {
+        labels: monthLabels,
+        datasets: downtimeKeys.map((d) => ({
+          label: d.label,
+          data: months.map((m) => (plant.months[m].downtime[d.key] || 0) * 100),
+          backgroundColor: d.color,
+        })),
+      },
+      options: {
+        responsive: true,
+        scales: {
+          x: { stacked: true, ticks: { maxRotation: 90, minRotation: 90 } },
+          y: { stacked: true, title: { display: true, text: "% Production Loss" } },
+        },
+      },
+    });
+
+    return charts;
   },
 };

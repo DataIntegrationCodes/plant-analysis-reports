@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Project Report</title>
+<link rel="stylesheet" href="print.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  .print-page { max-width: 980px; }
+  canvas { max-width: 100%; margin-bottom: 4px; }
+  table { font-size: 9px; }
+  th, td { padding: 3px 5px; }
+</style>
+</head>
+<body>
+<div class="print-page">
+  <div class="print-header">
+    <div>
+      <h1 id="plantName">Loading…</h1>
+      <p class="meta" id="plantMeta"></p>
+    </div>
+    <div class="month">Full History</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Full KPI Matrix</div>
+    <div id="kpiMatrixWrap"></div>
+  </div>
+
+  <div class="section"><div class="section-title">Production vs Target</div><canvas id="chartProduction" height="70"></canvas></div>
+  <div class="section"><div class="section-title">Turbine-Level Production &amp; Availability</div><canvas id="chartTurbines" height="70"></canvas></div>
+  <div class="section"><div class="section-title">Availability Trend</div><canvas id="chartAvailability" height="70"></canvas></div>
+  <div class="section"><div class="section-title">Wind Resource</div><canvas id="chartWind" height="70"></canvas></div>
+  <div class="section"><div class="section-title">Downtime by Cause</div><canvas id="chartDowntime" height="70"></canvas></div>
+
+  <div class="print-footer" id="footerNote"></div>
+</div>
+
+<script src="../assets/js/app.js"></script>
+<script>
+(async function () {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get("code");
+
+  const plant = await PAR.fetchJSON(`../data/plants/${code}.json`);
+  let turbineData = { turbines: {} };
+  try {
+    turbineData = await PAR.fetchJSON(`../data/turbines/${code}.json`);
+  } catch (e) {
+    // no turbine-level data for this plant yet
+  }
+
+  document.getElementById("plantName").textContent = plant.name;
+  document.getElementById("plantMeta").textContent = `${plant.code} · ${plant.mwInstalled} MW installed`;
+  document.title = `${plant.name} KPI Report`;
+
+  const years = [...new Set(Object.keys(plant.months).map((k) => k.slice(0, 4)))].sort();
+  document.getElementById("kpiMatrixWrap").innerHTML = PAR.renderKpiMatrix(plant.months, years);
+
+  PAR.buildReportCharts(plant, turbineData);
+
+  document.getElementById("footerNote").textContent =
+    `Plant Analysis Reports · ${plant.name} · Full history · Source: P&O_Custom_Semantic_Model (PowerBI)`;
+  document.body.setAttribute("data-render-complete", "true");
+})();
+</script>
+</body>
+</html>

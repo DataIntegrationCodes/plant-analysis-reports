@@ -44,6 +44,7 @@ def main():
     parser.add_argument("--force", action="store_true", help="Re-render PDFs that already exist")
     parser.add_argument("--months", nargs="*", help="Only render these YYYY-MM months (default: all)")
     parser.add_argument("--plants", nargs="*", help="Only render these plant codes (default: all)")
+    parser.add_argument("--skip-kpi-reports", action="store_true", help="Skip the per-project full-history KPI report PDFs")
     args = parser.parse_args()
 
     with open(os.path.join(REPO_ROOT, "data", "manifest.json"), encoding="utf-8") as f:
@@ -88,6 +89,19 @@ def main():
                 render_pdf(page, url, out_path)
                 print(f"Rendered fleet/{month}.pdf")
                 rendered += 1
+
+            if not args.skip_kpi_reports:
+                for code in plant_codes:
+                    plant_path = os.path.join(REPO_ROOT, "data", "plants", f"{code}.json")
+                    with open(plant_path, encoding="utf-8") as f:
+                        plant = json.load(f)
+                    if not plant["months"]:
+                        continue
+                    out_path = os.path.join(REPORTS_DIR, "kpi-report", f"{code}.pdf")
+                    url = f"http://127.0.0.1:{PORT}/print/report-print.html?code={code}"
+                    render_pdf(page, url, out_path)
+                    print(f"Rendered kpi-report/{code}.pdf")
+                    rendered += 1
 
             browser.close()
     finally:
