@@ -286,32 +286,52 @@ const PAR = {
     return "";
   },
 
-  // Renders the flat KPI matrix (Year columns + Total) for a single plant's
-  // or the fleet's full `months` map. `years` is a sorted array of year
-  // strings ("2022".."2026"); `monthsByYear[year]` is the list of that
-  // year's month entries in chronological order.
-  renderKpiMatrix(monthsMap, years) {
+  // Renders the KPI matrix (Year columns + Total) for a single plant's or the
+  // fleet's full `months` map. `years` is a sorted array of year strings
+  // ("2022".."2026"). `expandedYears` (optional Set/array of year strings)
+  // pre-expands those years into their individual month columns - used by
+  // the print PDF to always show the current year's months (no click needed,
+  // unlike the interactive drill-down in report.js).
+  renderKpiMatrix(monthsMap, years, expandedYears = []) {
+    const expanded = expandedYears instanceof Set ? expandedYears : new Set(expandedYears);
+    const monthKeysByYear = {};
     const monthsByYear = {};
     for (const year of years) {
-      monthsByYear[year] = Object.keys(monthsMap)
-        .filter((k) => k.startsWith(year))
-        .sort()
-        .map((k) => monthsMap[k]);
+      monthKeysByYear[year] = Object.keys(monthsMap).filter((k) => k.startsWith(year)).sort();
+      monthsByYear[year] = monthKeysByYear[year].map((k) => monthsMap[k]);
     }
     const allEntries = Object.values(monthsMap);
 
-    const headerCells = years.map((y) => `<th>${y}</th>`).join("");
+    const totalCols = years.reduce((n, y) => n + (expanded.has(y) ? 1 + monthKeysByYear[y].length : 1), 0);
+
+    const headerCells = years.map((y) => {
+      const cells = [`<th>${y}</th>`];
+      if (expanded.has(y)) {
+        for (const mk of monthKeysByYear[y]) {
+          cells.push(`<th>${PAR.monthLabel(mk).split(" ")[0].slice(0, 3)}</th>`);
+        }
+      }
+      return cells.join("");
+    }).join("");
+
     const rows = PAR.KPI_CATEGORIES.map((cat) => {
-      const catRow = `<tr><td colspan="${years.length + 2}"><strong>${cat.category}</strong></td></tr>`;
+      const catRow = `<tr><td colspan="${totalCols + 2}"><strong>${cat.category}</strong></td></tr>`;
       const kpiRows = cat.kpis.map((kpi) => {
-        const yearCells = years.map((y) => {
+        const cells = years.map((y) => {
           const val = kpi.aggregate(monthsByYear[y]);
           const cls = PAR.kpiColorClass(cat.category, kpi, val);
-          return `<td class="num ${cls}">${PAR.fmtKpiValue(val, kpi.unit)}</td>`;
+          const yearCell = `<td class="num ${cls}">${PAR.fmtKpiValue(val, kpi.unit)}</td>`;
+          if (!expanded.has(y)) return yearCell;
+          const monthCells = monthKeysByYear[y].map((mk) => {
+            const mVal = kpi.aggregate([monthsMap[mk]]);
+            const mCls = PAR.kpiColorClass(cat.category, kpi, mVal);
+            return `<td class="num ${mCls}">${PAR.fmtKpiValue(mVal, kpi.unit)}</td>`;
+          }).join("");
+          return yearCell + monthCells;
         }).join("");
         const total = kpi.aggregate(allEntries);
         const totalCls = PAR.kpiColorClass(cat.category, kpi, total);
-        return `<tr><td></td><td>${kpi.label}</td>${yearCells}<td class="num ${totalCls}"><strong>${PAR.fmtKpiValue(total, kpi.unit)}</strong></td></tr>`;
+        return `<tr><td></td><td>${kpi.label}</td>${cells}<td class="num ${totalCls}"><strong>${PAR.fmtKpiValue(total, kpi.unit)}</strong></td></tr>`;
       }).join("");
       return catRow + kpiRows;
     }).join("");
