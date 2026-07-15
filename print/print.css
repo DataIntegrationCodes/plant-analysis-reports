@@ -44,13 +44,12 @@ table.kpi-matrix td[colspan] { background: #eef2fb; font-weight: 700; }
 table.kpi-matrix .kpi-red { color: #b91c1c; font-weight: 600; }
 table.kpi-matrix .kpi-green { color: #15803d; font-weight: 600; }
 
-/* Print report pagination: matrix alone on page 1, then two charts per page
-   (side by side, horizontal) with the last (Wind Resource) alone on its own
-   page. Each chart gets a generously sized container since there are only
-   1-2 per page, keeping axis ticks and legends easy to read. */
+/* Print report pagination: matrix alone on page 1, then charts full-width,
+   one after another (not side by side - two-up made each chart too small to
+   read clearly), with generous spacing between them. Wind Resource is alone
+   on its own final page. */
 .page-break { break-before: page; }
-.chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.chart-row.single { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+.chart-row { display: flex; flex-direction: column; gap: 32px; }
 .chart-row .section { margin-bottom: 0; break-inside: avoid; }
 .chart-container { position: relative; height: 300px; }
 
