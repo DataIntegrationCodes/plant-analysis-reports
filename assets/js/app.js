@@ -388,6 +388,7 @@ const PAR = {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        interaction: { mode: "index", intersect: false },
         scales: {
           x: { ticks: { maxRotation: 45, minRotation: 0 } },
           y: { position: "left", title: { display: true, text: "Monthly MWh" } },
@@ -409,14 +410,15 @@ const PAR = {
       data: {
         labels: turbineIds,
         datasets: [
-          { type: "bar", label: "Production (MWh)", data: turbineTotals.map((t) => t.production / 1000), backgroundColor: "#2563eb", yAxisID: "y" },
-          { type: "line", label: "Technical Availability", data: turbineTotals.map((t) => t.technical * 100), borderColor: "#eab308", pointRadius: 3, yAxisID: "y1" },
-          { type: "line", label: "Contractual Availability", data: turbineTotals.map((t) => t.contractual * 100), borderColor: "#6b7280", pointRadius: 3, yAxisID: "y1" },
+          { type: "bar", label: "Production (MWh)", data: turbineTotals.map((t) => t.production / 1000), backgroundColor: "#2563eb", yAxisID: "y", order: 2 },
+          { type: "line", label: "Technical Availability", data: turbineTotals.map((t) => t.technical * 100), borderColor: "#eab308", pointRadius: 3, yAxisID: "y1", order: 1 },
+          { type: "line", label: "Contractual Availability", data: turbineTotals.map((t) => t.contractual * 100), borderColor: "#6b7280", pointRadius: 3, yAxisID: "y1", order: 1 },
         ],
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        interaction: { mode: "index", intersect: false },
         scales: {
           y: { position: "left", title: { display: true, text: "MWh" } },
           y1: { position: "right", title: { display: true, text: "%" }, grid: { drawOnChartArea: false } },
@@ -447,7 +449,7 @@ const PAR = {
           { type: "line", label: "Technical YTD", data: ytdTechnical.map((v) => v * 100), borderColor: "#b45309", pointRadius: 0 },
         ],
       },
-      options: { responsive: true, maintainAspectRatio: false, scales: { x: { ticks: { maxRotation: 45, minRotation: 0 } }, y: { title: { display: true, text: "%" } } } },
+      options: { responsive: true, maintainAspectRatio: false, interaction: { mode: "index", intersect: false }, scales: { x: { ticks: { maxRotation: 45, minRotation: 0 } }, y: { title: { display: true, text: "%" } } } },
     });
 
     charts.wind = new Chart(document.getElementById("chartWind"), {
@@ -458,7 +460,7 @@ const PAR = {
           { type: "line", label: "Forecasted WS", data: months.map((m) => plant.months[m].wind.forecastedWS), borderColor: "#16a34a", pointRadius: 0 },
         ],
       },
-      options: { responsive: true, maintainAspectRatio: false, scales: { x: { ticks: { maxRotation: 45, minRotation: 0 } }, y: { title: { display: true, text: "m/s" } } } },
+      options: { responsive: true, maintainAspectRatio: false, interaction: { mode: "index", intersect: false }, scales: { x: { ticks: { maxRotation: 45, minRotation: 0 } }, y: { title: { display: true, text: "m/s" } } } },
     });
 
     const downtimeKeys = [
@@ -481,6 +483,7 @@ const PAR = {
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        interaction: { mode: "index", intersect: false },
         scales: {
           x: { stacked: true, ticks: { maxRotation: 45, minRotation: 0 } },
           y: { stacked: true, title: { display: true, text: "% Production Loss" } },
