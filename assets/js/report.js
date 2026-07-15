@@ -13,7 +13,6 @@
     .join("");
 
   const expandedYears = new Set();
-  let charts = {};
 
   function years(monthsMap) {
     const set = new Set(Object.keys(monthsMap).map((k) => k.slice(0, 4)));
@@ -29,7 +28,7 @@
     const allEntries = Object.values(monthsMap);
 
     const headerCells = yrs.map((y) => {
-      const cells = [`<th class="year-toggle" data-year="${y}" style="cursor:pointer;">${y} ${expandedYears.has(y) ? "▾" : "▸"}</th>`];
+      const cells = [`<th class="year-toggle" data-year="${y}">${y} ${expandedYears.has(y) ? "▾" : "▸"}</th>`];
       if (expandedYears.has(y)) {
         for (const mk of monthsByYear[y]) {
           cells.push(`<th>${PAR.monthLabel(mk).split(" ")[0].slice(0, 3)}</th>`);
@@ -55,7 +54,7 @@
     }).join("");
 
     matrixWrap.innerHTML = `
-      <table>
+      <table class="kpi-matrix">
         <thead><tr><th colspan="2">Category</th>${headerCells}<th>Total</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
@@ -71,23 +70,10 @@
     });
   }
 
-  function destroyCharts() {
-    Object.values(charts).forEach((c) => c.destroy());
-    charts = {};
-  }
-
   async function loadProject(code) {
     expandedYears.clear();
     const plant = await PAR.fetchJSON(`data/plants/${code}.json`);
-    let turbineData = { turbines: {} };
-    try {
-      turbineData = await PAR.fetchJSON(`data/turbines/${code}.json`);
-    } catch (e) {
-      // no turbine-level data for this plant yet
-    }
     renderMatrix(plant.months);
-    destroyCharts();
-    charts = PAR.buildReportCharts(plant, turbineData);
     downloadBtn.href = `reports/kpi-report/${code}.pdf`;
   }
 

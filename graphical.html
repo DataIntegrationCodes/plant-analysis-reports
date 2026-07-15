@@ -3,9 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>KPI Matrix — Plant Analysis Reports</title>
+<title>Graphical View — Plant Analysis Reports</title>
 <link rel="stylesheet" href="assets/css/styles.css" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌬️</text></svg>" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 </head>
 <body>
 <div class="app">
@@ -16,7 +17,7 @@
     <div class="topbar-title">
       <div>
         <h1>Reporting</h1>
-        <p class="subtitle">Full KPI matrix, per project</p>
+        <p class="subtitle">Graphical dashboard, per project &amp; year</p>
       </div>
     </div>
     <div class="topbar-meta">
@@ -25,11 +26,11 @@
   </header>
 
   <div class="view-tiles">
-    <a class="view-tile active" href="report.html">
+    <a class="view-tile" href="report.html">
       <div class="tile-title">📋 KPI Matrix</div>
       <div class="tile-sub">Full category/KPI table, year drill-down</div>
     </a>
-    <a class="view-tile" href="graphical.html">
+    <a class="view-tile active" href="graphical.html">
       <div class="tile-title">📈 Graphical View</div>
       <div class="tile-sub">5-chart dashboard, by project &amp; year</div>
     </a>
@@ -37,22 +38,42 @@
 
   <div class="toolbar">
     <select id="projectSelect"></select>
+    <select id="yearSelect"></select>
     <div class="spacer"></div>
     <a id="downloadPdf" class="btn primary" style="text-decoration:none;" href="#" target="_blank" rel="noopener">Download PDF</a>
   </div>
 
   <div class="section">
-    <div class="section-title">Full KPI Matrix</div>
-    <p class="empty-note" style="text-align:left;padding:0 0 10px;">Click a year to expand into months, click again to collapse.</p>
-    <div class="table-wrap" id="kpiMatrixWrap"></div>
+    <div class="section-title">Production vs Target</div>
+    <canvas id="chartProduction" height="90"></canvas>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Turbine-Level Production &amp; Availability</div>
+    <canvas id="chartTurbines" height="90"></canvas>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Availability Trend</div>
+    <canvas id="chartAvailability" height="90"></canvas>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Wind Resource</div>
+    <canvas id="chartWind" height="90"></canvas>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Downtime by Cause</div>
+    <canvas id="chartDowntime" height="90"></canvas>
   </div>
 
   <footer class="footer">
-    <p>Source: P&amp;O_Custom_Semantic_Model (PowerBI) · full history to date.</p>
+    <p>Source: P&amp;O_Custom_Semantic_Model (PowerBI) · selected year.</p>
   </footer>
 </div>
 
 <script src="assets/js/app.js"></script>
-<script src="assets/js/report.js"></script>
+<script src="assets/js/graphical.js"></script>
 </body>
 </html>

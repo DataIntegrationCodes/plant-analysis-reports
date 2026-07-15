@@ -261,6 +261,37 @@ tbody tr:last-child td { border-bottom: none; }
 tbody tr:hover { background: var(--accent-soft); }
 tbody tr a { color: inherit; text-decoration: none; }
 
+/* KPI matrix: explicit horizontal + vertical grid lines on every cell */
+table.kpi-matrix { min-width: 900px; }
+table.kpi-matrix th,
+table.kpi-matrix td {
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+}
+table.kpi-matrix thead th { background: var(--bg); position: sticky; top: 0; }
+table.kpi-matrix tbody tr:last-child td { border-bottom: 1px solid var(--border); }
+table.kpi-matrix td[colspan] { background: var(--accent-soft); font-weight: 700; }
+table.kpi-matrix .year-toggle { cursor: pointer; user-select: none; }
+table.kpi-matrix .year-toggle:hover { color: var(--accent); }
+
+/* Tile-style nav for switching between views (KPI Matrix / Graphical View) */
+.view-tiles { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+.view-tile {
+  flex: 1 1 200px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  text-decoration: none;
+  color: var(--text);
+  box-shadow: var(--shadow);
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+.view-tile:hover { transform: translateY(-2px); border-color: var(--accent); }
+.view-tile.active { border-color: var(--accent); background: var(--accent-soft); }
+.view-tile .tile-title { font-weight: 700; font-size: 14px; }
+.view-tile .tile-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
 .hidden { display: none !important; }
 
 .footer { margin-top: 28px; text-align: center; color: var(--text-muted); font-size: 12px; }

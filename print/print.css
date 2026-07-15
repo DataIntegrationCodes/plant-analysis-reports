@@ -37,6 +37,10 @@ th, td { text-align: left; padding: 4px 8px; border-bottom: 1px solid #e2e6ed; }
 th { color: #636b7a; font-weight: 600; font-size: 9.5px; text-transform: uppercase; }
 td.num { text-align: right; font-variant-numeric: tabular-nums; }
 
+table.kpi-matrix th,
+table.kpi-matrix td { border: 1px solid #cbd2dd; }
+table.kpi-matrix td[colspan] { background: #eef2fb; font-weight: 700; }
+
 .empty-note { color: #636b7a; font-style: italic; font-size: 13px; }
 
 .print-footer { margin-top: 10px; font-size: 10px; color: #9aa3b5; text-align: center; }

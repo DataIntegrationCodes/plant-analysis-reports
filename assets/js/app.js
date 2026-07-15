@@ -282,11 +282,27 @@ const PAR = {
     }).join("");
 
     return `
-      <table>
+      <table class="kpi-matrix">
         <thead><tr><th colspan="2">Category</th>${headerCells}<th>Total</th></tr></thead>
         <tbody>${rows}</tbody>
       </table>
     `;
+  },
+
+  // Running-sum helper for cumulative chart series - resets at each year
+  // boundary so a multi-year `months` array (full-history print PDF) behaves
+  // like a fresh cumulative curve every January, matching a single-year
+  // `months` array (the graphical view) where there's only one year to begin with.
+  _cumulative(months, getter) {
+    let sum = 0;
+    let lastYear = null;
+    return months.map((m) => {
+      const year = m.slice(0, 4);
+      if (year !== lastYear) { sum = 0; lastYear = year; }
+      const v = getter(m);
+      if (v !== null && v !== undefined) sum += v;
+      return sum;
+    });
   },
 
   // Builds the 5-chart graphical dashboard onto fixed canvas IDs
@@ -299,16 +315,29 @@ const PAR = {
     const monthLabels = months.map((m) => PAR.monthLabel(m));
     const charts = {};
 
+    const cumProduction = PAR._cumulative(months, (m) => plant.months[m].production.actual);
+    const cumP50 = PAR._cumulative(months, (m) => plant.months[m].production.p50Target);
+    const cumP90 = PAR._cumulative(months, (m) => plant.months[m].production.p90Target);
     charts.production = new Chart(document.getElementById("chartProduction"), {
       data: {
         labels: monthLabels,
         datasets: [
-          { type: "bar", label: "Actual (MWh)", data: months.map((m) => plant.months[m].production.actual), backgroundColor: "#2563eb" },
-          { type: "line", label: "P50 Target", data: months.map((m) => plant.months[m].production.p50Target), borderColor: "#22c55e", pointRadius: 0 },
-          { type: "line", label: "P90 Target", data: months.map((m) => plant.months[m].production.p90Target), borderColor: "#f97316", pointRadius: 0 },
+          { type: "bar", label: "Actual (MWh)", data: months.map((m) => plant.months[m].production.actual), backgroundColor: "#2563eb", order: 2 },
+          { type: "line", label: "P50 Target", data: months.map((m) => plant.months[m].production.p50Target), borderColor: "#22c55e", pointRadius: 0, order: 2 },
+          { type: "line", label: "P90 Target", data: months.map((m) => plant.months[m].production.p90Target), borderColor: "#f97316", pointRadius: 0, order: 2 },
+          { type: "line", label: "Cumulative Production", data: cumProduction, borderColor: "#1d4ed8", borderDash: [5, 3], pointRadius: 0, yAxisID: "y1", order: 1 },
+          { type: "line", label: "Cumulative P50", data: cumP50, borderColor: "#15803d", borderDash: [5, 3], pointRadius: 0, yAxisID: "y1", order: 1 },
+          { type: "line", label: "Cumulative P90", data: cumP90, borderColor: "#c2410c", borderDash: [5, 3], pointRadius: 0, yAxisID: "y1", order: 1 },
         ],
       },
-      options: { responsive: true, scales: { x: { ticks: { maxRotation: 90, minRotation: 90 } } } },
+      options: {
+        responsive: true,
+        scales: {
+          x: { ticks: { maxRotation: 90, minRotation: 90 } },
+          y: { position: "left", title: { display: true, text: "Monthly MWh" } },
+          y1: { position: "right", title: { display: true, text: "Cumulative MWh" }, grid: { drawOnChartArea: false } },
+        },
+      },
     });
 
     const turbineIds = turbineData ? Object.keys(turbineData.turbines).sort() : [];
