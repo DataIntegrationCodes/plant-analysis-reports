@@ -43,29 +43,31 @@
     <a id="downloadPdf" class="btn primary" style="text-decoration:none;" href="#" target="_blank" rel="noopener">Download PDF</a>
   </div>
 
-  <div class="section">
-    <div class="section-title">Production vs Target</div>
-    <canvas id="chartProduction" height="90"></canvas>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Turbine-Level Production &amp; Availability</div>
-    <canvas id="chartTurbines" height="90"></canvas>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Availability Trend</div>
-    <canvas id="chartAvailability" height="90"></canvas>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Wind Resource</div>
-    <canvas id="chartWind" height="90"></canvas>
-  </div>
-
-  <div class="section">
-    <div class="section-title">Downtime by Cause</div>
-    <canvas id="chartDowntime" height="90"></canvas>
+  <div class="chart-grid">
+    <div class="chart-col">
+      <div class="section">
+        <div class="section-title">Production vs Target</div>
+        <div class="chart-container"><canvas id="chartProduction"></canvas></div>
+      </div>
+      <div class="section">
+        <div class="section-title">Availability Trend</div>
+        <div class="chart-container"><canvas id="chartAvailability"></canvas></div>
+      </div>
+      <div class="section">
+        <div class="section-title">Wind Resource</div>
+        <div class="chart-container"><canvas id="chartWind"></canvas></div>
+      </div>
+    </div>
+    <div class="chart-col chart-col-right">
+      <div class="section tall">
+        <div class="section-title">Turbine-Level Production &amp; Availability</div>
+        <div class="chart-container tall"><canvas id="chartTurbines"></canvas></div>
+      </div>
+      <div class="section tall">
+        <div class="section-title">Downtime by Cause</div>
+        <div class="chart-container tall"><canvas id="chartDowntime"></canvas></div>
+      </div>
+    </div>
   </div>
 
   <footer class="footer">

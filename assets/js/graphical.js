@@ -58,6 +58,18 @@
 
     const years = [...new Set(Object.keys(currentPlant.months).map((k) => k.slice(0, 4)))].sort().reverse();
     yearSelect.innerHTML = years.map((y) => `<option value="${y}">${y}</option>`).join("");
+
+    // Default to the latest year that actually has turbine-level data (IDs
+    // get repowered/renamed over time, so the plant's most recent year can
+    // be empty at turbine grain) - falls back to the latest plant year if
+    // there's no turbine data at all. The user can still pick any year.
+    const turbineYears = new Set();
+    for (const monthsObj of Object.values(currentTurbineData.turbines || {})) {
+      for (const k of Object.keys(monthsObj)) turbineYears.add(k.slice(0, 4));
+    }
+    const yearsWithTurbines = years.filter((y) => turbineYears.has(y));
+    if (yearsWithTurbines.length) yearSelect.value = yearsWithTurbines[0];
+
     downloadBtn.href = `reports/kpi-report/${code}.pdf`;
     renderYear(yearSelect.value);
   }

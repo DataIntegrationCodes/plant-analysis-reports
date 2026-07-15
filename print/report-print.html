@@ -7,7 +7,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 <style>
   .print-page { max-width: 980px; }
-  canvas { max-width: 100%; margin-bottom: 4px; }
+  canvas { max-width: 100%; }
   table { font-size: 9px; }
   th, td { padding: 3px 5px; }
 </style>
@@ -27,11 +27,33 @@
     <div id="kpiMatrixWrap"></div>
   </div>
 
-  <div class="section"><div class="section-title">Production vs Target</div><canvas id="chartProduction" height="70"></canvas></div>
-  <div class="section"><div class="section-title">Turbine-Level Production &amp; Availability</div><canvas id="chartTurbines" height="70"></canvas></div>
-  <div class="section"><div class="section-title">Availability Trend</div><canvas id="chartAvailability" height="70"></canvas></div>
-  <div class="section"><div class="section-title">Wind Resource</div><canvas id="chartWind" height="70"></canvas></div>
-  <div class="section"><div class="section-title">Downtime by Cause</div><canvas id="chartDowntime" height="70"></canvas></div>
+  <div class="section-title" id="dashboardYearTitle" style="margin: 14px 0 8px;">Graphical Dashboard</div>
+  <div class="chart-grid">
+    <div class="chart-col">
+      <div class="section">
+        <div class="section-title">Production vs Target</div>
+        <div class="chart-container"><canvas id="chartProduction"></canvas></div>
+      </div>
+      <div class="section">
+        <div class="section-title">Availability Trend</div>
+        <div class="chart-container"><canvas id="chartAvailability"></canvas></div>
+      </div>
+      <div class="section">
+        <div class="section-title">Wind Resource</div>
+        <div class="chart-container"><canvas id="chartWind"></canvas></div>
+      </div>
+    </div>
+    <div class="chart-col">
+      <div class="section tall">
+        <div class="section-title">Turbine-Level Production &amp; Availability</div>
+        <div class="chart-container tall"><canvas id="chartTurbines"></canvas></div>
+      </div>
+      <div class="section tall">
+        <div class="section-title">Downtime by Cause</div>
+        <div class="chart-container tall"><canvas id="chartDowntime"></canvas></div>
+      </div>
+    </div>
+  </div>
 
   <div class="print-footer" id="footerNote"></div>
 </div>
@@ -57,10 +79,40 @@
   const years = [...new Set(Object.keys(plant.months).map((k) => k.slice(0, 4)))].sort();
   document.getElementById("kpiMatrixWrap").innerHTML = PAR.renderKpiMatrix(plant.months, years);
 
-  PAR.buildReportCharts(plant, turbineData);
+  // Graphical dashboard defaults to the latest year that has turbine-level
+  // data (turbine IDs get repowered/renamed over time, so the plant's most
+  // recent year can be empty at turbine grain even though the plant-level
+  // KPI matrix still has data for it) - falls back to the plant's latest
+  // year if there's no turbine data at all. ?year=YYYY overrides explicitly.
+  const turbineYears = new Set();
+  for (const monthsObj of Object.values(turbineData.turbines || {})) {
+    for (const k of Object.keys(monthsObj)) turbineYears.add(k.slice(0, 4));
+  }
+  const yearsWithTurbines = years.filter((y) => turbineYears.has(y));
+  const defaultYear = yearsWithTurbines.length ? yearsWithTurbines[yearsWithTurbines.length - 1] : years[years.length - 1];
+  const requestedYear = params.get("year");
+  const dashboardYear = requestedYear && years.includes(requestedYear) ? requestedYear : defaultYear;
+  document.getElementById("dashboardYearTitle").textContent = `Graphical Dashboard — ${dashboardYear}`;
+
+  const yearMonths = {};
+  for (const [k, v] of Object.entries(plant.months)) {
+    if (k.startsWith(dashboardYear)) yearMonths[k] = v;
+  }
+  const yearPlant = { ...plant, months: yearMonths };
+
+  const yearTurbines = {};
+  for (const [id, monthsObj] of Object.entries(turbineData.turbines || {})) {
+    const filtered = {};
+    for (const [k, v] of Object.entries(monthsObj)) {
+      if (k.startsWith(dashboardYear)) filtered[k] = v;
+    }
+    if (Object.keys(filtered).length) yearTurbines[id] = filtered;
+  }
+
+  PAR.buildReportCharts(yearPlant, { turbines: yearTurbines });
 
   document.getElementById("footerNote").textContent =
-    `Plant Analysis Reports · ${plant.name} · Full history · Source: P&O_Custom_Semantic_Model (PowerBI)`;
+    `Plant Analysis Reports · ${plant.name} · Full history table, ${dashboardYear} dashboard · Source: P&O_Custom_Semantic_Model (PowerBI)`;
   document.body.setAttribute("data-render-complete", "true");
 })();
 </script>

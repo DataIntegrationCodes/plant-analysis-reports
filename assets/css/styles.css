@@ -14,6 +14,7 @@
   --red-soft: #fbe7e7;
   --shadow: 0 1px 2px rgba(20, 24, 34, 0.06), 0 4px 16px rgba(20, 24, 34, 0.04);
   --radius: 12px;
+  --grid-line: #94a3b8;
   color-scheme: light;
 }
 
@@ -32,6 +33,7 @@
   --red: #f87171;
   --red-soft: #3a1616;
   --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+  --grid-line: #5b6472;
   color-scheme: dark;
 }
 
@@ -51,6 +53,7 @@
     --red: #f87171;
     --red-soft: #3a1616;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+    --grid-line: #5b6472;
     color-scheme: dark;
   }
 }
@@ -244,6 +247,27 @@ button.btn.primary { background: var(--accent); color: white; border-color: var(
 .bar-fill { height: 100%; border-radius: 999px; background: var(--accent); }
 .bar-value { width: 70px; flex: 0 0 auto; text-align: right; font-variant-numeric: tabular-nums; }
 
+/* Graphical dashboard: 2-column layout - left column (Production, Availability,
+   Wind) stacks 3 smaller charts, right column (Turbine-Level, Downtime) stacks
+   2 taller ones, matching the PowerBI dashboard layout. */
+.chart-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.chart-col { display: flex; flex-direction: column; gap: 16px; }
+.chart-col .section { margin-bottom: 0; }
+
+/* Chart.js with maintainAspectRatio:false needs an explicitly sized parent -
+   without this, canvases can render far taller than their visible content. */
+.chart-container { position: relative; height: 260px; }
+.chart-container.tall { height: 340px; }
+
+@media (max-width: 900px) {
+  .chart-grid { grid-template-columns: 1fr; }
+}
+
 /* Comparison table (fleet) */
 .table-wrap {
   background: var(--bg-elevated);
@@ -261,15 +285,15 @@ tbody tr:last-child td { border-bottom: none; }
 tbody tr:hover { background: var(--accent-soft); }
 tbody tr a { color: inherit; text-decoration: none; }
 
-/* KPI matrix: explicit horizontal + vertical grid lines on every cell */
-table.kpi-matrix { min-width: 900px; }
+/* KPI matrix: explicit, clearly visible horizontal + vertical grid lines on every cell */
+table.kpi-matrix { min-width: 900px; border: 2px solid var(--grid-line); }
 table.kpi-matrix th,
 table.kpi-matrix td {
-  border: 1px solid var(--border);
+  border: 1.5px solid var(--grid-line);
   padding: 8px 12px;
 }
 table.kpi-matrix thead th { background: var(--bg); position: sticky; top: 0; }
-table.kpi-matrix tbody tr:last-child td { border-bottom: 1px solid var(--border); }
+table.kpi-matrix tbody tr:last-child td { border-bottom: 1.5px solid var(--grid-line); }
 table.kpi-matrix td[colspan] { background: var(--accent-soft); font-weight: 700; }
 table.kpi-matrix .year-toggle { cursor: pointer; user-select: none; }
 table.kpi-matrix .year-toggle:hover { color: var(--accent); }

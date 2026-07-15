@@ -40,6 +40,14 @@ const PAR = {
     return d.toLocaleDateString(undefined, { month: "long", year: "numeric" });
   },
 
+  // Just the calendar month name, no year - used on chart x-axes where the
+  // year is already fixed by a separate Year selector, so repeating it on
+  // every tick would be redundant.
+  monthOnlyLabel(key) {
+    const [, m] = key.split("-");
+    return new Date(2000, Number(m) - 1, 1).toLocaleDateString(undefined, { month: "long" });
+  },
+
   populateMonthSelect(selectEl, months, selected) {
     selectEl.innerHTML = "";
     const sorted = [...months].sort().reverse();
@@ -312,7 +320,7 @@ const PAR = {
   // destroy() them before rebuilding (e.g. on project switch).
   buildReportCharts(plant, turbineData) {
     const months = Object.keys(plant.months).sort();
-    const monthLabels = months.map((m) => PAR.monthLabel(m));
+    const monthLabels = months.map((m) => PAR.monthOnlyLabel(m));
     const charts = {};
 
     const cumProduction = PAR._cumulative(months, (m) => plant.months[m].production.actual);
@@ -323,17 +331,18 @@ const PAR = {
         labels: monthLabels,
         datasets: [
           { type: "bar", label: "Actual (MWh)", data: months.map((m) => plant.months[m].production.actual), backgroundColor: "#2563eb", order: 2 },
-          { type: "line", label: "P50 Target", data: months.map((m) => plant.months[m].production.p50Target), borderColor: "#22c55e", pointRadius: 0, order: 2 },
-          { type: "line", label: "P90 Target", data: months.map((m) => plant.months[m].production.p90Target), borderColor: "#f97316", pointRadius: 0, order: 2 },
-          { type: "line", label: "Cumulative Production", data: cumProduction, borderColor: "#1d4ed8", borderDash: [5, 3], pointRadius: 0, yAxisID: "y1", order: 1 },
-          { type: "line", label: "Cumulative P50", data: cumP50, borderColor: "#15803d", borderDash: [5, 3], pointRadius: 0, yAxisID: "y1", order: 1 },
-          { type: "line", label: "Cumulative P90", data: cumP90, borderColor: "#c2410c", borderDash: [5, 3], pointRadius: 0, yAxisID: "y1", order: 1 },
+          { type: "line", label: "P50 Target", data: months.map((m) => plant.months[m].production.p50Target), borderColor: "#22c55e", borderDash: [5, 3], pointRadius: 0, order: 2 },
+          { type: "line", label: "P90 Target", data: months.map((m) => plant.months[m].production.p90Target), borderColor: "#f97316", borderDash: [5, 3], pointRadius: 0, order: 2 },
+          { type: "line", label: "Cumulative Production", data: cumProduction, borderColor: "#1d4ed8", pointRadius: 0, yAxisID: "y1", order: 1 },
+          { type: "line", label: "Cumulative P50", data: cumP50, borderColor: "#15803d", pointRadius: 0, yAxisID: "y1", order: 1 },
+          { type: "line", label: "Cumulative P90", data: cumP90, borderColor: "#c2410c", pointRadius: 0, yAxisID: "y1", order: 1 },
         ],
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
-          x: { ticks: { maxRotation: 90, minRotation: 90 } },
+          x: { ticks: { maxRotation: 45, minRotation: 0 } },
           y: { position: "left", title: { display: true, text: "Monthly MWh" } },
           y1: { position: "right", title: { display: true, text: "Cumulative MWh" }, grid: { drawOnChartArea: false } },
         },
@@ -360,6 +369,7 @@ const PAR = {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
           y: { position: "left", title: { display: true, text: "MWh" } },
           y1: { position: "right", title: { display: true, text: "%" }, grid: { drawOnChartArea: false } },
@@ -390,7 +400,7 @@ const PAR = {
           { type: "line", label: "Technical YTD", data: ytdTechnical.map((v) => v * 100), borderColor: "#b45309", pointRadius: 0 },
         ],
       },
-      options: { responsive: true, scales: { x: { ticks: { maxRotation: 90, minRotation: 90 } }, y: { title: { display: true, text: "%" } } } },
+      options: { responsive: true, maintainAspectRatio: false, scales: { x: { ticks: { maxRotation: 45, minRotation: 0 } }, y: { title: { display: true, text: "%" } } } },
     });
 
     charts.wind = new Chart(document.getElementById("chartWind"), {
@@ -401,7 +411,7 @@ const PAR = {
           { type: "line", label: "Forecasted WS", data: months.map((m) => plant.months[m].wind.forecastedWS), borderColor: "#16a34a", pointRadius: 0 },
         ],
       },
-      options: { responsive: true, scales: { x: { ticks: { maxRotation: 90, minRotation: 90 } }, y: { title: { display: true, text: "m/s" } } } },
+      options: { responsive: true, maintainAspectRatio: false, scales: { x: { ticks: { maxRotation: 45, minRotation: 0 } }, y: { title: { display: true, text: "m/s" } } } },
     });
 
     const downtimeKeys = [
@@ -423,8 +433,9 @@ const PAR = {
       },
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         scales: {
-          x: { stacked: true, ticks: { maxRotation: 90, minRotation: 90 } },
+          x: { stacked: true, ticks: { maxRotation: 45, minRotation: 0 } },
           y: { stacked: true, title: { display: true, text: "% Production Loss" } },
         },
       },
