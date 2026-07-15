@@ -264,6 +264,28 @@ const PAR = {
     return PAR.fmtNumber(value);
   },
 
+  // Mirrors the live "Plant KPI Color" DAX measure: red/green/neutral text
+  // per category + KPI type + value, evaluated in the same priority order as
+  // the SWITCH(TRUE(), ...) it was pulled from. Categories not mentioned in
+  // that measure (B. Consumption) and the "Black" fallback both mean no
+  // color override - handled here by returning "" (inherits default text
+  // color, which stays readable in both light and dark themes, unlike a
+  // literal black).
+  kpiColorClass(category, kpi, value) {
+    if (value === null || value === undefined) return "";
+    const letter = category.charAt(0);
+    const isPercent = kpi.unit === "percent" || kpi.unit === "percent3";
+    if (letter === "A" && isPercent) return value < 0 ? "kpi-red" : "kpi-green";
+    if (letter === "C" && isPercent) return value < 0.97 ? "kpi-red" : "kpi-green";
+    if (letter === "D") return value > 0.03 ? "kpi-red" : "";
+    if (letter === "E" && isPercent) {
+      if (value < 0) return "kpi-red";
+      if (value < 0.9 && kpi.key !== "windSpeedDeviation") return "kpi-red";
+      return "kpi-green";
+    }
+    return "";
+  },
+
   // Renders the flat KPI matrix (Year columns + Total) for a single plant's
   // or the fleet's full `months` map. `years` is a sorted array of year
   // strings ("2022".."2026"); `monthsByYear[year]` is the list of that
@@ -282,9 +304,14 @@ const PAR = {
     const rows = PAR.KPI_CATEGORIES.map((cat) => {
       const catRow = `<tr><td colspan="${years.length + 2}"><strong>${cat.category}</strong></td></tr>`;
       const kpiRows = cat.kpis.map((kpi) => {
-        const yearCells = years.map((y) => `<td class="num">${PAR.fmtKpiValue(kpi.aggregate(monthsByYear[y]), kpi.unit)}</td>`).join("");
+        const yearCells = years.map((y) => {
+          const val = kpi.aggregate(monthsByYear[y]);
+          const cls = PAR.kpiColorClass(cat.category, kpi, val);
+          return `<td class="num ${cls}">${PAR.fmtKpiValue(val, kpi.unit)}</td>`;
+        }).join("");
         const total = kpi.aggregate(allEntries);
-        return `<tr><td></td><td>${kpi.label}</td>${yearCells}<td class="num"><strong>${PAR.fmtKpiValue(total, kpi.unit)}</strong></td></tr>`;
+        const totalCls = PAR.kpiColorClass(cat.category, kpi, total);
+        return `<tr><td></td><td>${kpi.label}</td>${yearCells}<td class="num ${totalCls}"><strong>${PAR.fmtKpiValue(total, kpi.unit)}</strong></td></tr>`;
       }).join("");
       return catRow + kpiRows;
     }).join("");

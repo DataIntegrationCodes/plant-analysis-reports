@@ -41,6 +41,8 @@ table.kpi-matrix { border: 2px solid #64748b; }
 table.kpi-matrix th,
 table.kpi-matrix td { border: 1.25px solid #64748b; }
 table.kpi-matrix td[colspan] { background: #eef2fb; font-weight: 700; }
+table.kpi-matrix .kpi-red { color: #b91c1c; font-weight: 600; }
+table.kpi-matrix .kpi-green { color: #15803d; font-weight: 600; }
 
 /* Graphical dashboard 2-column layout, mirrors styles.css for the print PDF */
 .chart-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }

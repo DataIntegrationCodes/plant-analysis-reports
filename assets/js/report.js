@@ -42,13 +42,18 @@
       const kpiRows = cat.kpis.map((kpi) => {
         const cells = yrs.map((y) => {
           const yearEntries = monthsByYear[y].map((mk) => monthsMap[mk]);
-          const yearCell = `<td class="num">${PAR.fmtKpiValue(kpi.aggregate(yearEntries), kpi.unit)}</td>`;
+          const yearVal = kpi.aggregate(yearEntries);
+          const yearCell = `<td class="num ${PAR.kpiColorClass(cat.category, kpi, yearVal)}">${PAR.fmtKpiValue(yearVal, kpi.unit)}</td>`;
           if (!expandedYears.has(y)) return yearCell;
-          const monthCells = monthsByYear[y].map((mk) => `<td class="num">${PAR.fmtKpiValue(kpi.aggregate([monthsMap[mk]]), kpi.unit)}</td>`).join("");
+          const monthCells = monthsByYear[y].map((mk) => {
+            const mVal = kpi.aggregate([monthsMap[mk]]);
+            return `<td class="num ${PAR.kpiColorClass(cat.category, kpi, mVal)}">${PAR.fmtKpiValue(mVal, kpi.unit)}</td>`;
+          }).join("");
           return yearCell + monthCells;
         }).join("");
         const total = kpi.aggregate(allEntries);
-        return `<tr><td></td><td>${kpi.label}</td>${cells}<td class="num"><strong>${PAR.fmtKpiValue(total, kpi.unit)}</strong></td></tr>`;
+        const totalCls = PAR.kpiColorClass(cat.category, kpi, total);
+        return `<tr><td></td><td>${kpi.label}</td>${cells}<td class="num ${totalCls}"><strong>${PAR.fmtKpiValue(total, kpi.unit)}</strong></td></tr>`;
       }).join("");
       return catRow + kpiRows;
     }).join("");
