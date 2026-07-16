@@ -49,6 +49,12 @@ assumed to be kWh and divided by 1000). Worth raising with whoever owns the
 semantic model — it should be fixed upstream in the measure definition, not papered
 over indefinitely in this ingestion script.
 
+Separately, a July 2026 full backfill (after the source data was refreshed in
+PowerBI) turned up turbine-level `Contractual Availability` reading exactly
+`1` for every Phezukomoya turbine/month in the fresh pull. This wasn't
+corrected client-side since it's what the model returns — worth flagging
+upstream if it looks wrong.
+
 ### Adding a new month
 
 Once a month has ended and its data is final in PowerBI:
@@ -64,7 +70,11 @@ Once a month has ended and its data is final in PowerBI:
    and `MeasuredWS` / `ForecastedWS` / `Deviation` / `Wind Index`), plus one
    turbine-level query per plant (`SUMMARIZECOLUMNS` grouped by
    `wdm_equipment[TurbineID]` + `ref_calendar[year_month]`, pulling
-   `Monthly ProductionB`, `Technical_Availability`, `Contractual_Availability`).
+   `Yearly Production`, `Technical_Availability`, `Contractual_Availability` — note
+   this measure was called `Monthly ProductionB` until a July 2026 model update
+   removed it; `Yearly Production` is the confirmed replacement, despite the name
+   it's evaluated per `year_month` and correctly respects turbine-level filter
+   context, unlike `Measured (MWh)` or `Actual Production`).
 3. For each plant, run:
    ```
    python scripts/ingest_month.py --plant GRAS --month 2026-07 --json '{"actualProduction": ..., "p50Target": ..., ...}'
