@@ -34,6 +34,15 @@ const PAR = {
     return v > 0 ? `+${s}` : s;
   },
 
+  // Chart axis ticks/tooltips: always period-decimal, fixed 2dp, regardless
+  // of the browser's locale (some locales - e.g. en-ZA - render the default
+  // `undefined` locale used elsewhere in this file with a comma decimal
+  // separator, which reads wrong on a MWh/percent chart).
+  fmtChartNum(v) {
+    if (v === null || v === undefined || Number.isNaN(v)) return "";
+    return v.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  },
+
   monthLabel(key) {
     const [y, m] = key.split("-");
     const d = new Date(Number(y), Number(m) - 1, 1);
@@ -389,10 +398,11 @@ const PAR = {
         responsive: true,
         maintainAspectRatio: false,
         interaction: { mode: "index", intersect: false },
+        plugins: { tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${PAR.fmtChartNum(ctx.parsed.y)}` } } },
         scales: {
           x: { ticks: { maxRotation: 45, minRotation: 0 } },
-          y: { position: "left", title: { display: true, text: "Monthly MWh" } },
-          y1: { position: "right", title: { display: true, text: "Cumulative MWh" }, grid: { drawOnChartArea: false } },
+          y: { position: "left", title: { display: true, text: "Monthly MWh" }, ticks: { callback: (v) => PAR.fmtChartNum(v) } },
+          y1: { position: "right", title: { display: true, text: "Cumulative MWh" }, grid: { drawOnChartArea: false }, ticks: { callback: (v) => PAR.fmtChartNum(v) } },
         },
       },
     });
@@ -423,9 +433,10 @@ const PAR = {
         responsive: true,
         maintainAspectRatio: false,
         interaction: { mode: "index", intersect: false },
+        plugins: { tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${PAR.fmtChartNum(ctx.parsed.y)}` } } },
         scales: {
-          y: { position: "left", title: { display: true, text: "MWh" } },
-          y1: { position: "right", title: { display: true, text: "%" }, grid: { drawOnChartArea: false } },
+          y: { position: "left", title: { display: true, text: "MWh" }, ticks: { callback: (v) => PAR.fmtChartNum(v) } },
+          y1: { position: "right", title: { display: true, text: "%" }, grid: { drawOnChartArea: false }, ticks: { callback: (v) => PAR.fmtChartNum(v) } },
         },
       },
     });
@@ -453,7 +464,16 @@ const PAR = {
           { type: "line", label: "Technical YTD", data: ytdTechnical.map((v) => v * 100), borderColor: "#b45309", pointRadius: 0 },
         ],
       },
-      options: { responsive: true, maintainAspectRatio: false, interaction: { mode: "index", intersect: false }, scales: { x: { ticks: { maxRotation: 45, minRotation: 0 } }, y: { title: { display: true, text: "%" } } } },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: "index", intersect: false },
+        plugins: { tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${PAR.fmtChartNum(ctx.parsed.y)}` } } },
+        scales: {
+          x: { ticks: { maxRotation: 45, minRotation: 0 } },
+          y: { title: { display: true, text: "%" }, ticks: { callback: (v) => PAR.fmtChartNum(v) } },
+        },
+      },
     });
 
     charts.wind = new Chart(document.getElementById("chartWind"), {
@@ -464,7 +484,16 @@ const PAR = {
           { type: "line", label: "Forecasted WS", data: months.map((m) => plant.months[m].wind.forecastedWS), borderColor: "#16a34a", pointRadius: 0 },
         ],
       },
-      options: { responsive: true, maintainAspectRatio: false, interaction: { mode: "index", intersect: false }, scales: { x: { ticks: { maxRotation: 45, minRotation: 0 } }, y: { title: { display: true, text: "m/s" } } } },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: "index", intersect: false },
+        plugins: { tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${PAR.fmtChartNum(ctx.parsed.y)}` } } },
+        scales: {
+          x: { ticks: { maxRotation: 45, minRotation: 0 } },
+          y: { title: { display: true, text: "m/s" }, ticks: { callback: (v) => PAR.fmtChartNum(v) } },
+        },
+      },
     });
 
     const downtimeKeys = [
@@ -488,9 +517,10 @@ const PAR = {
         responsive: true,
         maintainAspectRatio: false,
         interaction: { mode: "index", intersect: false },
+        plugins: { tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${PAR.fmtChartNum(ctx.parsed.y)}` } } },
         scales: {
           x: { stacked: true, ticks: { maxRotation: 45, minRotation: 0 } },
-          y: { stacked: true, title: { display: true, text: "% Production Loss" } },
+          y: { stacked: true, title: { display: true, text: "% Production Loss" }, ticks: { callback: (v) => PAR.fmtChartNum(v) } },
         },
       },
     });
