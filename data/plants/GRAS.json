@@ -1728,38 +1728,6 @@
         "measuredWS": 6.529346666666669,
         "windIndex": 0.815
       }
-    },
-    "2026-07": {
-      "availability": {
-        "contractual": 0.9711961881590887,
-        "pba": 0.9705082341936123,
-        "technical": 0.9172687936663402
-      },
-      "consumption": {
-        "actual": null,
-        "ratioToProduction": null
-      },
-      "downtime": {
-        "bat": 0.0,
-        "environmental": 5.659484553406445e-05,
-        "manufacturer": 0.028473794643142515,
-        "owner": 0.0,
-        "utility": 0.16622872116975118
-      },
-      "production": {
-        "actual": 4204.219791000004,
-        "capacityFactor": 0.16974401610949624,
-        "electricalLosses": null,
-        "historical": 17398.34833333333,
-        "p50Target": 19488.929,
-        "p90Target": 17015.433
-      },
-      "wind": {
-        "deviation": -0.4164497126436785,
-        "forecastedWS": 8.7,
-        "measuredWS": 5.076887499999996,
-        "windIndex": null
-      }
     }
   },
   "mwInstalled": 64.5,

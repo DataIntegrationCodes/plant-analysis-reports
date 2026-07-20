@@ -75,6 +75,16 @@ the two measures track within ~1-2% (normal billing/SCADA reconciliation
 variance), but the model's own KPI matrix is the authoritative source, so all
 8 plants were switched for consistency with what PowerBI itself displays.
 
+**Don't ingest an in-progress month.** The DAX range used for the Measured
+(MWh) backfill above (`202601`-`202608`) accidentally picked up July 2026
+while it was still in progress — since `[Measured (MWh)]` (billing) hadn't
+posted for July yet, `COALESCE(..., [Actual Production])` fell back to a
+SCADA reading that only covered the ~20 days elapsed so far, not a full
+month. That partial figure got mixed in with complete monthly totals across
+every chart, KPI, and PDF before being caught and reverted. Always bound a
+backfill/update query to `year_month_number <=` the last **fully-elapsed**
+month, not the current month-in-progress.
+
 ### Adding a new month
 
 Once a month has ended and its data is final in PowerBI:
