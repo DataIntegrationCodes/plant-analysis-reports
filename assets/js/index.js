@@ -59,11 +59,35 @@
     `;
   }
 
+  // Per-project card stats mirror the fleet summary tiles above, but scoped
+  // to each plant's own current-year months (Wind Deviation excluded here
+  // per instruction - it stays fleet-only).
+  const plantData = await Promise.all(
+    manifest.plants.map((p) => PAR.fetchJSON(`data/plants/${p.code}.json`).catch(() => null))
+  );
+
   const grid = document.getElementById("cardsGrid");
-  grid.innerHTML = manifest.plants.map((p) => {
-    const plantMonths = p.monthCount;
+  grid.innerHTML = manifest.plants.map((p, i) => {
     const badgeClass = PAR.badgeClassForStatus(p.status);
     const statusLabel = PAR.STATUS_LABEL[p.status] || p.status;
+
+    const plant = plantData[i];
+    const plantYearEntries = plant
+      ? Object.keys(plant.months).filter((m) => m.startsWith(currentYear)).map((m) => plant.months[m])
+      : [];
+
+    const statsHtml = plantYearEntries.length
+      ? `
+        <div class="card-stats">
+          <div><div class="card-stat-label">Historical Production</div><div class="card-stat-value">${PAR.fmtMWh(PAR._sumBy(plantYearEntries, (e) => e.production.historical))}</div></div>
+          <div><div class="card-stat-label">Capacity Factor</div><div class="card-stat-value">${PAR.fmtPercent(PAR._avgBy(plantYearEntries, (e) => e.production.capacityFactor))}</div></div>
+          <div><div class="card-stat-label">Avg Contractual Availability</div><div class="card-stat-value">${PAR.fmtPercent(PAR._avgBy(plantYearEntries, (e) => e.availability.contractual))}</div></div>
+          <div><div class="card-stat-label">Avg Technical Availability</div><div class="card-stat-value">${PAR.fmtPercent(PAR._avgBy(plantYearEntries, (e) => e.availability.technical))}</div></div>
+          <div><div class="card-stat-label">PBA (Energy Based)</div><div class="card-stat-value">${PAR.fmtPercent(PAR._avgBy(plantYearEntries, (e) => e.availability.pba))}</div></div>
+        </div>
+      `
+      : `<div class="card-meta-row"><span>No data yet</span></div>`;
+
     return `
       <a class="card" href="plant.html?code=${p.code}">
         <div class="card-top">
@@ -73,9 +97,7 @@
           </div>
           <span class="badge ${badgeClass}">${statusLabel}</span>
         </div>
-        <div class="card-meta-row">
-          <span>${plantMonths} month${plantMonths === 1 ? "" : "s"} of data</span>
-        </div>
+        ${statsHtml}
       </a>
     `;
   }).join("");
