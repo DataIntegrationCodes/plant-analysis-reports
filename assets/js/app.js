@@ -236,11 +236,11 @@ const PAR = {
     {
       category: "C. Availability",
       kpis: [
-        { key: "contractual", label: "Contractual - Time Based", unit: "percent",
+        { key: "contractual", label: "TBA - Contractual", unit: "percent",
           aggregate: (es) => PAR._avgBy(es, (e) => e.availability.contractual) },
-        { key: "technical", label: "TBA - Time Based", unit: "percent",
+        { key: "technical", label: "TBA - Technical", unit: "percent",
           aggregate: (es) => PAR._avgBy(es, (e) => e.availability.technical) },
-        { key: "pba", label: "PBA - Energy Based", unit: "percent",
+        { key: "pba", label: "PBA - Technical", unit: "percent",
           aggregate: (es) => PAR._avgBy(es, (e) => e.availability.pba) },
       ],
     },

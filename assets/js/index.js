@@ -35,15 +35,15 @@
         <div class="tile-value">${PAR.fmtPercent(avgCapacityFactor)}</div>
       </div>
       <div class="tile">
-        <div class="tile-label">Contractual - Time Based</div>
+        <div class="tile-label">TBA - Contractual</div>
         <div class="tile-value">${PAR.fmtPercent(avgContractual)}</div>
       </div>
       <div class="tile">
-        <div class="tile-label">TBA - Time Based</div>
+        <div class="tile-label">TBA - Technical</div>
         <div class="tile-value">${PAR.fmtPercent(avgTechnical)}</div>
       </div>
       <div class="tile">
-        <div class="tile-label">PBA - Energy Based</div>
+        <div class="tile-label">PBA - Technical</div>
         <div class="tile-value">${PAR.fmtPercent(avgPba)}</div>
       </div>
     `;
@@ -70,9 +70,9 @@
         <div class="card-stats">
           <div><div class="card-stat-label">YTD Production</div><div class="card-stat-value">${PAR.fmtGWh(PAR._sumBy(plantYearEntries, (e) => e.production.actual))}</div></div>
           <div><div class="card-stat-label">Capacity Factor</div><div class="card-stat-value">${PAR.fmtPercent(PAR._avgBy(plantYearEntries, (e) => e.production.capacityFactor))}</div></div>
-          <div><div class="card-stat-label">Contractual - Time Based</div><div class="card-stat-value">${PAR.fmtPercent(PAR._avgBy(plantYearEntries, (e) => e.availability.contractual))}</div></div>
-          <div><div class="card-stat-label">TBA - Time Based</div><div class="card-stat-value">${PAR.fmtPercent(PAR._avgBy(plantYearEntries, (e) => e.availability.technical))}</div></div>
-          <div><div class="card-stat-label">PBA - Energy Based</div><div class="card-stat-value">${PAR.fmtPercent(PAR._avgBy(plantYearEntries, (e) => e.availability.pba))}</div></div>
+          <div><div class="card-stat-label">TBA - Contractual</div><div class="card-stat-value">${PAR.fmtPercent(PAR._avgBy(plantYearEntries, (e) => e.availability.contractual))}</div></div>
+          <div><div class="card-stat-label">TBA - Technical</div><div class="card-stat-value">${PAR.fmtPercent(PAR._avgBy(plantYearEntries, (e) => e.availability.technical))}</div></div>
+          <div><div class="card-stat-label">PBA - Technical</div><div class="card-stat-value">${PAR.fmtPercent(PAR._avgBy(plantYearEntries, (e) => e.availability.pba))}</div></div>
         </div>
       `
       : `<div class="card-meta-row"><span>No data yet</span></div>`;
