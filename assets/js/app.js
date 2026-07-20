@@ -18,6 +18,11 @@ const PAR = {
     return `${v.toLocaleString(undefined, { maximumFractionDigits: 0 })} MWh`;
   },
 
+  fmtGWh(v) {
+    if (v === null || v === undefined) return "–";
+    return `${(v / 1000).toLocaleString("en-US", { maximumFractionDigits: 1 })} GWh`;
+  },
+
   fmtPercent(v, digits = 1) {
     if (v === null || v === undefined) return "–";
     return `${(v * 100).toFixed(digits)}%`;
@@ -131,6 +136,7 @@ const PAR = {
           <div class="metric"><div class="metric-label">P50 Target</div><div class="metric-value small">${PAR.fmtMWh(p.p50Target)}</div></div>
           <div class="metric"><div class="metric-label">P90 Target</div><div class="metric-value small">${PAR.fmtMWh(p.p90Target)}</div></div>
           <div class="metric"><div class="metric-label">Capacity Factor</div><div class="metric-value small">${PAR.fmtPercent(p.capacityFactor)}</div></div>
+          <div class="metric"><div class="metric-label">Historical Production</div><div class="metric-value small">${PAR.fmtMWh(p.historical)}</div></div>
         </div>
       </div>
       <div class="section">
@@ -151,7 +157,6 @@ const PAR = {
           <div class="metric"><div class="metric-label">Measured Wind Speed</div><div class="metric-value small">${PAR.fmtNumber(w.measuredWS)} m/s</div></div>
           <div class="metric"><div class="metric-label">Forecasted Wind Speed</div><div class="metric-value small">${PAR.fmtNumber(w.forecastedWS)} m/s</div></div>
           <div class="metric"><div class="metric-label">Deviation</div><div class="metric-value small">${PAR.fmtSigned(w.deviation !== null && w.deviation !== undefined ? w.deviation * 100 : null)}%</div></div>
-          <div class="metric"><div class="metric-label">Wind Index</div><div class="metric-value small">${PAR.fmtNumber(w.windIndex, 2)}</div></div>
         </div>
       </div>
     `;
