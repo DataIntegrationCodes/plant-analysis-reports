@@ -211,7 +211,7 @@ const PAR = {
     {
       category: "B. Consumption",
       kpis: [
-        { key: "consumption", label: "Measured Consumption (MWh)", unit: "value",
+        { key: "consumption", label: "Measured (MWh)", unit: "value",
           aggregate: (es) => PAR._sumBy(es, (e) => e.consumption.actual) },
         { key: "ratioToProduction", label: "Ratio to Production", unit: "percent",
           aggregate: (es) => PAR._avgBy(es, (e) => e.consumption.ratioToProduction) },
@@ -220,16 +220,16 @@ const PAR = {
     {
       category: "C. Availability",
       kpis: [
-        { key: "contractual", label: "Contractual availability", unit: "percent",
+        { key: "contractual", label: "Contractual - Time Based", unit: "percent",
           aggregate: (es) => PAR._avgBy(es, (e) => e.availability.contractual) },
-        { key: "technical", label: "Technical availability", unit: "percent",
+        { key: "technical", label: "TBA - Time Based", unit: "percent",
           aggregate: (es) => PAR._avgBy(es, (e) => e.availability.technical) },
-        { key: "pba", label: "Technical availability - Energy based", unit: "percent",
+        { key: "pba", label: "PBA - Energy Based", unit: "percent",
           aggregate: (es) => PAR._avgBy(es, (e) => e.availability.pba) },
       ],
     },
     {
-      category: "D. Downtime",
+      category: "D. OLF - Losses",
       kpis: [
         { key: "manufacturer", label: "Manufacturer", unit: "percent3",
           aggregate: (es) => PAR._avgBy(es, (e) => e.downtime.manufacturer) },
@@ -259,7 +259,7 @@ const PAR = {
   fmtKpiValue(value, unit) {
     if (unit === "value") return PAR.fmtNumber(value, 0);
     if (unit === "percent") return PAR.fmtPercent(value, 1);
-    if (unit === "percent3") return PAR.fmtPercent(value, 3);
+    if (unit === "percent3") return PAR.fmtPercent(value, 1);
     if (unit === "speed") return value === null || value === undefined ? "–" : `${PAR.fmtNumber(value, 1)} m/s`;
     return PAR.fmtNumber(value);
   },
@@ -397,11 +397,15 @@ const PAR = {
       },
     });
 
+    // Production is averaged across the months in view, not summed - this
+    // matches the source "Yearly Production" measure's own formula
+    // (AVERAGEX(VALUES(year_month), CALCULATE(SUM(act_energy_iec)))), which
+    // averages the monthly totals rather than adding them up.
     const turbineIds = turbineData ? Object.keys(turbineData.turbines).sort() : [];
     const turbineTotals = turbineIds.map((id) => {
       const entries = Object.values(turbineData.turbines[id]);
       return {
-        production: PAR._sumBy(entries, (e) => e.production),
+        production: PAR._avgBy(entries, (e) => e.production),
         technical: PAR._avgBy(entries, (e) => e.technicalAvailability),
         contractual: PAR._avgBy(entries, (e) => e.contractualAvailability),
       };
