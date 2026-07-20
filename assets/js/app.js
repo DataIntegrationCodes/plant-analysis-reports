@@ -25,7 +25,9 @@ const PAR = {
 
   fmtNumber(v, digits = 1) {
     if (v === null || v === undefined) return "–";
-    return v.toLocaleString(undefined, { maximumFractionDigits: digits });
+    // Fixed en-US formatting (period decimal) regardless of the viewer's
+    // browser/OS locale - see PAR.fmtChartNum for the same reasoning.
+    return v.toLocaleString("en-US", { maximumFractionDigits: digits });
   },
 
   fmtSigned(v, digits = 1) {
@@ -269,7 +271,7 @@ const PAR = {
     if (unit === "value") return PAR.fmtNumber(value, 0);
     if (unit === "percent") return PAR.fmtPercent(value, 1);
     if (unit === "percent3") return PAR.fmtPercent(value, 1);
-    if (unit === "speed") return value === null || value === undefined ? "–" : `${PAR.fmtNumber(value, 1)} m/s`;
+    if (unit === "speed") return PAR.fmtNumber(value, 1);
     return PAR.fmtNumber(value);
   },
 
