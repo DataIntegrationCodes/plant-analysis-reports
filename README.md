@@ -85,6 +85,23 @@ every chart, KPI, and PDF before being caught and reverted. Always bound a
 backfill/update query to `year_month_number <=` the last **fully-elapsed**
 month, not the current month-in-progress.
 
+**P50/P90 Target double-counting**: the native `[P50 Target]`/`[P90 Target]`
+measures (`CALCULATE([Target Value]/1000, wdm_target_class[target_subclass]
+= "P50"/"P90")`) only filter by `target_subclass`, not `target_type`. Some
+projects have *two* rows tagged with the same subclass in
+`wdm_target_monthly` — one `target_type = "energy"` (the real production
+target, what we want) and one `target_type = "revenue"` (a financial target
+in Local Currency that happens to share the subclass tag) — and the native
+measure sums both, silently double-counting (confirmed on Waainek, P50 only,
+~2x; and Chaba, both P50 and P90, ~2.58x since energy and revenue aren't
+even close in magnitude there). This ingestion pulls
+`COALESCE(CALCULATE(..., target_type="energy"), CALCULATE(..., target_type
+="revenue"))` instead — prefers the energy target, but falls back to revenue
+for any month where only the legacy revenue-only row exists (Waainek's 2022
+history predates its energy-type P50 row entirely). Grassridge, Wesley, and
+the newer onboarding plants had no revenue-row duplicate in the months
+checked, so their figures are unchanged by this fix.
+
 ### Adding a new month
 
 Once a month has ended and its data is final in PowerBI:

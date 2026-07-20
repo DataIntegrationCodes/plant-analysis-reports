@@ -183,7 +183,7 @@
         "capacityFactor": 0.3308688863910421,
         "electricalLosses": 0.01493496617180929,
         "historical": null,
-        "p50Target": 14598.45417756,
+        "p50Target": 14577.491890000001,
         "p90Target": 16348.161
       },
       "wind": {
@@ -215,7 +215,7 @@
         "capacityFactor": 0.33538493798449553,
         "electricalLosses": 0.015370462521238875,
         "historical": null,
-        "p50Target": 16775.26941131,
+        "p50Target": 16751.18138,
         "p90Target": 17015.433
       },
       "wind": {
@@ -247,7 +247,7 @@
         "capacityFactor": 0.3145337575018759,
         "electricalLosses": 0.015594517765652073,
         "historical": null,
-        "p50Target": 15936.19500327,
+        "p50Target": 15913.31182,
         "p90Target": 16014.526
       },
       "wind": {
@@ -279,7 +279,7 @@
         "capacityFactor": 0.2676673150732128,
         "electricalLosses": 0.01593254724541121,
         "historical": null,
-        "p50Target": 15733.00993471,
+        "p50Target": 15710.41851,
         "p90Target": 15847.708
       },
       "wind": {
@@ -311,7 +311,7 @@
         "capacityFactor": 0.3314481166333249,
         "electricalLosses": 0.016184048380114415,
         "historical": null,
-        "p50Target": 15299.798034840001,
+        "p50Target": 15277.82867,
         "p90Target": 15180.436
       },
       "wind": {
@@ -343,7 +343,7 @@
         "capacityFactor": 0.3138171589793281,
         "electricalLosses": 0.01584605734871979,
         "historical": null,
-        "p50Target": 14874.10563242,
+        "p50Target": 14852.747529999999,
         "p90Target": 13345.438
       },
       "wind": {
@@ -375,7 +375,7 @@
         "capacityFactor": 0.3043624590522627,
         "electricalLosses": 0.015457363188270984,
         "historical": null,
-        "p50Target": 14785.711875599998,
+        "p50Target": 14764.4807,
         "p90Target": 14179.528
       },
       "wind": {
