@@ -19,12 +19,12 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 25455.30171300001,
+        "actual": 36316.228709999996,
         "capacityFactor": 0.23691828095056283,
         "electricalLosses": -0.2384375347446243,
         "historical": null,
-        "p50Target": 30125.368300000002,
-        "p90Target": 26289.046547
+        "p50Target": 41558.755468,
+        "p90Target": 36469.23317
       },
       "wind": {
         "deviation": -0.07608253732286258,
@@ -52,12 +52,12 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 21146.527698999995,
+        "actual": 31487.21812,
         "capacityFactor": 0.22472601557242733,
         "electricalLosses": -0.23739074128600768,
         "historical": null,
-        "p50Target": 31142.579944,
-        "p90Target": 27180.727255
+        "p50Target": 41448.136072,
+        "p90Target": 36356.703094
       },
       "wind": {
         "deviation": -0.08223693229166554,
@@ -85,12 +85,12 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 18401.793051,
+        "actual": 26697.4957,
         "capacityFactor": 0.17754554804280032,
         "electricalLosses": -0.23481771237049423,
         "historical": null,
-        "p50Target": 32227.214226,
-        "p90Target": 28126.74735
+        "p50Target": 43660.601394,
+        "p90Target": 38306.933973
       },
       "wind": {
         "deviation": -0.19386626577593774,
@@ -118,12 +118,12 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 25668.343364000008,
+        "actual": 36210.25683,
         "capacityFactor": 0.26312999044149965,
         "electricalLosses": -0.23533596451211544,
         "historical": null,
-        "p50Target": 32356.228618,
-        "p90Target": 28238.092891
+        "p50Target": 43084.721386,
+        "p90Target": 37790.647774
       },
       "wind": {
         "deviation": -0.03394188100785983,
@@ -151,12 +151,12 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 25844.83258100001,
+        "actual": 34292.60416,
         "capacityFactor": 0.24105668484150194,
         "electricalLosses": -0.23130283987514114,
         "historical": null,
-        "p50Target": 38583.370298,
-        "p90Target": 33674.851547
+        "p50Target": 49734.799706,
+        "p90Target": 43603.985474
       },
       "wind": {
         "deviation": -0.18059909419405645,
@@ -184,12 +184,12 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 30635.034449000002,
+        "actual": 40738.97874,
         "capacityFactor": 0.3080460998525635,
         "electricalLosses": -0.23116978029223909,
         "historical": null,
-        "p50Target": 42084.439549560004,
-        "p90Target": 40332.029568
+        "p50Target": 53658.80559756,
+        "p90Target": 50637.742539
       },
       "wind": {
         "deviation": -0.1402135002157751,
@@ -217,11 +217,11 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 32324.627665999982,
+        "actual": 42547.54038,
         "capacityFactor": 0.3155300406030107,
         "electricalLosses": -0.23485010111040058,
         "historical": null,
-        "p50Target": 41816.59884331,
+        "p50Target": 53390.96489131,
         "p90Target": 49174.904765
       },
       "wind": {
@@ -250,12 +250,12 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 29445.970947000027,
+        "actual": 38813.83671,
         "capacityFactor": 0.2837464025479668,
         "electricalLosses": -0.23740335395320103,
         "historical": null,
-        "p50Target": 41792.66410527,
-        "p90Target": 38577.553786
+        "p50Target": 54776.81895327,
+        "p90Target": 50138.530237
       },
       "wind": {
         "deviation": -0.1521088055500559,
@@ -283,7 +283,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 25729.766210000005,
+        "actual": 35223.13649,
         "capacityFactor": 0.26245990467360936,
         "electricalLosses": -0.22498084617057182,
         "historical": null,
@@ -316,7 +316,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 29356.649930000003,
+        "actual": 40109.68858,
         "capacityFactor": 0.27296205115105165,
         "electricalLosses": -0.2240165860639707,
         "historical": null,
@@ -349,7 +349,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 27968.714222000002,
+        "actual": 38541.44151,
         "capacityFactor": 0.27365504433506316,
         "electricalLosses": -0.22284911568736143,
         "historical": null,
@@ -382,7 +382,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 26710.174818999985,
+        "actual": 37403.15532,
         "capacityFactor": 0.24684195543435325,
         "electricalLosses": -0.22218903567176376,
         "historical": null,
@@ -415,7 +415,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 30700.609352000007,
+        "actual": 31864.677929999998,
         "capacityFactor": 0.28369575455274376,
         "electricalLosses": -0.03058374884258243,
         "historical": 36316.228709999996,
@@ -448,7 +448,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 23412.120839000014,
+        "actual": 24442.97283,
         "capacityFactor": 0.23781681647665193,
         "electricalLosses": -0.03796844780587045,
         "historical": 31487.21812,
@@ -481,7 +481,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 38515.739518999995,
+        "actual": 40320.68036,
         "capacityFactor": 0.37279633552052993,
         "electricalLosses": -0.03402762756384686,
         "historical": 26697.4957,
@@ -514,7 +514,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 32865.71444600001,
+        "actual": 34052.96596,
         "capacityFactor": 0.3302608982987878,
         "electricalLosses": -0.024888576509016432,
         "historical": 36210.25683,
@@ -547,7 +547,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 30508.143109000004,
+        "actual": 31503.650120000002,
         "capacityFactor": 0.2962048829966007,
         "electricalLosses": -0.0273931244915261,
         "historical": 34292.60416,
@@ -580,7 +580,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 49578.17629000005,
+        "actual": 52347.5631,
         "capacityFactor": 0.4900621184476573,
         "electricalLosses": -0.05107699341945666,
         "historical": 40738.97874,
@@ -613,7 +613,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 43766.04538699999,
+        "actual": 44826.058549999994,
         "capacityFactor": 0.4272804252252386,
         "electricalLosses": -0.022555390728044297,
         "historical": 42547.54038,
@@ -646,7 +646,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 41015.25999200001,
+        "actual": 43166.14596,
         "capacityFactor": 0.3896549461052959,
         "electricalLosses": -0.04738899363201599,
         "historical": 38813.83671,
@@ -679,7 +679,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 40910.86360800002,
+        "actual": 43290.61404,
         "capacityFactor": 0.40900641892168443,
         "electricalLosses": -0.04696142826962036,
         "historical": 35223.13649,
@@ -712,7 +712,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 40621.185423000024,
+        "actual": 42632.497950000004,
         "capacityFactor": 0.39318482931792803,
         "electricalLosses": -0.03674283537759479,
         "historical": 40109.68858,
@@ -745,7 +745,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 30572.687220999993,
+        "actual": 31322.180630000003,
         "capacityFactor": 0.30761481643462363,
         "electricalLosses": -0.01700884652911016,
         "historical": 38541.44151,
@@ -778,7 +778,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 37110.87819799999,
+        "actual": 37160.266090000005,
         "capacityFactor": 0.35343591224689286,
         "electricalLosses": 0.0011543871130914193,
         "historical": 37403.15532,
@@ -811,7 +811,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 33296.707745000014,
+        "actual": 32829.15236,
         "capacityFactor": 0.32227680068713765,
         "electricalLosses": 0.01357558413916729,
         "historical": 34090.45332,
@@ -844,7 +844,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 37082.10066600001,
+        "actual": 36539.92508,
         "capacityFactor": 0.3764743815137879,
         "electricalLosses": 0.014028242582122194,
         "historical": 27965.095475000002,
@@ -877,7 +877,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 33659.695346999986,
+        "actual": 33141.34028,
         "capacityFactor": 0.3297550212851841,
         "electricalLosses": 0.01467340789769813,
         "historical": 33509.08803,
@@ -910,7 +910,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 34787.371938000004,
+        "actual": 34277.87426,
         "capacityFactor": 0.3601827458333713,
         "electricalLosses": 0.014022915420751533,
         "historical": 35131.611395,
@@ -943,7 +943,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 31854.12720599999,
+        "actual": 31926.59925,
         "capacityFactor": 0.3136194995646347,
         "electricalLosses": 0.00026369232858088016,
         "historical": 32898.12714,
@@ -976,7 +976,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 38687.075822999985,
+        "actual": 39272.96716,
         "capacityFactor": 0.3971940880848469,
         "electricalLosses": -0.005791788764427645,
         "historical": 46543.270919999995,
@@ -1009,7 +1009,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 48164.358414999966,
+        "actual": 47515.23137,
         "capacityFactor": 0.4684818259059276,
         "electricalLosses": 0.013154805340429003,
         "historical": 43686.799465,
@@ -1042,7 +1042,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 44142.609280000004,
+        "actual": 43521.10722,
         "capacityFactor": 0.4399020985075391,
         "electricalLosses": 0.013635303820992215,
         "historical": 40989.991335,
@@ -1075,7 +1075,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 39338.578110999995,
+        "actual": 38849.58337,
         "capacityFactor": 0.38794268685837063,
         "electricalLosses": 0.012005830766083619,
         "historical": 39256.875265,
@@ -1108,7 +1108,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 44741.404737,
+        "actual": 44146.63698,
         "capacityFactor": 0.43347581154121717,
         "electricalLosses": 0.012711604651395009,
         "historical": 41371.093265,
@@ -1141,7 +1141,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 31273.459161999992,
+        "actual": 30698.466409999997,
         "capacityFactor": 0.31160828560863013,
         "electricalLosses": 0.01710210752507425,
         "historical": 34931.811069999996,
@@ -1174,7 +1174,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 31328.888289000002,
+        "actual": 30889.53607,
         "capacityFactor": 0.28464836269038485,
         "electricalLosses": 0.013543606714995724,
         "historical": 37281.710705000005,
@@ -1207,7 +1207,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 35064.877524999974,
+        "actual": 34691.92181,
         "capacityFactor": 0.3273660969330505,
         "electricalLosses": 0.010559501740571152,
         "historical": 33670.01966666667,
@@ -1240,7 +1240,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 30595.9877,
+        "actual": 30496.47116,
         "capacityFactor": 0.3216991269802286,
         "electricalLosses": 0.006103460379032777,
         "historical": 30823.37201,
@@ -1273,7 +1273,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 29022.481041999985,
+        "actual": 28622.9404,
         "capacityFactor": 0.275038401309879,
         "electricalLosses": 0.01381624919024803,
         "historical": 33386.50544666667,
@@ -1306,7 +1306,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 27641.357517000004,
+        "actual": 27725.22612,
         "capacityFactor": 0.27515865419742835,
         "electricalLosses": -0.012415030784693346,
         "historical": 34847.03235,
@@ -1339,7 +1339,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 30072.848010999973,
+        "actual": 33302.07336,
         "capacityFactor": 0.290229094483583,
         "electricalLosses": -0.11612156958052564,
         "historical": 32574.284509999998,
@@ -1372,7 +1372,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 47041.318774999985,
+        "actual": 46390.33936,
         "capacityFactor": 0.46001487573163036,
         "electricalLosses": 0.013136802907111392,
         "historical": 44119.83633333333,
@@ -1405,7 +1405,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 47317.43707499998,
+        "actual": 46646.35342,
         "capacityFactor": 0.46633869451261706,
         "electricalLosses": 0.013525003281899383,
         "historical": 44962.943433333334,
@@ -1438,7 +1438,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 35520.416253999996,
+        "actual": 35006.34409,
         "capacityFactor": 0.34728234775705435,
         "electricalLosses": 0.013759798641144336,
         "historical": 41833.69663,
@@ -1471,7 +1471,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 35596.861861,
+        "actual": 35102.50629,
         "capacityFactor": 0.3576245409060658,
         "electricalLosses": 0.013277397066789548,
         "historical": 39121.1113,
@@ -1504,7 +1504,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 42030.60188799999,
+        "actual": 41421.92351,
         "capacityFactor": 0.4010052067763716,
         "electricalLosses": 0.013724976114489293,
         "historical": 42296.274503333334,
@@ -1537,7 +1537,7 @@
       },
       "plantCount": 4,
       "production": {
-        "actual": 36227.56320699999,
+        "actual": 35707.99905,
         "capacityFactor": 0.3539356076704415,
         "electricalLosses": 0.013587379240456773,
         "historical": 33520.69618333333,
@@ -1570,7 +1570,7 @@
       },
       "plantCount": 5,
       "production": {
-        "actual": 72001.53186900001,
+        "actual": 71176.01921,
         "capacityFactor": 0.34164652926473865,
         "electricalLosses": 0.01083290660231626,
         "historical": 35150.98582666667,
@@ -1603,7 +1603,7 @@
       },
       "plantCount": 5,
       "production": {
-        "actual": 84073.37343699996,
+        "actual": 83066.56667,
         "capacityFactor": 0.34744999952266215,
         "electricalLosses": 0.012703158858032712,
         "historical": 33128.58403333333,
@@ -1636,7 +1636,7 @@
       },
       "plantCount": 7,
       "production": {
-        "actual": 107428.03842199997,
+        "actual": 107013.22752,
         "capacityFactor": 0.28622163523023186,
         "electricalLosses": -0.10636971312935457,
         "historical": 30493.123023333334,
@@ -1669,7 +1669,7 @@
       },
       "plantCount": 7,
       "production": {
-        "actual": 130371.58051600002,
+        "actual": 134777.35763,
         "capacityFactor": 0.2504276917682814,
         "electricalLosses": -0.1546953169640691,
         "historical": 34028.32034666667,
@@ -1702,7 +1702,7 @@
       },
       "plantCount": 7,
       "production": {
-        "actual": 165091.72107500004,
+        "actual": 165189.06098,
         "capacityFactor": 0.3140923180372796,
         "electricalLosses": -0.13741922879744997,
         "historical": 32018.68878,
@@ -1735,7 +1735,7 @@
       },
       "plantCount": 7,
       "production": {
-        "actual": 126316.26895100003,
+        "actual": 125840.070907,
         "capacityFactor": 0.25798183721091295,
         "electricalLosses": -0.14059907452423007,
         "historical": 32244.107576666665,
@@ -1768,7 +1768,7 @@
       },
       "plantCount": 7,
       "production": {
-        "actual": 137706.06420899997,
+        "actual": 136603.981912,
         "capacityFactor": 0.2892737027355139,
         "electricalLosses": -0.1068455480720251,
         "historical": 46003.62320666667,
@@ -1784,9 +1784,9 @@
     },
     "2026-07": {
       "availability": {
-        "contractual": 0.999099066828654,
-        "pba": 0.9979098285191574,
-        "technical": 0.9735757823350695
+        "contractual": 0.9719435798593844,
+        "pba": 0.9717122252576283,
+        "technical": 0.9485924447158874
       },
       "consumption": {
         "actual": null,
@@ -1794,24 +1794,24 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.025039321658549777,
-        "manufacturer": 0.0023429197037037877,
-        "owner": 0.0006421409023718853,
-        "utility": 0.2684754549915542
+        "environmental": 0.006423844453396244,
+        "manufacturer": 0.05020104309540334,
+        "owner": 0.0007651358631802247,
+        "utility": 0.1384035852640467
       },
-      "plantCount": 1,
+      "plantCount": 7,
       "production": {
-        "actual": 13876.183550999998,
-        "capacityFactor": 0.24818608972570405,
+        "actual": 55557.50161199999,
+        "capacityFactor": 0.2495605081016079,
         "electricalLosses": null,
-        "historical": null,
-        "p50Target": 62381.28,
-        "p90Target": 55283.02
+        "historical": 46329.214446666665,
+        "p50Target": 238291.36,
+        "p90Target": 204606.546
       },
       "wind": {
-        "deviation": -0.089279281324736,
-        "forecastedWS": 8.47,
-        "measuredWS": 7.713804487179487,
+        "deviation": -0.22824893097999063,
+        "forecastedWS": 8.645714285714286,
+        "measuredWS": 6.663620965790161,
         "windIndex": null
       }
     }

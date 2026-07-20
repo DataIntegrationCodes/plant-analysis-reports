@@ -55,20 +55,25 @@ PowerBI) turned up turbine-level `Contractual Availability` reading exactly
 corrected client-side since it's what the model returns — worth flagging
 upstream if it looks wrong.
 
-**Coleskop production source measure**: this site's `production.actual` field
-is sourced from `[Actual Production]` (`vw_kpi_tech_daily_agg_reclass`,
-SCADA/technical daily aggregation) for every plant except Coleskop. For
-Coleskop, `[Actual Production]` reads `0` for Mar–May 2026 while the model's
-own KPI matrix displays `[Measured (MWh)]` (`production_data[BillingFigure]`,
-billing/metered production) — a different table entirely, and the one the
-live `Plant KPI Value_Upgrade` measure (and `Deviation P50i`/`Deviation
-Historical`) actually dispatches to for the "Measured (MWh)" KPI. For the
-other 7 plants the two measures track within ~1-2% (normal billing/SCADA
-reconciliation variance), so only Coleskop was switched: its ingest query
-uses `COALESCE([Measured (MWh)], [Actual Production])` so it prefers the
-billing figure but falls back to SCADA for the most recent month, where
-billing hasn't posted yet. If the same zero-production pattern shows up on
-another onboarding plant, apply the same COALESCE swap there too.
+Dassiesridge (`DASS`) genuinely has zero rows across every production/
+availability/wind measure for its entire 2022-01 through 2026-08 range —
+confirmed directly against the model, not an ingestion gap. `data/plants/
+DASS.json` stays at `"months": {}` until this plant starts reporting.
+
+**Production source measure**: `production.actual` for every plant is pulled as
+`COALESCE([Measured (MWh)], [Actual Production])`. `[Measured (MWh)]`
+(`production_data[BillingFigure]`, billing/metered production) is what
+PowerBI's own KPI matrix actually displays — it's what the live `Plant KPI
+Value_Upgrade` measure (and `Deviation P50i`/`Deviation Historical`) dispatch
+to for the "Measured (MWh)" KPI. `[Actual Production]`
+(`vw_kpi_tech_daily_agg_reclass[act_energy_iec]`, SCADA/technical daily
+aggregation) is a separate table used only as a fallback for the most recent
+month, where billing hasn't posted yet. This switch was made after Coleskop's
+`[Actual Production]` was found reading `0` for Mar–May 2026 while
+`[Measured (MWh)]` had real values for those months; for the other 7 plants
+the two measures track within ~1-2% (normal billing/SCADA reconciliation
+variance), but the model's own KPI matrix is the authoritative source, so all
+8 plants were switched for consistency with what PowerBI itself displays.
 
 ### Adding a new month
 

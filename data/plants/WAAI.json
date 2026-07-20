@@ -19,7 +19,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 7206.42865,
+        "actual": 7126.404,
         "capacityFactor": 0.3937422769691407,
         "electricalLosses": 0.011229317058084186,
         "historical": null,
@@ -51,7 +51,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 6484.099948000002,
+        "actual": 6411.773,
         "capacityFactor": 0.3922340754452188,
         "electricalLosses": 0.011280335096080557,
         "historical": null,
@@ -83,7 +83,7 @@
         "utility": 5.612424000742508e-05
       },
       "production": {
-        "actual": 5408.3490969999975,
+        "actual": 5339.814,
         "capacityFactor": 0.2954994479958912,
         "electricalLosses": 0.01283473488027808,
         "historical": null,
@@ -115,7 +115,7 @@
         "utility": 0.0009816162613264393
       },
       "production": {
-        "actual": 8287.073102,
+        "actual": 8190.653,
         "capacityFactor": 0.46787901434056006,
         "electricalLosses": 0.011771967631884789,
         "historical": null,
@@ -147,7 +147,7 @@
         "utility": 0.002227438382424345
       },
       "production": {
-        "actual": 7022.218374000005,
+        "actual": 6946.025,
         "capacityFactor": 0.38367746164437483,
         "electricalLosses": 0.010969349232115485,
         "historical": null,
@@ -179,7 +179,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 9112.754194000003,
+        "actual": 9011.776,
         "capacityFactor": 0.5144960588301718,
         "electricalLosses": 0.011205138032725513,
         "historical": null,
@@ -211,7 +211,7 @@
         "utility": 0.005617867888746862
       },
       "production": {
-        "actual": 9516.328716000002,
+        "actual": 9410.386,
         "capacityFactor": 0.5199497724888541,
         "electricalLosses": 0.01125806274046584,
         "historical": null,
@@ -243,7 +243,7 @@
         "utility": 0.00012442195231696074
       },
       "production": {
-        "actual": 8319.170604000003,
+        "actual": 8227.807,
         "capacityFactor": 0.4545398747705221,
         "electricalLosses": 0.011104247340755798,
         "historical": null,
@@ -275,7 +275,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 7486.263591999999,
+        "actual": 7397.695,
         "capacityFactor": 0.4226661919602529,
         "electricalLosses": 0.011972457907496813,
         "historical": null,
@@ -307,7 +307,7 @@
         "utility": 0.00014773052974842774
       },
       "production": {
-        "actual": 7862.808387,
+        "actual": 7771.077,
         "capacityFactor": 0.42960531881064784,
         "electricalLosses": 0.011804205131412263,
         "historical": null,
@@ -339,7 +339,7 @@
         "utility": 1.1740043592219767e-05
       },
       "production": {
-        "actual": 7805.362514999999,
+        "actual": 7717.903,
         "capacityFactor": 0.44068216548102973,
         "electricalLosses": 0.011332030863823846,
         "historical": null,
@@ -371,7 +371,7 @@
         "utility": 7.107409028304957e-05
       },
       "production": {
-        "actual": 6799.0529789999955,
+        "actual": 6708.659,
         "capacityFactor": 0.371484230428796,
         "electricalLosses": 0.01347422472956158,
         "historical": null,
@@ -403,7 +403,7 @@
         "utility": 2.088366826223922e-05
       },
       "production": {
-        "actual": 5945.750104999999,
+        "actual": 5869.682,
         "capacityFactor": 0.32486177249978143,
         "electricalLosses": 0.012959493376302051,
         "historical": 7126.404,
@@ -435,7 +435,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 4593.958312000001,
+        "actual": 4681.652,
         "capacityFactor": 0.27789623935346497,
         "electricalLosses": -0.018731355512968367,
         "historical": 6411.773,
@@ -467,7 +467,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 8484.783630999997,
+        "actual": 8386.895,
         "capacityFactor": 0.4635885802408426,
         "electricalLosses": 0.011671617565260584,
         "historical": 5339.814,
@@ -499,7 +499,7 @@
         "utility": 5.221067807407299e-05
       },
       "production": {
-        "actual": 6801.0581230000025,
+        "actual": 6705.34,
         "capacityFactor": 0.3839802463301718,
         "electricalLosses": 0.0142749096988374,
         "historical": 8190.653,
@@ -531,7 +531,7 @@
         "utility": 0.0010826519175054972
       },
       "production": {
-        "actual": 6329.661440000004,
+        "actual": 6244.628,
         "capacityFactor": 0.3458377830229918,
         "electricalLosses": 0.013617054530710989,
         "historical": 6946.025,
@@ -563,7 +563,7 @@
         "utility": 0.0004491526285376785
       },
       "production": {
-        "actual": 11001.042363000002,
+        "actual": 10888.83,
         "capacityFactor": 0.6211067278116532,
         "electricalLosses": 0.010305272742801786,
         "historical": 9011.776,
@@ -595,7 +595,7 @@
         "utility": 7.199033279334314e-05
       },
       "production": {
-        "actual": 9830.842881999995,
+        "actual": 9710.121,
         "capacityFactor": 0.5371340852565781,
         "electricalLosses": 0.012432582662975693,
         "historical": 9410.386,
@@ -627,7 +627,7 @@
         "utility": 8.370414476045903e-06
       },
       "production": {
-        "actual": 9156.625971000005,
+        "actual": 9052.035,
         "capacityFactor": 0.500296462267244,
         "electricalLosses": 0.011554415222654916,
         "historical": 8227.807,
@@ -659,7 +659,7 @@
         "utility": 8.586698185353104e-05
       },
       "production": {
-        "actual": 8978.334203000002,
+        "actual": 8867.776,
         "capacityFactor": 0.5069068542795846,
         "electricalLosses": 0.012467410430755391,
         "historical": 7397.695,
@@ -691,7 +691,7 @@
         "utility": 7.563365959202272e-07
       },
       "production": {
-        "actual": 8771.610444999998,
+        "actual": 8676.359,
         "capacityFactor": 0.4792601213502054,
         "electricalLosses": 0.010978273835833448,
         "historical": 7771.077,
@@ -723,7 +723,7 @@
         "utility": 2.9047636475688018e-06
       },
       "production": {
-        "actual": 6472.313290999997,
+        "actual": 6389.935,
         "capacityFactor": 0.3654196754177957,
         "electricalLosses": 0.012891882468287447,
         "historical": 7717.903,
@@ -755,7 +755,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 7446.938028999997,
+        "actual": 7359.99,
         "capacityFactor": 0.406883142593321,
         "electricalLosses": 0.011813606947835174,
         "historical": 6708.659,
@@ -787,7 +787,7 @@
         "utility": 5.2489966657598515e-05
       },
       "production": {
-        "actual": 6778.968847000003,
+        "actual": 6702.849,
         "capacityFactor": 0.3703868807915904,
         "electricalLosses": 0.01135634220612797,
         "historical": 6498.043,
@@ -819,7 +819,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 6697.878607000001,
+        "actual": 6617.085,
         "capacityFactor": 0.3911946667951594,
         "electricalLosses": 0.012209848747598152,
         "historical": 5546.7125,
@@ -851,7 +851,7 @@
         "utility": 8.761600273011321e-05
       },
       "production": {
-        "actual": 7029.1949799999975,
+        "actual": 6948.186,
         "capacityFactor": 0.3840586469534049,
         "electricalLosses": 0.011659011431184743,
         "historical": 6863.3545,
@@ -883,7 +883,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 7836.5196630000055,
+        "actual": 7747.808,
         "capacityFactor": 0.4424412637195125,
         "electricalLosses": 0.011449904669811837,
         "historical": 7447.9965,
@@ -915,7 +915,7 @@
         "utility": 8.484380548161045e-05
       },
       "production": {
-        "actual": 6920.904971,
+        "actual": 6838.223,
         "capacityFactor": 0.3781419360848851,
         "electricalLosses": 0.012091148680000633,
         "historical": 6595.326499999999,
@@ -947,7 +947,7 @@
         "utility": 1.711213714071201e-05
       },
       "production": {
-        "actual": 9035.592494999999,
+        "actual": 8936.048,
         "capacityFactor": 0.5101395943428184,
         "electricalLosses": 0.01113965535995311,
         "historical": 9950.303,
@@ -979,7 +979,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 10714.675807999995,
+        "actual": 10596.759,
         "capacityFactor": 0.5854246332721389,
         "electricalLosses": 0.011127629495017721,
         "historical": 9560.253499999999,
@@ -1011,7 +1011,7 @@
         "utility": 0.006317040647947335
       },
       "production": {
-        "actual": 9914.730864000005,
+        "actual": 9803.101,
         "capacityFactor": 0.5417175268817207,
         "electricalLosses": 0.011387199213800213,
         "historical": 8639.921,
@@ -1043,7 +1043,7 @@
         "utility": 0.004543194429660704
       },
       "production": {
-        "actual": 8339.490948,
+        "actual": 8248.481,
         "capacityFactor": 0.4708384681571816,
         "electricalLosses": 0.011033540357309522,
         "historical": 8132.7355,
@@ -1075,7 +1075,7 @@
         "utility": 0.00026746872615765493
       },
       "production": {
-        "actual": 9099.137834000006,
+        "actual": 8996.501,
         "capacityFactor": 0.4971554459524438,
         "electricalLosses": 0.011408528048849911,
         "historical": 8223.718,
@@ -1107,7 +1107,7 @@
         "utility": 0.01771634635296398
       },
       "production": {
-        "actual": 5723.008026000001,
+        "actual": 5653.507,
         "capacityFactor": 0.32311472594850954,
         "electricalLosses": 0.012293435915088058,
         "historical": 7053.919,
@@ -1139,7 +1139,7 @@
         "utility": 0.017686815017710574
       },
       "production": {
-        "actual": 5086.868066999999,
+        "actual": 5023.577,
         "capacityFactor": 0.27793448219905587,
         "electricalLosses": 0.012598804994926762,
         "historical": 7034.3245,
@@ -1171,7 +1171,7 @@
         "utility": 0.00020801288667007933
       },
       "production": {
-        "actual": 6239.239156000001,
+        "actual": 6181.411,
         "capacityFactor": 0.3408973225369351,
         "electricalLosses": 0.009355170850150635,
         "historical": 6566.311666666666,
@@ -1203,7 +1203,7 @@
         "utility": 0.005397807519728403
       },
       "production": {
-        "actual": 5953.672820999999,
+        "actual": 5880.195,
         "capacityFactor": 0.36014764935394883,
         "electricalLosses": 0.012495813659240807,
         "historical": 5903.503333333333,
@@ -1235,7 +1235,7 @@
         "utility": 0.0701629869923098
       },
       "production": {
-        "actual": 5266.023504000002,
+        "actual": 5196.847,
         "capacityFactor": 0.28772311303435627,
         "electricalLosses": 0.013311245068404332,
         "historical": 6891.631666666667,
@@ -1267,7 +1267,7 @@
         "utility": 0.028525094287321133
       },
       "production": {
-        "actual": 6185.232341999999,
+        "actual": 6108.851,
         "capacityFactor": 0.3492114014227642,
         "electricalLosses": 0.012503389262563398,
         "historical": 7547.933666666667,
@@ -1299,7 +1299,7 @@
         "utility": 0.05472498102083225
       },
       "production": {
-        "actual": 6761.468822999999,
+        "actual": 7147.158,
         "capacityFactor": 0.3694307207251508,
         "electricalLosses": -0.053963991981148464,
         "historical": 6676.291999999999,
@@ -1331,7 +1331,7 @@
         "utility": 0.012659164639772028
       },
       "production": {
-        "actual": 9696.603109000005,
+        "actual": 9593.992,
         "capacityFactor": 0.5474595251242098,
         "electricalLosses": 0.010695350694476809,
         "historical": 9612.218,
@@ -1363,7 +1363,7 @@
         "utility": 0.005064068459317972
       },
       "production": {
-        "actual": 10659.248917999994,
+        "actual": 10544.464,
         "capacityFactor": 0.5823962386353699,
         "electricalLosses": 0.010885799221278001,
         "historical": 9905.755333333333,
@@ -1395,7 +1395,7 @@
         "utility": 0.017729318054336664
       },
       "production": {
-        "actual": 7424.0199170000005,
+        "actual": 7339.902,
         "capacityFactor": 0.40563095096817914,
         "electricalLosses": 0.011460359688726156,
         "historical": 9027.647666666666,
@@ -1427,7 +1427,7 @@
         "utility": 0.0024101422716619083
       },
       "production": {
-        "actual": 7342.035673999999,
+        "actual": 7261.762,
         "capacityFactor": 0.4145232426603432,
         "electricalLosses": 0.01105429701496677,
         "historical": 8171.3173333333325,
@@ -1459,7 +1459,7 @@
         "utility": 0.0073433460630067966
       },
       "production": {
-        "actual": 8527.853623,
+        "actual": 8434.739,
         "capacityFactor": 0.4659418230942391,
         "electricalLosses": 0.011039419595556104,
         "historical": 8481.312333333333,
@@ -1491,7 +1491,7 @@
         "utility": 0.0007719964773318439
       },
       "production": {
-        "actual": 6853.557427999997,
+        "actual": 6780.272,
         "capacityFactor": 0.38694429923215884,
         "electricalLosses": 0.010808626556574339,
         "historical": 6587.115000000001,
@@ -1523,7 +1523,7 @@
         "utility": 0.0034194897732661876
       },
       "production": {
-        "actual": 6716.615365,
+        "actual": 6647.311,
         "capacityFactor": 0.3669800334928753,
         "electricalLosses": 0.010425924858939195,
         "historical": 6364.075333333333,
@@ -1555,7 +1555,7 @@
         "utility": 0.01491454154161928
       },
       "production": {
-        "actual": 6457.772632,
+        "actual": 6385.709,
         "capacityFactor": 0.3528374766150888,
         "electricalLosses": 0.011285141869133142,
         "historical": 6251.313999999999,
@@ -1587,7 +1587,7 @@
         "utility": 0.0005390839885416208
       },
       "production": {
-        "actual": 5488.203255999998,
+        "actual": 5426.643,
         "capacityFactor": 0.33199061507936495,
         "electricalLosses": 0.011344076991981587,
         "historical": 5726.310666666667,
@@ -1619,7 +1619,7 @@
         "utility": 0.013968767139430955
       },
       "production": {
-        "actual": 5741.084889,
+        "actual": 5674.645,
         "capacityFactor": 0.3136793474626279,
         "electricalLosses": 0.01170820183465209,
         "historical": 6843.976,
@@ -1651,7 +1651,7 @@
         "utility": 0.09956470631665863
       },
       "production": {
-        "actual": 7301.637688,
+        "actual": 7216.586,
         "capacityFactor": 0.41224241689250224,
         "electricalLosses": 0.011785585039795765,
         "historical": 6853.999666666667,
@@ -1683,7 +1683,7 @@
         "utility": 0.07984860454088916
       },
       "production": {
-        "actual": 6946.2669000000005,
+        "actual": 6863.531059999999,
         "capacityFactor": 0.3795276521111986,
         "electricalLosses": 0.012054413286213234,
         "historical": 6743.336333333333,
@@ -1715,7 +1715,7 @@
         "utility": 0.007753631065253333
       },
       "production": {
-        "actual": 7856.497377000001,
+        "actual": 7769.92606,
         "capacityFactor": 0.4435691834349594,
         "electricalLosses": 0.011141845666418198,
         "historical": 9806.29,
@@ -1727,6 +1727,38 @@
         "forecastedWS": 9.3,
         "measuredWS": 7.760916666666663,
         "windIndex": 0.825
+      }
+    },
+    "2026-07": {
+      "availability": {
+        "contractual": 0.8724002894356006,
+        "pba": 0.8823928821518946,
+        "technical": 0.8710050455729167
+      },
+      "consumption": {
+        "actual": null,
+        "ratioToProduction": null
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 6.71471569129073e-05,
+        "manufacturer": 0.11760907731259865,
+        "owner": 0.0,
+        "utility": 0.06110888694595142
+      },
+      "production": {
+        "actual": 2912.827199000001,
+        "capacityFactor": 0.30835315030064375,
+        "electricalLosses": null,
+        "historical": 10283.781333333332,
+        "p50Target": 16977.432,
+        "p90Target": 7389.58
+      },
+      "wind": {
+        "deviation": -0.1278466235632181,
+        "forecastedWS": 8.7,
+        "measuredWS": 7.587734375000002,
+        "windIndex": null
       }
     }
   },

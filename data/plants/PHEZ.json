@@ -19,7 +19,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 32127.438903999973,
+        "actual": 31758.36477,
         "capacityFactor": 0.32835637943158014,
         "electricalLosses": 0.01162132045125361,
         "historical": null,
@@ -51,7 +51,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 28643.599838,
+        "actual": 34015.02723,
         "capacityFactor": 0.2644193828835815,
         "electricalLosses": -0.1579133644574184,
         "historical": null,
@@ -83,7 +83,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 39729.623065000014,
+        "actual": 41026.95353,
         "capacityFactor": 0.37898373650221334,
         "electricalLosses": -0.03162141844266701,
         "historical": null,
@@ -115,7 +115,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 29474.766378999975,
+        "actual": 29164.435114,
         "capacityFactor": 0.2720921804749349,
         "electricalLosses": 0.010640743212989743,
         "historical": null,
@@ -147,7 +147,7 @@
         "utility": 0.09587350707556823
       },
       "production": {
-        "actual": 32768.08179699999,
+        "actual": 32347.872045,
         "capacityFactor": 0.3125770928437882,
         "electricalLosses": 0.012990336780590278,
         "historical": null,
@@ -159,6 +159,38 @@
         "forecastedWS": 9.27,
         "measuredWS": 7.359667948717949,
         "windIndex": 0.8740000000000001
+      }
+    },
+    "2026-07": {
+      "availability": {
+        "contractual": 0.9952754048140704,
+        "pba": 0.9908596780797049,
+        "technical": 0.9589252732751282
+      },
+      "consumption": {
+        "actual": null,
+        "ratioToProduction": null
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.015506202393510079,
+        "manufacturer": 0.12557779420548307,
+        "owner": 0.001543662175967696,
+        "utility": 0.1175518077183758
+      },
+      "production": {
+        "actual": 13995.907521999998,
+        "capacityFactor": 0.25032744394602796,
+        "electricalLosses": null,
+        "historical": null,
+        "p50Target": 59168.7,
+        "p90Target": 53430.93
+      },
+      "wind": {
+        "deviation": -0.2636373460695002,
+        "forecastedWS": 9.12,
+        "measuredWS": 6.715627403846158,
+        "windIndex": null
       }
     }
   },

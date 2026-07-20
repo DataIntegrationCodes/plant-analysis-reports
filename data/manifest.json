@@ -5,7 +5,7 @@
       "name": "Chaba",
       "mwInstalled": 21.5,
       "status": "active",
-      "monthCount": 54
+      "monthCount": 55
     },
     {
       "code": "COLE",
@@ -26,35 +26,35 @@
       "name": "Grassridge",
       "mwInstalled": 64.5,
       "status": "active",
-      "monthCount": 54
+      "monthCount": 55
     },
     {
       "code": "PHEZ",
       "name": "Phezukomoya",
       "mwInstalled": 145.6,
       "status": "onboarding",
-      "monthCount": 5
+      "monthCount": 6
     },
     {
       "code": "SANK",
       "name": "San Kraal",
       "mwInstalled": 145.6,
       "status": "onboarding",
-      "monthCount": 7
+      "monthCount": 8
     },
     {
       "code": "WAAI",
       "name": "Waainek",
       "mwInstalled": 24.6,
       "status": "active",
-      "monthCount": 54
+      "monthCount": 55
     },
     {
       "code": "WESL",
       "name": "Wesley",
       "mwInstalled": 34.5,
       "status": "active",
-      "monthCount": 54
+      "monthCount": 55
     }
   ],
   "months": [
