@@ -19,7 +19,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 1694.3749219999995,
+        "actual": 8095.9565,
         "capacityFactor": 0.017317247616594717,
         "electricalLosses": -0.7907134355279701,
         "historical": null,
@@ -51,7 +51,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 0.0,
+        "actual": 36822.37955,
         "capacityFactor": 0.0,
         "electricalLosses": -1.0,
         "historical": null,
@@ -83,7 +83,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 0.0,
+        "actual": 44460.486990000005,
         "capacityFactor": 0.0,
         "electricalLosses": -1.0,
         "historical": null,
@@ -115,7 +115,7 @@
         "utility": 0.0
       },
       "production": {
-        "actual": 0.0,
+        "actual": 33537.458083,
         "capacityFactor": 0.0,
         "electricalLosses": -1.0,
         "historical": null,
@@ -147,7 +147,7 @@
         "utility": 0.16945360780631522
       },
       "production": {
-        "actual": 6663.291573,
+        "actual": 35741.195127,
         "capacityFactor": 0.06356161833218868,
         "electricalLosses": -0.8135683054435315,
         "historical": null,
@@ -159,6 +159,38 @@
         "forecastedWS": 8.67,
         "measuredWS": 9.139410256410255,
         "windIndex": 0.904
+      }
+    },
+    "2026-07": {
+      "availability": {
+        "contractual": 0.999099066828654,
+        "pba": 0.9979098285191574,
+        "technical": 0.9735757823350695
+      },
+      "consumption": {
+        "actual": null,
+        "ratioToProduction": null
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.025039321658549777,
+        "manufacturer": 0.0023429197037037877,
+        "owner": 0.0006421409023718853,
+        "utility": 0.2684754549915542
+      },
+      "production": {
+        "actual": 13876.183550999998,
+        "capacityFactor": 0.24818608972570405,
+        "electricalLosses": null,
+        "historical": null,
+        "p50Target": 62381.28,
+        "p90Target": 55283.02
+      },
+      "wind": {
+        "deviation": -0.089279281324736,
+        "forecastedWS": 8.47,
+        "measuredWS": 7.713804487179487,
+        "windIndex": null
       }
     }
   },

@@ -1636,7 +1636,7 @@
       },
       "plantCount": 7,
       "production": {
-        "actual": 101026.45684399997,
+        "actual": 107428.03842199997,
         "capacityFactor": 0.28622163523023186,
         "electricalLosses": -0.10636971312935457,
         "historical": 30493.123023333334,
@@ -1669,7 +1669,7 @@
       },
       "plantCount": 7,
       "production": {
-        "actual": 93549.20096600002,
+        "actual": 130371.58051600002,
         "capacityFactor": 0.2504276917682814,
         "electricalLosses": -0.1546953169640691,
         "historical": 34028.32034666667,
@@ -1702,7 +1702,7 @@
       },
       "plantCount": 7,
       "production": {
-        "actual": 120631.23408500003,
+        "actual": 165091.72107500004,
         "capacityFactor": 0.3140923180372796,
         "electricalLosses": -0.13741922879744997,
         "historical": 32018.68878,
@@ -1735,7 +1735,7 @@
       },
       "plantCount": 7,
       "production": {
-        "actual": 92778.81086800004,
+        "actual": 126316.26895100003,
         "capacityFactor": 0.25798183721091295,
         "electricalLosses": -0.14059907452423007,
         "historical": 32244.107576666665,
@@ -1768,7 +1768,7 @@
       },
       "plantCount": 7,
       "production": {
-        "actual": 108628.16065499999,
+        "actual": 137706.06420899997,
         "capacityFactor": 0.2892737027355139,
         "electricalLosses": -0.1068455480720251,
         "historical": 46003.62320666667,
@@ -1780,6 +1780,39 @@
         "forecastedWS": 8.924285714285714,
         "measuredWS": 7.394556616974758,
         "windIndex": 0.8355714285714286
+      }
+    },
+    "2026-07": {
+      "availability": {
+        "contractual": 0.999099066828654,
+        "pba": 0.9979098285191574,
+        "technical": 0.9735757823350695
+      },
+      "consumption": {
+        "actual": null,
+        "ratioToProduction": null
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.025039321658549777,
+        "manufacturer": 0.0023429197037037877,
+        "owner": 0.0006421409023718853,
+        "utility": 0.2684754549915542
+      },
+      "plantCount": 1,
+      "production": {
+        "actual": 13876.183550999998,
+        "capacityFactor": 0.24818608972570405,
+        "electricalLosses": null,
+        "historical": null,
+        "p50Target": 62381.28,
+        "p90Target": 55283.02
+      },
+      "wind": {
+        "deviation": -0.089279281324736,
+        "forecastedWS": 8.47,
+        "measuredWS": 7.713804487179487,
+        "windIndex": null
       }
     }
   }

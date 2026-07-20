@@ -55,6 +55,21 @@ PowerBI) turned up turbine-level `Contractual Availability` reading exactly
 corrected client-side since it's what the model returns — worth flagging
 upstream if it looks wrong.
 
+**Coleskop production source measure**: this site's `production.actual` field
+is sourced from `[Actual Production]` (`vw_kpi_tech_daily_agg_reclass`,
+SCADA/technical daily aggregation) for every plant except Coleskop. For
+Coleskop, `[Actual Production]` reads `0` for Mar–May 2026 while the model's
+own KPI matrix displays `[Measured (MWh)]` (`production_data[BillingFigure]`,
+billing/metered production) — a different table entirely, and the one the
+live `Plant KPI Value_Upgrade` measure (and `Deviation P50i`/`Deviation
+Historical`) actually dispatches to for the "Measured (MWh)" KPI. For the
+other 7 plants the two measures track within ~1-2% (normal billing/SCADA
+reconciliation variance), so only Coleskop was switched: its ingest query
+uses `COALESCE([Measured (MWh)], [Actual Production])` so it prefers the
+billing figure but falls back to SCADA for the most recent month, where
+billing hasn't posted yet. If the same zero-production pattern shows up on
+another onboarding plant, apply the same COALESCE swap there too.
+
 ### Adding a new month
 
 Once a month has ended and its data is final in PowerBI:
