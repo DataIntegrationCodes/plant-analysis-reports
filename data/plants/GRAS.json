@@ -3,8 +3,8 @@
   "months": {
     "2022-01": {
       "availability": {
-        "contractual": 0.9451617252796362,
-        "pba": 0.9472028096219621,
+        "contractual": 0.9451617252796364,
+        "pba": 0.947202809621962,
         "technical": 0.9426797518875681
       },
       "consumption": {
@@ -14,21 +14,21 @@
       "downtime": {
         "bat": 0.0,
         "environmental": 0.00014763481023431112,
-        "manufacturer": 0.06022985762654217,
+        "manufacturer": 0.06022985762654218,
         "owner": 0.0,
         "utility": 0.007926877936305093
       },
       "production": {
         "actual": 13807.238,
-        "capacityFactor": 0.29220027065099624,
-        "electricalLosses": 0.015562025366696229,
+        "capacityFactor": 0.2922002706509959,
+        "electricalLosses": 0.015562025366695174,
         "historical": null,
         "p50Target": 11655.144,
         "p90Target": 10175.896
       },
       "wind": {
-        "deviation": -0.18598080849326293,
-        "forecastedWS": 7.9,
+        "deviation": -0.010653598014888743,
+        "forecastedWS": 6.5,
         "measuredWS": 6.430751612903223,
         "windIndex": 0.91
       }
@@ -45,23 +45,23 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.0002387408907135144,
-        "manufacturer": 0.055966348477472054,
+        "environmental": 0.00023874089071351435,
+        "manufacturer": 0.05596634847747206,
         "owner": 0.0,
-        "utility": 0.0011909979314054908
+        "utility": 0.0011909979314054906
       },
       "production": {
         "actual": 10757.797,
-        "capacityFactor": 0.2521603983480987,
-        "electricalLosses": 0.015973837952137897,
+        "capacityFactor": 0.25216039834809884,
+        "electricalLosses": 0.015973837952138234,
         "historical": null,
         "p50Target": 13756.891,
         "p90Target": 12010.894
       },
       "wind": {
-        "deviation": -0.24986767399267396,
-        "forecastedWS": 7.8,
-        "measuredWS": 5.851032142857143,
+        "deviation": -0.11347997835497868,
+        "forecastedWS": 6.6,
+        "measuredWS": 5.85103214285714,
         "windIndex": 0.907
       }
     },
@@ -77,29 +77,29 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.0003525741882504724,
-        "manufacturer": 0.0432584264838004,
+        "environmental": 0.0003525741882504727,
+        "manufacturer": 0.043258426483800426,
         "owner": 0.0,
         "utility": 0.0
       },
       "production": {
         "actual": 9285.579,
-        "capacityFactor": 0.19680873685087935,
-        "electricalLosses": 0.01711025925254652,
+        "capacityFactor": 0.19680873685087943,
+        "electricalLosses": 0.017110259252546913,
         "historical": null,
         "p50Target": 14330.095,
         "p90Target": 12511.348
       },
       "wind": {
-        "deviation": -0.3169959677419353,
-        "forecastedWS": 7.6,
-        "measuredWS": 5.190830645161292,
+        "deviation": -0.16276925078043702,
+        "forecastedWS": 6.2,
+        "measuredWS": 5.190830645161291,
         "windIndex": 0.9329999999999999
       }
     },
     "2022-04": {
       "availability": {
-        "contractual": 0.9632919218538946,
+        "contractual": 0.9632919218538947,
         "pba": 0.9690470907904553,
         "technical": 0.9648260250192902
       },
@@ -109,29 +109,29 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.00010043777074745977,
-        "manufacturer": 0.035237351469900924,
+        "environmental": 0.00010043777074745979,
+        "manufacturer": 0.03523735146990093,
         "owner": 0.0,
         "utility": 0.0012370551221672944
       },
       "production": {
         "actual": 12159.776,
-        "capacityFactor": 0.26611114026701127,
-        "electricalLosses": 0.01631817510454192,
+        "capacityFactor": 0.26611114026701116,
+        "electricalLosses": 0.016318175104541623,
         "historical": null,
         "p50Target": 12992.62,
         "p90Target": 11343.622
       },
       "wind": {
-        "deviation": -0.17860743243243304,
-        "forecastedWS": 7.4,
+        "deviation": 0.013050833333332642,
+        "forecastedWS": 6.0,
         "measuredWS": 6.078304999999996,
         "windIndex": 0.966
       }
     },
     "2022-05": {
       "availability": {
-        "contractual": 0.9755668751163856,
+        "contractual": 0.9755668751163858,
         "pba": 0.9735577463341771,
         "technical": 0.9780898890382318
       },
@@ -155,15 +155,15 @@
         "p90Target": 12844.984
       },
       "wind": {
-        "deviation": -0.2512265745007682,
-        "forecastedWS": 8.4,
-        "measuredWS": 6.289696774193548,
+        "deviation": -0.07504459203036049,
+        "forecastedWS": 6.8,
+        "measuredWS": 6.289696774193549,
         "windIndex": 0.888
       }
     },
     "2022-06": {
       "availability": {
-        "contractual": 0.9923117335553857,
+        "contractual": 0.9923117335553856,
         "pba": 0.9944293428806162,
         "technical": 0.9895476485339506
       },
@@ -173,29 +173,29 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.0011433829171768532,
+        "environmental": 0.001143382917176853,
         "manufacturer": 0.009265090873148434,
         "owner": 0.0,
         "utility": 0.002657718464007484
       },
       "production": {
         "actual": 15139.444,
-        "capacityFactor": 0.3308688863910421,
-        "electricalLosses": 0.01493496617180929,
+        "capacityFactor": 0.33086888639104234,
+        "electricalLosses": 0.014934966171809892,
         "historical": null,
         "p50Target": 14577.491890000001,
         "p90Target": 16348.161
       },
       "wind": {
-        "deviation": -0.2849191756272401,
-        "forecastedWS": 9.3,
-        "measuredWS": 6.650251666666668,
+        "deviation": -0.08900662100456594,
+        "forecastedWS": 7.3,
+        "measuredWS": 6.6502516666666684,
         "windIndex": 0.892
       }
     },
     "2022-07": {
       "availability": {
-        "contractual": 0.9892492877093735,
+        "contractual": 0.9892492877093734,
         "pba": 0.9905458969716872,
         "technical": 0.9862485833520012
       },
@@ -205,23 +205,23 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.0007420362243025767,
-        "manufacturer": 0.015447962742964588,
+        "environmental": 0.0007420362243025766,
+        "manufacturer": 0.015447962742964587,
         "owner": 0.0,
-        "utility": 0.005909390132925266
+        "utility": 0.005909390132925265
       },
       "production": {
         "actual": 15850.818,
-        "capacityFactor": 0.33538493798449553,
-        "electricalLosses": 0.015370462521238875,
+        "capacityFactor": 0.335384937984496,
+        "electricalLosses": 0.015370462521240138,
         "historical": null,
         "p50Target": 16751.18138,
         "p90Target": 17015.433
       },
       "wind": {
-        "deviation": -0.23653151649981444,
-        "forecastedWS": 8.7,
-        "measuredWS": 6.642175806451614,
+        "deviation": -0.07747558243727538,
+        "forecastedWS": 7.2,
+        "measuredWS": 6.642175806451617,
         "windIndex": 0.991
       }
     },
@@ -237,29 +237,29 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 5.912960284497117e-05,
+        "environmental": 5.9129602844971157e-05,
         "manufacturer": 0.017382444383629365,
         "owner": 0.0,
-        "utility": 0.012745328069153364
+        "utility": 0.012745328069153357
       },
       "production": {
         "actual": 14862.079,
-        "capacityFactor": 0.3145337575018759,
-        "electricalLosses": 0.015594517765652073,
+        "capacityFactor": 0.31453375750187557,
+        "electricalLosses": 0.015594517765650972,
         "historical": null,
         "p50Target": 15913.31182,
         "p90Target": 16014.526
       },
       "wind": {
-        "deviation": -0.25952052785923857,
-        "forecastedWS": 8.8,
-        "measuredWS": 6.516219354838701,
+        "deviation": -0.06911152073732778,
+        "forecastedWS": 7.0,
+        "measuredWS": 6.5162193548387055,
         "windIndex": 0.956
       }
     },
     "2022-09": {
       "availability": {
-        "contractual": 0.9631693563416817,
+        "contractual": 0.9631693563416819,
         "pba": 0.9698160683201887,
         "technical": 0.9590305762152779
       },
@@ -269,29 +269,29 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.00017683906240011655,
-        "manufacturer": 0.0348811135864337,
+        "environmental": 0.00017683906240011657,
+        "manufacturer": 0.034881113586433705,
         "owner": 0.0,
-        "utility": 0.007366064405665406
+        "utility": 0.007366064405665407
       },
       "production": {
         "actual": 12235.527,
         "capacityFactor": 0.2676673150732128,
-        "electricalLosses": 0.01593254724541121,
+        "electricalLosses": 0.015932547245411356,
         "historical": null,
         "p50Target": 15710.41851,
         "p90Target": 15847.708
       },
       "wind": {
-        "deviation": -0.2721986794717889,
-        "forecastedWS": 8.4,
-        "measuredWS": 6.113531092436974,
+        "deviation": -0.11398100109609005,
+        "forecastedWS": 6.9,
+        "measuredWS": 6.113531092436979,
         "windIndex": 1.036
       }
     },
     "2022-10": {
       "availability": {
-        "contractual": 0.9720530360759412,
+        "contractual": 0.9720530360759411,
         "pba": 0.9782671701806209,
         "technical": 0.9286284871378435
       },
@@ -300,7 +300,7 @@
         "ratioToProduction": 0.002927317128769498
       },
       "downtime": {
-        "bat": 0.004203718037539119,
+        "bat": 0.00420371803753912,
         "environmental": 9.061364037705731e-05,
         "manufacturer": 0.022023879368974993,
         "owner": 0.0,
@@ -308,22 +308,22 @@
       },
       "production": {
         "actual": 15652.216,
-        "capacityFactor": 0.3314481166333249,
-        "electricalLosses": 0.016184048380114415,
+        "capacityFactor": 0.33144811663332513,
+        "electricalLosses": 0.016184048380114998,
         "historical": null,
         "p50Target": 15277.82867,
         "p90Target": 15180.436
       },
       "wind": {
-        "deviation": -0.19531009984638953,
-        "forecastedWS": 8.4,
-        "measuredWS": 6.759395161290328,
+        "deviation": -0.005971299810246081,
+        "forecastedWS": 6.8,
+        "measuredWS": 6.7593951612903265,
         "windIndex": 0.899
       }
     },
     "2022-11": {
       "availability": {
-        "contractual": 0.9818700247865787,
+        "contractual": 0.9818700247865785,
         "pba": 0.9870759446494665,
         "technical": 0.9758808642361111
       },
@@ -340,23 +340,23 @@
       },
       "production": {
         "actual": 14346.336,
-        "capacityFactor": 0.3138171589793281,
-        "electricalLosses": 0.01584605734871979,
+        "capacityFactor": 0.3138171589793284,
+        "electricalLosses": 0.015846057348720678,
         "historical": null,
         "p50Target": 14852.747529999999,
         "p90Target": 13345.438
       },
       "wind": {
-        "deviation": -0.19315905349794257,
-        "forecastedWS": 8.1,
-        "measuredWS": 6.535411666666665,
+        "deviation": -0.024565422885572306,
+        "forecastedWS": 6.7,
+        "measuredWS": 6.535411666666666,
         "windIndex": 0.991
       }
     },
     "2022-12": {
       "availability": {
-        "contractual": 0.9803288307267537,
-        "pba": 0.9848676430991636,
+        "contractual": 0.980328830726754,
+        "pba": 0.9848676430991637,
         "technical": 0.9833525062910692
       },
       "consumption": {
@@ -364,7 +364,7 @@
         "ratioToProduction": 0.004350009761241697
       },
       "downtime": {
-        "bat": 1.848642700642439e-05,
+        "bat": 1.8486427006424393e-05,
         "environmental": 0.00024333093174920816,
         "manufacturer": 0.015863099438928906,
         "owner": 0.0,
@@ -372,16 +372,16 @@
       },
       "production": {
         "actual": 14383.416,
-        "capacityFactor": 0.3043624590522627,
-        "electricalLosses": 0.015457363188270984,
+        "capacityFactor": 0.30436245905226283,
+        "electricalLosses": 0.01545736318827149,
         "historical": null,
         "p50Target": 14764.4807,
         "p90Target": 14179.528
       },
       "wind": {
-        "deviation": -0.19341066997518636,
-        "forecastedWS": 7.8,
-        "measuredWS": 6.291396774193546,
+        "deviation": -0.06098555609051536,
+        "forecastedWS": 6.7,
+        "measuredWS": 6.291396774193547,
         "windIndex": 1.03
       }
     },
@@ -397,29 +397,29 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.00027448701482550667,
-        "manufacturer": 0.03061500392721017,
+        "environmental": 0.0002744870148255066,
+        "manufacturer": 0.030615003927210168,
         "owner": 0.0,
         "utility": 0.0
       },
       "production": {
         "actual": 12553.317,
-        "capacityFactor": 0.26590573580895227,
-        "electricalLosses": 0.016487072699590665,
+        "capacityFactor": 0.2659057358089523,
+        "electricalLosses": 0.01648707269959081,
         "historical": 13807.238,
         "p50Target": 11655.14399,
         "p90Target": 10175.896429999999
       },
       "wind": {
-        "deviation": -0.24936831359738698,
-        "forecastedWS": 7.9,
-        "measuredWS": 5.929990322580643,
+        "deviation": -0.08769379652605434,
+        "forecastedWS": 6.5,
+        "measuredWS": 5.929990322580647,
         "windIndex": 1.016
       }
     },
     "2023-02": {
       "availability": {
-        "contractual": 0.9279149803120024,
+        "contractual": 0.9279149803120021,
         "pba": 0.9343561893748683,
         "technical": 0.9295559322503307
       },
@@ -430,22 +430,22 @@
       "downtime": {
         "bat": 0.0,
         "environmental": 0.000262787245088944,
-        "manufacturer": 0.06584803903621665,
+        "manufacturer": 0.06584803903621662,
         "owner": 0.0,
-        "utility": 4.3051782293714554e-05
+        "utility": 4.305178229371455e-05
       },
       "production": {
         "actual": 10322.901,
-        "capacityFactor": 0.2398818522056111,
-        "electricalLosses": 0.007220644855550803,
+        "capacityFactor": 0.2398818522056112,
+        "electricalLosses": 0.007220644855551331,
         "historical": 10757.797,
         "p50Target": 13756.89127,
         "p90Target": 12010.89415
       },
       "wind": {
-        "deviation": -0.24517425715079136,
-        "forecastedWS": 7.8,
-        "measuredWS": 5.887640794223827,
+        "deviation": -0.10793321299638961,
+        "forecastedWS": 6.6,
+        "measuredWS": 5.887640794223828,
         "windIndex": 0.9990000000000001
       }
     },
@@ -461,29 +461,29 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.00026097957161105086,
+        "environmental": 0.0002609795716110509,
         "manufacturer": 0.07725207990576581,
         "owner": 0.0,
         "utility": 0.0
       },
       "production": {
         "actual": 14332.484,
-        "capacityFactor": 0.3034108545261315,
-        "electricalLosses": 0.01587973773422679,
+        "capacityFactor": 0.30341085452613115,
+        "electricalLosses": 0.015879737734225647,
         "historical": 9285.579,
         "p50Target": 14330.09507,
         "p90Target": 12511.34807
       },
       "wind": {
-        "deviation": -0.15591680814940534,
-        "forecastedWS": 7.6,
-        "measuredWS": 6.415032258064519,
+        "deviation": 0.034682622268470374,
+        "forecastedWS": 6.2,
+        "measuredWS": 6.4150322580645165,
         "windIndex": 1.204
       }
     },
     "2023-04": {
       "availability": {
-        "contractual": 0.9166963242774848,
+        "contractual": 0.9166963242774849,
         "pba": 0.9242333842984599,
         "technical": 0.9209903771797839
       },
@@ -493,22 +493,22 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.00032340060956598493,
-        "manufacturer": 0.07765411282061661,
+        "environmental": 0.00032340060956598504,
+        "manufacturer": 0.07765411282061663,
         "owner": 0.0,
-        "utility": 0.004326553890095575
+        "utility": 0.004326553890095576
       },
       "production": {
         "actual": 11873.073,
-        "capacityFactor": 0.2602330114556418,
-        "electricalLosses": 0.017867998621756098,
+        "capacityFactor": 0.26023301145564187,
+        "electricalLosses": 0.017867998621756254,
         "historical": 12159.776,
         "p50Target": 12992.61953,
         "p90Target": 11343.62225
       },
       "wind": {
-        "deviation": -0.17582792792792842,
-        "forecastedWS": 7.4,
+        "deviation": 0.01647888888888834,
+        "forecastedWS": 6.0,
         "measuredWS": 6.09887333333333,
         "windIndex": 1.005
       }
@@ -525,23 +525,23 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.0003283068244366967,
-        "manufacturer": 0.027504657134500912,
+        "environmental": 0.0003283068244366968,
+        "manufacturer": 0.027504657134500916,
         "owner": 0.0,
         "utility": 0.0
       },
       "production": {
         "actual": 11786.574,
-        "capacityFactor": 0.2483740595773944,
-        "electricalLosses": 0.011233151465388091,
+        "capacityFactor": 0.24837405957739447,
+        "electricalLosses": 0.0112331514653884,
         "historical": 13893.602,
         "p50Target": 14712.23094,
         "p90Target": 12844.98402
       },
       "wind": {
-        "deviation": -0.31404222530436077,
-        "forecastedWS": 8.4,
-        "measuredWS": 5.76204530744337,
+        "deviation": -0.15264039596421106,
+        "forecastedWS": 6.8,
+        "measuredWS": 5.762045307443365,
         "windIndex": 0.9059999999999999
       }
     },
@@ -558,7 +558,7 @@
       "downtime": {
         "bat": 0.0,
         "environmental": 4.856147315763753e-05,
-        "manufacturer": 0.01372525991290221,
+        "manufacturer": 0.013725259912902212,
         "owner": 0.0,
         "utility": 0.003481647609049136
       },
@@ -571,16 +571,16 @@
         "p90Target": 16348.16148
       },
       "wind": {
-        "deviation": -0.13167293906810046,
-        "forecastedWS": 9.3,
+        "deviation": 0.10622488584474885,
+        "forecastedWS": 7.3,
         "measuredWS": 8.075441666666666,
         "windIndex": 1.145
       }
     },
     "2023-07": {
       "availability": {
-        "contractual": 0.9771381836637314,
-        "pba": 0.9790643336885512,
+        "contractual": 0.9771381836637316,
+        "pba": 0.9790643336885514,
         "technical": 0.975339168318902
       },
       "consumption": {
@@ -589,22 +589,22 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.00017872511305059901,
+        "environmental": 0.00017872511305059904,
         "manufacturer": 0.026148485042477753,
         "owner": 7.161300253404609e-06,
-        "utility": 0.004878465314910959
+        "utility": 0.004878465314910957
       },
       "production": {
         "actual": 16737.156,
-        "capacityFactor": 0.35388987953238277,
-        "electricalLosses": 0.014656703862949667,
+        "capacityFactor": 0.3538898795323829,
+        "electricalLosses": 0.014656703862949884,
         "historical": 15850.818,
         "p50Target": 19488.9293,
         "p90Target": 17015.433370000002
       },
       "wind": {
-        "deviation": -0.19658583611420052,
-        "forecastedWS": 8.7,
+        "deviation": -0.02920788530465907,
+        "forecastedWS": 7.2,
         "measuredWS": 6.989703225806455,
         "windIndex": 1.094
       }
@@ -612,7 +612,7 @@
     "2023-08": {
       "availability": {
         "contractual": 0.9559343311990663,
-        "pba": 0.9541470042336921,
+        "pba": 0.954147004233692,
         "technical": 0.9580064145860636
       },
       "consumption": {
@@ -621,30 +621,30 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 7.64694271743263e-05,
-        "manufacturer": 0.05113348094644533,
+        "environmental": 7.646942717432635e-05,
+        "manufacturer": 0.05113348094644535,
         "owner": 0.0,
-        "utility": 0.00427022853450985
+        "utility": 0.004270228534509852
       },
       "production": {
         "actual": 17025.837,
-        "capacityFactor": 0.3602266524756189,
-        "electricalLosses": 0.015313173678334128,
+        "capacityFactor": 0.36022665247561864,
+        "electricalLosses": 0.015313173678333274,
         "historical": 14862.079,
         "p50Target": 18342.521699999998,
         "p90Target": 16014.525529999999
       },
       "wind": {
-        "deviation": -0.18297617302052843,
-        "forecastedWS": 8.8,
+        "deviation": 0.027115668202764325,
+        "forecastedWS": 7.0,
         "measuredWS": 7.18980967741935,
         "windIndex": 1.026
       }
     },
     "2023-09": {
       "availability": {
-        "contractual": 0.9508898400930468,
-        "pba": 0.9694785985697927,
+        "contractual": 0.9508898400930467,
+        "pba": 0.9694785985697926,
         "technical": 0.9522828066429008
       },
       "consumption": {
@@ -653,10 +653,10 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.00013381195642526913,
-        "manufacturer": 0.03432283402902775,
+        "environmental": 0.0001338119564252691,
+        "manufacturer": 0.03432283402902774,
         "owner": 0.0,
-        "utility": 0.0013816806928884167
+        "utility": 0.0013816806928884163
       },
       "production": {
         "actual": 16512.977,
@@ -667,15 +667,15 @@
         "p90Target": 15847.707550000001
       },
       "wind": {
-        "deviation": -0.14892714935803786,
-        "forecastedWS": 8.4,
-        "measuredWS": 7.149011945392482,
+        "deviation": 0.03608868773804099,
+        "forecastedWS": 6.9,
+        "measuredWS": 7.149011945392483,
         "windIndex": 1.122
       }
     },
     "2023-10": {
       "availability": {
-        "contractual": 0.9539195392147892,
+        "contractual": 0.953919539214789,
         "pba": 0.9649458290304271,
         "technical": 0.9573469655398579
       },
@@ -692,22 +692,22 @@
       },
       "production": {
         "actual": 15245.096,
-        "capacityFactor": 0.32244856647495224,
-        "electricalLosses": 0.014992743108998063,
+        "capacityFactor": 0.3224485664749522,
+        "electricalLosses": 0.014992743108997824,
         "historical": 15652.216,
         "p50Target": 17387.18202,
         "p90Target": 15180.435660000001
       },
       "wind": {
-        "deviation": -0.21807507680491597,
-        "forecastedWS": 8.4,
-        "measuredWS": 6.568169354838706,
+        "deviation": -0.03409274193548411,
+        "forecastedWS": 6.8,
+        "measuredWS": 6.568169354838708,
         "windIndex": 1.01
       }
     },
     "2023-11": {
       "availability": {
-        "contractual": 0.9641942371107555,
+        "contractual": 0.9641942371107559,
         "pba": 0.9661343337639562,
         "technical": 0.9722832438839956
       },
@@ -717,8 +717,8 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.0004591578632559374,
-        "manufacturer": 0.03889988950926134,
+        "environmental": 0.00045915786325593724,
+        "manufacturer": 0.03889988950926133,
         "owner": 0.0,
         "utility": 0.0
       },
@@ -731,15 +731,15 @@
         "p90Target": 13345.43794
       },
       "wind": {
-        "deviation": -0.2888166666666679,
-        "forecastedWS": 8.1,
-        "measuredWS": 5.76058499999999,
+        "deviation": -0.14021119402985147,
+        "forecastedWS": 6.7,
+        "measuredWS": 5.760584999999995,
         "windIndex": 0.9590000000000001
       }
     },
     "2023-12": {
       "availability": {
-        "contractual": 0.9548788695086988,
+        "contractual": 0.954878869508699,
         "pba": 0.9609906900526984,
         "technical": 0.9677402938518868
       },
@@ -750,22 +750,22 @@
       "downtime": {
         "bat": 0.0,
         "environmental": 0.00011790896915046494,
-        "manufacturer": 0.047050845041480965,
+        "manufacturer": 0.04705084504148096,
         "owner": 0.0,
         "utility": 5.973897636542169e-05
       },
       "production": {
         "actual": 13735.342,
-        "capacityFactor": 0.29043803427940307,
-        "electricalLosses": 0.014721030535679228,
+        "capacityFactor": 0.2904380342794032,
+        "electricalLosses": 0.014721030535679757,
         "historical": 14383.416,
         "p50Target": 16240.77442,
         "p90Target": 14179.527810000001
       },
       "wind": {
-        "deviation": -0.17875372208436738,
-        "forecastedWS": 7.8,
-        "measuredWS": 6.405720967741934,
+        "deviation": -0.043922243620606725,
+        "forecastedWS": 6.7,
+        "measuredWS": 6.405720967741935,
         "windIndex": 1.037
       }
     },
@@ -788,22 +788,22 @@
       },
       "production": {
         "actual": 11106.655,
-        "capacityFactor": 0.23509399460281744,
-        "electricalLosses": 0.01575952552771338,
+        "capacityFactor": 0.23509399460281757,
+        "electricalLosses": 0.015759525527714036,
         "historical": 13180.2775,
         "p50Target": 11655.14399,
         "p90Target": 10175.896429999999
       },
       "wind": {
-        "deviation": -0.2767564311964069,
-        "forecastedWS": 7.9,
-        "measuredWS": 5.713624193548386,
+        "deviation": -0.12098089330024796,
+        "forecastedWS": 6.5,
+        "measuredWS": 5.713624193548388,
         "windIndex": 0.981
       }
     },
     "2024-02": {
       "availability": {
-        "contractual": 0.9557837896883051,
+        "contractual": 0.9557837896883052,
         "pba": 0.9766858672662739,
         "technical": 0.957449293622286
       },
@@ -813,23 +813,23 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 9.172833176895988e-05,
-        "manufacturer": 0.02360654306566477,
+        "environmental": 9.172833176895984e-05,
+        "manufacturer": 0.023606543065664762,
         "owner": 0.0,
-        "utility": 5.023639374146841e-06
+        "utility": 5.023639374146838e-06
       },
       "production": {
         "actual": 12965.228,
-        "capacityFactor": 0.29341319179363806,
-        "electricalLosses": 0.015940869377692807,
+        "capacityFactor": 0.29341319179363784,
+        "electricalLosses": 0.015940869377692107,
         "historical": 10540.349,
         "p50Target": 13756.89127,
         "p90Target": 12010.89415
       },
       "wind": {
-        "deviation": -0.2032086648983194,
-        "forecastedWS": 7.8,
-        "measuredWS": 6.214972413793109,
+        "deviation": -0.058337513061649755,
+        "forecastedWS": 6.6,
+        "measuredWS": 6.214972413793111,
         "windIndex": 1.0659999999999998
       }
     },
@@ -844,31 +844,31 @@
         "ratioToProduction": 0.005191892134901176
       },
       "downtime": {
-        "bat": 0.023812239727466756,
-        "environmental": 0.00031190266820934855,
-        "manufacturer": 0.021806212222214728,
+        "bat": 0.02381223972746676,
+        "environmental": 0.00031190266820934866,
+        "manufacturer": 0.02180621222221473,
         "owner": 0.0,
-        "utility": 2.4667940280931424e-05
+        "utility": 2.4667940280931427e-05
       },
       "production": {
         "actual": 11088.443,
-        "capacityFactor": 0.23523321349087264,
-        "electricalLosses": 0.018030344657045262,
+        "capacityFactor": 0.23523321349087262,
+        "electricalLosses": 0.018030344657045096,
         "historical": 11809.031500000001,
         "p50Target": 14330.09507,
         "p90Target": 12511.34807
       },
       "wind": {
-        "deviation": -0.23775891341256344,
-        "forecastedWS": 7.6,
-        "measuredWS": 5.7930322580645175,
+        "deviation": -0.06563995837669061,
+        "forecastedWS": 6.2,
+        "measuredWS": 5.793032258064518,
         "windIndex": 1.0290000000000001
       }
     },
     "2024-04": {
       "availability": {
         "contractual": 0.9420719323913044,
-        "pba": 0.9463750026392457,
+        "pba": 0.9463750026392459,
         "technical": 0.7454524498263888
       },
       "consumption": {
@@ -876,30 +876,30 @@
         "ratioToProduction": 0.006317800456284536
       },
       "downtime": {
-        "bat": 0.03197992123307722,
-        "environmental": 3.354672442607171e-05,
+        "bat": 0.03197992123307721,
+        "environmental": 3.35467244260717e-05,
         "manufacturer": 0.054685448354540055,
         "owner": 0.0,
         "utility": 0.0
       },
       "production": {
         "actual": 10560.954,
-        "capacityFactor": 0.2315456020025841,
-        "electricalLosses": 0.01818242528089869,
+        "capacityFactor": 0.23154560200258403,
+        "electricalLosses": 0.018182425280898515,
         "historical": 12016.424500000001,
         "p50Target": 12992.61953,
         "p90Target": 11343.62225
       },
       "wind": {
-        "deviation": -0.21913806306306394,
-        "forecastedWS": 7.4,
-        "measuredWS": 5.778378333333327,
+        "deviation": -0.03693694444444503,
+        "forecastedWS": 6.0,
+        "measuredWS": 5.77837833333333,
         "windIndex": 1.068
       }
     },
     "2024-05": {
       "availability": {
-        "contractual": 0.9489775856988945,
+        "contractual": 0.9489775856988942,
         "pba": 0.9590619761845516,
         "technical": 0.7460168205576748
       },
@@ -909,8 +909,8 @@
       },
       "downtime": {
         "bat": 0.0276880609151724,
-        "environmental": 0.0001439002306449347,
-        "manufacturer": 0.041491297654402425,
+        "environmental": 0.00014390023064493468,
+        "manufacturer": 0.04149129765440241,
         "owner": 0.0,
         "utility": 3.320980657072908e-05
       },
@@ -923,15 +923,15 @@
         "p90Target": 12844.98402
       },
       "wind": {
-        "deviation": -0.3076593701996925,
-        "forecastedWS": 8.4,
-        "measuredWS": 5.815661290322583,
+        "deviation": -0.144755692599621,
+        "forecastedWS": 6.8,
+        "measuredWS": 5.815661290322577,
         "windIndex": 1.005
       }
     },
     "2024-06": {
       "availability": {
-        "contractual": 0.979420332986847,
+        "contractual": 0.9794203329868468,
         "pba": 0.9782950326459623,
         "technical": 0.9774396798225308
       },
@@ -948,23 +948,23 @@
       },
       "production": {
         "actual": 14969.504,
-        "capacityFactor": 0.3033833901593452,
-        "electricalLosses": -0.05881152515140158,
+        "capacityFactor": 0.3033833901593455,
+        "electricalLosses": -0.058811525151400486,
         "historical": 17865.367,
         "p50Target": 18724.65756,
         "p90Target": 16348.16148
       },
       "wind": {
-        "deviation": -0.2905618968844774,
-        "forecastedWS": 9.3,
-        "measuredWS": 6.597774358974361,
+        "deviation": -0.09619529329118308,
+        "forecastedWS": 7.3,
+        "measuredWS": 6.597774358974363,
         "windIndex": 1.01
       }
     },
     "2024-07": {
       "availability": {
-        "contractual": 0.9636384912329504,
-        "pba": 0.9646848053823034,
+        "contractual": 0.9636384912329505,
+        "pba": 0.9646848053823036,
         "technical": 0.9577488610551075
       },
       "consumption": {
@@ -974,29 +974,29 @@
       "downtime": {
         "bat": 0.0,
         "environmental": 1.157696883459715e-05,
-        "manufacturer": 0.05733830673508868,
+        "manufacturer": 0.0573383067350887,
         "owner": 0.0,
-        "utility": 0.027721933455191087
+        "utility": 0.02772193345519108
       },
       "production": {
         "actual": 17939.547,
-        "capacityFactor": 0.3793673138909722,
-        "electricalLosses": 0.014801469568879417,
+        "capacityFactor": 0.3793673138909724,
+        "electricalLosses": 0.014801469568879823,
         "historical": 16293.987,
         "p50Target": 19488.9293,
         "p90Target": 17015.433370000002
       },
       "wind": {
-        "deviation": -0.10907563959955553,
-        "forecastedWS": 8.7,
-        "measuredWS": 7.751041935483866,
+        "deviation": 0.0765336021505372,
+        "forecastedWS": 7.2,
+        "measuredWS": 7.751041935483868,
         "windIndex": 1.112
       }
     },
     "2024-08": {
       "availability": {
         "contractual": 0.9303728792714554,
-        "pba": 0.9336402810421368,
+        "pba": 0.9336402810421369,
         "technical": 0.9376939591547192
       },
       "consumption": {
@@ -1005,23 +1005,23 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 4.2546423125890075e-05,
-        "manufacturer": 0.07318158765069893,
+        "environmental": 4.254642312589009e-05,
+        "manufacturer": 0.07318158765069895,
         "owner": 0.0,
         "utility": 0.0
       },
       "production": {
         "actual": 15282.103,
-        "capacityFactor": 0.3235373848670498,
-        "electricalLosses": 0.015953892275166016,
+        "capacityFactor": 0.32353738486704997,
+        "electricalLosses": 0.015953892275166612,
         "historical": 15943.957999999999,
         "p50Target": 18342.521699999998,
         "p90Target": 16014.525529999999
       },
       "wind": {
-        "deviation": -0.1926223066706026,
-        "forecastedWS": 8.8,
-        "measuredWS": 7.104923701298698,
+        "deviation": 0.014989100185528745,
+        "forecastedWS": 7.0,
+        "measuredWS": 7.104923701298701,
         "windIndex": 1.215
       }
     },
@@ -1037,30 +1037,30 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 3.792721762523608e-05,
-        "manufacturer": 0.057848093482306955,
+        "environmental": 3.7927217625236094e-05,
+        "manufacturer": 0.057848093482306975,
         "owner": 0.0,
-        "utility": 0.006913016345608527
+        "utility": 0.006913016345608529
       },
       "production": {
         "actual": 14683.802,
-        "capacityFactor": 0.3210995686907836,
-        "electricalLosses": 0.015531533999164194,
+        "capacityFactor": 0.32109956869078365,
+        "electricalLosses": 0.01553153399916432,
         "historical": 14374.252,
         "p50Target": 18151.45376,
         "p90Target": 15847.707550000001
       },
       "wind": {
-        "deviation": -0.20133365238892895,
-        "forecastedWS": 8.4,
-        "measuredWS": 6.708797319932997,
+        "deviation": -0.027710533343043818,
+        "forecastedWS": 6.9,
+        "measuredWS": 6.708797319932998,
         "windIndex": 1.075
       }
     },
     "2024-10": {
       "availability": {
         "contractual": 0.9318829498540251,
-        "pba": 0.9338422931515543,
+        "pba": 0.9338422931515538,
         "technical": 0.8896356591621865
       },
       "consumption": {
@@ -1069,30 +1069,30 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 5.2683118372120405e-05,
-        "manufacturer": 0.06708976467801006,
+        "environmental": 5.268311837212041e-05,
+        "manufacturer": 0.06708976467801007,
         "owner": 0.0,
-        "utility": 0.03406574960366708
+        "utility": 0.034065749603667095
       },
       "production": {
         "actual": 15877.633,
-        "capacityFactor": 0.33613019565307983,
-        "electricalLosses": 0.015908090897427788,
+        "capacityFactor": 0.33613019565308005,
+        "electricalLosses": 0.015908090897428475,
         "historical": 15448.655999999999,
         "p50Target": 17387.18202,
         "p90Target": 15180.435660000001
       },
       "wind": {
-        "deviation": -0.16306919039901255,
-        "forecastedWS": 8.4,
-        "measuredWS": 7.030218800648295,
+        "deviation": 0.0338557059776911,
+        "forecastedWS": 6.8,
+        "measuredWS": 7.030218800648299,
         "windIndex": 1.018
       }
     },
     "2024-11": {
       "availability": {
         "contractual": 0.9023621265782598,
-        "pba": 0.9086850736595489,
+        "pba": 0.9086850736595488,
         "technical": 0.9107353395061728
       },
       "consumption": {
@@ -1102,22 +1102,22 @@
       "downtime": {
         "bat": 0.0,
         "environmental": 0.0001281407393961305,
-        "manufacturer": 0.09189256796630482,
+        "manufacturer": 0.09189256796630484,
         "owner": 0.0,
         "utility": 0.0
       },
       "production": {
         "actual": 11034.863,
-        "capacityFactor": 0.24150039369078358,
-        "electricalLosses": 0.016349571625854622,
+        "capacityFactor": 0.2415003936907835,
+        "electricalLosses": 0.016349571625854292,
         "historical": 12636.146,
         "p50Target": 15285.43475,
         "p90Target": 13345.43794
       },
       "wind": {
-        "deviation": -0.27520113513961403,
-        "forecastedWS": 8.1,
-        "measuredWS": 5.870870805369126,
+        "deviation": -0.1237506260643093,
+        "forecastedWS": 6.7,
+        "measuredWS": 5.870870805369128,
         "windIndex": 0.9470000000000001
       }
     },
@@ -1133,29 +1133,29 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.00017593498731046818,
-        "manufacturer": 0.062074753347926434,
+        "environmental": 0.00017593498731046815,
+        "manufacturer": 0.06207475334792645,
         "owner": 0.0,
         "utility": 1.475304321732622e-05
       },
       "production": {
         "actual": 13030.919,
-        "capacityFactor": 0.27597032301825447,
-        "electricalLosses": 0.01629546319795247,
+        "capacityFactor": 0.27597032301825475,
+        "electricalLosses": 0.016295463197953445,
         "historical": 14059.379,
         "p50Target": 16240.77442,
         "p90Target": 14179.527810000001
       },
       "wind": {
-        "deviation": -0.18640570719602964,
-        "forecastedWS": 7.8,
-        "measuredWS": 6.346035483870969,
+        "deviation": -0.052830524795378093,
+        "forecastedWS": 6.7,
+        "measuredWS": 6.346035483870967,
         "windIndex": 1.0090000000000001
       }
     },
     "2025-01": {
       "availability": {
-        "contractual": 0.9772807484606936,
+        "contractual": 0.9772807484606935,
         "pba": 0.9776636519649683,
         "technical": 0.9775728232526881
       },
@@ -1165,23 +1165,23 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.00014777171798393033,
-        "manufacturer": 0.022599835578925344,
+        "environmental": 0.00014777171798393038,
+        "manufacturer": 0.022599835578925347,
         "owner": 0.0,
         "utility": 0.0014618790965587182
       },
       "production": {
         "actual": 13340.869,
-        "capacityFactor": 0.2821864005793112,
-        "electricalLosses": 0.015043397173002043,
+        "capacityFactor": 0.28218640057931144,
+        "electricalLosses": 0.01504339717300286,
         "historical": 12489.07,
         "p50Target": 11655.144,
         "p90Target": 10175.896
       },
       "wind": {
-        "deviation": -0.2259118007349936,
-        "forecastedWS": 7.9,
-        "measuredWS": 6.115296774193551,
+        "deviation": -0.05918511166253036,
+        "forecastedWS": 6.5,
+        "measuredWS": 6.115296774193553,
         "windIndex": 1.0959999999999999
       }
     },
@@ -1196,7 +1196,7 @@
         "ratioToProduction": 0.004166656074724655
       },
       "downtime": {
-        "bat": 0.015607547850675375,
+        "bat": 0.015607547850675373,
         "environmental": 0.00014361765610675382,
         "manufacturer": 0.05515836545833705,
         "owner": 0.0,
@@ -1205,15 +1205,15 @@
       "production": {
         "actual": 11250.691,
         "capacityFactor": 0.25707493600036896,
-        "electricalLosses": -0.00960251899194492,
+        "electricalLosses": -0.00960251899194508,
         "historical": 11348.642,
         "p50Target": 13756.891,
         "p90Target": 12010.894
       },
       "wind": {
-        "deviation": -0.20281384982997935,
-        "forecastedWS": 7.8,
-        "measuredWS": 6.218051971326161,
+        "deviation": -0.057870913435430396,
+        "forecastedWS": 6.6,
+        "measuredWS": 6.218051971326159,
         "windIndex": 1.053
       }
     },
@@ -1228,24 +1228,24 @@
         "ratioToProduction": 0.005938713299170174
       },
       "downtime": {
-        "bat": 0.05780642333041564,
-        "environmental": 0.00022923861552275764,
-        "manufacturer": 0.030078679332733834,
+        "bat": 0.05780642333041567,
+        "environmental": 0.00022923861552275762,
+        "manufacturer": 0.03007867933273383,
         "owner": 0.0,
-        "utility": 0.0013890356858263914
+        "utility": 0.0013890356858263918
       },
       "production": {
         "actual": 10203.584,
-        "capacityFactor": 0.21527346797115898,
-        "electricalLosses": 0.01244260653903375,
+        "capacityFactor": 0.21527346797115904,
+        "electricalLosses": 0.012442606539033929,
         "historical": 11568.835333333334,
         "p50Target": 14330.095,
         "p90Target": 12511.348
       },
       "wind": {
-        "deviation": -0.2530776740237688,
-        "forecastedWS": 7.6,
-        "measuredWS": 5.676609677419357,
+        "deviation": -0.08441779396462086,
+        "forecastedWS": 6.2,
+        "measuredWS": 5.676609677419351,
         "windIndex": 0.932
       }
     },
@@ -1260,11 +1260,11 @@
         "ratioToProduction": 0.006708809524486149
       },
       "downtime": {
-        "bat": 0.03450576040599843,
-        "environmental": 0.00022415755699450355,
-        "manufacturer": 0.0327711235281191,
+        "bat": 0.03450576040599845,
+        "environmental": 0.0002241575569945036,
+        "manufacturer": 0.03277112352811912,
         "owner": 0.0,
-        "utility": 0.0037802994552026663
+        "utility": 0.0037802994552026676
       },
       "production": {
         "actual": 9852.836,
@@ -1275,15 +1275,15 @@
         "p90Target": 11343.622
       },
       "wind": {
-        "deviation": -0.24627522522522519,
-        "forecastedWS": 7.4,
-        "measuredWS": 5.577563333333334,
+        "deviation": -0.07040611111111117,
+        "forecastedWS": 6.0,
+        "measuredWS": 5.577563333333333,
         "windIndex": 0.865
       }
     },
     "2025-05": {
       "availability": {
-        "contractual": 0.969033145929961,
+        "contractual": 0.9690331459299608,
         "pba": 0.9792587541400751,
         "technical": 0.8808567797565711
       },
@@ -1292,31 +1292,31 @@
         "ratioToProduction": 0.0053760682784709775
       },
       "downtime": {
-        "bat": 0.007270868039804755,
-        "environmental": 0.0005867509369160969,
-        "manufacturer": 0.021337720246399412,
+        "bat": 0.007270868039804759,
+        "environmental": 0.0005867509369160971,
+        "manufacturer": 0.02133772024639942,
         "owner": 0.0,
-        "utility": 0.09082020733667048
+        "utility": 0.09082020733667051
       },
       "production": {
         "actual": 12260.38,
-        "capacityFactor": 0.23968043708843828,
-        "electricalLosses": -0.06187370905306525,
+        "capacityFactor": 0.2396804370884383,
+        "electricalLosses": -0.06187370905306511,
         "historical": 12382.479,
         "p50Target": 14712.231,
         "p90Target": 12844.984
       },
       "wind": {
-        "deviation": -0.27543317972350184,
-        "forecastedWS": 8.4,
-        "measuredWS": 6.086361290322585,
+        "deviation": -0.10494686907020837,
+        "forecastedWS": 6.8,
+        "measuredWS": 6.086361290322583,
         "windIndex": 1.129
       }
     },
     "2025-06": {
       "availability": {
-        "contractual": 0.974941790503576,
-        "pba": 0.974878647687955,
+        "contractual": 0.9749417905035758,
+        "pba": 0.9748786476879547,
         "technical": 0.9734215076195988
       },
       "consumption": {
@@ -1325,10 +1325,10 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.00044353726950163816,
-        "manufacturer": 0.02510781310895215,
+        "environmental": 0.0004435372695016381,
+        "manufacturer": 0.025107813108952142,
         "owner": 0.0,
-        "utility": 0.007676495373181081
+        "utility": 0.007676495373181079
       },
       "production": {
         "actual": 18869.992,
@@ -1339,16 +1339,16 @@
         "p90Target": 16348.161
       },
       "wind": {
-        "deviation": -0.1932394492613143,
-        "forecastedWS": 9.3,
-        "measuredWS": 7.5028731218697775,
+        "deviation": 0.027790838612298557,
+        "forecastedWS": 7.3,
+        "measuredWS": 7.502873121869779,
         "windIndex": 1.061
       }
     },
     "2025-07": {
       "availability": {
-        "contractual": 0.9667524059740967,
-        "pba": 0.9721892067447148,
+        "contractual": 0.9667524059740966,
+        "pba": 0.972189206744715,
         "technical": 0.95662781869773
       },
       "consumption": {
@@ -1357,10 +1357,10 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.00024285220080498223,
-        "manufacturer": 0.027902563850554705,
+        "environmental": 0.00024285220080498212,
+        "manufacturer": 0.027902563850554694,
         "owner": 0.0,
-        "utility": 0.04124856055970993
+        "utility": 0.04124856055970992
       },
       "production": {
         "actual": 17518.342,
@@ -1371,8 +1371,8 @@
         "p90Target": 17015.433
       },
       "wind": {
-        "deviation": -0.15886021505376346,
-        "forecastedWS": 8.7,
+        "deviation": 0.01637724014336903,
+        "forecastedWS": 7.2,
         "measuredWS": 7.317916129032257,
         "windIndex": 1.11
       }
@@ -1380,7 +1380,7 @@
     "2025-08": {
       "availability": {
         "contractual": 0.9717826218857388,
-        "pba": 0.970649466204825,
+        "pba": 0.9706494662048248,
         "technical": 0.9683454301448625
       },
       "consumption": {
@@ -1389,29 +1389,29 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.0005774103594413615,
+        "environmental": 0.0005774103594413613,
         "manufacturer": 0.029462329667790985,
         "owner": 0.0,
-        "utility": 0.04743213480496087
+        "utility": 0.04743213480496086
       },
       "production": {
         "actual": 12457.98,
-        "capacityFactor": 0.26399014753688405,
-        "electricalLosses": 0.016887103687756425,
+        "capacityFactor": 0.263990147536884,
+        "electricalLosses": 0.016887103687756276,
         "historical": 15723.339666666667,
         "p50Target": 18342.522,
         "p90Target": 16014.526
       },
       "wind": {
-        "deviation": -0.3120267595307922,
-        "forecastedWS": 8.8,
-        "measuredWS": 6.054164516129029,
+        "deviation": -0.13511935483870996,
+        "forecastedWS": 7.0,
+        "measuredWS": 6.05416451612903,
         "windIndex": 0.8690000000000001
       }
     },
     "2025-09": {
       "availability": {
-        "contractual": 0.9764201018356168,
+        "contractual": 0.9764201018356166,
         "pba": 0.9799687359107419,
         "technical": 0.9712902200424383
       },
@@ -1421,30 +1421,30 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.00012561622896341891,
-        "manufacturer": 0.021066641284389183,
+        "environmental": 0.00012561622896341897,
+        "manufacturer": 0.021066641284389186,
         "owner": 0.0,
-        "utility": 0.033826357549552974
+        "utility": 0.03382635754955298
       },
       "production": {
         "actual": 12492.282,
-        "capacityFactor": 0.2732495036391042,
-        "electricalLosses": 0.015803753789740246,
+        "capacityFactor": 0.2732495036391043,
+        "electricalLosses": 0.015803753789740537,
         "historical": 14477.435333333333,
         "p50Target": 18151.454,
         "p90Target": 15847.708
       },
       "wind": {
-        "deviation": -0.27267400793650864,
-        "forecastedWS": 8.4,
-        "measuredWS": 6.109538333333328,
+        "deviation": -0.11455966183574978,
+        "forecastedWS": 6.9,
+        "measuredWS": 6.109538333333327,
         "windIndex": 0.945
       }
     },
     "2025-10": {
       "availability": {
         "contractual": 0.9755744573988742,
-        "pba": 0.9766019216016288,
+        "pba": 0.9766019216016286,
         "technical": 0.9712021676616748
       },
       "consumption": {
@@ -1453,8 +1453,8 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.00039563052951322196,
-        "manufacturer": 0.023390755075999647,
+        "environmental": 0.00039563052951322185,
+        "manufacturer": 0.023390755075999643,
         "owner": 0.0,
         "utility": 0.03238687520842719
       },
@@ -1467,9 +1467,9 @@
         "p90Target": 15180.436
       },
       "wind": {
-        "deviation": -0.19472619047619066,
-        "forecastedWS": 8.4,
-        "measuredWS": 6.764299999999999,
+        "deviation": -0.005250000000000565,
+        "forecastedWS": 6.8,
+        "measuredWS": 6.764299999999996,
         "windIndex": 1.003
       }
     },
@@ -1485,29 +1485,29 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.0007518714571104239,
-        "manufacturer": 0.01992031078280871,
+        "environmental": 0.0007518714571104243,
+        "manufacturer": 0.01992031078280872,
         "owner": 0.0,
-        "utility": 0.024087339741709967
+        "utility": 0.02408733974170998
       },
       "production": {
         "actual": 13137.88,
-        "capacityFactor": 0.2873560310508182,
-        "electricalLosses": 0.01575094931602371,
+        "capacityFactor": 0.28735603105081825,
+        "electricalLosses": 0.01575094931602385,
         "historical": 12102.385,
         "p50Target": 15285.435,
         "p90Target": 13345.438
       },
       "wind": {
-        "deviation": -0.22983251028806595,
-        "forecastedWS": 8.1,
-        "measuredWS": 6.238356666666665,
+        "deviation": -0.06890199004975132,
+        "forecastedWS": 6.7,
+        "measuredWS": 6.238356666666666,
         "windIndex": 0.929
       }
     },
     "2025-12": {
       "availability": {
-        "contractual": 0.9877082322603175,
+        "contractual": 0.9877082322603172,
         "pba": 0.9875784983594824,
         "technical": 0.9873354418869474
       },
@@ -1518,22 +1518,22 @@
       "downtime": {
         "bat": 0.0,
         "environmental": 0.0015672358918864047,
-        "manufacturer": 0.012511600888730915,
+        "manufacturer": 0.01251160088873091,
         "owner": 0.0,
-        "utility": 0.00030469343862303143
+        "utility": 0.0003046934386230314
       },
       "production": {
         "actual": 13436.165,
-        "capacityFactor": 0.2808873962032173,
-        "electricalLosses": 0.0032047365449884738,
+        "capacityFactor": 0.28088739620321734,
+        "electricalLosses": 0.003204736544988609,
         "historical": 13716.559000000001,
         "p50Target": 16240.774,
         "p90Target": 14179.528
       },
       "wind": {
-        "deviation": -0.23201474150171272,
-        "forecastedWS": 7.8,
-        "measuredWS": 5.990285016286641,
+        "deviation": -0.10592760950945612,
+        "forecastedWS": 6.7,
+        "measuredWS": 5.990285016286644,
         "windIndex": 1.001
       }
     },
@@ -1549,23 +1549,23 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 0.00250789875792856,
+        "environmental": 0.0025078987579285603,
         "manufacturer": 0.01971088117299844,
         "owner": 0.0,
         "utility": 0.0004716722997294075
       },
       "production": {
         "actual": 13717.919,
-        "capacityFactor": 0.29012514382762367,
-        "electricalLosses": 0.014915265354753045,
+        "capacityFactor": 0.2901251438276237,
+        "electricalLosses": 0.014915265354753177,
         "historical": 12333.613666666666,
         "p50Target": 11655.144,
         "p90Target": 10175.896
       },
       "wind": {
-        "deviation": -0.2208668844426299,
-        "forecastedWS": 7.9,
-        "measuredWS": 6.155151612903224,
+        "deviation": -0.05305359801488913,
+        "forecastedWS": 6.5,
+        "measuredWS": 6.155151612903221,
         "windIndex": 1.078
       }
     },
@@ -1582,29 +1582,29 @@
       "downtime": {
         "bat": 0.003601756523641773,
         "environmental": 0.0008701768027881585,
-        "manufacturer": 0.03755821286253719,
+        "manufacturer": 0.03755821286253718,
         "owner": 0.0005842583102554326,
-        "utility": 0.00026883496576187804
+        "utility": 0.0002688349657618781
       },
       "production": {
         "actual": 11001.104,
-        "capacityFactor": 0.25791068053248395,
-        "electricalLosses": 0.016159881499164887,
+        "capacityFactor": 0.257910680532484,
+        "electricalLosses": 0.01615988149916505,
         "historical": 11512.94,
         "p50Target": 13756.891,
         "p90Target": 12010.894
       },
       "wind": {
-        "deviation": -0.2551524725274726,
-        "forecastedWS": 7.8,
-        "measuredWS": 5.809810714285714,
+        "deviation": -0.11972564935064978,
+        "forecastedWS": 6.6,
+        "measuredWS": 5.809810714285711,
         "windIndex": 0.986
       }
     },
     "2026-03": {
       "availability": {
-        "contractual": 0.9731209832925019,
-        "pba": 0.968519240443735,
+        "contractual": 0.9731209832925022,
+        "pba": 0.9685192404437349,
         "technical": 0.8787530969982078
       },
       "consumption": {
@@ -1612,23 +1612,23 @@
         "ratioToProduction": 0.010644147837467085
       },
       "downtime": {
-        "bat": 0.0062337574628489,
-        "environmental": 0.0005083493753250718,
-        "manufacturer": 0.03114098581669567,
+        "bat": 0.0062337574628488985,
+        "environmental": 0.0005083493753250715,
+        "manufacturer": 0.031140985816695662,
         "owner": 0.0,
         "utility": 0.13064233503832595
       },
       "production": {
         "actual": 8117.888,
-        "capacityFactor": 0.1725399649287322,
-        "electricalLosses": 0.019950981954912787,
+        "capacityFactor": 0.17253996492873208,
+        "electricalLosses": 0.019950981954912118,
         "historical": 11874.837,
         "p50Target": 14330.095,
         "p90Target": 12511.348
       },
       "wind": {
-        "deviation": -0.30914197792869247,
-        "forecastedWS": 7.6,
+        "deviation": -0.15314177939646179,
+        "forecastedWS": 6.2,
         "measuredWS": 5.250520967741937,
         "windIndex": 0.985
       }
@@ -1644,24 +1644,24 @@
         "ratioToProduction": 0.005324337657229638
       },
       "downtime": {
-        "bat": 0.007833331555015397,
-        "environmental": 0.0004593063226534511,
+        "bat": 0.007833331555015394,
+        "environmental": 0.000459306322653451,
         "manufacturer": 0.02972450300731614,
-        "owner": 2.5951451252973416e-06,
-        "utility": 0.16600621670094415
+        "owner": 2.5951451252973412e-06,
+        "utility": 0.1660062167009441
       },
       "production": {
         "actual": 11321.83642,
-        "capacityFactor": 0.24731790777347132,
-        "electricalLosses": 0.01445059007485745,
+        "capacityFactor": 0.24731790777347124,
+        "electricalLosses": 0.014450590074857128,
         "historical": 10762.287666666667,
         "p50Target": 12992.62,
         "p90Target": 11343.622
       },
       "wind": {
-        "deviation": -0.16453571267427677,
-        "forecastedWS": 7.4,
-        "measuredWS": 6.182435726210352,
+        "deviation": 0.03040595436839233,
+        "forecastedWS": 6.0,
+        "measuredWS": 6.182435726210354,
         "windIndex": 1.225
       }
     },
@@ -1676,30 +1676,30 @@
         "ratioToProduction": 0.004682544890496676
       },
       "downtime": {
-        "bat": 0.0077911364781116715,
-        "environmental": 0.00015861420801945595,
-        "manufacturer": 0.04676264920463731,
+        "bat": 0.007791136478111673,
+        "environmental": 0.00015861420801945592,
+        "manufacturer": 0.04676264920463732,
         "owner": 0.0,
-        "utility": 0.11635962760068237
+        "utility": 0.11635962760068236
       },
       "production": {
         "actual": 11568.68354,
-        "capacityFactor": 0.245919844565308,
-        "electricalLosses": 0.02009891274111239,
+        "capacityFactor": 0.24591984456530802,
+        "electricalLosses": 0.020098912741112546,
         "historical": 11838.071666666665,
         "p50Target": 14712.231,
         "p90Target": 12844.984
       },
       "wind": {
-        "deviation": -0.22983275729646666,
-        "forecastedWS": 8.4,
-        "measuredWS": 6.46940483870968,
+        "deviation": -0.04861693548387104,
+        "forecastedWS": 6.8,
+        "measuredWS": 6.469404838709677,
         "windIndex": 1.1340000000000001
       }
     },
     "2026-06": {
       "availability": {
-        "contractual": 0.9734914041312428,
+        "contractual": 0.973491404131243,
         "pba": 0.9715465276917864,
         "technical": 0.9079214873263889
       },
@@ -1709,23 +1709,23 @@
       },
       "downtime": {
         "bat": 0.0,
-        "environmental": 9.740000631300174e-05,
-        "manufacturer": 0.028086653912589334,
+        "environmental": 9.740000631300175e-05,
+        "manufacturer": 0.02808665391258934,
         "owner": 0.0,
-        "utility": 0.21166292894447833
+        "utility": 0.21166292894447838
       },
       "production": {
         "actual": 11548.52772,
-        "capacityFactor": 0.2527623096253229,
-        "electricalLosses": 0.01643100693011976,
+        "capacityFactor": 0.25276230962532287,
+        "electricalLosses": 0.016431006930119604,
         "historical": 18143.595333333335,
         "p50Target": 18724.658,
         "p90Target": 16348.161
       },
       "wind": {
-        "deviation": -0.29791971326164857,
-        "forecastedWS": 9.3,
-        "measuredWS": 6.529346666666669,
+        "deviation": -0.10556894977168979,
+        "forecastedWS": 7.3,
+        "measuredWS": 6.529346666666664,
         "windIndex": 0.815
       }
     }
