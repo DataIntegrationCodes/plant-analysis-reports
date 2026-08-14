@@ -1,5 +1,8 @@
-// Availability below 90% or capacity factor below 40% is flagged red,
+// Availability below 97.5% or capacity factor below 40% is flagged red,
 // otherwise green - thresholds are fixed, not relative to the fleet average.
+const AVAILABILITY_THRESHOLD = 0.975;
+const CAPACITY_FACTOR_THRESHOLD = 0.4;
+
 function kpiClass(value, threshold) {
   if (value === null || value === undefined) return "";
   return value < threshold ? "kpi-red" : "kpi-green";
@@ -26,16 +29,16 @@ function buildFleetInsight(plantStats, avgCapacityFactor) {
   for (const s of withData) {
     const fields = [["contractual availability", s.contractual], ["technical availability", s.technical], ["PBA", s.pba]];
     for (const [label, value] of fields) {
-      if (value !== null && value !== undefined && value < 0.9) {
+      if (value !== null && value !== undefined && value < AVAILABILITY_THRESHOLD) {
         lowAvailability.push(`${s.plant.name} ${label} (${PAR.fmtPercent(value)})`);
       }
     }
   }
   if (lowAvailability.length) {
-    sentence += ` ${lowAvailability.join(", ")} ${lowAvailability.length === 1 ? "sits" : "sit"} below the 90% availability threshold.`;
+    sentence += ` ${lowAvailability.join(", ")} ${lowAvailability.length === 1 ? "sits" : "sit"} below the 97.5% availability threshold.`;
   }
 
-  const lowCapacityFactor = withData.filter((s) => s.capacityFactor !== null && s.capacityFactor !== undefined && s.capacityFactor < 0.4);
+  const lowCapacityFactor = withData.filter((s) => s.capacityFactor !== null && s.capacityFactor !== undefined && s.capacityFactor < CAPACITY_FACTOR_THRESHOLD);
   if (lowCapacityFactor.length === withData.length) {
     sentence += ` Every reporting plant remains below the 40% capacity factor threshold, in line with the fleet average of ${PAR.fmtPercent(avgCapacityFactor)}.`;
   } else if (lowCapacityFactor.length) {
@@ -80,19 +83,19 @@ function buildFleetInsight(plantStats, avgCapacityFactor) {
       </div>
       <div class="tile">
         <div class="tile-label">Capacity Factor</div>
-        <div class="tile-value ${kpiClass(avgCapacityFactor, 0.4)}">${PAR.fmtPercent(avgCapacityFactor)}</div>
+        <div class="tile-value ${kpiClass(avgCapacityFactor, CAPACITY_FACTOR_THRESHOLD)}">${PAR.fmtPercent(avgCapacityFactor)}</div>
       </div>
       <div class="tile">
         <div class="tile-label">TBA - Contractual</div>
-        <div class="tile-value ${kpiClass(avgContractual, 0.9)}">${PAR.fmtPercent(avgContractual)}</div>
+        <div class="tile-value ${kpiClass(avgContractual, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(avgContractual)}</div>
       </div>
       <div class="tile">
         <div class="tile-label">TBA - Technical</div>
-        <div class="tile-value ${kpiClass(avgTechnical, 0.9)}">${PAR.fmtPercent(avgTechnical)}</div>
+        <div class="tile-value ${kpiClass(avgTechnical, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(avgTechnical)}</div>
       </div>
       <div class="tile">
         <div class="tile-label">PBA - Technical</div>
-        <div class="tile-value ${kpiClass(avgPba, 0.9)}">${PAR.fmtPercent(avgPba)}</div>
+        <div class="tile-value ${kpiClass(avgPba, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(avgPba)}</div>
       </div>
     `;
   }
@@ -133,10 +136,10 @@ function buildFleetInsight(plantStats, avgCapacityFactor) {
       ? `
         <div class="card-stats">
           <div><div class="card-stat-label">YTD Production</div><div class="card-stat-value">${PAR.fmtGWh(s.ytdProduction)}</div></div>
-          <div><div class="card-stat-label">Capacity Factor</div><div class="card-stat-value ${kpiClass(s.capacityFactor, 0.4)}">${PAR.fmtPercent(s.capacityFactor)}</div></div>
-          <div><div class="card-stat-label">TBA - Contractual</div><div class="card-stat-value ${kpiClass(s.contractual, 0.9)}">${PAR.fmtPercent(s.contractual)}</div></div>
-          <div><div class="card-stat-label">TBA - Technical</div><div class="card-stat-value ${kpiClass(s.technical, 0.9)}">${PAR.fmtPercent(s.technical)}</div></div>
-          <div><div class="card-stat-label">PBA - Technical</div><div class="card-stat-value ${kpiClass(s.pba, 0.9)}">${PAR.fmtPercent(s.pba)}</div></div>
+          <div><div class="card-stat-label">Capacity Factor</div><div class="card-stat-value ${kpiClass(s.capacityFactor, CAPACITY_FACTOR_THRESHOLD)}">${PAR.fmtPercent(s.capacityFactor)}</div></div>
+          <div><div class="card-stat-label">TBA - Contractual</div><div class="card-stat-value ${kpiClass(s.contractual, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.contractual)}</div></div>
+          <div><div class="card-stat-label">TBA - Technical</div><div class="card-stat-value ${kpiClass(s.technical, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.technical)}</div></div>
+          <div><div class="card-stat-label">PBA - Technical</div><div class="card-stat-value ${kpiClass(s.pba, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.pba)}</div></div>
         </div>
       `
       : `<div class="card-meta-row"><span>No data yet</span></div>`;
@@ -179,10 +182,10 @@ function buildFleetInsight(plantStats, avgCapacityFactor) {
           const cells = s.hasData
             ? `
               <td class="num">${PAR.fmtGWh(s.ytdProduction)}</td>
-              <td class="num ${kpiClass(s.capacityFactor, 0.4)}">${PAR.fmtPercent(s.capacityFactor)}</td>
-              <td class="num ${kpiClass(s.contractual, 0.9)}">${PAR.fmtPercent(s.contractual)}</td>
-              <td class="num ${kpiClass(s.technical, 0.9)}">${PAR.fmtPercent(s.technical)}</td>
-              <td class="num ${kpiClass(s.pba, 0.9)}">${PAR.fmtPercent(s.pba)}</td>
+              <td class="num ${kpiClass(s.capacityFactor, CAPACITY_FACTOR_THRESHOLD)}">${PAR.fmtPercent(s.capacityFactor)}</td>
+              <td class="num ${kpiClass(s.contractual, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.contractual)}</td>
+              <td class="num ${kpiClass(s.technical, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.technical)}</td>
+              <td class="num ${kpiClass(s.pba, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.pba)}</td>
             `
             : `<td class="num" colspan="5">No data yet</td>`;
           return `
