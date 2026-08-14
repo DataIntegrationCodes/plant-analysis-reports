@@ -380,15 +380,27 @@ const PAR = {
       productionSentence = "no production data is available for the latest month.";
     } else {
       const actualGWh = p.actual / 1000;
-      const benchmarks = [p.historical, p.p50Target, p.p90Target].filter((v) => v !== null && v !== undefined);
-      if (benchmarks.length) {
-        const worstDeviation = Math.min(...benchmarks.map((b) => (p.actual - b) / b));
+      // Only compare against benchmarks that actually have a value this
+      // month - a plant like Dassiesridge has no historical baseline yet
+      // (shows as "-" in the KPI matrix), so the sentence must not claim a
+      // historical comparison that never happened.
+      const benchmarkFields = [
+        { label: "historical", value: p.historical },
+        { label: "P50", value: p.p50Target },
+        { label: "P90", value: p.p90Target },
+      ].filter((b) => b.value !== null && b.value !== undefined);
+      if (benchmarkFields.length) {
+        const worstDeviation = Math.min(...benchmarkFields.map((b) => (p.actual - b.value) / b.value));
         let qualifier;
         if (worstDeviation >= 0) qualifier = "in line with or above";
         else if (worstDeviation >= -0.1) qualifier = "slightly below";
         else if (worstDeviation >= -0.25) qualifier = "below";
         else qualifier = "significantly below";
-        productionSentence = `the plant produced ${actualGWh.toFixed(1)} GWh, ${qualifier} historical, P50 and P90 targets.`;
+        const labels = benchmarkFields.map((b) => b.label);
+        const joined = labels.length === 1 ? labels[0]
+          : `${labels.slice(0, -1).join(", ")} and ${labels[labels.length - 1]}`;
+        const noun = labels.length === 1 && labels[0] !== "historical" ? "target" : "targets";
+        productionSentence = `the plant produced ${actualGWh.toFixed(1)} GWh, ${qualifier} ${joined} ${noun}.`;
       } else {
         productionSentence = `the plant produced ${actualGWh.toFixed(1)} GWh.`;
       }
