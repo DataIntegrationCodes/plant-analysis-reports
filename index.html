@@ -32,12 +32,17 @@
 
   <div class="toolbar">
     <strong style="font-size:14px;">Plants</strong>
+    <div class="view-switch" role="group" aria-label="Plants view">
+      <button type="button" class="view-switch-btn active" id="viewCardsBtn">Cards</button>
+      <button type="button" class="view-switch-btn" id="viewTableBtn">Table</button>
+    </div>
     <div class="spacer"></div>
     <a class="btn" style="text-decoration:none;" href="report.html">Open Reporting →</a>
     <a class="btn primary" style="text-decoration:none;" href="https://data-onboarding-fawn.vercel.app/" target="_blank" rel="noopener">Data Onboarding →</a>
   </div>
 
   <section id="cardsGrid" class="cards-grid"></section>
+  <section id="plantsTableWrap" class="table-wrap" style="display:none;"></section>
 
   <footer class="footer">
     <p>Source: P&amp;O_Custom_Semantic_Model (PowerBI) · updated monthly via DAX pull, not a live connection.</p>

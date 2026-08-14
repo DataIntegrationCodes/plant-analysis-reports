@@ -49,30 +49,44 @@
     `;
   }
 
-  // Per-project card stats mirror the fleet summary tiles above, scoped to
-  // each plant's own current-year months.
+  // Per-project stats (shared by both the card grid and the table view)
+  // mirror the fleet summary tiles above, scoped to each plant's own
+  // current-year months.
   const plantData = await Promise.all(
     manifest.plants.map((p) => PAR.fetchJSON(`data/plants/${p.code}.json`).catch(() => null))
   );
 
-  const grid = document.getElementById("cardsGrid");
-  grid.innerHTML = manifest.plants.map((p, i) => {
-    const badgeClass = PAR.badgeClassForStatus(p.status);
-    const statusLabel = PAR.STATUS_LABEL[p.status] || p.status;
-
+  const plantStats = manifest.plants.map((p, i) => {
     const plant = plantData[i];
     const plantYearEntries = plant
       ? Object.keys(plant.months).filter((m) => m.startsWith(currentYear)).map((m) => plant.months[m])
       : [];
+    if (!plantYearEntries.length) return { plant: p, hasData: false };
+    return {
+      plant: p,
+      hasData: true,
+      ytdProduction: PAR._sumBy(plantYearEntries, (e) => e.production.actual),
+      capacityFactor: PAR._avgBy(plantYearEntries, (e) => e.production.capacityFactor),
+      contractual: PAR._avgBy(plantYearEntries, (e) => e.availability.contractual),
+      technical: PAR._avgBy(plantYearEntries, (e) => e.availability.technical),
+      pba: PAR._avgBy(plantYearEntries, (e) => e.availability.pba),
+    };
+  });
 
-    const statsHtml = plantYearEntries.length
+  const grid = document.getElementById("cardsGrid");
+  grid.innerHTML = plantStats.map((s) => {
+    const p = s.plant;
+    const badgeClass = PAR.badgeClassForStatus(p.status);
+    const statusLabel = PAR.STATUS_LABEL[p.status] || p.status;
+
+    const statsHtml = s.hasData
       ? `
         <div class="card-stats">
-          <div><div class="card-stat-label">YTD Production</div><div class="card-stat-value">${PAR.fmtGWh(PAR._sumBy(plantYearEntries, (e) => e.production.actual))}</div></div>
-          <div><div class="card-stat-label">Capacity Factor</div><div class="card-stat-value">${PAR.fmtPercent(PAR._avgBy(plantYearEntries, (e) => e.production.capacityFactor))}</div></div>
-          <div><div class="card-stat-label">TBA - Contractual</div><div class="card-stat-value">${PAR.fmtPercent(PAR._avgBy(plantYearEntries, (e) => e.availability.contractual))}</div></div>
-          <div><div class="card-stat-label">TBA - Technical</div><div class="card-stat-value">${PAR.fmtPercent(PAR._avgBy(plantYearEntries, (e) => e.availability.technical))}</div></div>
-          <div><div class="card-stat-label">PBA - Technical</div><div class="card-stat-value">${PAR.fmtPercent(PAR._avgBy(plantYearEntries, (e) => e.availability.pba))}</div></div>
+          <div><div class="card-stat-label">YTD Production</div><div class="card-stat-value">${PAR.fmtGWh(s.ytdProduction)}</div></div>
+          <div><div class="card-stat-label">Capacity Factor</div><div class="card-stat-value">${PAR.fmtPercent(s.capacityFactor)}</div></div>
+          <div><div class="card-stat-label">TBA - Contractual</div><div class="card-stat-value">${PAR.fmtPercent(s.contractual)}</div></div>
+          <div><div class="card-stat-label">TBA - Technical</div><div class="card-stat-value">${PAR.fmtPercent(s.technical)}</div></div>
+          <div><div class="card-stat-label">PBA - Technical</div><div class="card-stat-value">${PAR.fmtPercent(s.pba)}</div></div>
         </div>
       `
       : `<div class="card-meta-row"><span>No data yet</span></div>`;
@@ -90,4 +104,62 @@
       </a>
     `;
   }).join("");
+
+  const tableWrap = document.getElementById("plantsTableWrap");
+  tableWrap.innerHTML = `
+    <table class="plants-table">
+      <thead>
+        <tr>
+          <th>Project</th>
+          <th>Code</th>
+          <th class="num">MW</th>
+          <th>Status</th>
+          <th class="num">YTD Production</th>
+          <th class="num">Capacity Factor</th>
+          <th class="num">TBA - Contractual</th>
+          <th class="num">TBA - Technical</th>
+          <th class="num">PBA - Technical</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${plantStats.map((s) => {
+          const p = s.plant;
+          const badgeClass = PAR.badgeClassForStatus(p.status);
+          const statusLabel = PAR.STATUS_LABEL[p.status] || p.status;
+          const cells = s.hasData
+            ? `
+              <td class="num">${PAR.fmtGWh(s.ytdProduction)}</td>
+              <td class="num">${PAR.fmtPercent(s.capacityFactor)}</td>
+              <td class="num">${PAR.fmtPercent(s.contractual)}</td>
+              <td class="num">${PAR.fmtPercent(s.technical)}</td>
+              <td class="num">${PAR.fmtPercent(s.pba)}</td>
+            `
+            : `<td class="num" colspan="5">No data yet</td>`;
+          return `
+            <tr onclick="window.location.href='plant.html?code=${p.code}'">
+              <td>${p.name}</td>
+              <td>${p.code}</td>
+              <td class="num">${p.mwInstalled}</td>
+              <td><span class="badge ${badgeClass}">${statusLabel}</span></td>
+              ${cells}
+            </tr>
+          `;
+        }).join("")}
+      </tbody>
+    </table>
+  `;
+
+  // Cards/Table toggle, persisted across visits.
+  const cardsBtn = document.getElementById("viewCardsBtn");
+  const tableBtn = document.getElementById("viewTableBtn");
+  function setView(mode) {
+    grid.style.display = mode === "table" ? "none" : "";
+    tableWrap.style.display = mode === "table" ? "" : "none";
+    cardsBtn.classList.toggle("active", mode !== "table");
+    tableBtn.classList.toggle("active", mode === "table");
+    localStorage.setItem("par-plants-view", mode);
+  }
+  cardsBtn.addEventListener("click", () => setView("cards"));
+  tableBtn.addEventListener("click", () => setView("table"));
+  setView(localStorage.getItem("par-plants-view") === "table" ? "table" : "cards");
 })();
