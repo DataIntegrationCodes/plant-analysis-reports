@@ -51,12 +51,17 @@ table.kpi-matrix .kpi-green { color: #15803d; font-weight: 600; }
 
 /* Print report pagination: matrix alone on page 1, then charts full-width,
    one after another (not side by side - two-up made each chart too small to
-   read clearly), with generous spacing between them. Wind Resource is alone
-   on its own final page. */
+   read clearly), with generous spacing between them. */
 .page-break { break-before: page; }
 .chart-row { display: flex; flex-direction: column; gap: 32px; }
 .chart-row .section { margin-bottom: 0; break-inside: avoid; }
 .chart-container { position: relative; height: 300px; }
+
+/* Production, Availability and Wind Speed stacked together on one page -
+   tighter gap and shorter chart height than the default 2-per-page rows,
+   sized to fit an A4 page with 12mm margins. */
+.chart-row.stack-3 { gap: 14px; }
+.chart-row.stack-3 .chart-container { height: 235px; }
 
 .empty-note { color: #636b7a; font-style: italic; font-size: 13px; }
 
