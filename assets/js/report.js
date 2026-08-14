@@ -4,6 +4,7 @@
   const projectSelect = document.getElementById("projectSelect");
   const downloadBtn = document.getElementById("downloadPdf");
   const matrixWrap = document.getElementById("kpiMatrixWrap");
+  const summaryWrap = document.getElementById("projectSummary");
 
   const manifest = await PAR.fetchJSON("data/manifest.json");
   const plantsWithData = manifest.plants.filter((p) => p.monthCount > 0);
@@ -78,6 +79,7 @@
   async function loadProject(code) {
     expandedYears.clear();
     const plant = await PAR.fetchJSON(`data/plants/${code}.json`);
+    summaryWrap.innerHTML = PAR.buildProjectSummary(plant);
     renderMatrix(plant.months);
     downloadBtn.href = `reports/kpi-report/${code}.pdf`;
   }

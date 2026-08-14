@@ -234,6 +234,15 @@ button.btn.primary { background: var(--accent); color: white; border-color: var(
 
 .section-title { font-size: 13px; font-weight: 700; margin: 0 0 14px; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-muted); }
 
+.summary-callout {
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-left-width: 4px;
+}
+.summary-callout p { margin: 0; font-size: 14px; line-height: 1.6; }
+.summary-callout p + p { margin-top: 10px; }
+.summary-callout strong { color: var(--accent); }
+
 .metric-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));

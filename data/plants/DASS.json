@@ -1,6 +1,263 @@
 {
   "code": "DASS",
-  "months": {},
+  "months": {
+    "2025-12": {
+      "availability": {
+        "contractual": 0.9836374181107049,
+        "pba": 0.9788362824814575,
+        "technical": 0.9509426956177207
+      },
+      "consumption": {
+        "actual": 70.35753,
+        "ratioToProduction": 0.004708209087864519
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0009355494642823694,
+        "manufacturer": 0.025560674691100033,
+        "owner": 0.0,
+        "utility": 0.01968454785276511
+      },
+      "production": {
+        "actual": 14943.58655,
+        "capacityFactor": 0.29541987367724876,
+        "electricalLosses": -0.07338708330363954,
+        "historical": null,
+        "p50Target": null,
+        "p90Target": null
+      },
+      "wind": {
+        "deviation": -0.05929785511938527,
+        "forecastedWS": 7.06,
+        "measuredWS": 6.64135714285714,
+        "windIndex": null
+      }
+    },
+    "2026-01": {
+      "availability": {
+        "contractual": 0.9834408705000378,
+        "pba": 0.9809569100142524,
+        "technical": 0.936956103142515
+      },
+      "consumption": {
+        "actual": 68.21336,
+        "ratioToProduction": 0.0046153938974524775
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0002476580071096777,
+        "manufacturer": 0.04615728051009597,
+        "owner": 0.0,
+        "utility": 0.04233327150059828
+      },
+      "production": {
+        "actual": 14779.53161,
+        "capacityFactor": 0.3210746925029866,
+        "electricalLosses": 0.01826048241051049,
+        "historical": null,
+        "p50Target": 17358.0,
+        "p90Target": 15114.0
+      },
+      "wind": {
+        "deviation": -0.036881386495692205,
+        "forecastedWS": 6.9,
+        "measuredWS": 6.645518433179724,
+        "windIndex": null
+      }
+    },
+    "2026-02": {
+      "availability": {
+        "contractual": 0.9853431875986358,
+        "pba": 0.9822026170928659,
+        "technical": 0.952011677581436
+      },
+      "consumption": {
+        "actual": 39.318419999999996,
+        "ratioToProduction": 0.003320435619339517
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0009359267140769811,
+        "manufacturer": 0.07737913195037724,
+        "owner": 0.0,
+        "utility": 0.021348369296332242
+      },
+      "production": {
+        "actual": 11841.34388,
+        "capacityFactor": 0.28543491947751326,
+        "electricalLosses": 0.02050686758705985,
+        "historical": null,
+        "p50Target": 14820.0,
+        "p90Target": 12904.0
+      },
+      "wind": {
+        "deviation": -0.04804318540769812,
+        "forecastedWS": 6.59,
+        "measuredWS": 6.273395408163269,
+        "windIndex": null
+      }
+    },
+    "2026-03": {
+      "availability": {
+        "contractual": 0.9811011113508404,
+        "pba": 0.9839287360499911,
+        "technical": 0.947359233169683
+      },
+      "consumption": {
+        "actual": 42.56574,
+        "ratioToProduction": 0.004064925036226004
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0006910083348596491,
+        "manufacturer": 0.03249768836409648,
+        "owner": 1.1464099644620547e-05,
+        "utility": 0.008702496020552281
+      },
+      "production": {
+        "actual": 10471.46986,
+        "capacityFactor": 0.2286536218424645,
+        "electricalLosses": 0.02349075213782796,
+        "historical": null,
+        "p50Target": 16492.0,
+        "p90Target": 14359.0
+      },
+      "wind": {
+        "deviation": -0.14117653314427459,
+        "forecastedWS": 6.5,
+        "measuredWS": 5.582352534562215,
+        "windIndex": null
+      }
+    },
+    "2026-04": {
+      "availability": {
+        "contractual": 0.9864854009977738,
+        "pba": 0.9851500904688792,
+        "technical": 0.9746309383704737
+      },
+      "consumption": {
+        "actual": 42.107099999999996,
+        "ratioToProduction": 0.0026681197107212306
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0005720390534993451,
+        "manufacturer": 0.021403323884686215,
+        "owner": 0.0,
+        "utility": 0.00303771903636277
+      },
+      "production": {
+        "actual": 15781.563259999999,
+        "capacityFactor": 0.35512602418430345,
+        "electricalLosses": 0.02071741510099326,
+        "historical": null,
+        "p50Target": 14589.0,
+        "p90Target": 12702.0
+      },
+      "wind": {
+        "deviation": 0.03621145212335345,
+        "forecastedWS": 6.47,
+        "measuredWS": 6.7042880952380965,
+        "windIndex": null
+      }
+    },
+    "2026-05": {
+      "availability": {
+        "contractual": 0.9293771236938172,
+        "pba": 0.9268845132680709,
+        "technical": 0.8069896715494373
+      },
+      "consumption": {
+        "actual": 84.87060000000001,
+        "ratioToProduction": 0.00677759040640753
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0005317285110344311,
+        "manufacturer": 0.06376883495381303,
+        "owner": 0.013744175266478365,
+        "utility": 0.04395979562384829
+      },
+      "production": {
+        "actual": 12522.23798,
+        "capacityFactor": 0.27294513325652847,
+        "electricalLosses": 0.021661168429575137,
+        "historical": null,
+        "p50Target": 17000.0,
+        "p90Target": 14802.0
+      },
+      "wind": {
+        "deviation": -0.05087310050653069,
+        "forecastedWS": 7.26,
+        "measuredWS": 6.890661290322587,
+        "windIndex": null
+      }
+    },
+    "2026-06": {
+      "availability": {
+        "contractual": 0.6673031271983256,
+        "pba": 0.6621502636383063,
+        "technical": 0.6813506178151391
+      },
+      "consumption": {
+        "actual": 93.94210000000001,
+        "ratioToProduction": 0.008464699059967978
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0003589235565931364,
+        "manufacturer": 0.36397444473973123,
+        "owner": 2.805356917603216e-05,
+        "utility": 0.0016391251179406095
+      },
+      "production": {
+        "actual": 11098.10276,
+        "capacityFactor": 0.2505060315917111,
+        "electricalLosses": 0.023864514388404794,
+        "historical": null,
+        "p50Target": 20087.0,
+        "p90Target": 17489.0
+      },
+      "wind": {
+        "deviation": -0.1479842011186076,
+        "forecastedWS": 8.46,
+        "measuredWS": 7.20805365853658,
+        "windIndex": null
+      }
+    },
+    "2026-07": {
+      "availability": {
+        "contractual": 0.991645095642174,
+        "pba": 0.989578258522012,
+        "technical": 0.924495257829547
+      },
+      "consumption": {
+        "actual": 72.01088,
+        "ratioToProduction": 0.006708250373702318
+      },
+      "downtime": {
+        "bat": 0.0,
+        "environmental": 0.0007632053730949287,
+        "manufacturer": 0.009641420687922784,
+        "owner": 0.0015448289270270875,
+        "utility": 0.03331068334400713
+      },
+      "production": {
+        "actual": 10734.673869999999,
+        "capacityFactor": 0.23482269875405357,
+        "electricalLosses": 0.025332457165743352,
+        "historical": null,
+        "p50Target": 19349.0,
+        "p90Target": 16847.0
+      },
+      "wind": {
+        "deviation": -0.28380365943667984,
+        "forecastedWS": 7.76,
+        "measuredWS": 5.557683602771364,
+        "windIndex": null
+      }
+    }
+  },
   "mwInstalled": 63,
   "name": "Dassiesridge"
 }

@@ -22,6 +22,8 @@
     <div class="month">Full History</div>
   </div>
 
+  <div class="section summary-callout" id="projectSummary"></div>
+
   <div class="section">
     <div class="section-title">Full KPI Matrix</div>
     <div id="kpiMatrixWrap"></div>
@@ -79,6 +81,8 @@
   document.getElementById("plantName").textContent = plant.name;
   document.getElementById("plantMeta").textContent = `${plant.code} · ${plant.mwInstalled} MW installed`;
   document.title = `${plant.name} KPI Report`;
+
+  document.getElementById("projectSummary").innerHTML = PAR.buildProjectSummary(plant);
 
   const years = [...new Set(Object.keys(plant.months).map((k) => k.slice(0, 4)))].sort();
   const currentYear = years[years.length - 1];

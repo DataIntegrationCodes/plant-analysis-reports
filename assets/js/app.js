@@ -360,6 +360,77 @@ const PAR = {
     `;
   },
 
+  // Downtime-cause labels used specifically in the narrative summary (distinct
+  // from DOWNTIME_LABELS above, which drives the plant.html bar chart) -
+  // phrased as a clause completing "Losses were dominated by ...".
+  DOWNTIME_SUMMARY_LABELS: {
+    utility: "grid curtailments (recoverable losses)",
+    manufacturer: "manufacturer-related downtime",
+    owner: "owner-related downtime",
+    environmental: "environmental factors",
+    bat: "bat curtailment (environmental mitigation)",
+  },
+
+  // Narrative summary paragraph for the latest available month, shown above
+  // the KPI matrix on both report.html and the kpi-report PDF. Compares
+  // actual production against whichever of historical/P50/P90 it fell
+  // furthest behind, reports contractual vs technical availability, and
+  // closes with whichever single-month factor best explains the shortfall -
+  // the dominant downtime cause if one is material, otherwise the wind
+  // resource deviation.
+  buildProjectSummary(plant) {
+    const monthKeys = Object.keys(plant.months).sort();
+    if (!monthKeys.length) return "";
+    const latestKey = monthKeys[monthKeys.length - 1];
+    const entry = plant.months[latestKey];
+    const p = entry.production, a = entry.availability, dt = entry.downtime, w = entry.wind;
+
+    let productionSentence;
+    if (p.actual === null || p.actual === undefined) {
+      productionSentence = "no production data is available for the latest month.";
+    } else {
+      const actualGWh = p.actual / 1000;
+      const benchmarks = [p.historical, p.p50Target, p.p90Target].filter((v) => v !== null && v !== undefined);
+      if (benchmarks.length) {
+        const worstDeviation = Math.min(...benchmarks.map((b) => (p.actual - b) / b));
+        let qualifier;
+        if (worstDeviation >= 0) qualifier = "in line with or above";
+        else if (worstDeviation >= -0.1) qualifier = "slightly below";
+        else if (worstDeviation >= -0.25) qualifier = "below";
+        else qualifier = "significantly below";
+        productionSentence = `the plant produced ${actualGWh.toFixed(1)} GWh, ${qualifier} historical, P50 and P90 targets.`;
+      } else {
+        productionSentence = `the plant produced ${actualGWh.toFixed(1)} GWh.`;
+      }
+    }
+
+    let availabilitySentence = "";
+    if (a.contractual !== null && a.contractual !== undefined && a.technical !== null && a.technical !== undefined) {
+      const gap = a.contractual - a.technical;
+      const techPhrase = gap > 0.03
+        ? `while technical availability was lower at ${PAR.fmtPercent(a.technical)}`
+        : `while technical availability was ${PAR.fmtPercent(a.technical)}`;
+      availabilitySentence = ` Contractual availability averaged ${PAR.fmtPercent(a.contractual)}, ${techPhrase}.`;
+    }
+
+    // Only call out a downtime cause as "dominant" when it's a genuinely
+    // material loss driver (>5%) - a 1-3% blip shouldn't upstage a much
+    // larger wind resource shortfall in the same month.
+    let lossSentence = "";
+    const dtEntries = Object.entries(PAR.DOWNTIME_SUMMARY_LABELS)
+      .map(([key, label]) => ({ label, value: dt[key] }))
+      .filter((e) => e.value !== null && e.value !== undefined)
+      .sort((x, y) => y.value - x.value);
+    const dominant = dtEntries[0];
+    if (dominant && dominant.value > 0.05) {
+      lossSentence = ` Losses were dominated by ${dominant.label}.`;
+    } else if (w.deviation !== null && w.deviation !== undefined) {
+      lossSentence = ` The negative delta in production was visible in the wind resource deviation of ${PAR.fmtSigned(w.deviation * 100, 0)}%.`;
+    }
+
+    return `<p><strong>${plant.name}:</strong> ${productionSentence}${availabilitySentence}${lossSentence}</p>`;
+  },
+
   // Running-sum helper for cumulative chart series - resets at each year
   // boundary so a multi-year `months` array (full-history print PDF) behaves
   // like a fresh cumulative curve every January, matching a single-year
