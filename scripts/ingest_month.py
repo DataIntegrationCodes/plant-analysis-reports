@@ -31,10 +31,10 @@ PLANT_META = {
     "CHAA": {"name": "Chaba", "mwInstalled": 21.5, "status": "active"},
     "WESL": {"name": "Wesley", "mwInstalled": 34.5, "status": "active"},
     "WAAI": {"name": "Waainek", "mwInstalled": 24.6, "status": "active"},
-    "DASS": {"name": "Dassiesridge", "mwInstalled": 63, "status": "onboarding"},
-    "SANK": {"name": "San Kraal", "mwInstalled": 145.6, "status": "onboarding"},
-    "PHEZ": {"name": "Phezukomoya", "mwInstalled": 145.6, "status": "onboarding"},
-    "COLE": {"name": "Coleskop", "mwInstalled": 145.6, "status": "onboarding"},
+    "DASS": {"name": "Dassiesridge", "mwInstalled": 63, "status": "active"},
+    "SANK": {"name": "San Kraal", "mwInstalled": 145.6, "status": "active"},
+    "PHEZ": {"name": "Phezukomoya", "mwInstalled": 145.6, "status": "active"},
+    "COLE": {"name": "Coleskop", "mwInstalled": 145.6, "status": "active"},
 }
 
 CSV_FIELD_MAP = {

@@ -313,6 +313,11 @@ table.kpi-matrix .year-toggle:hover { color: var(--accent); }
 table.kpi-matrix .kpi-red { color: var(--red); font-weight: 600; }
 table.kpi-matrix .kpi-green { color: var(--green); font-weight: 600; }
 
+/* Generic red/green flagging for KPI values outside the matrix (fleet tiles,
+   plant cards, plants table) - availability < 90% or capacity factor < 40%. */
+.kpi-red { color: var(--red); }
+.kpi-green { color: var(--green); }
+
 .plants-table tbody tr { cursor: pointer; }
 
 /* Cards/Table toggle */

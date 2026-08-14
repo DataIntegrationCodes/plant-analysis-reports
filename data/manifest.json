@@ -11,14 +11,14 @@
       "code": "COLE",
       "name": "Coleskop",
       "mwInstalled": 145.6,
-      "status": "onboarding",
+      "status": "active",
       "monthCount": 6
     },
     {
       "code": "DASS",
       "name": "Dassiesridge",
       "mwInstalled": 63,
-      "status": "onboarding",
+      "status": "active",
       "monthCount": 8
     },
     {
@@ -32,14 +32,14 @@
       "code": "PHEZ",
       "name": "Phezukomoya",
       "mwInstalled": 145.6,
-      "status": "onboarding",
+      "status": "active",
       "monthCount": 6
     },
     {
       "code": "SANK",
       "name": "San Kraal",
       "mwInstalled": 145.6,
-      "status": "onboarding",
+      "status": "active",
       "monthCount": 8
     },
     {

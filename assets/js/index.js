@@ -1,3 +1,50 @@
+// Availability below 90% or capacity factor below 40% is flagged red,
+// otherwise green - thresholds are fixed, not relative to the fleet average.
+function kpiClass(value, threshold) {
+  if (value === null || value === undefined) return "";
+  return value < threshold ? "kpi-red" : "kpi-green";
+}
+
+// Fleet-wide narrative built only from what plantStats actually contains -
+// same "only assert what the data supports" rule as the per-project summary
+// in app.js's buildProjectSummary.
+function buildFleetInsight(plantStats, avgCapacityFactor) {
+  const withData = plantStats.filter((s) => s.hasData);
+  if (!withData.length) return "";
+
+  const byProduction = [...withData].sort((a, b) => b.ytdProduction - a.ytdProduction);
+  const topProducer = byProduction[0];
+
+  const byCapacityFactor = [...withData].sort((a, b) => b.capacityFactor - a.capacityFactor);
+  const topCF = byCapacityFactor[0];
+
+  let sentence = topProducer.plant.code === topCF.plant.code
+    ? `<strong>${topProducer.plant.name}</strong> led the fleet YTD with ${PAR.fmtGWh(topProducer.ytdProduction)} produced and the highest capacity factor at ${PAR.fmtPercent(topCF.capacityFactor)}.`
+    : `<strong>${topProducer.plant.name}</strong> led the fleet YTD with ${PAR.fmtGWh(topProducer.ytdProduction)} produced, and <strong>${topCF.plant.name}</strong> posted the highest capacity factor at ${PAR.fmtPercent(topCF.capacityFactor)}.`;
+
+  const lowAvailability = [];
+  for (const s of withData) {
+    const fields = [["contractual availability", s.contractual], ["technical availability", s.technical], ["PBA", s.pba]];
+    for (const [label, value] of fields) {
+      if (value !== null && value !== undefined && value < 0.9) {
+        lowAvailability.push(`${s.plant.name} ${label} (${PAR.fmtPercent(value)})`);
+      }
+    }
+  }
+  if (lowAvailability.length) {
+    sentence += ` ${lowAvailability.join(", ")} ${lowAvailability.length === 1 ? "sits" : "sit"} below the 90% availability threshold.`;
+  }
+
+  const lowCapacityFactor = withData.filter((s) => s.capacityFactor !== null && s.capacityFactor !== undefined && s.capacityFactor < 0.4);
+  if (lowCapacityFactor.length === withData.length) {
+    sentence += ` Every reporting plant remains below the 40% capacity factor threshold, in line with the fleet average of ${PAR.fmtPercent(avgCapacityFactor)}.`;
+  } else if (lowCapacityFactor.length) {
+    sentence += ` ${lowCapacityFactor.map((s) => s.plant.name).join(", ")} ${lowCapacityFactor.length === 1 ? "is" : "are"} below the 40% capacity factor threshold.`;
+  }
+
+  return `<p>${sentence}</p>`;
+}
+
 (async function () {
   PAR.initThemeToggle(document.getElementById("themeToggle"));
 
@@ -17,12 +64,13 @@
   document.getElementById("generatedAt").textContent = `Year to date: ${currentYear}`;
 
   const summaryGrid = document.getElementById("fleetSummary");
+  let avgCapacityFactor = null;
   if (yearEntries.length) {
     const ytdProduction = PAR._sumBy(yearEntries, (e) => e.production.actual);
     const avgContractual = PAR._avgBy(yearEntries, (e) => e.availability.contractual);
     const avgTechnical = PAR._avgBy(yearEntries, (e) => e.availability.technical);
     const avgPba = PAR._avgBy(yearEntries, (e) => e.availability.pba);
-    const avgCapacityFactor = PAR._avgBy(yearEntries, (e) => e.production.capacityFactor);
+    avgCapacityFactor = PAR._avgBy(yearEntries, (e) => e.production.capacityFactor);
 
     summaryGrid.innerHTML = `
       <div class="tile">
@@ -32,19 +80,19 @@
       </div>
       <div class="tile">
         <div class="tile-label">Capacity Factor</div>
-        <div class="tile-value">${PAR.fmtPercent(avgCapacityFactor)}</div>
+        <div class="tile-value ${kpiClass(avgCapacityFactor, 0.4)}">${PAR.fmtPercent(avgCapacityFactor)}</div>
       </div>
       <div class="tile">
         <div class="tile-label">TBA - Contractual</div>
-        <div class="tile-value">${PAR.fmtPercent(avgContractual)}</div>
+        <div class="tile-value ${kpiClass(avgContractual, 0.9)}">${PAR.fmtPercent(avgContractual)}</div>
       </div>
       <div class="tile">
         <div class="tile-label">TBA - Technical</div>
-        <div class="tile-value">${PAR.fmtPercent(avgTechnical)}</div>
+        <div class="tile-value ${kpiClass(avgTechnical, 0.9)}">${PAR.fmtPercent(avgTechnical)}</div>
       </div>
       <div class="tile">
         <div class="tile-label">PBA - Technical</div>
-        <div class="tile-value">${PAR.fmtPercent(avgPba)}</div>
+        <div class="tile-value ${kpiClass(avgPba, 0.9)}">${PAR.fmtPercent(avgPba)}</div>
       </div>
     `;
   }
@@ -73,6 +121,8 @@
     };
   });
 
+  document.getElementById("fleetInsight").innerHTML = buildFleetInsight(plantStats, avgCapacityFactor);
+
   const grid = document.getElementById("cardsGrid");
   grid.innerHTML = plantStats.map((s) => {
     const p = s.plant;
@@ -83,10 +133,10 @@
       ? `
         <div class="card-stats">
           <div><div class="card-stat-label">YTD Production</div><div class="card-stat-value">${PAR.fmtGWh(s.ytdProduction)}</div></div>
-          <div><div class="card-stat-label">Capacity Factor</div><div class="card-stat-value">${PAR.fmtPercent(s.capacityFactor)}</div></div>
-          <div><div class="card-stat-label">TBA - Contractual</div><div class="card-stat-value">${PAR.fmtPercent(s.contractual)}</div></div>
-          <div><div class="card-stat-label">TBA - Technical</div><div class="card-stat-value">${PAR.fmtPercent(s.technical)}</div></div>
-          <div><div class="card-stat-label">PBA - Technical</div><div class="card-stat-value">${PAR.fmtPercent(s.pba)}</div></div>
+          <div><div class="card-stat-label">Capacity Factor</div><div class="card-stat-value ${kpiClass(s.capacityFactor, 0.4)}">${PAR.fmtPercent(s.capacityFactor)}</div></div>
+          <div><div class="card-stat-label">TBA - Contractual</div><div class="card-stat-value ${kpiClass(s.contractual, 0.9)}">${PAR.fmtPercent(s.contractual)}</div></div>
+          <div><div class="card-stat-label">TBA - Technical</div><div class="card-stat-value ${kpiClass(s.technical, 0.9)}">${PAR.fmtPercent(s.technical)}</div></div>
+          <div><div class="card-stat-label">PBA - Technical</div><div class="card-stat-value ${kpiClass(s.pba, 0.9)}">${PAR.fmtPercent(s.pba)}</div></div>
         </div>
       `
       : `<div class="card-meta-row"><span>No data yet</span></div>`;
@@ -129,10 +179,10 @@
           const cells = s.hasData
             ? `
               <td class="num">${PAR.fmtGWh(s.ytdProduction)}</td>
-              <td class="num">${PAR.fmtPercent(s.capacityFactor)}</td>
-              <td class="num">${PAR.fmtPercent(s.contractual)}</td>
-              <td class="num">${PAR.fmtPercent(s.technical)}</td>
-              <td class="num">${PAR.fmtPercent(s.pba)}</td>
+              <td class="num ${kpiClass(s.capacityFactor, 0.4)}">${PAR.fmtPercent(s.capacityFactor)}</td>
+              <td class="num ${kpiClass(s.contractual, 0.9)}">${PAR.fmtPercent(s.contractual)}</td>
+              <td class="num ${kpiClass(s.technical, 0.9)}">${PAR.fmtPercent(s.technical)}</td>
+              <td class="num ${kpiClass(s.pba, 0.9)}">${PAR.fmtPercent(s.pba)}</td>
             `
             : `<td class="num" colspan="5">No data yet</td>`;
           return `
