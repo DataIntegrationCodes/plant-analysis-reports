@@ -439,7 +439,9 @@ const PAR = {
     const isPercent = kpi.unit === "percent" || kpi.unit === "percent3";
     if (letter === "A" && isPercent) return value < 0 ? "kpi-red" : "kpi-green";
     if (letter === "C" && isPercent) return value < 0.97 ? "kpi-red" : "kpi-green";
-    if (letter === "D") return value > 0.03 ? "kpi-red" : "";
+    // V1's "D. OLF - Losses" keeps its red-above-3% flag; V2's
+    // "D. Losses Breakdown" stays plain text - no color coding.
+    if (letter === "D") return category === "D. Losses Breakdown" ? "" : (value > 0.03 ? "kpi-red" : "");
     if (letter === "E" && isPercent) {
       if (value < 0) return "kpi-red";
       if (value < 0.9 && kpi.key !== "windSpeedDeviation") return "kpi-red";
@@ -747,6 +749,38 @@ const PAR = {
           { key: "bat", label: "Bat", color: "#16a34a" },
         ];
     const downtimeField = v2 ? "lossBreakdown" : "downtime";
+
+    // Draws the stack total just above each bar (Losses Breakdown / V2 only)
+    // - sums every visible dataset at that index, rather than any single
+    // segment's own value, so toggling a category off in the legend keeps
+    // the label correct.
+    const stackTotalLabelPlugin = {
+      id: "stackTotalLabel",
+      afterDatasetsDraw(chart) {
+        const { ctx, scales } = chart;
+        const meta0 = chart.getDatasetMeta(0);
+        if (!meta0 || !meta0.data.length) return;
+        ctx.save();
+        ctx.font = "bold 10px sans-serif";
+        ctx.fillStyle = "#1a1f2b";
+        ctx.textAlign = "center";
+        ctx.textBaseline = "bottom";
+        chart.data.labels.forEach((_, i) => {
+          let total = 0;
+          chart.data.datasets.forEach((ds, dsIndex) => {
+            if (!chart.isDatasetVisible(dsIndex)) return;
+            const v = ds.data[i];
+            if (typeof v === "number") total += v;
+          });
+          const point = meta0.data[i];
+          if (!point) return;
+          const y = scales.y.getPixelForValue(total);
+          ctx.fillText(PAR.fmtChartNum(total), point.x, y - 4);
+        });
+        ctx.restore();
+      },
+    };
+
     charts.downtime = new Chart(document.getElementById("chartDowntime"), {
       type: "bar",
       data: {
@@ -757,10 +791,12 @@ const PAR = {
           backgroundColor: v2 ? PAR.lossCategoryFill(d) : d.color,
         })),
       },
+      plugins: v2 ? [stackTotalLabelPlugin] : [],
       options: {
         responsive: true,
         maintainAspectRatio: false,
         interaction: { mode: "index", intersect: false },
+        layout: v2 ? { padding: { top: 16 } } : {},
         plugins: { tooltip: { callbacks: { label: (ctx) => `${ctx.dataset.label}: ${PAR.fmtChartNum(ctx.parsed.y)}` } } },
         scales: {
           x: { stacked: true, ticks: { maxRotation: 45, minRotation: 0 } },

@@ -78,8 +78,14 @@
     matrixWrap.querySelectorAll(".year-toggle").forEach((th) => {
       th.addEventListener("click", () => {
         const y = th.dataset.year;
-        if (expandedYears.has(y)) expandedYears.delete(y);
-        else expandedYears.add(y);
+        // Only one year can be expanded into months at a time - expanding a
+        // new one collapses whichever was previously expanded.
+        if (expandedYears.has(y)) {
+          expandedYears.delete(y);
+        } else {
+          expandedYears.clear();
+          expandedYears.add(y);
+        }
         renderMatrix(monthsMap);
       });
     });
