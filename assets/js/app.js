@@ -108,7 +108,8 @@ const PAR = {
     container.innerHTML = years.map((y) =>
       `<button type="button" class="view-switch-btn ${selectedYears.has(y) ? "active" : ""}" data-year="${y}">${y}</button>`
     ).join("");
-    container.querySelectorAll("button").forEach((btn) => {
+    const buttons = container.querySelectorAll("button");
+    buttons.forEach((btn) => {
       btn.addEventListener("click", () => {
         const y = btn.dataset.year;
         if (selectedYears.has(y)) {
@@ -117,6 +118,7 @@ const PAR = {
         } else {
           selectedYears.add(y);
         }
+        buttons.forEach((b) => b.classList.toggle("active", selectedYears.has(b.dataset.year)));
         onChange();
       });
     });
@@ -294,31 +296,44 @@ const PAR = {
     },
   ],
 
-  // Waterfall Axis[Step] -> lossBreakdown field, in the model's own Sort
-  // order. Only steps that ever produced a value are shown for a given
-  // plant (see activeLossCategories) - most plants only ever populate a
-  // handful of these, and Economic/Economic compensated/Grid
-  // compensated/Noise have never appeared for any of the 8 plants to date.
+  // Waterfall Axis[Step] -> lossBreakdown field. A stacked bar can carry at
+  // most ~8 solid hues before two of them become indistinguishable to a
+  // colorblind reader (see the dataviz skill's color-formula check 1/4) -
+  // past that, a "9th series" must not invent a new hue. So the 8 categories
+  // present for every one of the 8 plants' full history get solid fills, in
+  // the validated colorblind-safe order/hex from that skill's reference
+  // palette (reordering these breaks the validation, since the order itself
+  // is the CVD-safety mechanism - do not resequence). Every rarer or
+  // smaller-magnitude category instead carries its identity in a distinct
+  // *pattern shape* (see PAR.lossCategoryFill) on a shared neutral base
+  // color, rather than a 9th+ generated hue.
   LOSS_CATEGORY_DEFS: [
-    { key: "grid", label: "Grid", color: "#38bdf8" },
-    { key: "breakdown", label: "Breakdown", color: "#eab308" },
-    { key: "maintenance", label: "Maintenance", color: "#22c55e" },
-    { key: "partialPerf", label: "Partial Perf.", color: "#f97316" },
-    { key: "bop", label: "BoP", color: "#a855f7" },
-    { key: "environmental", label: "Environmental", color: "#16a34a" },
-    { key: "bat", label: "Bat", color: "#db2777" },
-    { key: "bird", label: "Bird", color: "#f43f5e" },
-    { key: "dataQuality", label: "Data Quality", color: "#64748b" },
-    { key: "economic", label: "Economic", color: "#84cc16" },
-    { key: "economicCompensated", label: "Economic Compensated", color: "#06b6d4" },
-    { key: "gridCompensated", label: "Grid Compensated", color: "#3b82f6" },
-    { key: "icing", label: "Icing", color: "#94a3b8" },
-    { key: "mcr", label: "MCR", color: "#fb7185" },
-    { key: "noise", label: "Noise", color: "#facc15" },
-    { key: "other", label: "Other", color: "#78716c" },
-    { key: "requestedShutdown", label: "Requested Shutdown", color: "#e11d48" },
-    { key: "electricalLosses", label: "Electrical Losses", color: "#7c3aed" },
+    { key: "grid", label: "Grid", color: "#2a78d6" },
+    { key: "breakdown", label: "Breakdown", color: "#eb6834" },
+    { key: "maintenance", label: "Maintenance", color: "#1baf7a" },
+    { key: "partialPerf", label: "Partial Perf.", color: "#eda100" },
+    { key: "environmental", label: "Environmental", color: "#e87ba4" },
+    { key: "dataQuality", label: "Data Quality", color: "#008300" },
+    { key: "requestedShutdown", label: "Requested Shutdown", color: "#4a3aa7" },
+    { key: "electricalLosses", label: "Electrical Losses", color: "#e34948" },
+    { key: "bop", label: "BoP", color: "#6b7280", pattern: "diagonal" },
+    { key: "bat", label: "Bat", color: "#6b7280", pattern: "diagonal-right-left" },
+    { key: "bird", label: "Bird", color: "#6b7280", pattern: "cross-dash" },
+    { key: "icing", label: "Icing", color: "#6b7280", pattern: "dot" },
+    { key: "mcr", label: "MCR", color: "#6b7280", pattern: "disc" },
+    { key: "other", label: "Other", color: "#6b7280", pattern: "triangle" },
+    { key: "economic", label: "Economic", color: "#6b7280", pattern: "ring" },
+    { key: "economicCompensated", label: "Economic Compensated", color: "#6b7280", pattern: "weave" },
+    { key: "gridCompensated", label: "Grid Compensated", color: "#6b7280", pattern: "square" },
+    { key: "noise", label: "Noise", color: "#6b7280", pattern: "zigzag" },
   ],
+
+  // Chart.js accepts a CanvasPattern anywhere it accepts a color. Patterned
+  // entries render as shape-on-gray so identity never depends on hue alone -
+  // safe for any color-vision deficiency, not just red/green.
+  lossCategoryFill(def) {
+    return def.pattern ? pattern.draw(def.pattern, def.color) : def.color;
+  },
 
   // Only the loss categories that have at least one non-null value across
   // the given months - keeps the V2 matrix/chart from showing a permanent
@@ -739,7 +754,7 @@ const PAR = {
         datasets: downtimeKeys.map((d) => ({
           label: d.label,
           data: months.map((m) => ((plant.months[m][downtimeField] || {})[d.key] || 0) * 100),
-          backgroundColor: d.color,
+          backgroundColor: v2 ? PAR.lossCategoryFill(d) : d.color,
         })),
       },
       options: {
