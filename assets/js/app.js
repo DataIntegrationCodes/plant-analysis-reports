@@ -100,6 +100,28 @@ const PAR = {
     return "badge-muted";
   },
 
+  // Multi-select year pill group (V2 KPI Matrix / Graphical View). `container`
+  // should already carry class="view-switch". `selectedYears` is a Set,
+  // mutated in place; at least one year always stays selected. Calls
+  // onChange() after every toggle so the caller can re-render.
+  renderYearFilter(container, years, selectedYears, onChange) {
+    container.innerHTML = years.map((y) =>
+      `<button type="button" class="view-switch-btn ${selectedYears.has(y) ? "active" : ""}" data-year="${y}">${y}</button>`
+    ).join("");
+    container.querySelectorAll("button").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const y = btn.dataset.year;
+        if (selectedYears.has(y)) {
+          if (selectedYears.size === 1) return;
+          selectedYears.delete(y);
+        } else {
+          selectedYears.add(y);
+        }
+        onChange();
+      });
+    });
+  },
+
   DOWNTIME_LABELS: {
     manufacturer: "Manufacturer",
     environmental: "Environmental",
@@ -272,6 +294,115 @@ const PAR = {
     },
   ],
 
+  // Waterfall Axis[Step] -> lossBreakdown field, in the model's own Sort
+  // order. Only steps that ever produced a value are shown for a given
+  // plant (see activeLossCategories) - most plants only ever populate a
+  // handful of these, and Economic/Economic compensated/Grid
+  // compensated/Noise have never appeared for any of the 8 plants to date.
+  LOSS_CATEGORY_DEFS: [
+    { key: "grid", label: "Grid", color: "#38bdf8" },
+    { key: "breakdown", label: "Breakdown", color: "#eab308" },
+    { key: "maintenance", label: "Maintenance", color: "#22c55e" },
+    { key: "partialPerf", label: "Partial Perf.", color: "#f97316" },
+    { key: "bop", label: "BoP", color: "#a855f7" },
+    { key: "environmental", label: "Environmental", color: "#16a34a" },
+    { key: "bat", label: "Bat", color: "#db2777" },
+    { key: "bird", label: "Bird", color: "#f43f5e" },
+    { key: "dataQuality", label: "Data Quality", color: "#64748b" },
+    { key: "economic", label: "Economic", color: "#84cc16" },
+    { key: "economicCompensated", label: "Economic Compensated", color: "#06b6d4" },
+    { key: "gridCompensated", label: "Grid Compensated", color: "#3b82f6" },
+    { key: "icing", label: "Icing", color: "#94a3b8" },
+    { key: "mcr", label: "MCR", color: "#fb7185" },
+    { key: "noise", label: "Noise", color: "#facc15" },
+    { key: "other", label: "Other", color: "#78716c" },
+    { key: "requestedShutdown", label: "Requested Shutdown", color: "#e11d48" },
+    { key: "electricalLosses", label: "Electrical Losses", color: "#7c3aed" },
+  ],
+
+  // Only the loss categories that have at least one non-null value across
+  // the given months - keeps the V2 matrix/chart from showing a permanent
+  // dash row for a category a project has simply never triggered.
+  activeLossCategories(monthsMap) {
+    const entries = Object.values(monthsMap);
+    return PAR.LOSS_CATEGORY_DEFS.filter((def) =>
+      entries.some((e) => e.lossBreakdown && e.lossBreakdown[def.key] !== null && e.lossBreakdown[def.key] !== undefined)
+    );
+  },
+
+  // V2 KPI category list: same as KPI_CATEGORIES except (a) Production drops
+  // Electrical Losses (it now lives under Losses Breakdown instead, so it
+  // isn't shown twice), (b) Availability's PBA row reads PBA_Rep instead of
+  // PBA, and (c) Downtime is replaced by a Losses Breakdown category built
+  // from the waterfall's business_macro_category breakdown. `monthsMap`
+  // should be pre-filtered to whatever years are in view, so the Losses
+  // Breakdown row set (and every KPI's Total) reflects that selection.
+  buildKpiCategoriesV2(monthsMap) {
+    return [
+      {
+        category: "A. Production",
+        kpis: [
+          { key: "measured", label: "Measured (MWh)", unit: "value",
+            aggregate: (es) => PAR._sumBy(es, (e) => e.production.actual) },
+          { key: "deviationHistorical", label: "Deviation Historical", unit: "percent",
+            aggregate: (es) => PAR._ratioOfSums(es,
+              (e) => (e.production.historical != null ? e.production.actual - e.production.historical : null),
+              (e) => e.production.historical) },
+          { key: "deviationP50", label: "Deviation P50", unit: "percent",
+            aggregate: (es) => {
+              const r = PAR._ratioOfSums(es, (e) => e.production.actual, (e) => e.production.p50Target);
+              return r === null ? null : r - 1;
+            } },
+          { key: "deviationP90", label: "Deviation P90", unit: "percent",
+            aggregate: (es) => {
+              const r = PAR._ratioOfSums(es, (e) => e.production.actual, (e) => e.production.p90Target);
+              return r === null ? null : r - 1;
+            } },
+          { key: "capacityFactor", label: "Capacity Factor", unit: "percent",
+            aggregate: (es) => PAR._avgBy(es, (e) => e.production.capacityFactor) },
+        ],
+      },
+      {
+        category: "B. Consumption",
+        kpis: [
+          { key: "consumption", label: "Measured (MWh)", unit: "value",
+            aggregate: (es) => PAR._sumBy(es, (e) => e.consumption.actual) },
+          { key: "ratioToProduction", label: "Ratio to Production", unit: "percent",
+            aggregate: (es) => PAR._avgBy(es, (e) => e.consumption.ratioToProduction) },
+        ],
+      },
+      {
+        category: "C. Availability",
+        kpis: [
+          { key: "contractual", label: "TBA - Contractual", unit: "percent",
+            aggregate: (es) => PAR._avgBy(es, (e) => e.availability.contractual) },
+          { key: "technical", label: "TBA - Technical", unit: "percent",
+            aggregate: (es) => PAR._avgBy(es, (e) => e.availability.technical) },
+          { key: "pba", label: "PBA - Technical", unit: "percent",
+            aggregate: (es) => PAR._avgBy(es, (e) => e.availability.pbaRep) },
+        ],
+      },
+      {
+        category: "D. Losses Breakdown",
+        kpis: PAR.activeLossCategories(monthsMap).map((def) => ({
+          key: def.key, label: def.label, unit: "percent3",
+          aggregate: (es) => PAR._avgBy(es, (e) => e.lossBreakdown && e.lossBreakdown[def.key]),
+        })),
+      },
+      {
+        category: "E. Wind",
+        kpis: [
+          { key: "forecastedWS", label: "Forecasted WS (m/s)", unit: "speed",
+            aggregate: (es) => PAR._avgBy(es, (e) => e.wind.forecastedWS) },
+          { key: "measuredWS", label: "Measured WS (m/s)", unit: "speed",
+            aggregate: (es) => PAR._avgBy(es, (e) => e.wind.measuredWS) },
+          { key: "windSpeedDeviation", label: "WindSpeed Deviation", unit: "percent",
+            aggregate: (es) => PAR._avgBy(es, (e) => e.wind.deviation) },
+        ],
+      },
+    ];
+  },
+
   fmtKpiValue(value, unit) {
     if (unit === "value") return PAR.fmtNumber(value, 0);
     if (unit === "percent") return PAR.fmtPercent(value, 1);
@@ -308,7 +439,14 @@ const PAR = {
   // pre-expands those years into their individual month columns - used by
   // the print PDF to always show the current year's months (no click needed,
   // unlike the interactive drill-down in report.js).
-  renderKpiMatrix(monthsMap, years, expandedYears = []) {
+  // `categories` defaults to the V1 static list; V2 pages pass
+  // `buildKpiCategoriesV2(monthsMap)` instead. `monthsMap`/`years` should
+  // already be filtered to whatever the caller wants included - the Total
+  // column always sums `Object.values(monthsMap)`, so a pre-filtered
+  // monthsMap (V2's year multi-select) makes Total recompute to that
+  // selection for free, while V1's always-full monthsMap keeps Total as the
+  // full-history figure it has always been.
+  renderKpiMatrix(monthsMap, years, expandedYears = [], categories = PAR.KPI_CATEGORIES) {
     const expanded = expandedYears instanceof Set ? expandedYears : new Set(expandedYears);
     const monthKeysByYear = {};
     const monthsByYear = {};
@@ -330,7 +468,7 @@ const PAR = {
       return cells.join("");
     }).join("");
 
-    const rows = PAR.KPI_CATEGORIES.map((cat) => {
+    const rows = categories.map((cat) => {
       const catRow = `<tr><td colspan="${totalCols + 2}"><strong>${cat.category}</strong></td></tr>`;
       const kpiRows = cat.kpis.map((kpi) => {
         const cells = years.map((y) => {
@@ -443,8 +581,13 @@ const PAR = {
   // (chartProduction/chartTurbines/chartAvailability/chartWind/chartDowntime).
   // Shared between report.html (interactive) and print/report-print.html
   // (static, for PDF export). Returns the Chart.js instances so callers can
-  // destroy() them before rebuilding (e.g. on project switch).
-  buildReportCharts(plant, turbineData) {
+  // destroy() them before rebuilding (e.g. on project switch). Pass
+  // `{ v2: true }` for the V2 pages: renames the Availability legend to match
+  // the KPI Matrix, adds a PBA_Rep-based "PBA - Technical" series, and
+  // replaces the fixed 5-category Downtime chart with the waterfall-derived
+  // Losses Breakdown (only the categories active for this plant).
+  buildReportCharts(plant, turbineData, options = {}) {
+    const v2 = !!options.v2;
     const months = Object.keys(plant.months).sort();
     const monthLabels = months.map((m) => PAR.monthOnlyLabel(m));
     const charts = {};
@@ -513,26 +656,39 @@ const PAR = {
 
     const ytdContractual = [];
     const ytdTechnical = [];
+    const ytdPba = [];
     const yearRunning = {};
     for (const m of months) {
       const y = m.slice(0, 4);
-      yearRunning[y] = yearRunning[y] || { c: [], t: [] };
+      yearRunning[y] = yearRunning[y] || { c: [], t: [], p: [] };
       const entry = plant.months[m];
       if (entry.availability.contractual != null) yearRunning[y].c.push(entry.availability.contractual);
       if (entry.availability.technical != null) yearRunning[y].t.push(entry.availability.technical);
+      if (v2 && entry.availability.pbaRep != null) yearRunning[y].p.push(entry.availability.pbaRep);
       const avg = (arr) => (arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : null);
       ytdContractual.push(avg(yearRunning[y].c));
       ytdTechnical.push(avg(yearRunning[y].t));
+      if (v2) ytdPba.push(avg(yearRunning[y].p));
     }
-    charts.availability = new Chart(document.getElementById("chartAvailability"), {
-      data: {
-        labels: monthLabels,
-        datasets: [
+    const availabilityDatasets = v2
+      ? [
+          { type: "bar", label: "TBA - Contractual", data: months.map((m) => plant.months[m].availability.contractual * 100), backgroundColor: "#6b7280" },
+          { type: "bar", label: "TBA - Technical", data: months.map((m) => plant.months[m].availability.technical * 100), backgroundColor: "#eab308" },
+          { type: "bar", label: "PBA - Technical", data: months.map((m) => (plant.months[m].availability.pbaRep != null ? plant.months[m].availability.pbaRep * 100 : null)), backgroundColor: "#8b5cf6" },
+          { type: "line", label: "TBA - Contractual YTD", data: ytdContractual.map((v) => v * 100), borderColor: "#111827", pointRadius: 0 },
+          { type: "line", label: "TBA - Technical YTD", data: ytdTechnical.map((v) => v * 100), borderColor: "#b45309", pointRadius: 0 },
+          { type: "line", label: "PBA - Technical YTD", data: ytdPba.map((v) => (v != null ? v * 100 : null)), borderColor: "#6d28d9", pointRadius: 0 },
+        ]
+      : [
           { type: "bar", label: "Contractual", data: months.map((m) => plant.months[m].availability.contractual * 100), backgroundColor: "#6b7280" },
           { type: "bar", label: "Technical", data: months.map((m) => plant.months[m].availability.technical * 100), backgroundColor: "#eab308" },
           { type: "line", label: "Contractual YTD", data: ytdContractual.map((v) => v * 100), borderColor: "#111827", pointRadius: 0 },
           { type: "line", label: "Technical YTD", data: ytdTechnical.map((v) => v * 100), borderColor: "#b45309", pointRadius: 0 },
-        ],
+        ];
+    charts.availability = new Chart(document.getElementById("chartAvailability"), {
+      data: {
+        labels: monthLabels,
+        datasets: availabilityDatasets,
       },
       options: {
         responsive: true,
@@ -566,20 +722,23 @@ const PAR = {
       },
     });
 
-    const downtimeKeys = [
-      { key: "manufacturer", label: "Manufacturer", color: "#38bdf8" },
-      { key: "owner", label: "Owner", color: "#eab308" },
-      { key: "environmental", label: "Environmental", color: "#22c55e" },
-      { key: "utility", label: "Utility", color: "#f97316" },
-      { key: "bat", label: "Bat", color: "#16a34a" },
-    ];
+    const downtimeKeys = v2
+      ? PAR.activeLossCategories(plant.months)
+      : [
+          { key: "manufacturer", label: "Manufacturer", color: "#38bdf8" },
+          { key: "owner", label: "Owner", color: "#eab308" },
+          { key: "environmental", label: "Environmental", color: "#22c55e" },
+          { key: "utility", label: "Utility", color: "#f97316" },
+          { key: "bat", label: "Bat", color: "#16a34a" },
+        ];
+    const downtimeField = v2 ? "lossBreakdown" : "downtime";
     charts.downtime = new Chart(document.getElementById("chartDowntime"), {
       type: "bar",
       data: {
         labels: monthLabels,
         datasets: downtimeKeys.map((d) => ({
           label: d.label,
-          data: months.map((m) => (plant.months[m].downtime[d.key] || 0) * 100),
+          data: months.map((m) => ((plant.months[m][downtimeField] || {})[d.key] || 0) * 100),
           backgroundColor: d.color,
         })),
       },

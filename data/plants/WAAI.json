@@ -5,6 +5,7 @@
       "availability": {
         "contractual": 0.9769396148849849,
         "pba": 0.9851654579967307,
+        "pbaRep": 0.9853045438199446,
         "technical": 0.9750896140763998
       },
       "consumption": {
@@ -17,6 +18,14 @@
         "manufacturer": 0.014814554761166044,
         "owner": 1.943870048419529e-05,
         "utility": 0.0
+      },
+      "lossBreakdown": {
+        "bop": 0.00010960304561123689,
+        "breakdown": 0.0041108250931722245,
+        "dataQuality": 0.00025649343927819444,
+        "electricalLosses": 0.010936872695770993,
+        "environmental": 0.00016143974385560188,
+        "maintenance": 0.010391635671032993
       },
       "production": {
         "actual": 7126.404,
@@ -37,6 +46,7 @@
       "availability": {
         "contractual": 0.9681143309886674,
         "pba": 0.9782410668239807,
+        "pbaRep": 0.9778803414755968,
         "technical": 0.9643132048817791
       },
       "consumption": {
@@ -49,6 +59,12 @@
         "manufacturer": 0.02175808572296413,
         "owner": 0.0,
         "utility": 0.0
+      },
+      "lossBreakdown": {
+        "bop": 0.0003596778853993956,
+        "breakdown": 0.015510830736941414,
+        "electricalLosses": 0.01090747478478372,
+        "maintenance": 0.006196500509008164
       },
       "production": {
         "actual": 6411.773,
@@ -69,6 +85,7 @@
       "availability": {
         "contractual": 0.9147214410471246,
         "pba": 0.9486569073200023,
+        "pbaRep": 0.9482312961555198,
         "technical": 0.9171220701258215
       },
       "consumption": {
@@ -81,6 +98,13 @@
         "manufacturer": 0.05135853013758422,
         "owner": 1.090847931331733e-06,
         "utility": 5.612424000742508e-05
+      },
+      "lossBreakdown": {
+        "bop": 0.00035996862639065734,
+        "breakdown": 0.04163636913241362,
+        "electricalLosses": 0.012014438825033264,
+        "environmental": 0.00011895408309633849,
+        "maintenance": 0.009636112545665005
       },
       "production": {
         "actual": 5339.814,
@@ -101,6 +125,7 @@
       "availability": {
         "contractual": 0.9534542186971104,
         "pba": 0.983138155950721,
+        "pbaRep": 0.9798335627892771,
         "technical": 0.9504603630883488
       },
       "consumption": {
@@ -113,6 +138,13 @@
         "manufacturer": 0.01908479324482541,
         "owner": 0.0,
         "utility": 0.0009816162613264393
+      },
+      "lossBreakdown": {
+        "breakdown": 0.011787250603981453,
+        "electricalLosses": 0.011400192829907695,
+        "grid": 0.0009816865682392211,
+        "maintenance": 0.005019648095687142,
+        "partialPerf": 0.0022232621423557714
       },
       "production": {
         "actual": 8190.653,
@@ -133,6 +165,7 @@
       "availability": {
         "contractual": 0.9836414656556921,
         "pba": 0.9985054369225371,
+        "pbaRep": 0.9904317564165992,
         "technical": 0.9811726240479391
       },
       "consumption": {
@@ -145,6 +178,13 @@
         "manufacturer": 0.007266702566699005,
         "owner": 0.0,
         "utility": 0.0022274383824243457
+      },
+      "lossBreakdown": {
+        "breakdown": 0.0010493808800111253,
+        "electricalLosses": 0.010744339225171401,
+        "grid": 0.0022742058490369857,
+        "maintenance": 0.0004257696206033307,
+        "partialPerf": 0.0058934669715807915
       },
       "production": {
         "actual": 6946.025,
@@ -165,6 +205,7 @@
       "availability": {
         "contractual": 0.9791405771083728,
         "pba": 0.9944904572103558,
+        "pbaRep": 0.9944506587541896,
         "technical": 0.9783354586709104
       },
       "consumption": {
@@ -177,6 +218,12 @@
         "manufacturer": 0.005509187424151198,
         "owner": 0.0,
         "utility": 0.0
+      },
+      "lossBreakdown": {
+        "breakdown": 0.0039028170387624198,
+        "electricalLosses": 0.011018852725383188,
+        "maintenance": 0.00154822440080207,
+        "requestedShutdown": 0.00011489001687250469
       },
       "production": {
         "actual": 9011.776,
@@ -197,6 +244,7 @@
       "availability": {
         "contractual": 0.9469693001915651,
         "pba": 0.9825764140034293,
+        "pbaRep": 0.9767726106714162,
         "technical": 0.9419083767373264
       },
       "consumption": {
@@ -209,6 +257,14 @@
         "manufacturer": 0.017471011663647652,
         "owner": 0.0,
         "utility": 0.005617867888746864
+      },
+      "lossBreakdown": {
+        "bop": 0.00015138312634880248,
+        "breakdown": 0.015570224879586005,
+        "electricalLosses": 0.010871638908089485,
+        "environmental": 0.00021167463919416268,
+        "grid": 0.005618016021402847,
+        "maintenance": 0.0017389037201955698
       },
       "production": {
         "actual": 9410.386,
@@ -229,6 +285,7 @@
       "availability": {
         "contractual": 0.9599986667180596,
         "pba": 0.9670087833194116,
+        "pbaRep": 0.9669120995165578,
         "technical": 0.9576629751997611
       },
       "consumption": {
@@ -241,6 +298,14 @@
         "manufacturer": 0.033055576702154116,
         "owner": 3.898917815149876e-06,
         "utility": 0.00012442195231696072
+      },
+      "lossBreakdown": {
+        "breakdown": 0.0264489854797845,
+        "dataQuality": 0.0028863868308789103,
+        "electricalLosses": 0.010614901195150182,
+        "environmental": 0.00017762121141424002,
+        "grid": 0.00012451301468075182,
+        "maintenance": 0.0036191704549048006
       },
       "production": {
         "actual": 8227.807,
@@ -261,6 +326,7 @@
       "availability": {
         "contractual": 0.931690393315542,
         "pba": 0.9730625794616045,
+        "pbaRep": 0.9724996699822324,
         "technical": 0.9300091708140432
       },
       "consumption": {
@@ -273,6 +339,14 @@
         "manufacturer": 0.027174878216481346,
         "owner": 0.0,
         "utility": 0.0
+      },
+      "lossBreakdown": {
+        "bop": 0.0003147306825058387,
+        "breakdown": 0.024073197773513903,
+        "electricalLosses": 0.01150490812820707,
+        "maintenance": 0.002480573615484309,
+        "partialPerf": 0.00024611503147538825,
+        "requestedShutdown": 0.0003890301628564821
       },
       "production": {
         "actual": 7397.695,
@@ -293,6 +367,7 @@
       "availability": {
         "contractual": 0.9239670527614594,
         "pba": 0.9540448066758587,
+        "pbaRep": 0.9521053081876132,
         "technical": 0.9217840453255676
       },
       "consumption": {
@@ -305,6 +380,15 @@
         "manufacturer": 0.046007254811482635,
         "owner": 0.001550271474775897,
         "utility": 0.0001477305297484277
+      },
+      "lossBreakdown": {
+        "bop": 0.00017984150821986618,
+        "breakdown": 0.04397079265336843,
+        "electricalLosses": 0.011105314311319992,
+        "grid": 0.00014835545818582776,
+        "maintenance": 0.0006039028972725383,
+        "partialPerf": 0.0016181822970448255,
+        "requestedShutdown": 0.0015658246733813582
       },
       "production": {
         "actual": 7771.077,
@@ -325,6 +409,7 @@
       "availability": {
         "contractual": 0.9089892322357199,
         "pba": 0.9637612882547814,
+        "pbaRep": 0.9635248798113879,
         "technical": 0.9050826131847994
       },
       "consumption": {
@@ -337,6 +422,14 @@
         "manufacturer": 0.03593307143755076,
         "owner": 0.0003892272101642699,
         "utility": 1.1740043592219767e-05
+      },
+      "lossBreakdown": {
+        "bop": 0.00012533666748793597,
+        "breakdown": 0.02953082688017916,
+        "dataQuality": 0.00010583554880707997,
+        "electricalLosses": 0.01079549321331428,
+        "maintenance": 0.005183232017635486,
+        "requestedShutdown": 0.0014411347442094236
       },
       "production": {
         "actual": 7717.903,
@@ -357,6 +450,7 @@
       "availability": {
         "contractual": 0.8243105279373678,
         "pba": 0.9385428101005341,
+        "pbaRep": 0.9382429910901595,
         "technical": 0.8252465926063312
       },
       "consumption": {
@@ -369,6 +463,14 @@
         "manufacturer": 0.06141936991275758,
         "owner": 0.0,
         "utility": 7.107409028304958e-05
+      },
+      "lossBreakdown": {
+        "bop": 0.00020641455477608432,
+        "breakdown": 0.06018395595454645,
+        "dataQuality": 0.00046325366163506965,
+        "electricalLosses": 0.012471239475183015,
+        "environmental": 0.00021681548868734727,
+        "requestedShutdown": 0.0007852652676159853
       },
       "production": {
         "actual": 6708.659,
@@ -389,6 +491,7 @@
       "availability": {
         "contractual": 0.8544202328306195,
         "pba": 0.9596645631065523,
+        "pbaRep": 0.9592741170725547,
         "technical": 0.859354568025687
       },
       "consumption": {
@@ -401,6 +504,14 @@
         "manufacturer": 0.04036170939650539,
         "owner": 0.0,
         "utility": 2.088366826223922e-05
+      },
+      "lossBreakdown": {
+        "bop": 0.0003074493156647199,
+        "breakdown": 0.03527439825860522,
+        "electricalLosses": 0.012268107982325447,
+        "environmental": 0.0003727584986820521,
+        "maintenance": 0.004901926342775187,
+        "requestedShutdown": 0.00012385501395238517
       },
       "production": {
         "actual": 5869.682,
@@ -421,6 +532,7 @@
       "availability": {
         "contractual": 0.787157332599492,
         "pba": 0.8810575842484663,
+        "pbaRep": 0.8808354788227377,
         "technical": 0.7979357957692625
       },
       "consumption": {
@@ -433,6 +545,13 @@
         "manufacturer": 0.11891443881969137,
         "owner": 0.0,
         "utility": 0.0
+      },
+      "lossBreakdown": {
+        "bop": 0.00021199852666120103,
+        "breakdown": 0.11601707489837586,
+        "electricalLosses": -0.01681335726952378,
+        "maintenance": 0.002820438350163667,
+        "requestedShutdown": 0.0001174782253407701
       },
       "production": {
         "actual": 4681.652,
@@ -453,6 +572,7 @@
       "availability": {
         "contractual": 0.9045225853845249,
         "pba": 0.9600197255548143,
+        "pbaRep": 0.9597238568849303,
         "technical": 0.9041589248711916
       },
       "consumption": {
@@ -465,6 +585,14 @@
         "manufacturer": 0.039984236070943514,
         "owner": 0.0,
         "utility": 0.0
+      },
+      "lossBreakdown": {
+        "bop": 0.00027664058113791576,
+        "breakdown": 0.0233232749782843,
+        "electricalLosses": 0.011070163896928572,
+        "environmental": 0.00019260782624044766,
+        "maintenance": 0.016424947627762924,
+        "requestedShutdown": 0.0002343444771252352
       },
       "production": {
         "actual": 8386.895,
@@ -485,6 +613,7 @@
       "availability": {
         "contractual": 0.8109891206799574,
         "pba": 0.9612629699793565,
+        "pbaRep": 0.9599849964281846,
         "technical": 0.8158430454282408
       },
       "consumption": {
@@ -497,6 +626,14 @@
         "manufacturer": 0.03979865672019576,
         "owner": 0.0,
         "utility": 5.2210678074072995e-05
+      },
+      "lossBreakdown": {
+        "bop": 0.0001518281520754949,
+        "breakdown": 0.031629267323883575,
+        "electricalLosses": 0.013510739861371553,
+        "maintenance": 0.00688983625809316,
+        "partialPerf": 0.0010738312870359713,
+        "requestedShutdown": 0.00022255795168318356
       },
       "production": {
         "actual": 6705.34,
@@ -517,6 +654,7 @@
       "availability": {
         "contractual": 0.8406061396476794,
         "pba": 0.9705038431811597,
+        "pbaRep": 0.9677427582095051,
         "technical": 0.8436158182600484
       },
       "consumption": {
@@ -529,6 +667,15 @@
         "manufacturer": 0.03106748400442719,
         "owner": 0.0,
         "utility": 0.0010826519175054974
+      },
+      "lossBreakdown": {
+        "bop": 0.0001261007178791755,
+        "breakdown": 0.02856010670124999,
+        "electricalLosses": 0.013000395036561889,
+        "grid": 0.0010827596026806838,
+        "maintenance": 0.0007013141195253617,
+        "partialPerf": 0.0015722607072664746,
+        "requestedShutdown": 0.0002161123130606762
       },
       "production": {
         "actual": 6244.628,
@@ -549,6 +696,7 @@
       "availability": {
         "contractual": 0.8874445586146619,
         "pba": 0.9078483024885654,
+        "pbaRep": 0.9069243202870946,
         "technical": 0.8876458393614969
       },
       "consumption": {
@@ -561,6 +709,15 @@
         "manufacturer": 0.09235791777440949,
         "owner": 0.00021022493517020068,
         "utility": 0.0004491526285376787
+      },
+      "lossBreakdown": {
+        "breakdown": 0.09173316383213202,
+        "electricalLosses": 0.009246953578988089,
+        "environmental": 0.00037178249917770137,
+        "grid": 0.00044935786985316454,
+        "maintenance": 0.00012210443541677484,
+        "partialPerf": 0.00041869177408511974,
+        "requestedShutdown": 0.0003364990396086835
       },
       "production": {
         "actual": 10888.83,
@@ -581,6 +738,7 @@
       "availability": {
         "contractual": 0.889906582042079,
         "pba": 0.965351418171289,
+        "pbaRep": 0.9651474648604528,
         "technical": 0.891072060605212
       },
       "consumption": {
@@ -593,6 +751,12 @@
         "manufacturer": 0.034641762648506325,
         "owner": 0.0,
         "utility": 7.199033279334312e-05
+      },
+      "lossBreakdown": {
+        "breakdown": 0.03185780035483974,
+        "electricalLosses": 0.01183922709389092,
+        "environmental": 0.0010705707225105688,
+        "maintenance": 0.002703616689487108
       },
       "production": {
         "actual": 9710.121,
@@ -613,6 +777,7 @@
       "availability": {
         "contractual": 0.9170895033291168,
         "pba": 0.9609475120661264,
+        "pbaRep": 0.9608395413558001,
         "technical": 0.9171414440057497
       },
       "consumption": {
@@ -625,6 +790,13 @@
         "manufacturer": 0.0391342415532429,
         "owner": 0.0,
         "utility": 8.370414476045905e-06
+      },
+      "lossBreakdown": {
+        "breakdown": 0.029698247642374467,
+        "electricalLosses": 0.010972940740774125,
+        "environmental": 0.0001245176436709815,
+        "maintenance": 0.009145012348275144,
+        "requestedShutdown": 0.00022595864867742084
       },
       "production": {
         "actual": 9052.035,
@@ -645,6 +817,7 @@
       "availability": {
         "contractual": 0.8983955369722851,
         "pba": 0.9666667225923138,
+        "pbaRep": 0.966503722303482,
         "technical": 0.897764476417824
       },
       "consumption": {
@@ -657,6 +830,13 @@
         "manufacturer": 0.033347357500497395,
         "owner": 0.0,
         "utility": 8.586698185353104e-05
+      },
+      "lossBreakdown": {
+        "breakdown": 0.027303640834094093,
+        "electricalLosses": 0.011895220717110851,
+        "environmental": 0.0005168036662199793,
+        "maintenance": 0.0058412395239218155,
+        "requestedShutdown": 0.0001953312847477878
       },
       "production": {
         "actual": 8867.776,
@@ -677,6 +857,7 @@
       "availability": {
         "contractual": 0.9814132054138078,
         "pba": 0.9891430427590158,
+        "pbaRep": 0.9890654622744839,
         "technical": 0.9783404774305556
       },
       "consumption": {
@@ -689,6 +870,11 @@
         "manufacturer": 0.010855486994679668,
         "owner": 0.0,
         "utility": 7.56336595920227e-07
+      },
+      "lossBreakdown": {
+        "breakdown": 0.009423557244677166,
+        "electricalLosses": 0.010740307029228763,
+        "maintenance": 0.0013421165954357024
       },
       "production": {
         "actual": 8676.359,
@@ -709,6 +895,7 @@
       "availability": {
         "contractual": 0.89725554250257,
         "pba": 0.96912790495993,
+        "pbaRep": 0.9689456543663517,
         "technical": 0.9015559999517747
       },
       "consumption": {
@@ -721,6 +908,14 @@
         "manufacturer": 0.03086393774667211,
         "owner": 0.0,
         "utility": 2.904763647568802e-06
+      },
+      "lossBreakdown": {
+        "bop": 0.00017257339291283817,
+        "breakdown": 0.029408975382613386,
+        "electricalLosses": 0.012330777353545324,
+        "environmental": 0.00013601033782568474,
+        "maintenance": 0.001328703400700106,
+        "requestedShutdown": 0.00014396234240061717
       },
       "production": {
         "actual": 6389.935,
@@ -741,6 +936,7 @@
       "availability": {
         "contractual": 0.9503607941874612,
         "pba": 0.9792291909571538,
+        "pbaRep": 0.9790934738518902,
         "technical": 0.9488379799973865
       },
       "consumption": {
@@ -753,6 +949,13 @@
         "manufacturer": 0.020767339670860623,
         "owner": 0.0,
         "utility": 0.0
+      },
+      "lossBreakdown": {
+        "bop": 0.00013468875301363926,
+        "breakdown": 0.01976201057532221,
+        "electricalLosses": 0.011430976976840328,
+        "maintenance": 0.0008330180364182231,
+        "requestedShutdown": 0.00018351163471493168
       },
       "production": {
         "actual": 7359.99,
@@ -773,6 +976,7 @@
       "availability": {
         "contractual": 0.9636169351601229,
         "pba": 0.9898352593819304,
+        "pbaRep": 0.9896477087928262,
         "technical": 0.9609337262918161
       },
       "consumption": {
@@ -785,6 +989,13 @@
         "manufacturer": 0.010174247655248008,
         "owner": 0.0,
         "utility": 5.24899666575985e-05
+      },
+      "lossBreakdown": {
+        "bop": 0.00012402873513333497,
+        "breakdown": 0.0070253996722539165,
+        "electricalLosses": 0.011112161925242496,
+        "maintenance": 0.0029083064991917637,
+        "requestedShutdown": 0.00023739126239754696
       },
       "production": {
         "actual": 6702.849,
@@ -805,6 +1016,7 @@
       "availability": {
         "contractual": 0.8547049395946793,
         "pba": 0.9290070658115847,
+        "pbaRep": 0.9279170917877969,
         "technical": 0.8556145868255108
       },
       "consumption": {
@@ -817,6 +1029,13 @@
         "manufacturer": 0.07205868799075835,
         "owner": 0.0,
         "utility": 0.0
+      },
+      "lossBreakdown": {
+        "breakdown": 0.060794406044863386,
+        "electricalLosses": 0.011192879501456011,
+        "maintenance": 0.00984998358224455,
+        "partialPerf": 0.0010850199697968914,
+        "requestedShutdown": 0.00035686956327614274
       },
       "production": {
         "actual": 6617.085,
@@ -837,6 +1056,7 @@
       "availability": {
         "contractual": 0.9377370842436381,
         "pba": 0.956764421371452,
+        "pbaRep": 0.9539627584711711,
         "technical": 0.916927899035724
       },
       "consumption": {
@@ -849,6 +1069,15 @@
         "manufacturer": 0.04388444773625887,
         "owner": 0.0,
         "utility": 8.761600273011321e-05
+      },
+      "lossBreakdown": {
+        "bat": 0.0018008746366980036,
+        "bop": 0.0002570464873963261,
+        "breakdown": 0.027531754484703137,
+        "electricalLosses": 0.010993441736263217,
+        "maintenance": 0.015500155631151497,
+        "partialPerf": 0.0006528421072151598,
+        "requestedShutdown": 0.00019525784433008974
       },
       "production": {
         "actual": 6948.186,
@@ -869,6 +1098,7 @@
       "availability": {
         "contractual": 0.9881310756347061,
         "pba": 0.9869519638236839,
+        "pbaRep": 0.9832436176266205,
         "technical": 0.9366776138599536
       },
       "consumption": {
@@ -881,6 +1111,13 @@
         "manufacturer": 0.013059577272597631,
         "owner": 0.0,
         "utility": 0.0
+      },
+      "lossBreakdown": {
+        "bat": 0.003424468211042473,
+        "bop": 0.00027056708621842654,
+        "breakdown": 0.011576671246706593,
+        "electricalLosses": 0.011129978902270925,
+        "maintenance": 0.001389275234867325
       },
       "production": {
         "actual": 7747.808,
@@ -901,6 +1138,7 @@
       "availability": {
         "contractual": 0.9813697223576741,
         "pba": 0.984758866147732,
+        "pbaRep": 0.9792330510344535,
         "technical": 0.9210514203442354
       },
       "consumption": {
@@ -913,6 +1151,14 @@
         "manufacturer": 0.015245709482671682,
         "owner": 0.0,
         "utility": 8.48438054816104e-05
+      },
+      "lossBreakdown": {
+        "bat": 0.005258819741196884,
+        "bop": 0.00017691808420565759,
+        "breakdown": 0.0007565620761031895,
+        "electricalLosses": 0.011698399346514931,
+        "maintenance": 0.014256530551451235,
+        "requestedShutdown": 0.00023004068113361963
       },
       "production": {
         "actual": 6838.223,
@@ -933,6 +1179,7 @@
       "availability": {
         "contractual": 0.9860938280527104,
         "pba": 0.9880752248578906,
+        "pbaRep": 0.9880313428968801,
         "technical": 0.9842678433159723
       },
       "consumption": {
@@ -945,6 +1192,12 @@
         "manufacturer": 0.01192721411878346,
         "owner": 0.0,
         "utility": 1.711213714071201e-05
+      },
+      "lossBreakdown": {
+        "breakdown": 0.001463414558457507,
+        "electricalLosses": 0.010884801902942618,
+        "maintenance": 0.009780528801335061,
+        "requestedShutdown": 0.0006876921405473793
       },
       "production": {
         "actual": 8936.048,
@@ -965,6 +1218,7 @@
       "availability": {
         "contractual": 0.9682727758482501,
         "pba": 0.9639168110576298,
+        "pbaRep": 0.9637731917194856,
         "technical": 0.9666194369772999
       },
       "consumption": {
@@ -977,6 +1231,13 @@
         "manufacturer": 0.034546805280310774,
         "owner": 0.001556406845737594,
         "utility": 0.0
+      },
+      "lossBreakdown": {
+        "breakdown": 0.0012829197278350988,
+        "electricalLosses": 0.010576765778668812,
+        "environmental": 0.0028087140276445172,
+        "maintenance": 0.03314333247484004,
+        "requestedShutdown": 0.0016569367396951562
       },
       "production": {
         "actual": 10596.759,
@@ -997,6 +1258,7 @@
       "availability": {
         "contractual": 0.9815950883317783,
         "pba": 0.9884446727650649,
+        "pbaRep": 0.9820263153925027,
         "technical": 0.9739942593111174
       },
       "consumption": {
@@ -1009,6 +1271,14 @@
         "manufacturer": 0.010731955069586088,
         "owner": 0.0008446247127935126,
         "utility": 0.006317040647947337
+      },
+      "lossBreakdown": {
+        "breakdown": 0.003655934718238608,
+        "electricalLosses": 0.011039542179732744,
+        "environmental": 0.0015427667736065903,
+        "grid": 0.006318810526570314,
+        "maintenance": 0.006911953696441837,
+        "requestedShutdown": 0.0009900274081756316
       },
       "production": {
         "actual": 9803.101,
@@ -1029,6 +1299,7 @@
       "availability": {
         "contractual": 0.9815580291895675,
         "pba": 0.9868609592540809,
+        "pbaRep": 0.9821863716594111,
         "technical": 0.9745876736111111
       },
       "consumption": {
@@ -1041,6 +1312,14 @@
         "manufacturer": 0.013138254183743099,
         "owner": 0.0,
         "utility": 0.004543194429660704
+      },
+      "lossBreakdown": {
+        "bop": 0.0001292541914023348,
+        "breakdown": 0.0014690028647144826,
+        "electricalLosses": 0.010717936155974142,
+        "grid": 0.004543716589751012,
+        "maintenance": 0.011559435238314514,
+        "requestedShutdown": 0.0001113257508039837
       },
       "production": {
         "actual": 8248.481,
@@ -1061,6 +1340,7 @@
       "availability": {
         "contractual": 0.9908229535972881,
         "pba": 0.9919274163852146,
+        "pbaRep": 0.9914384842926067,
         "technical": 0.9884474400294953
       },
       "consumption": {
@@ -1073,6 +1353,13 @@
         "manufacturer": 0.008091723482634174,
         "owner": 0.0,
         "utility": 0.0002674687261576549
+      },
+      "lossBreakdown": {
+        "bop": 0.0002020190786818211,
+        "breakdown": 0.006847881856589717,
+        "electricalLosses": 0.011183028565950551,
+        "grid": 0.0002674686172878192,
+        "maintenance": 0.0011669601850407424
       },
       "production": {
         "actual": 8996.501,
@@ -1093,6 +1380,7 @@
       "availability": {
         "contractual": 0.9927729629629629,
         "pba": 0.8881725322765462,
+        "pbaRep": 0.8703156294936225,
         "technical": 0.8770680013985339
       },
       "consumption": {
@@ -1105,6 +1393,14 @@
         "manufacturer": 0.007603123123272894,
         "owner": 0.0,
         "utility": 0.01771634635296398
+      },
+      "lossBreakdown": {
+        "breakdown": 0.006380419170568579,
+        "electricalLosses": 0.010568933754593057,
+        "grid": 0.017717722379012896,
+        "maintenance": 0.001030060906346903,
+        "mcr": 0.10427953346050718,
+        "requestedShutdown": 0.0001402619749664211
       },
       "production": {
         "actual": 5653.507,
@@ -1125,6 +1421,7 @@
       "availability": {
         "contractual": 0.9274871617151319,
         "pba": 0.8085065457442289,
+        "pbaRep": 0.790681522490525,
         "technical": 0.7963675141875747
       },
       "consumption": {
@@ -1137,6 +1434,14 @@
         "manufacturer": 0.06588584271096237,
         "owner": 0.0,
         "utility": 0.01768681501771058
+      },
+      "lossBreakdown": {
+        "bop": 0.00010851422238552875,
+        "breakdown": 0.06512505351670704,
+        "electricalLosses": 0.009836991544368293,
+        "grid": 0.017691655683296673,
+        "maintenance": 0.0006885450048392814,
+        "mcr": 0.1255944745111708
       },
       "production": {
         "actual": 5023.577,
@@ -1157,6 +1462,7 @@
       "availability": {
         "contractual": 0.9851927056257199,
         "pba": 0.8648006922527172,
+        "pbaRep": 0.8645484150952236,
         "technical": 0.8606255133661888
       },
       "consumption": {
@@ -1169,6 +1475,15 @@
         "manufacturer": 0.010674906238733477,
         "owner": 0.0,
         "utility": 0.0002080128866700793
+      },
+      "lossBreakdown": {
+        "breakdown": 0.007585773031324775,
+        "electricalLosses": 0.008010459351068156,
+        "grid": 0.000208396050889267,
+        "maintenance": 0.001652175778835549,
+        "mcr": 0.12476169763265534,
+        "partialPerf": 0.0012447304344516883,
+        "requestedShutdown": 0.00021188957028895066
       },
       "production": {
         "actual": 6181.411,
@@ -1189,6 +1504,7 @@
       "availability": {
         "contractual": 0.9520848865300147,
         "pba": 0.8509373661007552,
+        "pbaRep": 0.8344498823291389,
         "technical": 0.792592437686012
       },
       "consumption": {
@@ -1201,6 +1517,17 @@
         "manufacturer": 0.042585841639226775,
         "owner": 0.0,
         "utility": 0.0053978075197284045
+      },
+      "lossBreakdown": {
+        "bat": 0.005772540347924594,
+        "bop": 0.00022643290050365056,
+        "breakdown": 0.02115377740423652,
+        "electricalLosses": 0.010298336098108443,
+        "grid": 0.010445816624773265,
+        "maintenance": 0.02018453354190955,
+        "mcr": 0.1063405867833364,
+        "partialPerf": 0.0010173290435939017,
+        "requestedShutdown": 0.0004103284031697687
       },
       "production": {
         "actual": 5880.195,
@@ -1221,6 +1548,7 @@
       "availability": {
         "contractual": 0.8717179283253637,
         "pba": 0.8796828174262318,
+        "pbaRep": 0.7954920570792025,
         "technical": 0.7938824944463112
       },
       "consumption": {
@@ -1233,6 +1561,17 @@
         "manufacturer": 0.11688710626223087,
         "owner": 0.0,
         "utility": 0.07016298699230983
+      },
+      "lossBreakdown": {
+        "bat": 0.014064573658807837,
+        "bop": 0.008423034916215716,
+        "breakdown": 0.019204975133928565,
+        "electricalLosses": 0.010448982674846537,
+        "grid": 0.06982503127750941,
+        "maintenance": 0.007272610698162329,
+        "mcr": 0.08417844962338966,
+        "partialPerf": 0.0004612918238978679,
+        "requestedShutdown": 0.001113147650298606
       },
       "production": {
         "actual": 5196.847,
@@ -1253,6 +1592,7 @@
       "availability": {
         "contractual": 0.9614566636215998,
         "pba": 0.9766114399363828,
+        "pbaRep": 0.9303074300475513,
         "technical": 0.8544117956211419
       },
       "consumption": {
@@ -1265,6 +1605,15 @@
         "manufacturer": 0.023502708817057148,
         "owner": 0.0,
         "utility": 0.028525094287321133
+      },
+      "lossBreakdown": {
+        "bat": 0.017581473847094766,
+        "breakdown": 0.012842453437871087,
+        "electricalLosses": 0.011488242108558795,
+        "grid": 0.02853142937506797,
+        "maintenance": 0.00971246452269287,
+        "partialPerf": 0.00037329873949404926,
+        "requestedShutdown": 0.0005797112084097218
       },
       "production": {
         "actual": 6108.851,
@@ -1285,6 +1634,7 @@
       "availability": {
         "contractual": 0.9828376526403936,
         "pba": 0.9851105434089125,
+        "pbaRep": 0.9221700933739477,
         "technical": 0.9097826608236261
       },
       "consumption": {
@@ -1297,6 +1647,16 @@
         "manufacturer": 0.014938611513298694,
         "owner": 0.0,
         "utility": 0.05472498102083226
+      },
+      "lossBreakdown": {
+        "bat": 0.008117563199598792,
+        "bop": 0.0001487732519926898,
+        "breakdown": 0.013998592814677871,
+        "electricalLosses": -0.052308600454963175,
+        "grid": 0.058787813264443656,
+        "maintenance": 0.001448844724187032,
+        "partialPerf": 0.00021641286923013072,
+        "requestedShutdown": 0.00026460051898637496
       },
       "production": {
         "actual": 7147.158,
@@ -1317,6 +1677,7 @@
       "availability": {
         "contractual": 0.9887491739470989,
         "pba": 0.9905244628782484,
+        "pbaRep": 0.9777159468170427,
         "technical": 0.983917344087577
       },
       "consumption": {
@@ -1329,6 +1690,14 @@
         "manufacturer": 0.009507048390663703,
         "owner": 0.0,
         "utility": 0.012659164639772024
+      },
+      "lossBreakdown": {
+        "breakdown": 0.007097211773044411,
+        "electricalLosses": 0.010346007398805257,
+        "grid": 0.012752655190439425,
+        "maintenance": 0.0012808059422369255,
+        "partialPerf": 0.000392217025324684,
+        "requestedShutdown": 0.0007600278803101774
       },
       "production": {
         "actual": 9593.992,
@@ -1349,6 +1718,7 @@
       "availability": {
         "contractual": 0.9863392651757188,
         "pba": 0.9924164022964791,
+        "pbaRep": 0.987307818748027,
         "technical": 0.9849841322244623
       },
       "consumption": {
@@ -1361,6 +1731,14 @@
         "manufacturer": 0.007598282371772113,
         "owner": 0.0,
         "utility": 0.005064068459317973
+      },
+      "lossBreakdown": {
+        "breakdown": 0.00612373904835378,
+        "electricalLosses": 0.010631646540648451,
+        "grid": 0.0050656792554759555,
+        "maintenance": 0.0010856391104462674,
+        "partialPerf": 0.00023575559901270961,
+        "requestedShutdown": 0.0001555642972675162
       },
       "production": {
         "actual": 10544.464,
@@ -1381,6 +1759,7 @@
       "availability": {
         "contractual": 0.9899283711051154,
         "pba": 0.9932007920476725,
+        "pbaRep": 0.9753503374698288,
         "technical": 0.9834369717104138
       },
       "consumption": {
@@ -1393,6 +1772,15 @@
         "manufacturer": 0.0067988202726309635,
         "owner": 0.0,
         "utility": 0.01772931805433667
+      },
+      "lossBreakdown": {
+        "bop": 0.00011653442853581848,
+        "breakdown": 0.004607203780742057,
+        "electricalLosses": 0.011050313200357646,
+        "grid": 0.01773044089267348,
+        "maintenance": 0.0016820277935618985,
+        "partialPerf": 0.00010214922333997469,
+        "requestedShutdown": 0.0004078704341918955
       },
       "production": {
         "actual": 7339.902,
@@ -1413,6 +1801,7 @@
       "availability": {
         "contractual": 0.9664882989712724,
         "pba": 0.9624570091831309,
+        "pbaRep": 0.959922923403224,
         "technical": 0.9655261432291666
       },
       "consumption": {
@@ -1425,6 +1814,15 @@
         "manufacturer": 0.03753746477885968,
         "owner": 0.0,
         "utility": 0.0024101422716619088
+      },
+      "lossBreakdown": {
+        "breakdown": 0.014674858811428142,
+        "electricalLosses": 0.010482935579266882,
+        "environmental": 0.001177019420949142,
+        "grid": 0.002411275636202468,
+        "maintenance": 0.017778716713759538,
+        "partialPerf": 0.004413474969563202,
+        "requestedShutdown": 0.0006880813526952725
       },
       "production": {
         "actual": 7261.762,
@@ -1445,6 +1843,7 @@
       "availability": {
         "contractual": 0.9852087188741622,
         "pba": 0.9874042688349962,
+        "pbaRep": 0.9790141019240517,
         "technical": 0.9752676038866488
       },
       "consumption": {
@@ -1457,6 +1856,16 @@
         "manufacturer": 0.01289660997844308,
         "owner": 0.0,
         "utility": 0.007343346063006797
+      },
+      "lossBreakdown": {
+        "bop": 0.00014865800866079083,
+        "breakdown": 0.009675056502444908,
+        "electricalLosses": 0.010686401226869851,
+        "environmental": 0.00032135503735156515,
+        "grid": 0.008225542305239154,
+        "maintenance": 0.002409616895228461,
+        "partialPerf": 0.0002608559781098648,
+        "requestedShutdown": 0.0002504967317394835
       },
       "production": {
         "actual": 8434.739,
@@ -1477,6 +1886,7 @@
       "availability": {
         "contractual": 0.9878872668057116,
         "pba": 0.9865736940079205,
+        "pbaRep": 0.9855661986083536,
         "technical": 0.9872880499131944
       },
       "consumption": {
@@ -1489,6 +1899,15 @@
         "manufacturer": 0.013425767134818615,
         "owner": 0.0,
         "utility": 0.0007719964773318438
+      },
+      "lossBreakdown": {
+        "bop": 0.0002337057448562973,
+        "breakdown": 0.010515448592576497,
+        "electricalLosses": 0.010537704105172317,
+        "grid": 0.0007721869725900285,
+        "maintenance": 0.0024703682249617425,
+        "partialPerf": 0.0003375220501105269,
+        "requestedShutdown": 0.00010574352123667074
       },
       "production": {
         "actual": 6780.272,
@@ -1509,6 +1928,7 @@
       "availability": {
         "contractual": 0.9745506135114794,
         "pba": 0.9808811343615721,
+        "pbaRep": 0.9769313789143135,
         "technical": 0.9851862114508662
       },
       "consumption": {
@@ -1521,6 +1941,15 @@
         "manufacturer": 0.019209302831069745,
         "owner": 0.0,
         "utility": 0.0034194897732661876
+      },
+      "lossBreakdown": {
+        "bop": 0.0005240679974869094,
+        "breakdown": 0.005945777619665501,
+        "electricalLosses": 0.010077937037283805,
+        "environmental": 0.00023633178833665138,
+        "grid": 0.003419787065721223,
+        "maintenance": 0.002894786808710025,
+        "partialPerf": 0.010200967374691203
       },
       "production": {
         "actual": 6647.311,
@@ -1541,6 +1970,7 @@
       "availability": {
         "contractual": 0.9688016443585483,
         "pba": 0.9786408500386274,
+        "pbaRep": 0.9361520303755071,
         "technical": 0.9295717593525986
       },
       "consumption": {
@@ -1553,6 +1983,17 @@
         "manufacturer": 0.02160130388193669,
         "owner": 0.0,
         "utility": 0.014914541541619279
+      },
+      "lossBreakdown": {
+        "bat": 0.001441360131776458,
+        "bop": 0.00012238480174448383,
+        "breakdown": 0.010374731564341608,
+        "electricalLosses": 0.010443486851116545,
+        "environmental": 0.01596473977486352,
+        "grid": 0.02522776848625697,
+        "maintenance": 0.005757374984965258,
+        "partialPerf": 0.005055556447693289,
+        "requestedShutdown": 0.00019340664281073736
       },
       "production": {
         "actual": 6385.709,
@@ -1573,6 +2014,7 @@
       "availability": {
         "contractual": 0.9018512854788925,
         "pba": 0.8946363320944262,
+        "pbaRep": 0.8810599250456921,
         "technical": 0.8678433995225695
       },
       "consumption": {
@@ -1585,6 +2027,16 @@
         "manufacturer": 0.10534629862588782,
         "owner": 0.0,
         "utility": 0.0005390839885416207
+      },
+      "lossBreakdown": {
+        "bat": 0.0017360644922098665,
+        "bop": 0.00017779769871660315,
+        "breakdown": 0.10055223272996529,
+        "electricalLosses": 0.009882087681785178,
+        "environmental": 0.011169233881346895,
+        "grid": 0.0005392179815047572,
+        "maintenance": 0.0030788060328120256,
+        "partialPerf": 0.0016561743419001504
       },
       "production": {
         "actual": 5426.643,
@@ -1605,6 +2057,7 @@
       "availability": {
         "contractual": 0.927963160218785,
         "pba": 0.9260469080285245,
+        "pbaRep": 0.8919612893342884,
         "technical": 0.8658745884669953
       },
       "consumption": {
@@ -1617,6 +2070,18 @@
         "manufacturer": 0.07409013054725658,
         "owner": 0.000547500888832139,
         "utility": 0.013968767139430956
+      },
+      "lossBreakdown": {
+        "bat": 0.002120185981632788,
+        "bop": 0.00011574208990888634,
+        "breakdown": 0.06692626287637062,
+        "electricalLosses": 0.010321960590996888,
+        "environmental": 0.01736448900148891,
+        "grid": 0.013973091325885714,
+        "maintenance": 0.004596933377546612,
+        "other": 0.0005476704103264342,
+        "partialPerf": 0.0005727704961944769,
+        "requestedShutdown": 0.0018600522543633974
       },
       "production": {
         "actual": 5674.645,
@@ -1637,6 +2102,7 @@
       "availability": {
         "contractual": 0.9798739787363369,
         "pba": 0.9828907416262964,
+        "pbaRep": 0.8802994764852675,
         "technical": 0.9209687972608025
       },
       "consumption": {
@@ -1649,6 +2115,15 @@
         "manufacturer": 0.017122869585412304,
         "owner": 0.0,
         "utility": 0.09956470631665867
+      },
+      "lossBreakdown": {
+        "bat": 0.002836151722186333,
+        "bop": 0.00015887563240477953,
+        "breakdown": 0.012692200284917311,
+        "electricalLosses": 0.01025290414466717,
+        "grid": 0.09957707639923875,
+        "maintenance": 0.004000130038721383,
+        "partialPerf": 0.00035239900393078304
       },
       "production": {
         "actual": 7216.586,
@@ -1669,6 +2144,7 @@
       "availability": {
         "contractual": 0.9949723116516777,
         "pba": 0.987341043862029,
+        "pbaRep": 0.9033711132179311,
         "technical": 0.9262254976851853
       },
       "consumption": {
@@ -1681,6 +2157,16 @@
         "manufacturer": 0.012690474029919359,
         "owner": 0.0,
         "utility": 0.07984860454088911
+      },
+      "lossBreakdown": {
+        "bat": 0.0031788501028625986,
+        "bop": 0.00017163226722325254,
+        "breakdown": 0.012036370044763668,
+        "electricalLosses": 0.010689745097121874,
+        "environmental": 0.006586108158047956,
+        "grid": 0.07988622145935799,
+        "maintenance": 0.00011359517012402389,
+        "requestedShutdown": 0.0004002504333454111
       },
       "production": {
         "actual": 6863.531059999999,
@@ -1701,6 +2187,7 @@
       "availability": {
         "contractual": 0.992945102776045,
         "pba": 0.9960682006802,
+        "pbaRep": 0.9668672847065114,
         "technical": 0.9711749130497686
       },
       "consumption": {
@@ -1713,6 +2200,14 @@
         "manufacturer": 0.003931799442381322,
         "owner": 0.0,
         "utility": 0.029041874916087885
+      },
+      "lossBreakdown": {
+        "bop": 0.00015840916227807233,
+        "breakdown": 0.000891253441351887,
+        "electricalLosses": 0.010653900293023178,
+        "grid": 0.02902605340680745,
+        "maintenance": 0.0003634935614112785,
+        "partialPerf": 0.0026463912803842225
       },
       "production": {
         "actual": 7769.92606,
@@ -1733,6 +2228,7 @@
       "availability": {
         "contractual": 0.9857394269377644,
         "pba": 0.9857297941995441,
+        "pbaRep": 0.8362260777104272,
         "technical": 0.8586541405783302
       },
       "consumption": {
@@ -1745,6 +2241,14 @@
         "manufacturer": 0.01427671843106745,
         "owner": 0.0,
         "utility": 0.1493747091176092
+      },
+      "lossBreakdown": {
+        "bop": 0.0001145087870974743,
+        "breakdown": 0.013434213770520924,
+        "electricalLosses": 0.010625701173719238,
+        "grid": 0.14945038932150032,
+        "maintenance": 0.0003915206026189333,
+        "partialPerf": 0.0004521427829482452
       },
       "production": {
         "actual": 5726.33533,

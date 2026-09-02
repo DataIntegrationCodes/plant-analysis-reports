@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Project Report V2</title>
+<link rel="stylesheet" href="print.css" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  .print-page { max-width: 980px; }
+  canvas { max-width: 100%; }
+  table { font-size: 9px; }
+  th, td { padding: 3px 5px; }
+</style>
+</head>
+<body>
+<div class="print-page">
+  <div class="print-header">
+    <div>
+      <h1 id="plantName">Loading…</h1>
+      <p class="meta" id="plantMeta"></p>
+    </div>
+    <div class="month">Full History</div>
+  </div>
+
+  <div class="section summary-callout" id="projectSummary"></div>
+
+  <div class="section">
+    <div class="section-title">Full KPI Matrix</div>
+    <div id="kpiMatrixWrap"></div>
+  </div>
+
+  <div class="page-break">
+    <div class="section-title" id="dashboardYearTitle" style="margin: 0 0 10px;">Graphical Dashboard</div>
+    <div class="chart-row stack-3">
+      <div class="section">
+        <div class="section-title">Plant Production</div>
+        <div class="chart-container"><canvas id="chartProduction"></canvas></div>
+      </div>
+      <div class="section">
+        <div class="section-title">Plant Availability</div>
+        <div class="chart-container"><canvas id="chartAvailability"></canvas></div>
+      </div>
+      <div class="section">
+        <div class="section-title">Wind Speed</div>
+        <div class="chart-container"><canvas id="chartWind"></canvas></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="chart-row page-break">
+    <div class="section">
+      <div class="section-title">Annual Production and Availability per WT</div>
+      <div class="chart-container"><canvas id="chartTurbines"></canvas></div>
+    </div>
+    <div class="section">
+      <div class="section-title">Losses Breakdown</div>
+      <div class="chart-container"><canvas id="chartDowntime"></canvas></div>
+    </div>
+  </div>
+
+  <div class="print-footer" id="footerNote"></div>
+</div>
+
+<script src="../assets/js/app.js"></script>
+<script>
+(async function () {
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get("code");
+
+  const plant = await PAR.fetchJSON(`../data/plants/${code}.json`);
+  let turbineData = { turbines: {} };
+  try {
+    turbineData = await PAR.fetchJSON(`../data/turbines/${code}.json`);
+  } catch (e) {
+    // no turbine-level data for this plant yet
+  }
+
+  document.getElementById("plantName").textContent = plant.name;
+  document.getElementById("plantMeta").textContent = `${plant.code} · ${plant.mwInstalled} MW installed`;
+  document.title = `${plant.name} KPI Report V2`;
+
+  document.getElementById("projectSummary").innerHTML = PAR.buildProjectSummary(plant);
+
+  // Print has no interactive year filter, so the matrix defaults to every
+  // year selected - Total (which recomputes to the selection in V2) reads
+  // as the full-history figure here, same as it always has for the PDF.
+  const years = [...new Set(Object.keys(plant.months).map((k) => k.slice(0, 4)))].sort();
+  const currentYear = years[years.length - 1];
+  document.getElementById("kpiMatrixWrap").innerHTML =
+    PAR.renderKpiMatrix(plant.months, years, [currentYear], PAR.buildKpiCategoriesV2(plant.months));
+
+  // Graphical dashboard defaults to the latest year that has turbine-level
+  // data (turbine IDs get repowered/renamed over time, so the plant's most
+  // recent year can be empty at turbine grain even though the plant-level
+  // KPI matrix still has data for it) - falls back to the plant's latest
+  // year if there's no turbine data at all. ?year=YYYY overrides explicitly.
+  const turbineYears = new Set();
+  for (const monthsObj of Object.values(turbineData.turbines || {})) {
+    for (const k of Object.keys(monthsObj)) turbineYears.add(k.slice(0, 4));
+  }
+  const yearsWithTurbines = years.filter((y) => turbineYears.has(y));
+  const defaultYear = yearsWithTurbines.length ? yearsWithTurbines[yearsWithTurbines.length - 1] : years[years.length - 1];
+  const requestedYear = params.get("year");
+  const dashboardYear = requestedYear && years.includes(requestedYear) ? requestedYear : defaultYear;
+  document.getElementById("dashboardYearTitle").textContent = `Graphical Dashboard — ${dashboardYear}`;
+
+  const yearMonths = {};
+  for (const [k, v] of Object.entries(plant.months)) {
+    if (k.startsWith(dashboardYear)) yearMonths[k] = v;
+  }
+  const yearPlant = { ...plant, months: yearMonths };
+
+  const yearTurbines = {};
+  for (const [id, monthsObj] of Object.entries(turbineData.turbines || {})) {
+    const filtered = {};
+    for (const [k, v] of Object.entries(monthsObj)) {
+      if (k.startsWith(dashboardYear)) filtered[k] = v;
+    }
+    if (Object.keys(filtered).length) yearTurbines[id] = filtered;
+  }
+
+  PAR.buildReportCharts(yearPlant, { turbines: yearTurbines }, { v2: true });
+
+  document.getElementById("footerNote").textContent =
+    `Plant Analysis Reports V2 · ${plant.name} · Full history table, ${dashboardYear} dashboard · Source: P&O_Custom_Semantic_Model (PowerBI)`;
+  document.body.setAttribute("data-render-complete", "true");
+})();
+</script>
+</body>
+</html>

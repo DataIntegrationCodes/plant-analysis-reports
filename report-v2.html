@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>KPI Matrix V2 — Plant Analysis Reports</title>
+<link rel="stylesheet" href="assets/css/styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌬️</text></svg>" />
+</head>
+<body>
+<div class="app">
+
+  <a class="back-link" href="index.html">← All plants</a>
+
+  <header class="topbar">
+    <div class="topbar-title">
+      <div>
+        <h1>Reporting V2</h1>
+        <p class="subtitle">Full KPI matrix, per project — waterfall-based Losses Breakdown, PBA_Rep, year filter</p>
+      </div>
+    </div>
+    <div class="topbar-meta">
+      <button id="themeToggle" class="icon-btn" title="Toggle theme" aria-label="Toggle theme">🌙</button>
+    </div>
+  </header>
+
+  <div class="view-tiles">
+    <a class="view-tile active" href="report-v2.html">
+      <div class="tile-title">📋 KPI Matrix</div>
+      <div class="tile-sub">Full category/KPI table, year drill-down</div>
+    </a>
+    <a class="view-tile" href="graphical-v2.html">
+      <div class="tile-title">📈 Graphical View</div>
+      <div class="tile-sub">5-chart dashboard, by project &amp; year</div>
+    </a>
+  </div>
+
+  <div class="toolbar">
+    <select id="projectSelect"></select>
+    <div class="spacer"></div>
+    <a id="downloadPdf" class="btn primary" style="text-decoration:none;" href="#" target="_blank" rel="noopener">Download PDF</a>
+  </div>
+
+  <div class="toolbar">
+    <strong style="font-size:13px;">Years</strong>
+    <div class="view-switch" id="yearFilter" role="group" aria-label="Year filter"></div>
+  </div>
+
+  <div class="section summary-callout" id="projectSummary"></div>
+
+  <div class="section">
+    <div class="section-title">Full KPI Matrix</div>
+    <p class="empty-note" style="text-align:left;padding:0 0 10px;">Click a year to expand into months, click again to collapse. Total reflects only the years selected above.</p>
+    <div class="table-wrap" id="kpiMatrixWrap"></div>
+  </div>
+
+  <footer class="footer">
+    <p>Source: P&amp;O_Custom_Semantic_Model (PowerBI) · full history to date.</p>
+  </footer>
+</div>
+
+<script src="assets/js/app.js"></script>
+<script src="assets/js/report-v2.js"></script>
+</body>
+</html>
