@@ -271,6 +271,16 @@
         "contractualAvailability": 0.9934705779400654,
         "production": 835771.409,
         "technicalAvailability": 0.9901269328703702
+      },
+      "2026-07": {
+        "contractualAvailability": 0.9998401090728806,
+        "production": 752800.5780000001,
+        "technicalAvailability": 0.9976030473416965
+      },
+      "2026-08": {
+        "contractualAvailability": 0.9811885165337322,
+        "production": 940336.0469999999,
+        "technicalAvailability": 0.9780619018817205
       }
     },
     "WTG02": {
@@ -543,6 +553,16 @@
         "contractualAvailability": 0.9970614910966883,
         "production": 765596.49,
         "technicalAvailability": 0.991712582947531
+      },
+      "2026-07": {
+        "contractualAvailability": 0.9999510771470161,
+        "production": 712167.8140000001,
+        "technicalAvailability": 0.9985730309139785
+      },
+      "2026-08": {
+        "contractualAvailability": 0.98074867855963,
+        "production": 894715.444,
+        "technicalAvailability": 0.9785704147998805
       }
     },
     "WTG03": {
@@ -815,6 +835,16 @@
         "contractualAvailability": 0.9483123466940734,
         "production": 677646.931,
         "technicalAvailability": 0.938086808256173
+      },
+      "2026-07": {
+        "contractualAvailability": 0.9686747034686971,
+        "production": 647412.425,
+        "technicalAvailability": 0.9625440561529272
+      },
+      "2026-08": {
+        "contractualAvailability": 0.9988138532467531,
+        "production": 833580.228,
+        "technicalAvailability": 0.9980854245071685
       }
     },
     "WTG04": {
@@ -1087,6 +1117,16 @@
         "contractualAvailability": 0.9952942441662409,
         "production": 724175.2059999999,
         "technicalAvailability": 0.9898306350308642
+      },
+      "2026-07": {
+        "contractualAvailability": 0.9496622076392395,
+        "production": 630781.545,
+        "technicalAvailability": 0.9521990744474313
+      },
+      "2026-08": {
+        "contractualAvailability": 0.9987095709995711,
+        "production": 829984.5759999999,
+        "technicalAvailability": 0.9960831145459976
       }
     },
     "WTG05": {
@@ -1359,6 +1399,16 @@
         "contractualAvailability": 0.972531380753138,
         "production": 800335.215,
         "technicalAvailability": 0.9684513900462963
+      },
+      "2026-07": {
+        "contractualAvailability": 0.9553959753326842,
+        "production": 724350.8180000002,
+        "technicalAvailability": 0.9523577512694147
+      },
+      "2026-08": {
+        "contractualAvailability": 0.9991827746513335,
+        "production": 948370.4260000002,
+        "technicalAvailability": 0.9987186379928316
       }
     },
     "WTG06": {
@@ -1631,6 +1681,16 @@
         "contractualAvailability": 0.9796506734006734,
         "production": 776210.7130000001,
         "technicalAvailability": 0.9697368067812355
+      },
+      "2026-07": {
+        "contractualAvailability": 0.9706807799916978,
+        "production": 709958.3500000001,
+        "technicalAvailability": 0.9701220885603344
+      },
+      "2026-08": {
+        "contractualAvailability": 0.9852902739381755,
+        "production": 921878.5240000001,
+        "technicalAvailability": 0.9832381287335723
       }
     },
     "WTG07": {
@@ -1903,6 +1963,16 @@
         "contractualAvailability": 0.9389743019617792,
         "production": 687444.7890000001,
         "technicalAvailability": 0.9307037156635802
+      },
+      "2026-07": {
+        "contractualAvailability": 0.9622265087850157,
+        "production": 672953.0070000001,
+        "technicalAvailability": 0.9632179708034647
+      },
+      "2026-08": {
+        "contractualAvailability": 0.9789544814073704,
+        "production": 896885.884,
+        "technicalAvailability": 0.9793776172341696
       }
     },
     "WTG08": {
@@ -2175,6 +2245,16 @@
         "contractualAvailability": 0.9795423418674699,
         "production": 755874.7650000001,
         "technicalAvailability": 0.9590478483796296
+      },
+      "2026-07": {
+        "contractualAvailability": 0.9964169994241527,
+        "production": 740164.0910000001,
+        "technicalAvailability": 0.9949398939665473
+      },
+      "2026-08": {
+        "contractualAvailability": 0.9994217776387151,
+        "production": 968329.9300000003,
+        "technicalAvailability": 0.9977964456391876
       }
     },
     "WTG09": {
@@ -2447,6 +2527,16 @@
         "contractualAvailability": 0.9932786303060217,
         "production": 934459.0399999997,
         "technicalAvailability": 0.986263893132716
+      },
+      "2026-07": {
+        "contractualAvailability": 0.9794098084104563,
+        "production": 806936.1140000002,
+        "technicalAvailability": 0.97912
+      },
+      "2026-08": {
+        "contractualAvailability": 0.9570583455732353,
+        "production": 1041418.2070000004,
+        "technicalAvailability": 0.9503976288082437
       }
     },
     "WTG10": {
@@ -2719,6 +2809,16 @@
         "contractualAvailability": 0.9949514119963141,
         "production": 864734.36,
         "technicalAvailability": 0.9856142017746914
+      },
+      "2026-07": {
+        "contractualAvailability": 0.981262490990991,
+        "production": 781302.8330000001,
+        "technicalAvailability": 0.9782709841696536
+      },
+      "2026-08": {
+        "contractualAvailability": 0.9184737719950433,
+        "production": 946368.8959999998,
+        "technicalAvailability": 0.9069261499402629
       }
     }
   }

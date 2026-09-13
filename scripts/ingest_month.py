@@ -196,8 +196,17 @@ def ingest_turbines(code, csv_path):
     CSV columns: ref_calendar[year_month], wdm_equipment[TurbineID],
     [Production], [Technical Availability], [Contractual Availability] - one
     row per (turbine, month). Stored as {turbineId: {month: {...}}}.
+
+    Merges into any existing data/turbines/<CODE>.json rather than replacing
+    it, so a CSV covering only the newest month(s) doesn't wipe out prior
+    history - same idempotent-merge behavior as the plant-level ingest.
     """
-    turbines = {}
+    turbines_path = os.path.join(TURBINES_DIR, f"{code}.json")
+    if os.path.exists(turbines_path):
+        with open(turbines_path, "r", encoding="utf-8") as f:
+            turbines = json.load(f)["turbines"]
+    else:
+        turbines = {}
     with open(csv_path, "r", encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
         count = 0
