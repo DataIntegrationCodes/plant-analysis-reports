@@ -5,56 +5,56 @@
       "name": "Chaba",
       "mwInstalled": 21.5,
       "status": "active",
-      "monthCount": 55
+      "monthCount": 56
     },
     {
       "code": "COLE",
       "name": "Coleskop",
       "mwInstalled": 145.6,
       "status": "active",
-      "monthCount": 6
+      "monthCount": 7
     },
     {
       "code": "DASS",
       "name": "Dassiesridge",
       "mwInstalled": 63,
       "status": "active",
-      "monthCount": 8
+      "monthCount": 9
     },
     {
       "code": "GRAS",
       "name": "Grassridge",
       "mwInstalled": 64.5,
       "status": "active",
-      "monthCount": 55
+      "monthCount": 56
     },
     {
       "code": "PHEZ",
       "name": "Phezukomoya",
       "mwInstalled": 145.6,
       "status": "active",
-      "monthCount": 6
+      "monthCount": 7
     },
     {
       "code": "SANK",
       "name": "San Kraal",
       "mwInstalled": 145.6,
       "status": "active",
-      "monthCount": 8
+      "monthCount": 9
     },
     {
       "code": "WAAI",
       "name": "Waainek",
       "mwInstalled": 24.6,
       "status": "active",
-      "monthCount": 55
+      "monthCount": 56
     },
     {
       "code": "WESL",
       "name": "Wesley",
       "mwInstalled": 34.5,
       "status": "active",
-      "monthCount": 55
+      "monthCount": 56
     }
   ],
   "months": [
@@ -112,6 +112,7 @@
     "2026-04",
     "2026-05",
     "2026-06",
-    "2026-07"
+    "2026-07",
+    "2026-08"
   ]
 }
