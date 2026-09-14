@@ -305,16 +305,9 @@ const PAR = {
   // turbine technical-availability loss. It stays under Production instead
   // (KPI_CATEGORIES / buildKpiCategoriesV2's category A), not shown twice.
   //
-  // A stacked bar can carry at most ~8 solid hues before two of them become
-  // indistinguishable to a colorblind reader (see the dataviz skill's
-  // color-formula check 1/4) - past that, a "9th series" must not invent a
-  // new hue. So the 7 categories present for every one of the 8 plants' full
-  // history get solid fills, in the validated colorblind-safe order/hex from
-  // that skill's reference palette (reordering these breaks the validation,
-  // since the order itself is the CVD-safety mechanism - do not resequence).
-  // Every rarer or smaller-magnitude category instead carries its identity
-  // in a distinct *pattern shape* (see PAR.lossCategoryFill) on a shared
-  // neutral base color, rather than a 9th+ generated hue.
+  // Every category gets its own solid, visually distinct color - no shared
+  // gray/pattern tier (that read as confusing rather than clarifying in
+  // practice, so it was dropped in favor of plain unique hues for all 17).
   LOSS_CATEGORY_DEFS: [
     { key: "grid", label: "Grid", color: "#2a78d6" },
     { key: "breakdown", label: "Breakdown", color: "#eb6834" },
@@ -323,24 +316,17 @@ const PAR = {
     { key: "environmental", label: "Environmental", color: "#e87ba4" },
     { key: "dataQuality", label: "Data Quality", color: "#008300" },
     { key: "requestedShutdown", label: "Requested Shutdown", color: "#4a3aa7" },
-    { key: "bop", label: "BoP", color: "#6b7280", pattern: "diagonal" },
-    { key: "bat", label: "Bat", color: "#6b7280", pattern: "diagonal-right-left" },
-    { key: "bird", label: "Bird", color: "#6b7280", pattern: "cross-dash" },
-    { key: "icing", label: "Icing", color: "#6b7280", pattern: "dot" },
-    { key: "mcr", label: "MCR", color: "#6b7280", pattern: "disc" },
-    { key: "other", label: "Other", color: "#6b7280", pattern: "triangle" },
-    { key: "economic", label: "Economic", color: "#6b7280", pattern: "ring" },
-    { key: "economicCompensated", label: "Economic Compensated", color: "#6b7280", pattern: "weave" },
-    { key: "gridCompensated", label: "Grid Compensated", color: "#6b7280", pattern: "square" },
-    { key: "noise", label: "Noise", color: "#6b7280", pattern: "zigzag" },
+    { key: "bop", label: "BoP", color: "#dc2626" },
+    { key: "bat", label: "Bat", color: "#78350f" },
+    { key: "bird", label: "Bird", color: "#65a30d" },
+    { key: "icing", label: "Icing", color: "#0891b2" },
+    { key: "mcr", label: "MCR", color: "#d946ef" },
+    { key: "other", label: "Other", color: "#57534e" },
+    { key: "economic", label: "Economic", color: "#ca8a04" },
+    { key: "economicCompensated", label: "Economic Compensated", color: "#0d9488" },
+    { key: "gridCompensated", label: "Grid Compensated", color: "#1e40af" },
+    { key: "noise", label: "Noise", color: "#be185d" },
   ],
-
-  // Chart.js accepts a CanvasPattern anywhere it accepts a color. Patterned
-  // entries render as shape-on-gray so identity never depends on hue alone -
-  // safe for any color-vision deficiency, not just red/green.
-  lossCategoryFill(def) {
-    return def.pattern ? pattern.draw(def.pattern, def.color) : def.color;
-  },
 
   // Only the loss categories that have at least one non-null value across
   // the given months - keeps the V2 matrix/chart from showing a permanent
@@ -797,7 +783,7 @@ const PAR = {
         datasets: downtimeKeys.map((d) => ({
           label: d.label,
           data: months.map((m) => ((plant.months[m][downtimeField] || {})[d.key] || 0) * 100),
-          backgroundColor: v2 ? PAR.lossCategoryFill(d) : d.color,
+          backgroundColor: d.color,
         })),
       },
       plugins: v2 ? [stackTotalLabelPlugin] : [],
