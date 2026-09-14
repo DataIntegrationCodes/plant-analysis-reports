@@ -296,17 +296,25 @@ const PAR = {
     },
   ],
 
-  // Waterfall Axis[Step] -> lossBreakdown field. A stacked bar can carry at
-  // most ~8 solid hues before two of them become indistinguishable to a
-  // colorblind reader (see the dataviz skill's color-formula check 1/4) -
-  // past that, a "9th series" must not invent a new hue. So the 8 categories
-  // present for every one of the 8 plants' full history get solid fills, in
-  // the validated colorblind-safe order/hex from that skill's reference
-  // palette (reordering these breaks the validation, since the order itself
-  // is the CVD-safety mechanism - do not resequence). Every rarer or
-  // smaller-magnitude category instead carries its identity in a distinct
-  // *pattern shape* (see PAR.lossCategoryFill) on a shared neutral base
-  // color, rather than a 9th+ generated hue.
+  // Waterfall Axis[Step] -> lossBreakdown field. Electrical Losses is
+  // deliberately excluded here - checking PBA_Rep + sum(lossBreakdown)
+  // against DASS's full history showed every month lands within ~0.3% of
+  // 100% once Electrical Losses is left out (with it included, months
+  // overshoot by 1.5-2.4%), confirming it isn't part of PBA_Rep's own loss
+  // base - it's a post-generation/electrical-interconnect loss, not a
+  // turbine technical-availability loss. It stays under Production instead
+  // (KPI_CATEGORIES / buildKpiCategoriesV2's category A), not shown twice.
+  //
+  // A stacked bar can carry at most ~8 solid hues before two of them become
+  // indistinguishable to a colorblind reader (see the dataviz skill's
+  // color-formula check 1/4) - past that, a "9th series" must not invent a
+  // new hue. So the 7 categories present for every one of the 8 plants' full
+  // history get solid fills, in the validated colorblind-safe order/hex from
+  // that skill's reference palette (reordering these breaks the validation,
+  // since the order itself is the CVD-safety mechanism - do not resequence).
+  // Every rarer or smaller-magnitude category instead carries its identity
+  // in a distinct *pattern shape* (see PAR.lossCategoryFill) on a shared
+  // neutral base color, rather than a 9th+ generated hue.
   LOSS_CATEGORY_DEFS: [
     { key: "grid", label: "Grid", color: "#2a78d6" },
     { key: "breakdown", label: "Breakdown", color: "#eb6834" },
@@ -315,7 +323,6 @@ const PAR = {
     { key: "environmental", label: "Environmental", color: "#e87ba4" },
     { key: "dataQuality", label: "Data Quality", color: "#008300" },
     { key: "requestedShutdown", label: "Requested Shutdown", color: "#4a3aa7" },
-    { key: "electricalLosses", label: "Electrical Losses", color: "#e34948" },
     { key: "bop", label: "BoP", color: "#6b7280", pattern: "diagonal" },
     { key: "bat", label: "Bat", color: "#6b7280", pattern: "diagonal-right-left" },
     { key: "bird", label: "Bird", color: "#6b7280", pattern: "cross-dash" },
@@ -375,6 +382,8 @@ const PAR = {
             } },
           { key: "capacityFactor", label: "Capacity Factor", unit: "percent",
             aggregate: (es) => PAR._avgBy(es, (e) => e.production.capacityFactor) },
+          { key: "electricalLosses", label: "Electrical Losses", unit: "percent",
+            aggregate: (es) => PAR._avgBy(es, (e) => e.production.electricalLosses) },
         ],
       },
       {
