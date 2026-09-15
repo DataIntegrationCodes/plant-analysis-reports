@@ -236,36 +236,87 @@ const PAR = {
   // is the real reported figure, so the Total bar reflects it directly).
   // Returns the Chart instance so callers can destroy() it before rebuilding
   // (month/plant switches on the interactive page).
+  // Formats a fraction as a percent string, expanding decimal places just
+  // far enough that a genuinely tiny but non-zero value (e.g. 0.00001,
+  // "0.001%") doesn't round away to "0.00%" and read as nothing happened.
+  _fmtWaterfallLabel(fraction) {
+    const pct = fraction * 100;
+    let decimals = 2;
+    while (decimals < 4 && pct !== 0 && parseFloat(pct.toFixed(decimals)) === 0) decimals++;
+    return `${pct.toFixed(decimals)}%`;
+  },
+
   buildLossWaterfallChart(canvasEl, entry) {
+    // Styled to match the model's own native waterfall visual: one uniform
+    // color for every loss step (direction carries the meaning, not category
+    // identity - that's already on the x-axis label), a distinct color each
+    // for the Target and Total anchor bars, and each bar's own value printed
+    // directly above it. A true-to-scale bar for a very small step (e.g.
+    // 0.006%) would be a fraction of a pixel tall and invisible, so each
+    // step's rendered bottom is extended to a minimum thickness - its top
+    // (its true position in the waterfall) never moves, only how far the
+    // visible bar reaches past it, and the label always prints the real,
+    // unclamped value.
+    const TARGET_COLOR = "#6d6fa8";
+    const LOSS_COLOR = "#c17b7b";
+    const TOTAL_COLOR = "#4f8c67";
+    const MIN_STEP = 0.008;
+
     const lb = entry.lossBreakdown || {};
     const activeDefs = PAR.LOSS_CATEGORY_DEFS.filter((def) => lb[def.key] !== null && lb[def.key] !== undefined);
 
     const labels = ["Target", ...activeDefs.map((d) => d.label), "PBA - Technical"];
-    const colors = ["#94a3b8", ...activeDefs.map((d) => d.color), "#16a34a"];
-    const data = [[0, 1]];
+    const colors = [TARGET_COLOR, ...activeDefs.map(() => LOSS_COLOR), TOTAL_COLOR];
+
+    const renderData = [[0, 1]];
+    const trueValues = [1];
     let running = 1;
     for (const def of activeDefs) {
       const v = lb[def.key] || 0;
-      const from = running - v;
-      data.push([Math.min(from, running), Math.max(from, running)]);
-      running = from;
+      const top = running;
+      running -= v;
+      const renderedBottom = Math.max(Math.min(running, top - MIN_STEP), 0);
+      renderData.push([renderedBottom, top]);
+      trueValues.push(-v);
     }
     const total = entry.availability.pbaRep;
-    data.push([0, total !== null && total !== undefined ? total : running]);
+    const totalValue = total !== null && total !== undefined ? total : running;
+    renderData.push([0, totalValue]);
+    trueValues.push(totalValue);
+
+    const labelPlugin = {
+      id: "waterfallLabels",
+      afterDatasetsDraw(chart) {
+        const meta = chart.getDatasetMeta(0);
+        const ctx = chart.ctx;
+        ctx.save();
+        ctx.font = "bold 10px sans-serif";
+        ctx.textAlign = "center";
+        meta.data.forEach((bar, i) => {
+          const [from, to] = renderData[i];
+          const topY = chart.scales.y.getPixelForValue(Math.max(from, to));
+          ctx.fillStyle = colors[i];
+          ctx.fillText(PAR._fmtWaterfallLabel(trueValues[i]), bar.x, topY - 6);
+        });
+        ctx.restore();
+      },
+    };
 
     return new Chart(canvasEl, {
       type: "bar",
-      data: { labels, datasets: [{ data, backgroundColor: colors }] },
+      data: { labels, datasets: [{ data: renderData, backgroundColor: colors }] },
+      plugins: [labelPlugin],
       options: {
         responsive: true,
         maintainAspectRatio: false,
+        layout: { padding: { top: 20 } },
         plugins: {
           legend: { display: false },
-          tooltip: { callbacks: { label: (ctx) => PAR.fmtPercent(Math.abs(ctx.raw[1] - ctx.raw[0])) } },
+          tooltip: { callbacks: { label: (ctx) => PAR._fmtWaterfallLabel(trueValues[ctx.dataIndex]) } },
         },
         scales: {
           x: { ticks: { maxRotation: 45, minRotation: 0 } },
-          y: { min: 0, ticks: { callback: (v) => PAR.fmtPercent(v) } },
+          y: { min: 0, max: 1.08, ticks: { callback: (v) => PAR.fmtPercent(v) } },
         },
       },
     });
