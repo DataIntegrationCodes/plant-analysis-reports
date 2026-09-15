@@ -126,84 +126,105 @@ function buildFleetInsight(plantStats, avgCapacityFactor) {
 
   document.getElementById("fleetInsight").innerHTML = buildFleetInsight(plantStats, avgCapacityFactor);
 
+  // V1/V2 toggle picks which plant report the cards/table rows link to -
+  // persisted the same way as the Cards/Table view choice.
+  let reportVersion = localStorage.getItem("par-report-version") === "v2" ? "v2" : "v1";
+
   const grid = document.getElementById("cardsGrid");
-  grid.innerHTML = plantStats.map((s) => {
-    const p = s.plant;
-    const badgeClass = PAR.badgeClassForStatus(p.status);
-    const statusLabel = PAR.STATUS_LABEL[p.status] || p.status;
-
-    const statsHtml = s.hasData
-      ? `
-        <div class="card-stats">
-          <div><div class="card-stat-label">YTD Production</div><div class="card-stat-value">${PAR.fmtGWh(s.ytdProduction)}</div></div>
-          <div><div class="card-stat-label">Capacity Factor</div><div class="card-stat-value ${kpiClass(s.capacityFactor, CAPACITY_FACTOR_THRESHOLD)}">${PAR.fmtPercent(s.capacityFactor)}</div></div>
-          <div><div class="card-stat-label">TBA - Contractual</div><div class="card-stat-value ${kpiClass(s.contractual, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.contractual)}</div></div>
-          <div><div class="card-stat-label">TBA - Technical</div><div class="card-stat-value ${kpiClass(s.technical, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.technical)}</div></div>
-          <div><div class="card-stat-label">PBA - Technical</div><div class="card-stat-value ${kpiClass(s.pba, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.pba)}</div></div>
-        </div>
-      `
-      : `<div class="card-meta-row"><span>No data yet</span></div>`;
-
-    return `
-      <div class="card" onclick="window.location.href='plant.html?code=${p.code}'">
-        <div class="card-top">
-          <div>
-            <p class="card-name">${p.name}</p>
-            <p class="card-code">${p.code} · ${p.mwInstalled} MW</p>
-          </div>
-          <div class="card-top-right">
-            <span class="badge ${badgeClass}">${statusLabel}</span>
-            <a class="card-v2-link" href="plant-v2.html?code=${p.code}" onclick="event.stopPropagation()">V2 →</a>
-          </div>
-        </div>
-        ${statsHtml}
-      </div>
-    `;
-  }).join("");
-
   const tableWrap = document.getElementById("plantsTableWrap");
-  tableWrap.innerHTML = `
-    <table class="plants-table">
-      <thead>
-        <tr>
-          <th>Project</th>
-          <th>Code</th>
-          <th class="num">MW</th>
-          <th>Status</th>
-          <th class="num">YTD Production</th>
-          <th class="num">Capacity Factor</th>
-          <th class="num">TBA - Contractual</th>
-          <th class="num">TBA - Technical</th>
-          <th class="num">PBA - Technical</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${plantStats.map((s) => {
-          const p = s.plant;
-          const badgeClass = PAR.badgeClassForStatus(p.status);
-          const statusLabel = PAR.STATUS_LABEL[p.status] || p.status;
-          const cells = s.hasData
-            ? `
-              <td class="num">${PAR.fmtGWh(s.ytdProduction)}</td>
-              <td class="num ${kpiClass(s.capacityFactor, CAPACITY_FACTOR_THRESHOLD)}">${PAR.fmtPercent(s.capacityFactor)}</td>
-              <td class="num ${kpiClass(s.contractual, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.contractual)}</td>
-              <td class="num ${kpiClass(s.technical, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.technical)}</td>
-              <td class="num ${kpiClass(s.pba, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.pba)}</td>
-            `
-            : `<td class="num" colspan="5">No data yet</td>`;
-          return `
-            <tr onclick="window.location.href='plant.html?code=${p.code}'">
-              <td>${p.name} <a class="card-v2-link" href="plant-v2.html?code=${p.code}" onclick="event.stopPropagation()">V2 →</a></td>
-              <td>${p.code}</td>
-              <td class="num">${p.mwInstalled}</td>
-              <td><span class="badge ${badgeClass}">${statusLabel}</span></td>
-              ${cells}
-            </tr>
-          `;
-        }).join("")}
-      </tbody>
-    </table>
-  `;
+
+  function renderCardsAndTable() {
+    const plantPage = reportVersion === "v2" ? "plant-v2.html" : "plant.html";
+
+    grid.innerHTML = plantStats.map((s) => {
+      const p = s.plant;
+      const badgeClass = PAR.badgeClassForStatus(p.status);
+      const statusLabel = PAR.STATUS_LABEL[p.status] || p.status;
+
+      const statsHtml = s.hasData
+        ? `
+          <div class="card-stats">
+            <div><div class="card-stat-label">YTD Production</div><div class="card-stat-value">${PAR.fmtGWh(s.ytdProduction)}</div></div>
+            <div><div class="card-stat-label">Capacity Factor</div><div class="card-stat-value ${kpiClass(s.capacityFactor, CAPACITY_FACTOR_THRESHOLD)}">${PAR.fmtPercent(s.capacityFactor)}</div></div>
+            <div><div class="card-stat-label">TBA - Contractual</div><div class="card-stat-value ${kpiClass(s.contractual, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.contractual)}</div></div>
+            <div><div class="card-stat-label">TBA - Technical</div><div class="card-stat-value ${kpiClass(s.technical, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.technical)}</div></div>
+            <div><div class="card-stat-label">PBA - Technical</div><div class="card-stat-value ${kpiClass(s.pba, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.pba)}</div></div>
+          </div>
+        `
+        : `<div class="card-meta-row"><span>No data yet</span></div>`;
+
+      return `
+        <a class="card" href="${plantPage}?code=${p.code}">
+          <div class="card-top">
+            <div>
+              <p class="card-name">${p.name}</p>
+              <p class="card-code">${p.code} · ${p.mwInstalled} MW</p>
+            </div>
+            <span class="badge ${badgeClass}">${statusLabel}</span>
+          </div>
+          ${statsHtml}
+        </a>
+      `;
+    }).join("");
+
+    tableWrap.innerHTML = `
+      <table class="plants-table">
+        <thead>
+          <tr>
+            <th>Project</th>
+            <th>Code</th>
+            <th class="num">MW</th>
+            <th>Status</th>
+            <th class="num">YTD Production</th>
+            <th class="num">Capacity Factor</th>
+            <th class="num">TBA - Contractual</th>
+            <th class="num">TBA - Technical</th>
+            <th class="num">PBA - Technical</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${plantStats.map((s) => {
+            const p = s.plant;
+            const badgeClass = PAR.badgeClassForStatus(p.status);
+            const statusLabel = PAR.STATUS_LABEL[p.status] || p.status;
+            const cells = s.hasData
+              ? `
+                <td class="num">${PAR.fmtGWh(s.ytdProduction)}</td>
+                <td class="num ${kpiClass(s.capacityFactor, CAPACITY_FACTOR_THRESHOLD)}">${PAR.fmtPercent(s.capacityFactor)}</td>
+                <td class="num ${kpiClass(s.contractual, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.contractual)}</td>
+                <td class="num ${kpiClass(s.technical, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.technical)}</td>
+                <td class="num ${kpiClass(s.pba, AVAILABILITY_THRESHOLD)}">${PAR.fmtPercent(s.pba)}</td>
+              `
+              : `<td class="num" colspan="5">No data yet</td>`;
+            return `
+              <tr onclick="window.location.href='${plantPage}?code=${p.code}'">
+                <td>${p.name}</td>
+                <td>${p.code}</td>
+                <td class="num">${p.mwInstalled}</td>
+                <td><span class="badge ${badgeClass}">${statusLabel}</span></td>
+                ${cells}
+              </tr>
+            `;
+          }).join("")}
+        </tbody>
+      </table>
+    `;
+  }
+
+  renderCardsAndTable();
+
+  const reportV1Btn = document.getElementById("reportV1Btn");
+  const reportV2Btn = document.getElementById("reportV2Btn");
+  function setReportVersion(version) {
+    reportVersion = version;
+    reportV1Btn.classList.toggle("active", version === "v1");
+    reportV2Btn.classList.toggle("active", version === "v2");
+    localStorage.setItem("par-report-version", version);
+    renderCardsAndTable();
+  }
+  reportV1Btn.addEventListener("click", () => setReportVersion("v1"));
+  reportV2Btn.addEventListener("click", () => setReportVersion("v2"));
+  setReportVersion(reportVersion);
 
   // Cards/Table toggle, persisted across visits.
   const cardsBtn = document.getElementById("viewCardsBtn");
