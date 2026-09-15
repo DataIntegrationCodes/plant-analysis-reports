@@ -201,6 +201,7 @@ button.btn.primary { background: var(--accent); color: white; border-color: var(
   text-decoration: none;
   color: var(--text);
   display: block;
+  cursor: pointer;
   transition: transform 0.12s ease, border-color 0.12s ease;
 }
 
@@ -209,6 +210,19 @@ button.btn.primary { background: var(--accent); color: white; border-color: var(
 .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
 .card-name { font-size: 16px; font-weight: 700; margin: 0 0 2px; }
 .card-code { font-size: 12px; color: var(--text-muted); }
+
+.card-top-right { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+.card-v2-link {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  padding: 3px 8px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.card-v2-link:hover { border-color: var(--accent); background: var(--accent-soft); }
 
 .badge { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 999px; white-space: nowrap; }
 .badge-green { background: var(--green-soft); color: var(--green); }

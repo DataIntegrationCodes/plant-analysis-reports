@@ -145,16 +145,19 @@ function buildFleetInsight(plantStats, avgCapacityFactor) {
       : `<div class="card-meta-row"><span>No data yet</span></div>`;
 
     return `
-      <a class="card" href="plant.html?code=${p.code}">
+      <div class="card" onclick="window.location.href='plant.html?code=${p.code}'">
         <div class="card-top">
           <div>
             <p class="card-name">${p.name}</p>
             <p class="card-code">${p.code} · ${p.mwInstalled} MW</p>
           </div>
-          <span class="badge ${badgeClass}">${statusLabel}</span>
+          <div class="card-top-right">
+            <span class="badge ${badgeClass}">${statusLabel}</span>
+            <a class="card-v2-link" href="plant-v2.html?code=${p.code}" onclick="event.stopPropagation()">V2 →</a>
+          </div>
         </div>
         ${statsHtml}
-      </a>
+      </div>
     `;
   }).join("");
 
@@ -190,7 +193,7 @@ function buildFleetInsight(plantStats, avgCapacityFactor) {
             : `<td class="num" colspan="5">No data yet</td>`;
           return `
             <tr onclick="window.location.href='plant.html?code=${p.code}'">
-              <td>${p.name}</td>
+              <td>${p.name} <a class="card-v2-link" href="plant-v2.html?code=${p.code}" onclick="event.stopPropagation()">V2 →</a></td>
               <td>${p.code}</td>
               <td class="num">${p.mwInstalled}</td>
               <td><span class="badge ${badgeClass}">${statusLabel}</span></td>
