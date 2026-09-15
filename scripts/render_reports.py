@@ -46,6 +46,7 @@ def main():
     parser.add_argument("--plants", nargs="*", help="Only render these plant codes (default: all)")
     parser.add_argument("--skip-kpi-reports", action="store_true", help="Skip the per-project full-history KPI report PDFs")
     parser.add_argument("--skip-kpi-reports-v2", action="store_true", help="Skip the V2 (Losses Breakdown / PBA_Rep / year filter) per-project KPI report PDFs")
+    parser.add_argument("--skip-plant-v2", action="store_true", help="Skip the V2 per-plant per-month PDFs (Losses Breakdown waterfall)")
     args = parser.parse_args()
 
     with open(os.path.join(REPO_ROOT, "data", "manifest.json"), encoding="utf-8") as f:
@@ -76,6 +77,23 @@ def main():
                     render_pdf(page, url, out_path)
                     print(f"Rendered {code}/{month}.pdf")
                     rendered += 1
+
+            if not args.skip_plant_v2:
+                for code in plant_codes:
+                    plant_path = os.path.join(REPO_ROOT, "data", "plants", f"{code}.json")
+                    with open(plant_path, encoding="utf-8") as f:
+                        plant = json.load(f)
+                    for month in plant["months"]:
+                        if months_filter and month not in months_filter:
+                            continue
+                        out_path = os.path.join(REPORTS_DIR, f"{code}-v2", f"{month}.pdf")
+                        if os.path.exists(out_path) and not args.force:
+                            skipped += 1
+                            continue
+                        url = f"http://127.0.0.1:{PORT}/print/plant-print-v2.html?code={code}&month={month}"
+                        render_pdf(page, url, out_path)
+                        print(f"Rendered {code}-v2/{month}.pdf")
+                        rendered += 1
 
             with open(os.path.join(REPO_ROOT, "data", "fleet.json"), encoding="utf-8") as f:
                 fleet = json.load(f)

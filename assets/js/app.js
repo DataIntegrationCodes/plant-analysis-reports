@@ -186,6 +186,91 @@ const PAR = {
     `;
   },
 
+  // V2 variant of renderPlantSections: Availability labels match the V2 KPI
+  // Matrix (TBA - Contractual/Technical, PBA - Technical off PBA_Rep), and
+  // Downtime by Cause is replaced by a Losses Breakdown waterfall (built
+  // separately by buildLossWaterfallChart once this HTML is in the DOM -
+  // a canvas can't be sized/drawn into before it's attached). Shared between
+  // plant-v2.html and print/plant-print-v2.html.
+  renderPlantSectionsV2(entry) {
+    if (!entry) return '<div class="section"><p class="empty-note">No data available for this month.</p></div>';
+    const p = entry.production, a = entry.availability, w = entry.wind;
+    return `
+      <div class="section">
+        <div class="section-title">Production</div>
+        <div class="metric-grid">
+          <div class="metric"><div class="metric-label">Actual</div><div class="metric-value">${PAR.fmtMWh(p.actual)}</div></div>
+          <div class="metric"><div class="metric-label">P50 Target</div><div class="metric-value small">${PAR.fmtMWh(p.p50Target)}</div></div>
+          <div class="metric"><div class="metric-label">P90 Target</div><div class="metric-value small">${PAR.fmtMWh(p.p90Target)}</div></div>
+          <div class="metric"><div class="metric-label">Capacity Factor</div><div class="metric-value small">${PAR.fmtPercent(p.capacityFactor)}</div></div>
+          <div class="metric"><div class="metric-label">Historical Production</div><div class="metric-value small">${PAR.fmtMWh(p.historical)}</div></div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title">Availability</div>
+        <div class="metric-grid">
+          <div class="metric"><div class="metric-label">TBA - Contractual</div><div class="metric-value">${PAR.fmtPercent(a.contractual)}</div></div>
+          <div class="metric"><div class="metric-label">TBA - Technical</div><div class="metric-value">${PAR.fmtPercent(a.technical)}</div></div>
+          <div class="metric"><div class="metric-label">PBA - Technical</div><div class="metric-value">${PAR.fmtPercent(a.pbaRep)}</div></div>
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-title">Losses Breakdown</div>
+        <div class="chart-container"><canvas id="chartLossWaterfall"></canvas></div>
+      </div>
+      <div class="section">
+        <div class="section-title">Wind Resource</div>
+        <div class="metric-grid">
+          <div class="metric"><div class="metric-label">Measured Wind Speed</div><div class="metric-value small">${PAR.fmtNumber(w.measuredWS)} m/s</div></div>
+          <div class="metric"><div class="metric-label">Forecasted Wind Speed</div><div class="metric-value small">${PAR.fmtNumber(w.forecastedWS)} m/s</div></div>
+          <div class="metric"><div class="metric-label">Deviation</div><div class="metric-value small">${PAR.fmtSigned(w.deviation !== null && w.deviation !== undefined ? w.deviation * 100 : null)}%</div></div>
+        </div>
+      </div>
+    `;
+  },
+
+  // Floating-bar waterfall: Target (fixed 100%) -> one descending step per
+  // active loss category (in LOSS_CATEGORY_DEFS order) -> Total, drawn at
+  // the plant's actual PBA_Rep for the month (not the running total after
+  // all steps - the two are usually within ~0.3% of each other but PBA_Rep
+  // is the real reported figure, so the Total bar reflects it directly).
+  // Returns the Chart instance so callers can destroy() it before rebuilding
+  // (month/plant switches on the interactive page).
+  buildLossWaterfallChart(canvasEl, entry) {
+    const lb = entry.lossBreakdown || {};
+    const activeDefs = PAR.LOSS_CATEGORY_DEFS.filter((def) => lb[def.key] !== null && lb[def.key] !== undefined);
+
+    const labels = ["Target", ...activeDefs.map((d) => d.label), "PBA - Technical"];
+    const colors = ["#94a3b8", ...activeDefs.map((d) => d.color), "#16a34a"];
+    const data = [[0, 1]];
+    let running = 1;
+    for (const def of activeDefs) {
+      const v = lb[def.key] || 0;
+      const from = running - v;
+      data.push([Math.min(from, running), Math.max(from, running)]);
+      running = from;
+    }
+    const total = entry.availability.pbaRep;
+    data.push([0, total !== null && total !== undefined ? total : running]);
+
+    return new Chart(canvasEl, {
+      type: "bar",
+      data: { labels, datasets: [{ data, backgroundColor: colors }] },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: { callbacks: { label: (ctx) => PAR.fmtPercent(Math.abs(ctx.raw[1] - ctx.raw[0])) } },
+        },
+        scales: {
+          x: { ticks: { maxRotation: 45, minRotation: 0 } },
+          y: { min: 0, ticks: { callback: (v) => PAR.fmtPercent(v) } },
+        },
+      },
+    });
+  },
+
   // --- KPI_Dim-driven matrix (report.html + print/report-print.html) ---
   //
   // Mirrors the live KPI_Dim table + "Plant KPI Value_Upgrade" measure pulled
