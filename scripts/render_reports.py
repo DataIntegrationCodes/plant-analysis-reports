@@ -46,6 +46,7 @@ def main():
     parser.add_argument("--plants", nargs="*", help="Only render these plant codes (default: all)")
     parser.add_argument("--skip-kpi-reports", action="store_true", help="Skip the per-project full-history KPI report PDFs")
     parser.add_argument("--skip-kpi-reports-v2", action="store_true", help="Skip the V2 (Losses Breakdown / PBA_Rep / year filter) per-project KPI report PDFs")
+    parser.add_argument("--skip-v1", action="store_true", help="Skip the V1 per-plant per-month PDFs and the fleet PDFs (use with --force to refresh only V2 without touching V1)")
     parser.add_argument("--skip-plant-v2", action="store_true", help="Skip the V2 per-plant per-month PDFs (Losses Breakdown waterfall)")
     args = parser.parse_args()
 
@@ -62,7 +63,7 @@ def main():
             browser = pw.chromium.launch()
             page = browser.new_page()
 
-            for code in plant_codes:
+            for code in ([] if args.skip_v1 else plant_codes):
                 plant_path = os.path.join(REPO_ROOT, "data", "plants", f"{code}.json")
                 with open(plant_path, encoding="utf-8") as f:
                     plant = json.load(f)
@@ -97,7 +98,7 @@ def main():
 
             with open(os.path.join(REPO_ROOT, "data", "fleet.json"), encoding="utf-8") as f:
                 fleet = json.load(f)
-            for month in fleet["months"]:
+            for month in ([] if args.skip_v1 else fleet["months"]):
                 if months_filter and month not in months_filter:
                     continue
                 out_path = os.path.join(REPORTS_DIR, "fleet", f"{month}.pdf")

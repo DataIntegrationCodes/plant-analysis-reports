@@ -9,7 +9,8 @@
   .print-page { max-width: 980px; }
   canvas { max-width: 100%; }
   table { font-size: 9px; }
-  th, td { padding: 3px 5px; }
+  th, td { padding: 2px 5px; }
+  table.kpi-matrix td { white-space: nowrap; }
 </style>
 </head>
 <body>
@@ -27,6 +28,11 @@
   <div class="section">
     <div class="section-title">Full KPI Matrix</div>
     <div id="kpiMatrixWrap"></div>
+  </div>
+
+  <div class="section">
+    <div class="section-title" id="waterfallTitle">Losses Breakdown Waterfall</div>
+    <div class="chart-container" style="height:170px;"><canvas id="chartLossWaterfall"></canvas></div>
   </div>
 
   <div class="page-break">
@@ -88,6 +94,12 @@
   const currentYear = years[years.length - 1];
   document.getElementById("kpiMatrixWrap").innerHTML =
     PAR.renderKpiMatrix(plant.months, years, [currentYear], PAR.buildKpiCategoriesV2(plant.months));
+
+  // The PDF is a rolling full-history report, so its waterfall is the latest
+  // month (the interactive page lets you step through months).
+  const latestMonthKey = Object.keys(plant.months).sort().pop();
+  document.getElementById("waterfallTitle").textContent = `Losses Breakdown Waterfall — ${PAR.monthLabel(latestMonthKey)}`;
+  PAR.buildLossWaterfallChart(document.getElementById("chartLossWaterfall"), plant.months[latestMonthKey]);
 
   // Graphical dashboard defaults to the latest year that has turbine-level
   // data (turbine IDs get repowered/renamed over time, so the plant's most

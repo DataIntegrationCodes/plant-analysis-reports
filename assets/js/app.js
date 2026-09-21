@@ -247,26 +247,27 @@ const PAR = {
   },
 
   buildLossWaterfallChart(canvasEl, entry) {
-    // Styled to match the model's own native waterfall visual: one uniform
-    // color for every loss step (direction carries the meaning, not category
-    // identity - that's already on the x-axis label), a distinct color each
-    // for the Target and Total anchor bars, and each bar's own value printed
-    // directly above it. A true-to-scale bar for a very small step (e.g.
-    // 0.006%) would be a fraction of a pixel tall and invisible, so each
-    // step's rendered bottom is extended to a minimum thickness - its top
-    // (its true position in the waterfall) never moves, only how far the
-    // visible bar reaches past it, and the label always prints the real,
-    // unclamped value.
+    // Each loss step wears its category's color from LOSS_CATEGORY_DEFS (same
+    // as every other Losses Breakdown visual); Target and Total are distinct
+    // anchor colors, and each bar's own value is printed directly above it.
+    // Step labels use a dark neutral rather than the bar color - several
+    // palette colors (yellow, pale greens/grays) are unreadable as text. A
+    // true-to-scale bar for a very small step (e.g. 0.006%) would be a
+    // fraction of a pixel tall and invisible, so each step's rendered bottom
+    // is extended to a minimum thickness - its top (its true position in the
+    // waterfall) never moves, only how far the visible bar reaches past it,
+    // and the label always prints the real, unclamped value.
     const TARGET_COLOR = "#6d6fa8";
-    const LOSS_COLOR = "#c17b7b";
     const TOTAL_COLOR = "#4f8c67";
+    const STEP_LABEL_COLOR = "#374151";
     const MIN_STEP = 0.008;
 
     const lb = entry.lossBreakdown || {};
     const activeDefs = PAR.LOSS_CATEGORY_DEFS.filter((def) => lb[def.key] !== null && lb[def.key] !== undefined);
 
     const labels = ["Target", ...activeDefs.map((d) => d.label), "PBA - Technical"];
-    const colors = [TARGET_COLOR, ...activeDefs.map(() => LOSS_COLOR), TOTAL_COLOR];
+    const colors = [TARGET_COLOR, ...activeDefs.map((d) => d.color), TOTAL_COLOR];
+    const labelColors = [TARGET_COLOR, ...activeDefs.map(() => STEP_LABEL_COLOR), TOTAL_COLOR];
 
     const renderData = [[0, 1]];
     const trueValues = [1];
@@ -295,7 +296,7 @@ const PAR = {
         meta.data.forEach((bar, i) => {
           const [from, to] = renderData[i];
           const topY = chart.scales.y.getPixelForValue(Math.max(from, to));
-          ctx.fillStyle = colors[i];
+          ctx.fillStyle = labelColors[i];
           ctx.fillText(PAR._fmtWaterfallLabel(trueValues[i]), bar.x, topY - 6);
         });
         ctx.restore();
@@ -304,7 +305,7 @@ const PAR = {
 
     return new Chart(canvasEl, {
       type: "bar",
-      data: { labels, datasets: [{ data: renderData, backgroundColor: colors }] },
+      data: { labels, datasets: [{ data: renderData, backgroundColor: colors, borderColor: "rgba(0,0,0,0.3)", borderWidth: 0.5 }] },
       plugins: [labelPlugin],
       options: {
         responsive: true,
@@ -316,7 +317,7 @@ const PAR = {
         },
         scales: {
           x: { ticks: { maxRotation: 45, minRotation: 0 } },
-          y: { min: 0, max: 1.08, ticks: { callback: (v) => PAR.fmtPercent(v) } },
+          y: { min: 0, max: 1.08, ticks: { callback: (v) => (v > 1.0001 ? "" : PAR.fmtPercent(v)) } },
         },
       },
     });
@@ -441,27 +442,29 @@ const PAR = {
   // turbine technical-availability loss. It stays under Production instead
   // (KPI_CATEGORIES / buildKpiCategoriesV2's category A), not shown twice.
   //
-  // Every category gets its own solid, visually distinct color - no shared
-  // gray/pattern tier (that read as confusing rather than clarifying in
-  // practice, so it was dropped in favor of plain unique hues for all 17).
+  // Colors and order are the fixed Losses Breakdown palette supplied by the
+  // report owner (same order as the model's Waterfall Axis) - used for every
+  // Losses Breakdown visual so a category is the same color everywhere. Some
+  // are pale (Economic, Noise, Icing) or bright (Requested Shutdown), so
+  // charts draw a thin outline around each segment to keep them legible.
   LOSS_CATEGORY_DEFS: [
-    { key: "grid", label: "Grid", color: "#2a78d6" },
-    { key: "breakdown", label: "Breakdown", color: "#eb6834" },
-    { key: "maintenance", label: "Maintenance", color: "#1baf7a" },
-    { key: "partialPerf", label: "Partial Perf.", color: "#eda100" },
-    { key: "environmental", label: "Environmental", color: "#e87ba4" },
-    { key: "dataQuality", label: "Data Quality", color: "#008300" },
-    { key: "requestedShutdown", label: "Requested Shutdown", color: "#4a3aa7" },
-    { key: "bop", label: "BoP", color: "#dc2626" },
-    { key: "bat", label: "Bat", color: "#78350f" },
-    { key: "bird", label: "Bird", color: "#65a30d" },
-    { key: "icing", label: "Icing", color: "#0891b2" },
-    { key: "mcr", label: "MCR", color: "#d946ef" },
-    { key: "other", label: "Other", color: "#57534e" },
-    { key: "economic", label: "Economic", color: "#ca8a04" },
-    { key: "economicCompensated", label: "Economic Compensated", color: "#0d9488" },
-    { key: "gridCompensated", label: "Grid Compensated", color: "#1e40af" },
-    { key: "noise", label: "Noise", color: "#be185d" },
+    { key: "grid", label: "Grid", color: "#ED7D31" },
+    { key: "breakdown", label: "Breakdown", color: "#2F75B5" },
+    { key: "maintenance", label: "Maintenance", color: "#9BC2E6" },
+    { key: "partialPerf", label: "Partial Perf.", color: "#BDD7EE" },
+    { key: "bop", label: "BoP", color: "#7030A0" },
+    { key: "environmental", label: "Environmental", color: "#375623" },
+    { key: "bat", label: "Bat", color: "#A9D08E" },
+    { key: "bird", label: "Bird", color: "#548235" },
+    { key: "dataQuality", label: "Data Quality", color: "#808080" },
+    { key: "economic", label: "Economic", color: "#D9D9D9" },
+    { key: "economicCompensated", label: "Economic Compensated", color: "#BFBFBF" },
+    { key: "gridCompensated", label: "Grid Compensated", color: "#F4B084" },
+    { key: "icing", label: "Icing", color: "#C6E0B4" },
+    { key: "mcr", label: "MCR", color: "#00B0F0" },
+    { key: "noise", label: "Noise", color: "#E2EFDA" },
+    { key: "other", label: "Other", color: "#A6A6A6" },
+    { key: "requestedShutdown", label: "Requested Shutdown", color: "#FFFF00" },
   ],
 
   // Only the loss categories that have at least one non-null value across
@@ -920,6 +923,7 @@ const PAR = {
           label: d.label,
           data: months.map((m) => ((plant.months[m][downtimeField] || {})[d.key] || 0) * 100),
           backgroundColor: d.color,
+          ...(v2 ? { borderColor: "rgba(0,0,0,0.3)", borderWidth: 0.5 } : {}),
         })),
       },
       plugins: v2 ? [stackTotalLabelPlugin] : [],

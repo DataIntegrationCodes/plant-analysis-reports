@@ -6,6 +6,7 @@
 <title>KPI Matrix V2 — Plant Analysis Reports</title>
 <link rel="stylesheet" href="assets/css/styles.css" />
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌬️</text></svg>" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
 </head>
 <body>
 <div class="app">
@@ -52,6 +53,16 @@
     <div class="section-title">Full KPI Matrix</div>
     <p class="empty-note" style="text-align:left;padding:0 0 10px;">Click a year to expand into months, click again to collapse. Total reflects only the years selected above.</p>
     <div class="table-wrap" id="kpiMatrixWrap"></div>
+  </div>
+
+  <div class="section">
+    <div class="toolbar" style="margin-bottom:8px;">
+      <div class="section-title" style="margin:0;">Losses Breakdown Waterfall</div>
+      <div class="spacer"></div>
+      <select id="waterfallMonth" aria-label="Waterfall month"></select>
+    </div>
+    <p class="empty-note" style="text-align:left;padding:0 0 10px;">Months follow the year currently expanded in the matrix above; defaults to the latest month.</p>
+    <div class="chart-container"><canvas id="chartLossWaterfall"></canvas></div>
   </div>
 
   <footer class="footer">

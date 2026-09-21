@@ -17,10 +17,46 @@
   const expandedYears = new Set();
   let selectedYears = new Set();
 
+  const waterfallMonthSelect = document.getElementById("waterfallMonth");
+  const waterfallCanvas = document.getElementById("chartLossWaterfall");
+  let waterfallChart = null;
+  let waterfallYear = null;
+  let currentMonths = {};
+
   function years(monthsMap) {
     const set = new Set(Object.keys(monthsMap).map((k) => k.slice(0, 4)));
     return [...set].sort();
   }
+
+  // The waterfall's "active" year is the year expanded in the matrix (only
+  // one can be at a time); with nothing expanded it falls back to the latest
+  // selected year. An expanded year that has since been unchecked in the year
+  // filter doesn't count.
+  function activeYear() {
+    const expanded = [...expandedYears].find((y) => selectedYears.has(y));
+    return expanded || [...selectedYears].sort().pop();
+  }
+
+  function drawWaterfall() {
+    if (waterfallChart) waterfallChart.destroy();
+    const entry = currentMonths[waterfallMonthSelect.value];
+    waterfallChart = entry ? PAR.buildLossWaterfallChart(waterfallCanvas, entry) : null;
+  }
+
+  // Re-populates the month dropdown only when the active year changes (so an
+  // unrelated matrix re-render doesn't reset a month the user picked), and
+  // lands on that year's latest month - which, on first load, is the latest
+  // month overall.
+  function syncWaterfall() {
+    const year = activeYear();
+    if (!year || year === waterfallYear) return;
+    waterfallYear = year;
+    const months = Object.keys(currentMonths).filter((k) => k.startsWith(year)).sort();
+    PAR.populateMonthSelect(waterfallMonthSelect, months, months[months.length - 1]);
+    drawWaterfall();
+  }
+
+  waterfallMonthSelect.addEventListener("change", drawWaterfall);
 
   // Total recomputes to the year selection (unlike V1, where Total is
   // always full history) - it's built only from the checked years' months.
@@ -89,11 +125,15 @@
         renderMatrix(monthsMap);
       });
     });
+
+    syncWaterfall();
   }
 
   async function loadProject(code) {
     expandedYears.clear();
+    waterfallYear = null;
     const plant = await PAR.fetchJSON(`data/plants/${code}.json`);
+    currentMonths = plant.months;
     summaryWrap.innerHTML = PAR.buildProjectSummary(plant);
 
     const yrs = years(plant.months);

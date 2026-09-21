@@ -1,14 +1,24 @@
 """
-One-off migration for the V2 reporting layer: adds `availability.pbaRep` and a
-new `lossBreakdown` block to each month entry already present in
-data/plants/<CODE>.json, sourced from two live DAX pulls (PBA_Rep measure,
-and Waterfall Value % grouped by 'Waterfall Axis'[Step]) saved as CSVs by the
-powerbi-modeling-mcp tool. Purely additive - does not touch any existing
-field, so the V1 pages (report.html, graphical.html, plant.html) are
-unaffected. Only merges months that already exist in each plant's JSON file;
-any DAX row for a month not already present (e.g. an in-progress month) is
-ignored.
+Refreshes the V2 fields in data/plants/<CODE>.json from two live DAX pulls
+(saved as CSVs by the powerbi-modeling-mcp tool):
+
+  * PBA_Rep                     -> availability.pbaRep
+  * Waterfall Value % by Step   -> lossBreakdown  (positive fractions)
+
+Usage:
+    python scripts/add_v2_fields.py --pba-rep-csv PBA.csv --waterfall-csv WF.csv [--dry-run]
+
+Each month's `lossBreakdown` is REPLACED wholesale (not merged), so a step the
+model has since retired disappears instead of lingering as a stale value. Only
+months already present in a plant's file are touched - a row for any other month
+(e.g. an in-progress one) is ignored. Prints a before/after comparison,
+including how far pbaRep + sum(lossBreakdown) is from 100%.
+
+Waterfall CSV columns: project_code, year_month, Step, value. Steps that aren't
+loss categories (Potential, PBA_IEC, ...) are ignored; PBA_IEC is only used as a
+cross-check against the separate PBA_Rep pull.
 """
+import argparse
 import csv
 import json
 import os
@@ -20,13 +30,9 @@ PLANTS_DIR = os.path.join(REPO_ROOT, "data", "plants")
 sys.path.insert(0, os.path.join(REPO_ROOT, "scripts"))
 from ingest_month import year_month_to_key, parse_number  # noqa: E402
 
-PBA_REP_CSV = r"C:\Users\HRampelwa.INNOWIND\AppData\Local\Temp\PowerBIModelingMCP\QueryResults\dax_query_result_20260902_152633_948.csv"
-WATERFALL_CSV = r"C:\Users\HRampelwa.INNOWIND\AppData\Local\Temp\PowerBIModelingMCP\QueryResults\dax_query_result_20260902_152645_805.csv"
-
-# Waterfall Axis[Step] -> our lossBreakdown field name. "Actual Energy" and
-# "Potential Energy" are waterfall structural anchors, not losses - excluded.
-# "Electrical Losses" is included here (per explicit instruction) and will be
-# removed from the V2 Production category to avoid showing it twice.
+# Waterfall Axis[Step] -> lossBreakdown field. Electrical Losses is no longer a
+# waterfall step (the model's loss now comes from the PBA tables, which don't
+# carry it), so it is intentionally absent.
 STEP_FIELD_MAP = {
     "Grid": "grid",
     "Breakdown": "breakdown",
@@ -45,61 +51,109 @@ STEP_FIELD_MAP = {
     "Noise": "noise",
     "Other": "other",
     "Requested Shutdown": "requestedShutdown",
-    "Electrical Losses": "electricalLosses",
 }
 
 
+def read_rows(path):
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        reader = csv.reader(f)
+        next(reader)
+        yield from reader
+
+
+def identity_gap(entry):
+    """pbaRep + sum(losses) - 1, or None when either side is missing."""
+    pba = entry.get("availability", {}).get("pbaRep")
+    if pba is None:
+        return None
+    return pba + sum(v for v in (entry.get("lossBreakdown") or {}).values() if v is not None) - 1
+
+
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--pba-rep-csv", required=True)
+    ap.add_argument("--waterfall-csv", required=True)
+    ap.add_argument("--dry-run", action="store_true", help="Report changes without writing files")
+    args = ap.parse_args()
+
     plants = {}
     for fname in os.listdir(PLANTS_DIR):
-        if not fname.endswith(".json"):
-            continue
-        code = fname[:-5]
-        with open(os.path.join(PLANTS_DIR, fname), encoding="utf-8") as f:
-            plants[code] = json.load(f)
+        if fname.endswith(".json"):
+            with open(os.path.join(PLANTS_DIR, fname), encoding="utf-8") as f:
+                plants[fname[:-5]] = json.load(f)
+    before = json.loads(json.dumps(plants))
 
-    pba_matched = pba_skipped = 0
-    with open(PBA_REP_CSV, encoding="utf-8-sig", newline="") as f:
-        reader = csv.reader(f)
-        next(reader)
-        for code, year_month, pba_rep in reader:
-            month_key = year_month_to_key(year_month)
-            plant = plants.get(code)
-            if not plant or month_key not in plant["months"]:
-                pba_skipped += 1
-                continue
-            plant["months"][month_key].setdefault("availability", {})["pbaRep"] = parse_number(pba_rep)
-            pba_matched += 1
+    new_pba, new_losses, pba_iec = {}, {}, {}
+    for code, year_month, value in read_rows(args.pba_rep_csv):
+        new_pba[(code, year_month_to_key(year_month))] = parse_number(value)
+    for code, year_month, step, value in read_rows(args.waterfall_csv):
+        key = (code, year_month_to_key(year_month))
+        v = parse_number(value)
+        if step == "PBA_IEC":
+            pba_iec[key] = v
+        elif step in STEP_FIELD_MAP:
+            new_losses.setdefault(key, {})[STEP_FIELD_MAP[step]] = -v if v is not None else None
+        elif step == "Potential":
+            new_losses.setdefault(key, {})  # month exists in the pull, even with no losses
 
-    wf_matched = wf_skipped = wf_ignored_step = 0
-    with open(WATERFALL_CSV, encoding="utf-8-sig", newline="") as f:
-        reader = csv.reader(f)
-        next(reader)
-        for code, year_month, step, pct in reader:
-            field = STEP_FIELD_MAP.get(step)
-            if field is None:
-                wf_ignored_step += 1
-                continue
-            month_key = year_month_to_key(year_month)
-            plant = plants.get(code)
-            if not plant or month_key not in plant["months"]:
-                wf_skipped += 1
-                continue
-            value = parse_number(pct)
-            # Model negates loss values for the waterfall's visual direction;
-            # flip back to positive for display, per explicit instruction.
-            if value is not None:
-                value = -value
-            entry = plant["months"][month_key]
-            entry.setdefault("lossBreakdown", {})[field] = value
-            wf_matched += 1
+    pba_touched = loss_touched = 0
+    for code, plant in plants.items():
+        for month_key, entry in plant["months"].items():
+            key = (code, month_key)
+            if key in new_pba:
+                entry.setdefault("availability", {})["pbaRep"] = new_pba[key]
+                pba_touched += 1
+            if key in new_losses:
+                entry["lossBreakdown"] = new_losses[key]
+                loss_touched += 1
 
+    # ---- comparison report
+    changed_months = 0
+    max_pba_move = (0, None)
+    max_loss_move = (0, None)
+    added, removed = {}, {}
+    gap_before, gap_after = [], []
+    for code, plant in plants.items():
+        for month_key, entry in plant["months"].items():
+            old = before[code]["months"][month_key]
+            old_lb, new_lb = old.get("lossBreakdown") or {}, entry.get("lossBreakdown") or {}
+            old_pba, new_pba_v = old.get("availability", {}).get("pbaRep"), entry.get("availability", {}).get("pbaRep")
+            if old_lb != new_lb or old_pba != new_pba_v:
+                changed_months += 1
+            if old_pba is not None and new_pba_v is not None:
+                d = abs(new_pba_v - old_pba)
+                if d > max_pba_move[0]: max_pba_move = (d, f"{code} {month_key}")
+            for k in set(old_lb) | set(new_lb):
+                o, n = old_lb.get(k), new_lb.get(k)
+                if o is None and n is not None: added[k] = added.get(k, 0) + 1
+                if o is not None and n is None: removed[k] = removed.get(k, 0) + 1
+                if o is not None and n is not None and abs(n - o) > max_loss_move[0]:
+                    max_loss_move = (abs(n - o), f"{code} {month_key} {k}")
+            g0, g1 = identity_gap(old), identity_gap(entry)
+            if g0 is not None: gap_before.append(abs(g0))
+            if g1 is not None: gap_after.append(abs(g1))
+
+    # PBA_IEC (the waterfall's own end bar) should equal the separate PBA_Rep pull
+    iec_mismatch = [k for k, v in pba_iec.items() if k in new_pba and v is not None and new_pba[k] is not None
+                    and abs(v - new_pba[k]) > 1e-9]
+
+    print(f"pbaRep refreshed for {pba_touched} plant-months, lossBreakdown replaced for {loss_touched}")
+    print(f"plant-months with any change: {changed_months}")
+    print(f"largest pbaRep move: {max_pba_move[0]:.4%} ({max_pba_move[1]})")
+    print(f"largest single-category move: {max_loss_move[0]:.4%} ({max_loss_move[1]})")
+    print(f"category values newly present: {added or 'none'}; no longer present: {removed or 'none'}")
+    if gap_before and gap_after:
+        print(f"|pbaRep + losses - 100%|  before: mean {sum(gap_before)/len(gap_before):.4%}, max {max(gap_before):.4%}"
+              f"   after: mean {sum(gap_after)/len(gap_after):.4%}, max {max(gap_after):.4%}")
+    print(f"PBA_IEC vs PBA_Rep mismatches: {len(iec_mismatch)}")
+
+    if args.dry_run:
+        print("dry run - nothing written")
+        return
     for code, plant in plants.items():
         with open(os.path.join(PLANTS_DIR, f"{code}.json"), "w", encoding="utf-8") as f:
             json.dump(plant, f, indent=2, ensure_ascii=False, sort_keys=True)
-
-    print(f"PBA_Rep: matched {pba_matched}, skipped (month not present) {pba_skipped}")
-    print(f"Waterfall: matched {wf_matched}, skipped (month not present) {wf_skipped}, ignored (non-loss step) {wf_ignored_step}")
+    print("written")
 
 
 if __name__ == "__main__":
