@@ -8,9 +8,12 @@
 <style>
   .print-page { max-width: 980px; }
   canvas { max-width: 100%; }
-  table { font-size: 9px; }
-  th, td { padding: 2px 5px; }
+  table { font-size: 8.5px; }
+  th, td { padding: 2px 3px; }
+  /* Keep every KPI label on one line (so page 1 has room for the waterfall) and
+     collapse the empty spacer column so the table fits inside its frame at A4 width. */
   table.kpi-matrix td { white-space: nowrap; }
+  table.kpi-matrix tbody td:first-child:empty { width: 4px; padding: 0; }
 </style>
 </head>
 <body>
