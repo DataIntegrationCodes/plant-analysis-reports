@@ -247,27 +247,27 @@ const PAR = {
   },
 
   buildLossWaterfallChart(canvasEl, entry) {
-    // Each loss step wears its category's color from LOSS_CATEGORY_DEFS (same
-    // as every other Losses Breakdown visual); Target and Total are distinct
-    // anchor colors, and each bar's own value is printed directly above it.
-    // Step labels use a dark neutral rather than the bar color - several
-    // palette colors (yellow, pale greens/grays) are unreadable as text. A
-    // true-to-scale bar for a very small step (e.g. 0.006%) would be a
-    // fraction of a pixel tall and invisible, so each step's rendered bottom
-    // is extended to a minimum thickness - its top (its true position in the
-    // waterfall) never moves, only how far the visible bar reaches past it,
-    // and the label always prints the real, unclamped value.
+    // Styled to match the model's own native waterfall visual: one uniform
+    // color for every loss step (direction carries the meaning, not category
+    // identity - that's already on the x-axis label), a distinct color each
+    // for the Target and Total anchor bars, and each bar's own value printed
+    // directly above it in that bar's color. A true-to-scale bar for a very
+    // small step (e.g. 0.006%) would be a fraction of a pixel tall and
+    // invisible, so each step's rendered bottom is extended to a minimum
+    // thickness - its top (its true position in the waterfall) never moves,
+    // only how far the visible bar reaches past it, and the label always
+    // prints the real, unclamped value. Deliberately NOT tied to the
+    // LOSS_CATEGORY_DEFS palette used by the Graphical View.
     const TARGET_COLOR = "#6d6fa8";
+    const LOSS_COLOR = "#c17b7b";
     const TOTAL_COLOR = "#4f8c67";
-    const STEP_LABEL_COLOR = "#374151";
     const MIN_STEP = 0.008;
 
     const lb = entry.lossBreakdown || {};
     const activeDefs = PAR.LOSS_CATEGORY_DEFS.filter((def) => lb[def.key] !== null && lb[def.key] !== undefined);
 
     const labels = ["Target", ...activeDefs.map((d) => d.label), "PBA - Technical"];
-    const colors = [TARGET_COLOR, ...activeDefs.map((d) => d.color), TOTAL_COLOR];
-    const labelColors = [TARGET_COLOR, ...activeDefs.map(() => STEP_LABEL_COLOR), TOTAL_COLOR];
+    const colors = [TARGET_COLOR, ...activeDefs.map(() => LOSS_COLOR), TOTAL_COLOR];
 
     const renderData = [[0, 1]];
     const trueValues = [1];
@@ -296,7 +296,7 @@ const PAR = {
         meta.data.forEach((bar, i) => {
           const [from, to] = renderData[i];
           const topY = chart.scales.y.getPixelForValue(Math.max(from, to));
-          ctx.fillStyle = labelColors[i];
+          ctx.fillStyle = colors[i];
           ctx.fillText(PAR._fmtWaterfallLabel(trueValues[i]), bar.x, topY - 6);
         });
         ctx.restore();
@@ -305,7 +305,7 @@ const PAR = {
 
     return new Chart(canvasEl, {
       type: "bar",
-      data: { labels, datasets: [{ data: renderData, backgroundColor: colors, borderColor: "rgba(0,0,0,0.3)", borderWidth: 0.5 }] },
+      data: { labels, datasets: [{ data: renderData, backgroundColor: colors }] },
       plugins: [labelPlugin],
       options: {
         responsive: true,
@@ -317,7 +317,13 @@ const PAR = {
         },
         scales: {
           x: { ticks: { maxRotation: 45, minRotation: 0 } },
-          y: { min: 0, max: 1.08, ticks: { callback: (v) => (v > 1.0001 ? "" : PAR.fmtPercent(v)) } },
+          y: {
+            min: 0,
+            max: 1.08, // headroom so the Target/Total value labels aren't clipped
+            // Fixed 0-100% ticks: auto-generation drops 100% on a short (print) canvas.
+            afterBuildTicks: (scale) => { scale.ticks = [0, 0.2, 0.4, 0.6, 0.8, 1].map((value) => ({ value })); },
+            ticks: { callback: (v) => PAR.fmtPercent(v) },
+          },
         },
       },
     });
