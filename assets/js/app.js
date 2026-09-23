@@ -266,7 +266,7 @@ const PAR = {
     const lb = entry.lossBreakdown || {};
     const activeDefs = PAR.LOSS_CATEGORY_DEFS.filter((def) => lb[def.key] !== null && lb[def.key] !== undefined);
 
-    const labels = ["Target", ...activeDefs.map((d) => d.label), "PBA - Technical"];
+    const labels = ["Potential", ...activeDefs.map((d) => d.label), "PBA - Technical"];
     const colors = [TARGET_COLOR, ...activeDefs.map(() => LOSS_COLOR), TOTAL_COLOR];
 
     const renderData = [[0, 1]];
